@@ -140,11 +140,18 @@ onMounted(() => {
         <template v-else>
         <!-- Filter -->
         <section class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 shadow-card sm:p-5">
+          <!-- JANGAN pakai v-model="filters" di sini: filters adalah
+               reactive() const — v-model mengompilasi ke
+               `filters = $event` yang melempar TypeError (const tidak
+               bisa di-assign), sehingga semua perubahan filter gagal
+               diam-diam dan angka tidak pernah berubah. Object.assign
+               memutasi objek yang sama, reaktivitas tetap jalan. -->
           <FilterBar
-            v-model="filters"
+            :model-value="filters"
             :mitra-options="options.mitra"
             :kategori-options="options.kategori"
             :wilayah-options="options.wilayah"
+            @update:model-value="Object.assign(filters, $event)"
           />
         </section>
 
