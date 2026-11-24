@@ -301,7 +301,7 @@ const mitraOption = computed<EChartsOption>(() => {
             </h3>
             <p class="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
               Skor = min(100, Realisasi / Target × 100). Target individual per UMKM dari tab Target di Google Sheet.
-              Omzet, Transaksi, dan Repeat dihitung pada periode evaluasi Okt–Nov yang tetap (target ditetapkan
+              Omzet, Transaksi, Repeat, Inquiry, dan Kanal dihitung pada periode evaluasi Okt–Nov yang tetap (target ditetapkan
               untuk periode itu); Katalog memakai total master. Angka lain di dialog tetap mengikuti periode yang dipilih.
             </p>
             <div class="mt-3 space-y-3">
@@ -317,6 +317,18 @@ const mitraOption = computed<EChartsOption>(() => {
                 <Progress v-if="row.skor !== null" :value="row.skor" class="mt-1.5" />
               </div>
             </div>
+            <!-- Skor Kinerja terbobot (6 bobot mockup) untuk UMKM ini. -->
+            <div class="mt-4 flex items-center justify-between gap-3 border-t border-slate-200 dark:border-slate-700 pt-3">
+              <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Skor Kinerja</p>
+              <div v-if="detail.skorKinerja.skor !== null" class="flex items-center gap-1.5">
+                <Badge variant="default">Skor {{ detail.skorKinerja.skor }}</Badge>
+                <span v-if="detail.skorKinerja.status" class="text-xs font-medium text-slate-500 dark:text-slate-400">{{ detail.skorKinerja.status }}</span>
+              </div>
+              <span v-else class="text-sm font-bold text-slate-400">Skor —</span>
+            </div>
+            <p class="mt-1 text-xs leading-relaxed text-slate-400">
+              Terbobot: Katalog 20% · Kanal Aktif 15% · Inquiry 15% · Transaksi 20% · Omzet 20% · Repeat Order 10%.
+            </p>
           </div>
 
           <!-- Profil usaha (data master TEI 2026) -->

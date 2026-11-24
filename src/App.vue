@@ -182,7 +182,7 @@ onMounted(() => {
         <!-- Indikator + Top UMKM -->
         <section class="grid gap-4 lg:grid-cols-5">
           <div class="min-w-0 lg:col-span-2">
-            <IndikatorUMKM :items="dashboard.indikator" :targets-error="dashboard.targetsError" :skor-periode-label="dashboard.skorPeriodeLabel" />
+            <IndikatorUMKM :items="dashboard.indikator" :targets-error="dashboard.targetsError" :skor-periode-label="dashboard.skorPeriodeLabel" :skor-kinerja="dashboard.skorKinerja" />
           </div>
           <div class="min-w-0 lg:col-span-3">
             <TopUmkmTable :rows="dashboard.topUmkm" @select="selectUmkm" @show-all="showAllUmkm = true" />

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ClipboardList, RefreshCw, Repeat2, TrendingDown, TrendingUp, type LucideIcon } from 'lucide-vue-next'
+import { Banknote, ClipboardList, Megaphone, MessagesSquare, RefreshCw, Repeat2, ShoppingCart, TrendingDown, TrendingUp, type LucideIcon } from 'lucide-vue-next'
 import { formatDelta, formatPercent } from '@/lib/format'
-import type { Indikator } from '@/lib/compute'
+import type { Indikator, SkorKinerja } from '@/lib/compute'
 import Badge from './ui/Badge.vue'
 import Card from './ui/Card.vue'
 import CardHeader from './ui/CardHeader.vue'
@@ -11,12 +11,16 @@ import Progress from './ui/Progress.vue'
 
 const ICONS: Record<string, LucideIcon> = {
   katalog: ClipboardList,
+  kanal: Megaphone,
+  inquiry: MessagesSquare,
+  transaksi: ShoppingCart,
+  omzet: Banknote,
   konversi: RefreshCw,
   repeat: Repeat2,
   pertumbuhan: TrendingUp,
 }
 
-defineProps<{ items: Indikator[]; targetsError?: string | null; skorPeriodeLabel?: string | null }>()
+defineProps<{ items: Indikator[]; targetsError?: string | null; skorPeriodeLabel?: string | null; skorKinerja?: SkorKinerja | null }>()
 </script>
 
 <template>
@@ -73,6 +77,24 @@ defineProps<{ items: Indikator[]; targetsError?: string | null; skorPeriodeLabel
           </div>
         </div>
         <Progress v-if="item.percent !== null" :value="item.percent" />
+      </div>
+      <!-- Skor Kinerja terbobot (6 bobot mockup): Katalog 20% + Kanal 15%
+           + Inquiry 15% + Transaksi 20% + Omzet 20% + Repeat 10%.
+           Hanya tampil bila keenam komponen punya skor; bila satu saja
+           "—", total ikut "—" (bukan skor parsial). -->
+      <div class="rounded-xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800 px-3 py-2.5">
+        <div class="flex items-center justify-between gap-3">
+          <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Skor Kinerja</p>
+          <div v-if="skorKinerja?.skor !== null && skorKinerja?.skor !== undefined" class="flex items-center gap-1.5">
+            <Badge variant="default">Skor {{ skorKinerja.skor }}</Badge>
+            <span v-if="skorKinerja.status" class="text-xs font-medium text-slate-500 dark:text-slate-400">{{ skorKinerja.status }}</span>
+          </div>
+          <span v-else class="text-sm font-bold text-slate-400">Skor —</span>
+        </div>
+        <p class="mt-1 text-xs leading-relaxed text-slate-400">
+          Terbobot: Katalog 20% · Kanal Aktif 15% · Inquiry 15% · Transaksi 20% · Omzet 20% · Repeat Order 10%.
+          Status: ≥85 Sangat Baik · ≥70 Baik · ≥55 Cukup · di bawah itu Kurang.
+        </p>
       </div>
       <!-- Catatan jujur bila tab Target gagal dibaca: skor "—", bukan
            angka contoh. -->

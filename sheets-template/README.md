@@ -1,11 +1,18 @@
 # Template Google Sheet — Dashboard Monev UMKM
 
-Tiga file CSV ini adalah template isi Google Sheet sumber data dashboard.
-Buat satu Google Sheet dengan **4 tab** bernama persis seperti nama file
-(tanpa `.csv`): `Transaksi`, `UMKM`, `Klik_Link`, `Target`, lalu impor
-tiap CSV ke tab yang sesuai (File → Impor). Tambah tab ke-5 opsional
-`Ringkasan` untuk total periode sebelumnya (delta KPI).
+Sembilan file CSV ini adalah template isi Google Sheet sumber data dashboard.
+Buat satu Google Sheet dengan **9 tab** bernama persis seperti nama file
+(tanpa `.csv`): `Transaksi`, `UMKM`, `Mitra`, `Kanal`, `Katalog`,
+`Penugasan`, `Klik_Link`, `Target`, `Ringkasan`, lalu impor tiap CSV
+ke tab yang sesuai (File → Impor).
 
+> **Struktur relasional (2026-11-24).** Tiap master punya ID unik dan
+> antar-tab disambung pakai ID, bukan nama: `id_umkm` (UMKM-001…),
+> `id_mitra` (MTR-001…), `id_kanal` (KNL-01…), `id_produk` (PRD-001…),
+> `id_penugasan` (PNG-001…). Nama tetap ditulis sebagai label supaya
+> Sheet tetap bisa dibaca. Angka mockup diabaikan — yang dibangun adalah
+> struktur + data yang bisa diolah dashboard.
+>
 > **Semesta UMKM = 42 peserta TEI 2026.** Nama-nama dummy lama
 > (My Little Dimsum, Burich, dkk.) sudah tidak ada — transaksi contoh
 > dipetakan ulang ke 42 nama TEI dengan total yang persis sama.
@@ -21,47 +28,79 @@ tiap CSV ke tab yang sesuai (File → Impor). Tambah tab ke-5 opsional
 |---|---|
 | tanggal | Tanggal awal segmen minggu dalam bulan itu (tanggal 1 bila minggu terpotong awal bulan, Senin untuk segmen penuh), mis. 2026-07-01, 2026-07-06 |
 | bulan | `2026-07` s.d. `2026-11` (catatan: Google Sheets kadang menafsirkan `2026-07` sebagai tanggal dan menampilkannya `2026-7`; dashboard menormalisasi format itu saat membaca, jadi aman — bila menulis lewat API, pakai `valueInputOption: RAW` untuk kolom ini) |
+| id_umkm | ID unik UMKM (UMKM-001 s.d. UMKM-042) — kunci sambung ke tab UMKM |
 | nama_umkm | Nama UMKM (salah satu dari 42 peserta TEI 2026) |
 | kategori | Sektor peserta TEI: Food & Beverage, Kopi, Fesyen, Craft, Home Decor, Fragrance, Personal Care, Beauty, Healthy Beverage |
 | wilayah | Jakarta Selatan, Jakarta Timur, Jakarta Barat, Jakarta Utara, Jakarta Pusat, DKI Jakarta |
+| id_mitra | ID unik mitra (MTR-001 s.d. MTR-006) — kunci sambung ke tab Mitra |
 | mitra_pemasaran | Tokopedia, Shopee, Mall Grand Indonesia, Centong Daily, Koperasi Kumindag, Hippindo |
+| id_kanal | ID unik kanal (KNL-01 s.d. KNL-26) — kunci sambung ke tab Kanal |
+| kanal_pemesanan | Kanal utama slice ini (satu kanal dari daftar kanal mitra itu) |
 | pesanan | Jumlah pesanan bulan itu |
 | transaksi | Jumlah transaksi (pesanan yang terbayar) bulan itu |
 | omzet | Omzet Rupiah bulan itu |
 | klik | Jumlah klik link bulan itu |
+| jumlah_inquiry | Jumlah inquiry bulan itu (corong: inquiry ≥ pesanan; angka CONTOH deterministik) |
 
 ### UMKM — 42 baris (1 baris = 1 UMKM peserta TEI 2026)
-`nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk`
+`id_umkm, kode_peserta, grade, nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk`
 (`transaksi` di sini = total Jul–Nov 2026, harus sama
 dengan jumlah baris UMKM itu di tab Transaksi. Kolom `pesanan` dan
 `omzet` DIHAPUS 2026-11-24 atas perintah user (redundan — semua angka
 pesanan/omzet dashboard dihitung dari tab Transaksi, bukan dari master).
-`produk_aktif` berisi angka ACAK DETERMINISTIK (8–17 produk, aktif
-85–100%) — bukan data TEI, atas perintah user 2026-11-24. Kolom
-`repeat_transaksi` berisi angka ACAK DETERMINISTIK (total 346 = 28,6% —
-aturan repeat: transaksi yang isian repeat-nya > 1x dihitung repeat).
+`kode_peserta` = kode bisnis format mockup (JP-xxxxxxxx, CONTOH);
+`grade` = tertil omzet (A/B/C). `produk_aktif` berisi angka ACAK
+DETERMINISTIK (8–17 produk, aktif 85–100%) — bukan data TEI, atas
+perintah user 2026-11-24. Kolom `repeat_transaksi` berisi angka ACAK
+DETERMINISTIK (total 346 = 28,6% — aturan repeat: transaksi yang isian
+repeat-nya > 1x dihitung repeat).
 Tidak ada kolom mitra di tab ini — mitra utama tiap UMKM diturunkan
 dari transaksi.)
 
+### Mitra — 6 baris (master mitra)
+`id_mitra, nama_mitra, jenis, pic, kontak, email, kategori_produk, wilayah, kanal, status, dokumen, catatan`
+Jenis + kanal dari penilaian model bisnis (CONTOH); PIC/kontak/email/
+dokumen/catatan kosong karena datanya tidak ada — bisa diisi user di Sheet.
+
+### Kanal — 26 baris (26 kanal referensi dari mockup)
+`id_kanal, nama_kanal, kategori`
+
+### Katalog — 525 baris (1 baris = 1 produk; jumlah per UMKM = jumlah_produk)
+`id_produk, id_umkm, nama_umkm, nama_produk, kategori, harga, stok, satuan, status_verifikasi`
+Nama produk diturunkan dari penjelasan produk TEI (+ varian kemasan/
+ukuran bila kurang); harga/stok angka CONTOH deterministik. Status:
+Tayang = produk aktif (497), sisanya Menunggu /
+Tidak Disetujui.
+
+### Penugasan — 42 baris (1 baris = 1 UMKM × mitra utamanya)
+`id_penugasan, id_umkm, nama_umkm, id_mitra, nama_mitra, id_kanal, kanal, periode, status`
+Kanal = kanal utama (pertama) mitra itu; periode 01 Okt–31 Des 2026.
+
 ### Target — 42 baris (1 baris = 1 UMKM; target individual per UMKM)
-`nama_umkm, target_omzet, target_transaksi, target_produk_aktif, target_konversi, target_repeat`
+`id_umkm, nama_umkm, target_omzet, target_transaksi, target_produk_aktif, target_konversi, target_repeat, target_inquiry, target_kanal_aktif`
 Angka CONTOH deterministik (bukan data TEI): target omzet & transaksi =
 realisasi OKT–NOV × 1,15–1,25; target produk aktif = jumlah_produk (target 100%
-aktif); target konversi = 10–15%; target repeat = transaksi Okt–Nov × 0,30–0,40.
+aktif); target konversi = 10–15%; target repeat = transaksi Okt–Nov × 0,30–0,40;
+target inquiry = inquiry Okt–Nov × 1,15–1,25; target kanal aktif = 2–3.
 Semua target > 0 (syarat rumus skor). **User bisa mengubah angka ini
 langsung di Sheet** — dashboard menghitung Skor Indikator =
 min(100, Realisasi/Target × 100) dari tab ini, per UMKM maupun agregat,
-dengan realisasi pada jendela evaluasi Okt–Nov yang tetap.
+dengan realisasi pada jendela evaluasi Okt–Nov yang tetap. Skor Kinerja
+terbobot = Katalog 20% + Kanal Aktif 15% + Inquiry 15% + Transaksi 20% +
+Omzet 20% + Repeat 10% (status: ≥85 Sangat Baik, ≥70 Baik, ≥55 Cukup,
+di bawah itu Kurang).
 
 ### Klik_Link — 30 baris (agregat klik per bulan × mitra)
-`bulan, mitra_pemasaran, klik` — dipakai sebagai cek silang; sumber utama
+`bulan, id_mitra, mitra_pemasaran, klik` — dipakai sebagai cek silang; sumber utama
 klik tetap kolom `klik` di tab Transaksi. (Tidak merujuk nama UMKM.)
 
-### Ringkasan (opsional, 2 kolom: `metrik, nilai`)
+### Ringkasan (2 kolom: `metrik, nilai`)
 `omzet, 254061327` · `transaksi, 953` ·
 `pesanan, 1148` · `klik, 10703`
-= total periode sebelumnya, untuk badge delta KPI (+31% omzet dst).
-Tanpa tab ini, dashboard memakai angka di atas sebagai default.
+= total periode sebelumnya (5 bulan), untuk badge delta KPI (+31% omzet dst).
+BUKAN total Sep: delta membandingkan jendela 5 bulan dengan 5 bulan
+sebelumnya, jadi baseline-nya harus seperiode. Angka CONTOH dari
+screenshot awal (sama dengan fallback yang selama ini dipakai sample.ts).
 
 ## Hasil verifikasi generator (dihitung ulang dari CSV yang ditulis)
 
@@ -75,10 +114,18 @@ Tanpa tab ini, dashboard memakai angka di atas sebagai default.
 | Total produk (acak deterministik) | 525 | 525 | ✅ |
 | Produk aktif (acak deterministik) | 497 (94,7%) | 497 | ✅ |
 | Repeat order (acak deterministik) | 346 (28,6%) | 346 | ✅ |
+| Total inquiry (CONTOH deterministik) | 2.136 | 2.136 | ✅ |
+| Inquiry Okt–Nov 2026 | 734 | 734 | ✅ |
+| Rata-rata kanal aktif per UMKM (Okt–Nov) | 2,98 kanal | 2,98 kanal | ✅ |
+| Katalog: produk | 525 | 525 | ✅ |
+| Katalog: Tayang | 497 | 497 | ✅ |
+| Penugasan | 42 | 42 | ✅ |
 | Σ target omzet | Rp 91.800.982 | Rp 91.800.982 | ✅ |
 | Σ target transaksi | 481 | 481 | ✅ |
 | Σ target produk aktif | 525 | 525 | ✅ |
 | Σ target repeat | 140 | 140 | ✅ |
+| Σ target inquiry | 881 | 881 | ✅ |
+| Σ target kanal aktif | 106 | 106 | ✅ |
 | Rata-rata target konversi | 13,0% | 13,0% | ✅ |
 | Omzet Jul 2026 | Rp 136.761.925 | Rp 136.761.925 | ✅ |
 | Omzet Agu 2026 | Rp 71.616.960 | Rp 71.616.960 | ✅ |

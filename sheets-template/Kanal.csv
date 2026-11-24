@@ -1,0 +1,27 @@
+id_kanal,nama_kanal,kategori
+KNL-01,Instagram,Media Sosial
+KNL-02,TikTok,Media Sosial
+KNL-03,Facebook,Media Sosial
+KNL-04,YouTube,Media Sosial
+KNL-05,Shopee,Marketplace
+KNL-06,Tokopedia,Marketplace
+KNL-07,Lazada,Marketplace
+KNL-08,Blibli,Marketplace
+KNL-09,TikTok Shop,Marketplace
+KNL-10,WhatsApp Business,Komunikasi Langsung
+KNL-11,Telegram,Komunikasi Langsung
+KNL-12,Website Mitra,Website/Toko Online
+KNL-13,Katalog Digital,Website/Toko Online
+KNL-14,Toko,Ritel Fisik
+KNL-15,Minimarket,Ritel Fisik
+KNL-16,Supermarket,Ritel Fisik
+KNL-17,Pusat Perbelanjaan,Ritel Fisik
+KNL-18,Jaringan Korporasi,Penjualan B2B
+KNL-19,Hotel,Penjualan B2B
+KNL-20,Restoran,Penjualan B2B
+KNL-21,Kafe,Penjualan B2B
+KNL-22,Pengadaan Perusahaan,Penjualan B2B
+KNL-23,Pameran,Promosi Offline
+KNL-24,Bazar,Promosi Offline
+KNL-25,Pop-up Store,Promosi Offline
+KNL-26,Lainnya,Lainnya

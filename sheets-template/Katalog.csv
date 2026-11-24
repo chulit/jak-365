@@ -1,0 +1,526 @@
+id_produk,id_umkm,nama_umkm,nama_produk,kategori,harga,stok,satuan,status_verifikasi
+PRD-001,UMKM-001,Chipsychips,Keripik Nanas,Food & Beverage,86000,179,pack,Tayang
+PRD-002,UMKM-001,Chipsychips,Keripik Nangka,Food & Beverage,118000,111,pack,Tayang
+PRD-003,UMKM-001,Chipsychips,Keripik Salak,Food & Beverage,66000,174,pack,Tayang
+PRD-004,UMKM-001,Chipsychips,Edamame Panggang,Food & Beverage,18000,138,pack,Tayang
+PRD-005,UMKM-001,Chipsychips,Keripik Sayur Tropis,Food & Beverage,144000,51,pack,Tayang
+PRD-006,UMKM-001,Chipsychips,Keripik Nanas (Kemasan 100g),Food & Beverage,138000,27,pack,Tayang
+PRD-007,UMKM-001,Chipsychips,Keripik Nangka (Kemasan 100g),Food & Beverage,128000,92,pack,Tayang
+PRD-008,UMKM-001,Chipsychips,Keripik Salak (Kemasan 100g),Food & Beverage,125000,69,pack,Tayang
+PRD-009,UMKM-001,Chipsychips,Edamame Panggang (Kemasan 100g),Food & Beverage,15000,104,pack,Tayang
+PRD-010,UMKM-002,Machili,Sambal Ikan Laut,Food & Beverage,126000,47,pack,Tayang
+PRD-011,UMKM-002,Machili,Sambal Cumi,Food & Beverage,109000,163,pack,Tayang
+PRD-012,UMKM-002,Machili,Sambal Udang,Food & Beverage,104000,129,pack,Tayang
+PRD-013,UMKM-002,Machili,Kerupuk Kulit Ikan,Food & Beverage,94000,32,pack,Tayang
+PRD-014,UMKM-002,Machili,Sambal Ikan Laut (Kemasan 100g),Food & Beverage,105000,15,pack,Tayang
+PRD-015,UMKM-002,Machili,Sambal Cumi (Kemasan 100g),Food & Beverage,101000,20,pack,Tayang
+PRD-016,UMKM-002,Machili,Sambal Udang (Kemasan 100g),Food & Beverage,77000,19,pack,Tayang
+PRD-017,UMKM-002,Machili,Kerupuk Kulit Ikan (Kemasan 100g),Food & Beverage,84000,125,pack,Tayang
+PRD-018,UMKM-002,Machili,Sambal Ikan Laut (Kemasan 250g),Food & Beverage,36000,135,pack,Tayang
+PRD-019,UMKM-002,Machili,Sambal Cumi (Kemasan 250g),Food & Beverage,73000,65,pack,Tayang
+PRD-020,UMKM-002,Machili,Sambal Udang (Kemasan 250g),Food & Beverage,142000,75,pack,Tayang
+PRD-021,UMKM-002,Machili,Kerupuk Kulit Ikan (Kemasan 250g),Food & Beverage,79000,121,pack,Tayang
+PRD-022,UMKM-002,Machili,Sambal Ikan Laut (Kemasan 500g),Food & Beverage,142000,106,pack,Tayang
+PRD-023,UMKM-002,Machili,Sambal Cumi (Kemasan 500g),Food & Beverage,112000,135,pack,Tayang
+PRD-024,UMKM-003,PT Antara Vita Global,Susu Bebas Laktosa,Food & Beverage,143000,52,pack,Tayang
+PRD-025,UMKM-003,PT Antara Vita Global,Keju Olahan,Food & Beverage,132000,120,pack,Tayang
+PRD-026,UMKM-003,PT Antara Vita Global,Ingredients Keju,Food & Beverage,129000,11,pack,Tayang
+PRD-027,UMKM-003,PT Antara Vita Global,Pangan Bernutrisi,Food & Beverage,107000,184,pack,Tayang
+PRD-028,UMKM-003,PT Antara Vita Global,Susu Bebas Laktosa (Kemasan 100g),Food & Beverage,89000,40,pack,Tayang
+PRD-029,UMKM-003,PT Antara Vita Global,Keju Olahan (Kemasan 100g),Food & Beverage,135000,43,pack,Tayang
+PRD-030,UMKM-003,PT Antara Vita Global,Ingredients Keju (Kemasan 100g),Food & Beverage,17000,184,pack,Tayang
+PRD-031,UMKM-003,PT Antara Vita Global,Pangan Bernutrisi (Kemasan 100g),Food & Beverage,87000,89,pack,Tayang
+PRD-032,UMKM-003,PT Antara Vita Global,Susu Bebas Laktosa (Kemasan 250g),Food & Beverage,60000,34,pack,Tayang
+PRD-033,UMKM-003,PT Antara Vita Global,Keju Olahan (Kemasan 250g),Food & Beverage,45000,179,pack,Tayang
+PRD-034,UMKM-003,PT Antara Vita Global,Ingredients Keju (Kemasan 250g),Food & Beverage,134000,121,pack,Tayang
+PRD-035,UMKM-003,PT Antara Vita Global,Pangan Bernutrisi (Kemasan 250g),Food & Beverage,45000,81,pack,Tayang
+PRD-036,UMKM-003,PT Antara Vita Global,Susu Bebas Laktosa (Kemasan 500g),Food & Beverage,148000,19,pack,Tayang
+PRD-037,UMKM-003,PT Antara Vita Global,Keju Olahan (Kemasan 500g),Food & Beverage,95000,142,pack,Tayang
+PRD-038,UMKM-003,PT Antara Vita Global,Ingredients Keju (Kemasan 500g),Food & Beverage,131000,68,pack,Tayang
+PRD-039,UMKM-003,PT Antara Vita Global,Pangan Bernutrisi (Kemasan 500g),Food & Beverage,19000,157,pack,Menunggu
+PRD-040,UMKM-004,Dapur Bunda by Unie,Rendang Daging,Food & Beverage,34000,26,pack,Tayang
+PRD-041,UMKM-004,Dapur Bunda by Unie,Rendang Ayam,Food & Beverage,35000,58,pack,Tayang
+PRD-042,UMKM-004,Dapur Bunda by Unie,Rendang Jengkol,Food & Beverage,51000,77,pack,Tayang
+PRD-043,UMKM-004,Dapur Bunda by Unie,Rendang Telur,Food & Beverage,88000,16,pack,Tayang
+PRD-044,UMKM-004,Dapur Bunda by Unie,Rendang Daging (Kemasan 100g),Food & Beverage,36000,184,pack,Tayang
+PRD-045,UMKM-004,Dapur Bunda by Unie,Rendang Ayam (Kemasan 100g),Food & Beverage,100000,125,pack,Tayang
+PRD-046,UMKM-004,Dapur Bunda by Unie,Rendang Jengkol (Kemasan 100g),Food & Beverage,125000,73,pack,Tayang
+PRD-047,UMKM-004,Dapur Bunda by Unie,Rendang Telur (Kemasan 100g),Food & Beverage,120000,111,pack,Tayang
+PRD-048,UMKM-004,Dapur Bunda by Unie,Rendang Daging (Kemasan 250g),Food & Beverage,76000,105,pack,Tayang
+PRD-049,UMKM-004,Dapur Bunda by Unie,Rendang Ayam (Kemasan 250g),Food & Beverage,68000,161,pack,Menunggu
+PRD-050,UMKM-005,PT Amood Healthy Foods,Kacang Mete Salted Sea Salt,Food & Beverage,84000,63,pack,Tayang
+PRD-051,UMKM-005,PT Amood Healthy Foods,Kacang Mete Garlic,Food & Beverage,66000,68,pack,Tayang
+PRD-052,UMKM-005,PT Amood Healthy Foods,Kacang Mete Honey Butter,Food & Beverage,79000,188,pack,Tayang
+PRD-053,UMKM-005,PT Amood Healthy Foods,Kacang Mete Spicy Rendang,Food & Beverage,55000,179,pack,Tayang
+PRD-054,UMKM-005,PT Amood Healthy Foods,Kacang Mete Dark Chocolate,Food & Beverage,96000,52,pack,Tayang
+PRD-055,UMKM-005,PT Amood Healthy Foods,Kacang Mete Salted Sea Salt (Kemasan 100g),Food & Beverage,29000,157,pack,Tayang
+PRD-056,UMKM-005,PT Amood Healthy Foods,Kacang Mete Garlic (Kemasan 100g),Food & Beverage,93000,78,pack,Tayang
+PRD-057,UMKM-005,PT Amood Healthy Foods,Kacang Mete Honey Butter (Kemasan 100g),Food & Beverage,54000,64,pack,Tayang
+PRD-058,UMKM-005,PT Amood Healthy Foods,Kacang Mete Spicy Rendang (Kemasan 100g),Food & Beverage,60000,184,pack,Tayang
+PRD-059,UMKM-005,PT Amood Healthy Foods,Kacang Mete Dark Chocolate (Kemasan 100g),Food & Beverage,19000,194,pack,Tayang
+PRD-060,UMKM-005,PT Amood Healthy Foods,Kacang Mete Salted Sea Salt (Kemasan 250g),Food & Beverage,120000,179,pack,Tayang
+PRD-061,UMKM-005,PT Amood Healthy Foods,Kacang Mete Garlic (Kemasan 250g),Food & Beverage,44000,28,pack,Tayang
+PRD-062,UMKM-005,PT Amood Healthy Foods,Kacang Mete Honey Butter (Kemasan 250g),Food & Beverage,74000,32,pack,Tayang
+PRD-063,UMKM-006,PT Inovasi Mitra Sudjarwo,Minies Q Oat Protein Cookies Original,Food & Beverage,141000,17,pack,Tayang
+PRD-064,UMKM-006,PT Inovasi Mitra Sudjarwo,Minies Q Oat Protein Cookies Coklat,Food & Beverage,88000,89,pack,Tayang
+PRD-065,UMKM-006,PT Inovasi Mitra Sudjarwo,Minies Q Oat Protein Cookies Keju,Food & Beverage,149000,197,pack,Tayang
+PRD-066,UMKM-006,PT Inovasi Mitra Sudjarwo,Minies Q Oat Protein Cookies Original (Kemasan 100g),Food & Beverage,119000,72,pack,Tayang
+PRD-067,UMKM-006,PT Inovasi Mitra Sudjarwo,Minies Q Oat Protein Cookies Coklat (Kemasan 100g),Food & Beverage,19000,29,pack,Tayang
+PRD-068,UMKM-006,PT Inovasi Mitra Sudjarwo,Minies Q Oat Protein Cookies Keju (Kemasan 100g),Food & Beverage,146000,166,pack,Tayang
+PRD-069,UMKM-006,PT Inovasi Mitra Sudjarwo,Minies Q Oat Protein Cookies Original (Kemasan 250g),Food & Beverage,98000,113,pack,Tayang
+PRD-070,UMKM-006,PT Inovasi Mitra Sudjarwo,Minies Q Oat Protein Cookies Coklat (Kemasan 250g),Food & Beverage,52000,29,pack,Tayang
+PRD-071,UMKM-007,Sari Rasso,Rendang Ready-to-Eat,Food & Beverage,134000,61,pack,Tayang
+PRD-072,UMKM-007,Sari Rasso,Dendeng Ready-to-Eat,Food & Beverage,55000,40,pack,Tayang
+PRD-073,UMKM-007,Sari Rasso,Gulai Ready-to-Eat,Food & Beverage,135000,30,pack,Tayang
+PRD-074,UMKM-007,Sari Rasso,Sambal Minang,Food & Beverage,97000,115,pack,Tayang
+PRD-075,UMKM-007,Sari Rasso,Rendang Ready-to-Eat (Kemasan 100g),Food & Beverage,70000,34,pack,Tayang
+PRD-076,UMKM-007,Sari Rasso,Dendeng Ready-to-Eat (Kemasan 100g),Food & Beverage,109000,28,pack,Tayang
+PRD-077,UMKM-007,Sari Rasso,Gulai Ready-to-Eat (Kemasan 100g),Food & Beverage,37000,143,pack,Tayang
+PRD-078,UMKM-007,Sari Rasso,Sambal Minang (Kemasan 100g),Food & Beverage,68000,33,pack,Tayang
+PRD-079,UMKM-007,Sari Rasso,Rendang Ready-to-Eat (Kemasan 250g),Food & Beverage,99000,63,pack,Tayang
+PRD-080,UMKM-007,Sari Rasso,Dendeng Ready-to-Eat (Kemasan 250g),Food & Beverage,25000,37,pack,Tayang
+PRD-081,UMKM-007,Sari Rasso,Gulai Ready-to-Eat (Kemasan 250g),Food & Beverage,23000,141,pack,Menunggu
+PRD-082,UMKM-008,Bakerzmix,Tepung Multiguna Original,Food & Beverage,44000,93,pack,Tayang
+PRD-083,UMKM-008,Bakerzmix,Tepung Multiguna Premium,Food & Beverage,19000,166,pack,Tayang
+PRD-084,UMKM-008,Bakerzmix,Tepung Bakery,Food & Beverage,79000,130,pack,Tayang
+PRD-085,UMKM-008,Bakerzmix,Tepung HORECA,Food & Beverage,46000,189,pack,Tayang
+PRD-086,UMKM-008,Bakerzmix,Tepung Multiguna Original (Kemasan 100g),Food & Beverage,145000,154,pack,Tayang
+PRD-087,UMKM-008,Bakerzmix,Tepung Multiguna Premium (Kemasan 100g),Food & Beverage,148000,195,pack,Tayang
+PRD-088,UMKM-008,Bakerzmix,Tepung Bakery (Kemasan 100g),Food & Beverage,60000,28,pack,Tayang
+PRD-089,UMKM-008,Bakerzmix,Tepung HORECA (Kemasan 100g),Food & Beverage,109000,60,pack,Tayang
+PRD-090,UMKM-008,Bakerzmix,Tepung Multiguna Original (Kemasan 250g),Food & Beverage,54000,176,pack,Tayang
+PRD-091,UMKM-008,Bakerzmix,Tepung Multiguna Premium (Kemasan 250g),Food & Beverage,57000,143,pack,Tayang
+PRD-092,UMKM-008,Bakerzmix,Tepung Bakery (Kemasan 250g),Food & Beverage,101000,63,pack,Tayang
+PRD-093,UMKM-008,Bakerzmix,Tepung HORECA (Kemasan 250g),Food & Beverage,17000,100,pack,Tayang
+PRD-094,UMKM-008,Bakerzmix,Tepung Multiguna Original (Kemasan 500g),Food & Beverage,101000,26,pack,Tayang
+PRD-095,UMKM-008,Bakerzmix,Tepung Multiguna Premium (Kemasan 500g),Food & Beverage,20000,26,pack,Tayang
+PRD-096,UMKM-008,Bakerzmix,Tepung Bakery (Kemasan 500g),Food & Beverage,70000,92,pack,Tayang
+PRD-097,UMKM-008,Bakerzmix,Tepung HORECA (Kemasan 500g),Food & Beverage,111000,77,pack,Menunggu
+PRD-098,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Nasi Padang Siap Makan,Food & Beverage,116000,70,pack,Tayang
+PRD-099,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Ayam Geprek Siap Makan,Food & Beverage,41000,179,pack,Tayang
+PRD-100,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Rendang Siap Makan,Food & Beverage,29000,110,pack,Tayang
+PRD-101,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Gudeg Siap Makan,Food & Beverage,70000,122,pack,Tayang
+PRD-102,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Nasi Padang Siap Makan (Kemasan 100g),Food & Beverage,140000,112,pack,Tayang
+PRD-103,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Ayam Geprek Siap Makan (Kemasan 100g),Food & Beverage,78000,113,pack,Tayang
+PRD-104,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Rendang Siap Makan (Kemasan 100g),Food & Beverage,20000,103,pack,Tayang
+PRD-105,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Gudeg Siap Makan (Kemasan 100g),Food & Beverage,142000,80,pack,Tayang
+PRD-106,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Nasi Padang Siap Makan (Kemasan 250g),Food & Beverage,89000,86,pack,Tayang
+PRD-107,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Ayam Geprek Siap Makan (Kemasan 250g),Food & Beverage,93000,49,pack,Tayang
+PRD-108,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Rendang Siap Makan (Kemasan 250g),Food & Beverage,141000,147,pack,Tayang
+PRD-109,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Gudeg Siap Makan (Kemasan 250g),Food & Beverage,135000,21,pack,Tayang
+PRD-110,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Nasi Padang Siap Makan (Kemasan 500g),Food & Beverage,143000,134,pack,Tayang
+PRD-111,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Ayam Geprek Siap Makan (Kemasan 500g),Food & Beverage,78000,56,pack,Tayang
+PRD-112,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Rendang Siap Makan (Kemasan 500g),Food & Beverage,113000,195,pack,Tayang
+PRD-113,UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),Gudeg Siap Makan (Kemasan 500g),Food & Beverage,142000,112,pack,Menunggu
+PRD-114,UMKM-010,Raisya SFnB,Rempah Nusantara,Food & Beverage,82000,50,pack,Tayang
+PRD-115,UMKM-010,Raisya SFnB,Kopi Indonesia,Food & Beverage,129000,121,pack,Tayang
+PRD-116,UMKM-010,Raisya SFnB,Beras Pangan,Food & Beverage,145000,114,pack,Tayang
+PRD-117,UMKM-010,Raisya SFnB,Bumbu Instan,Food & Beverage,123000,36,pack,Tayang
+PRD-118,UMKM-010,Raisya SFnB,Rempah Nusantara (Kemasan 100g),Food & Beverage,81000,80,pack,Tayang
+PRD-119,UMKM-010,Raisya SFnB,Kopi Indonesia (Kemasan 100g),Food & Beverage,122000,182,pack,Tayang
+PRD-120,UMKM-010,Raisya SFnB,Beras Pangan (Kemasan 100g),Food & Beverage,32000,49,pack,Tayang
+PRD-121,UMKM-010,Raisya SFnB,Bumbu Instan (Kemasan 100g),Food & Beverage,19000,117,pack,Tayang
+PRD-122,UMKM-010,Raisya SFnB,Rempah Nusantara (Kemasan 250g),Food & Beverage,17000,13,pack,Tayang
+PRD-123,UMKM-010,Raisya SFnB,Kopi Indonesia (Kemasan 250g),Food & Beverage,17000,175,pack,Tayang
+PRD-124,UMKM-010,Raisya SFnB,Beras Pangan (Kemasan 250g),Food & Beverage,24000,31,pack,Tayang
+PRD-125,UMKM-010,Raisya SFnB,Bumbu Instan (Kemasan 250g),Food & Beverage,119000,36,pack,Menunggu
+PRD-126,UMKM-011,PT. AgroTomboIndonesia,Jahe Merah Rempah Serbuk,Food & Beverage,124000,156,pack,Tayang
+PRD-127,UMKM-011,PT. AgroTomboIndonesia,Sekoteng Instan,Food & Beverage,91000,159,pack,Tayang
+PRD-128,UMKM-011,PT. AgroTomboIndonesia,Freeze-Dried Red Ginger,Food & Beverage,83000,11,pack,Tayang
+PRD-129,UMKM-011,PT. AgroTomboIndonesia,Minuman Herbal Rempah,Food & Beverage,21000,80,pack,Tayang
+PRD-130,UMKM-011,PT. AgroTomboIndonesia,Jahe Merah Rempah Serbuk (Kemasan 100g),Food & Beverage,60000,61,pack,Tayang
+PRD-131,UMKM-011,PT. AgroTomboIndonesia,Sekoteng Instan (Kemasan 100g),Food & Beverage,65000,195,pack,Tayang
+PRD-132,UMKM-011,PT. AgroTomboIndonesia,Freeze-Dried Red Ginger (Kemasan 100g),Food & Beverage,65000,55,pack,Tayang
+PRD-133,UMKM-011,PT. AgroTomboIndonesia,Minuman Herbal Rempah (Kemasan 100g),Food & Beverage,102000,152,pack,Tayang
+PRD-134,UMKM-011,PT. AgroTomboIndonesia,Jahe Merah Rempah Serbuk (Kemasan 250g),Food & Beverage,60000,167,pack,Tayang
+PRD-135,UMKM-011,PT. AgroTomboIndonesia,Sekoteng Instan (Kemasan 250g),Food & Beverage,99000,173,pack,Menunggu
+PRD-136,UMKM-012,TJAP NYONYA YO,Madu Murni Premium,Food & Beverage,136000,35,pack,Tayang
+PRD-137,UMKM-012,TJAP NYONYA YO,Madu Hutan,Food & Beverage,83000,184,pack,Tayang
+PRD-138,UMKM-012,TJAP NYONYA YO,Madu Kelulut,Food & Beverage,144000,192,pack,Tayang
+PRD-139,UMKM-012,TJAP NYONYA YO,Madu Sachet,Food & Beverage,113000,159,pack,Tayang
+PRD-140,UMKM-012,TJAP NYONYA YO,Madu Murni Premium (Kemasan 100g),Food & Beverage,18000,172,pack,Tayang
+PRD-141,UMKM-012,TJAP NYONYA YO,Madu Hutan (Kemasan 100g),Food & Beverage,108000,56,pack,Tayang
+PRD-142,UMKM-012,TJAP NYONYA YO,Madu Kelulut (Kemasan 100g),Food & Beverage,102000,110,pack,Tayang
+PRD-143,UMKM-012,TJAP NYONYA YO,Madu Sachet (Kemasan 100g),Food & Beverage,144000,148,pack,Tayang
+PRD-144,UMKM-012,TJAP NYONYA YO,Madu Murni Premium (Kemasan 250g),Food & Beverage,69000,60,pack,Tayang
+PRD-145,UMKM-012,TJAP NYONYA YO,Madu Hutan (Kemasan 250g),Food & Beverage,55000,37,pack,Tayang
+PRD-146,UMKM-012,TJAP NYONYA YO,Madu Kelulut (Kemasan 250g),Food & Beverage,88000,187,pack,Tayang
+PRD-147,UMKM-013,Dapur mutiara (cemilan mutiara),Keripik Kentang Balado,Food & Beverage,91000,140,pack,Tayang
+PRD-148,UMKM-013,Dapur mutiara (cemilan mutiara),Keripik Kentang Original,Food & Beverage,24000,98,pack,Tayang
+PRD-149,UMKM-013,Dapur mutiara (cemilan mutiara),Kentang Mustofa,Food & Beverage,129000,24,pack,Tayang
+PRD-150,UMKM-013,Dapur mutiara (cemilan mutiara),Kremes Kentang Teri Kacang,Food & Beverage,140000,116,pack,Tayang
+PRD-151,UMKM-013,Dapur mutiara (cemilan mutiara),Keripik Kentang Balado (Kemasan 100g),Food & Beverage,79000,195,pack,Tayang
+PRD-152,UMKM-013,Dapur mutiara (cemilan mutiara),Keripik Kentang Original (Kemasan 100g),Food & Beverage,69000,173,pack,Tayang
+PRD-153,UMKM-013,Dapur mutiara (cemilan mutiara),Kentang Mustofa (Kemasan 100g),Food & Beverage,17000,81,pack,Tayang
+PRD-154,UMKM-013,Dapur mutiara (cemilan mutiara),Kremes Kentang Teri Kacang (Kemasan 100g),Food & Beverage,103000,32,pack,Tayang
+PRD-155,UMKM-013,Dapur mutiara (cemilan mutiara),Keripik Kentang Balado (Kemasan 250g),Food & Beverage,119000,73,pack,Tayang
+PRD-156,UMKM-013,Dapur mutiara (cemilan mutiara),Keripik Kentang Original (Kemasan 250g),Food & Beverage,43000,12,pack,Tayang
+PRD-157,UMKM-013,Dapur mutiara (cemilan mutiara),Kentang Mustofa (Kemasan 250g),Food & Beverage,81000,99,pack,Tayang
+PRD-158,UMKM-013,Dapur mutiara (cemilan mutiara),Kremes Kentang Teri Kacang (Kemasan 250g),Food & Beverage,44000,119,pack,Tayang
+PRD-159,UMKM-013,Dapur mutiara (cemilan mutiara),Keripik Kentang Balado (Kemasan 500g),Food & Beverage,84000,116,pack,Menunggu
+PRD-160,UMKM-014,UBEUBE,Keripik Ubi Ungu,Food & Beverage,59000,80,pack,Tayang
+PRD-161,UMKM-014,UBEUBE,Keripik Ubi Sweet Salted,Food & Beverage,128000,74,pack,Tayang
+PRD-162,UMKM-014,UBEUBE,Keripik Ubi BBQ,Food & Beverage,72000,57,pack,Tayang
+PRD-163,UMKM-014,UBEUBE,Keripik Ubi Ungu (Kemasan 100g),Food & Beverage,137000,67,pack,Tayang
+PRD-164,UMKM-014,UBEUBE,Keripik Ubi Sweet Salted (Kemasan 100g),Food & Beverage,94000,55,pack,Tayang
+PRD-165,UMKM-014,UBEUBE,Keripik Ubi BBQ (Kemasan 100g),Food & Beverage,43000,47,pack,Tayang
+PRD-166,UMKM-014,UBEUBE,Keripik Ubi Ungu (Kemasan 250g),Food & Beverage,30000,66,pack,Tayang
+PRD-167,UMKM-014,UBEUBE,Keripik Ubi Sweet Salted (Kemasan 250g),Food & Beverage,106000,15,pack,Tayang
+PRD-168,UMKM-014,UBEUBE,Keripik Ubi BBQ (Kemasan 250g),Food & Beverage,123000,154,pack,Tayang
+PRD-169,UMKM-015,CV.Natura International,Instant Jelly,Food & Beverage,26000,196,pack,Tayang
+PRD-170,UMKM-015,CV.Natura International,Agar-Agar Instan,Food & Beverage,24000,76,pack,Tayang
+PRD-171,UMKM-015,CV.Natura International,Instant Vla,Food & Beverage,128000,18,pack,Tayang
+PRD-172,UMKM-015,CV.Natura International,Instant Puding,Food & Beverage,41000,73,pack,Tayang
+PRD-173,UMKM-015,CV.Natura International,Silky Puding,Food & Beverage,40000,199,pack,Tayang
+PRD-174,UMKM-015,CV.Natura International,Instant Jelly (Kemasan 100g),Food & Beverage,37000,194,pack,Tayang
+PRD-175,UMKM-015,CV.Natura International,Agar-Agar Instan (Kemasan 100g),Food & Beverage,93000,197,pack,Tayang
+PRD-176,UMKM-015,CV.Natura International,Instant Vla (Kemasan 100g),Food & Beverage,83000,15,pack,Menunggu
+PRD-177,UMKM-016,Gogofield,Snack Keluarga Original,Food & Beverage,51000,64,pack,Tayang
+PRD-178,UMKM-016,Gogofield,Snack Keluarga Keju,Food & Beverage,28000,47,pack,Tayang
+PRD-179,UMKM-016,Gogofield,Snack Keluarga Coklat,Food & Beverage,39000,38,pack,Tayang
+PRD-180,UMKM-016,Gogofield,Snack Keluarga Pedas,Food & Beverage,33000,35,pack,Tayang
+PRD-181,UMKM-016,Gogofield,Snack Keluarga Original (Kemasan 100g),Food & Beverage,105000,132,pack,Tayang
+PRD-182,UMKM-016,Gogofield,Snack Keluarga Keju (Kemasan 100g),Food & Beverage,41000,10,pack,Tayang
+PRD-183,UMKM-016,Gogofield,Snack Keluarga Coklat (Kemasan 100g),Food & Beverage,132000,78,pack,Tayang
+PRD-184,UMKM-016,Gogofield,Snack Keluarga Pedas (Kemasan 100g),Food & Beverage,113000,111,pack,Tayang
+PRD-185,UMKM-016,Gogofield,Snack Keluarga Original (Kemasan 250g),Food & Beverage,98000,166,pack,Tayang
+PRD-186,UMKM-016,Gogofield,Snack Keluarga Keju (Kemasan 250g),Food & Beverage,49000,51,pack,Tayang
+PRD-187,UMKM-016,Gogofield,Snack Keluarga Coklat (Kemasan 250g),Food & Beverage,92000,116,pack,Tayang
+PRD-188,UMKM-016,Gogofield,Snack Keluarga Pedas (Kemasan 250g),Food & Beverage,143000,24,pack,Tayang
+PRD-189,UMKM-016,Gogofield,Snack Keluarga Original (Kemasan 500g),Food & Beverage,69000,120,pack,Menunggu
+PRD-190,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Almond Coklat,Food & Beverage,20000,162,pack,Tayang
+PRD-191,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Gula Aren,Food & Beverage,16000,133,pack,Tayang
+PRD-192,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Original,Food & Beverage,120000,118,pack,Tayang
+PRD-193,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Almond Coklat (Kemasan 100g),Food & Beverage,139000,148,pack,Tayang
+PRD-194,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Gula Aren (Kemasan 100g),Food & Beverage,113000,137,pack,Tayang
+PRD-195,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Original (Kemasan 100g),Food & Beverage,77000,43,pack,Tayang
+PRD-196,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Almond Coklat (Kemasan 250g),Food & Beverage,67000,136,pack,Tayang
+PRD-197,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Gula Aren (Kemasan 250g),Food & Beverage,51000,111,pack,Tayang
+PRD-198,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Original (Kemasan 250g),Food & Beverage,82000,161,pack,Tayang
+PRD-199,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Almond Coklat (Kemasan 500g),Food & Beverage,57000,69,pack,Tayang
+PRD-200,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Gula Aren (Kemasan 500g),Food & Beverage,91000,173,pack,Tayang
+PRD-201,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Original (Kemasan 500g),Food & Beverage,89000,42,pack,Tayang
+PRD-202,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Almond Coklat (Paket Isi 3),Food & Beverage,104000,80,pack,Tayang
+PRD-203,UMKM-017,PT. ASIK DAPAT CUAN,Camilan Gandum Gula Aren (Paket Isi 3),Food & Beverage,64000,33,pack,Menunggu
+PRD-204,UMKM-018,PT Al Mubarokah Herbal Jakarta,Madu Murni,Food & Beverage,19000,36,pack,Tayang
+PRD-205,UMKM-018,PT Al Mubarokah Herbal Jakarta,Gula Semut,Food & Beverage,63000,199,pack,Tayang
+PRD-206,UMKM-018,PT Al Mubarokah Herbal Jakarta,Minuman Botanikal Serbuk Jahe,Food & Beverage,49000,84,pack,Tayang
+PRD-207,UMKM-018,PT Al Mubarokah Herbal Jakarta,Madu Murni (Kemasan 100g),Food & Beverage,43000,120,pack,Tayang
+PRD-208,UMKM-018,PT Al Mubarokah Herbal Jakarta,Gula Semut (Kemasan 100g),Food & Beverage,150000,147,pack,Tayang
+PRD-209,UMKM-018,PT Al Mubarokah Herbal Jakarta,Minuman Botanikal Serbuk Jahe (Kemasan 100g),Food & Beverage,53000,30,pack,Tayang
+PRD-210,UMKM-018,PT Al Mubarokah Herbal Jakarta,Madu Murni (Kemasan 250g),Food & Beverage,50000,36,pack,Tayang
+PRD-211,UMKM-018,PT Al Mubarokah Herbal Jakarta,Gula Semut (Kemasan 250g),Food & Beverage,61000,86,pack,Tayang
+PRD-212,UMKM-018,PT Al Mubarokah Herbal Jakarta,Minuman Botanikal Serbuk Jahe (Kemasan 250g),Food & Beverage,25000,62,pack,Tayang
+PRD-213,UMKM-018,PT Al Mubarokah Herbal Jakarta,Madu Murni (Kemasan 500g),Food & Beverage,78000,77,pack,Tayang
+PRD-214,UMKM-018,PT Al Mubarokah Herbal Jakarta,Gula Semut (Kemasan 500g),Food & Beverage,103000,175,pack,Tayang
+PRD-215,UMKM-018,PT Al Mubarokah Herbal Jakarta,Minuman Botanikal Serbuk Jahe (Kemasan 500g),Food & Beverage,142000,47,pack,Tayang
+PRD-216,UMKM-019,kopi Awal Kisah,Biji Kopi Arabika,Kopi,100000,129,pack,Tayang
+PRD-217,UMKM-019,kopi Awal Kisah,Kopi Bubuk,Kopi,47000,69,pack,Tayang
+PRD-218,UMKM-019,kopi Awal Kisah,Drip Coffee,Kopi,37000,45,pack,Tayang
+PRD-219,UMKM-019,kopi Awal Kisah,Explorer Box,Kopi,106000,13,pack,Tayang
+PRD-220,UMKM-019,kopi Awal Kisah,Gift Set Kopi,Kopi,30000,170,pack,Tayang
+PRD-221,UMKM-019,kopi Awal Kisah,Kapsul Nespresso,Kopi,181000,46,pack,Tayang
+PRD-222,UMKM-019,kopi Awal Kisah,Kapsul Dolce Gusto,Kopi,145000,17,pack,Tayang
+PRD-223,UMKM-019,kopi Awal Kisah,Biji Kopi Arabika (Kemasan 100g),Kopi,189000,95,pack,Tayang
+PRD-224,UMKM-019,kopi Awal Kisah,Kopi Bubuk (Kemasan 100g),Kopi,197000,99,pack,Tayang
+PRD-225,UMKM-019,kopi Awal Kisah,Drip Coffee (Kemasan 100g),Kopi,171000,135,pack,Tayang
+PRD-226,UMKM-019,kopi Awal Kisah,Explorer Box (Kemasan 100g),Kopi,160000,129,pack,Tayang
+PRD-227,UMKM-019,kopi Awal Kisah,Gift Set Kopi (Kemasan 100g),Kopi,196000,160,pack,Tayang
+PRD-228,UMKM-019,kopi Awal Kisah,Kapsul Nespresso (Kemasan 100g),Kopi,147000,180,pack,Tayang
+PRD-229,UMKM-019,kopi Awal Kisah,Kapsul Dolce Gusto (Kemasan 100g),Kopi,50000,100,pack,Tayang
+PRD-230,UMKM-019,kopi Awal Kisah,Biji Kopi Arabika (Kemasan 250g),Kopi,81000,165,pack,Tayang
+PRD-231,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Green Bean Arabika,Kopi,193000,111,pack,Tayang
+PRD-232,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Roasted Bean,Kopi,94000,155,pack,Tayang
+PRD-233,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Kopi Bubuk,Kopi,30000,114,pack,Tayang
+PRD-234,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Minuman Kopi Susu,Kopi,161000,61,pack,Tayang
+PRD-235,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Makanan Pendamping,Kopi,99000,170,pack,Tayang
+PRD-236,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Green Bean Arabika (Kemasan 100g),Kopi,195000,108,pack,Tayang
+PRD-237,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Roasted Bean (Kemasan 100g),Kopi,137000,131,pack,Tayang
+PRD-238,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Kopi Bubuk (Kemasan 100g),Kopi,38000,76,pack,Tayang
+PRD-239,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Minuman Kopi Susu (Kemasan 100g),Kopi,192000,49,pack,Tayang
+PRD-240,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Makanan Pendamping (Kemasan 100g),Kopi,35000,85,pack,Tayang
+PRD-241,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Green Bean Arabika (Kemasan 250g),Kopi,132000,157,pack,Tayang
+PRD-242,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Roasted Bean (Kemasan 250g),Kopi,85000,128,pack,Tayang
+PRD-243,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Kopi Bubuk (Kemasan 250g),Kopi,160000,80,pack,Tayang
+PRD-244,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Minuman Kopi Susu (Kemasan 250g),Kopi,114000,79,pack,Tayang
+PRD-245,UMKM-020,Hitman/Kopi Hitman Hitam Manis,Makanan Pendamping (Kemasan 250g),Kopi,196000,31,pack,Menunggu
+PRD-246,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Robusta,Kopi,106000,91,pack,Tayang
+PRD-247,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Arabika,Kopi,49000,81,pack,Tayang
+PRD-248,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Liberika,Kopi,58000,175,pack,Tayang
+PRD-249,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Robusta (Kemasan 100g),Kopi,139000,196,pack,Tayang
+PRD-250,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Arabika (Kemasan 100g),Kopi,131000,176,pack,Tayang
+PRD-251,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Liberika (Kemasan 100g),Kopi,169000,176,pack,Tayang
+PRD-252,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Robusta (Kemasan 250g),Kopi,137000,10,pack,Tayang
+PRD-253,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Arabika (Kemasan 250g),Kopi,192000,57,pack,Tayang
+PRD-254,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Liberika (Kemasan 250g),Kopi,178000,157,pack,Tayang
+PRD-255,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Robusta (Kemasan 500g),Kopi,36000,61,pack,Tayang
+PRD-256,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Arabika (Kemasan 500g),Kopi,169000,141,pack,Tayang
+PRD-257,UMKM-021,KOPI BUBUK TANI KOPI,Kopi Bubuk Liberika (Kemasan 500g),Kopi,65000,126,pack,Menunggu
+PRD-258,UMKM-022,FOOD STATION,Beras Premium,Food & Beverage,24000,125,pack,Tayang
+PRD-259,UMKM-022,FOOD STATION,Minyak Goreng,Food & Beverage,19000,83,pack,Tayang
+PRD-260,UMKM-022,FOOD STATION,Gula Pasir,Food & Beverage,17000,198,pack,Tayang
+PRD-261,UMKM-022,FOOD STATION,Tepung Terigu,Food & Beverage,44000,170,pack,Tayang
+PRD-262,UMKM-022,FOOD STATION,Pangan Pokok Paket,Food & Beverage,47000,170,pack,Tayang
+PRD-263,UMKM-022,FOOD STATION,Beras Premium (Kemasan 100g),Food & Beverage,74000,102,pack,Tayang
+PRD-264,UMKM-022,FOOD STATION,Minyak Goreng (Kemasan 100g),Food & Beverage,29000,68,pack,Tayang
+PRD-265,UMKM-022,FOOD STATION,Gula Pasir (Kemasan 100g),Food & Beverage,96000,79,pack,Tayang
+PRD-266,UMKM-022,FOOD STATION,Tepung Terigu (Kemasan 100g),Food & Beverage,21000,182,pack,Tayang
+PRD-267,UMKM-022,FOOD STATION,Pangan Pokok Paket (Kemasan 100g),Food & Beverage,90000,47,pack,Tayang
+PRD-268,UMKM-022,FOOD STATION,Beras Premium (Kemasan 250g),Food & Beverage,24000,129,pack,Tayang
+PRD-269,UMKM-022,FOOD STATION,Minyak Goreng (Kemasan 250g),Food & Beverage,47000,132,pack,Tayang
+PRD-270,UMKM-022,FOOD STATION,Gula Pasir (Kemasan 250g),Food & Beverage,42000,33,pack,Tayang
+PRD-271,UMKM-022,FOOD STATION,Tepung Terigu (Kemasan 250g),Food & Beverage,124000,136,pack,Menunggu
+PRD-272,UMKM-023,TEPA SELIRA,Apparel Wastra Modern,Fesyen,640000,79,pcs,Tayang
+PRD-273,UMKM-023,TEPA SELIRA,Seragam Korporat,Fesyen,578000,89,pcs,Tayang
+PRD-274,UMKM-023,TEPA SELIRA,Kemeja Batik,Fesyen,658000,111,pcs,Tayang
+PRD-275,UMKM-023,TEPA SELIRA,Outer Wastra,Fesyen,729000,155,pcs,Tayang
+PRD-276,UMKM-023,TEPA SELIRA,Apparel Wastra Modern (S),Fesyen,233000,119,pcs,Tayang
+PRD-277,UMKM-023,TEPA SELIRA,Seragam Korporat (S),Fesyen,738000,80,pcs,Tayang
+PRD-278,UMKM-023,TEPA SELIRA,Kemeja Batik (S),Fesyen,191000,22,pcs,Tayang
+PRD-279,UMKM-023,TEPA SELIRA,Outer Wastra (S),Fesyen,461000,98,pcs,Tayang
+PRD-280,UMKM-023,TEPA SELIRA,Apparel Wastra Modern (M),Fesyen,121000,32,pcs,Tayang
+PRD-281,UMKM-023,TEPA SELIRA,Seragam Korporat (M),Fesyen,616000,129,pcs,Tayang
+PRD-282,UMKM-023,TEPA SELIRA,Kemeja Batik (M),Fesyen,439000,186,pcs,Tayang
+PRD-283,UMKM-023,TEPA SELIRA,Outer Wastra (M),Fesyen,91000,10,pcs,Tayang
+PRD-284,UMKM-023,TEPA SELIRA,Apparel Wastra Modern (L),Fesyen,522000,146,pcs,Tayang
+PRD-285,UMKM-023,TEPA SELIRA,Seragam Korporat (L),Fesyen,652000,105,pcs,Tayang
+PRD-286,UMKM-023,TEPA SELIRA,Kemeja Batik (L),Fesyen,522000,46,pcs,Tayang
+PRD-287,UMKM-023,TEPA SELIRA,Outer Wastra (L),Fesyen,523000,15,pcs,Menunggu
+PRD-288,UMKM-023,TEPA SELIRA,Apparel Wastra Modern (Edisi Khusus),Fesyen,329000,56,pcs,Tidak Disetujui
+PRD-289,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Sutra,Fesyen,275000,175,pcs,Tayang
+PRD-290,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Katun,Fesyen,673000,131,pcs,Tayang
+PRD-291,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Rayon,Fesyen,404000,34,pcs,Tayang
+PRD-292,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Kain Batik,Fesyen,642000,196,pcs,Tayang
+PRD-293,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Sutra (S),Fesyen,551000,123,pcs,Tayang
+PRD-294,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Katun (S),Fesyen,313000,125,pcs,Tayang
+PRD-295,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Rayon (S),Fesyen,408000,191,pcs,Tayang
+PRD-296,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Kain Batik (S),Fesyen,337000,151,pcs,Tayang
+PRD-297,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Sutra (M),Fesyen,596000,139,pcs,Tayang
+PRD-298,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Katun (M),Fesyen,116000,16,pcs,Tayang
+PRD-299,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Batik Rayon (M),Fesyen,737000,51,pcs,Tayang
+PRD-300,UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",Kain Batik (M),Fesyen,468000,131,pcs,Menunggu
+PRD-301,UMKM-025,SHAZA BY ADELINA,Vest Batik,Fesyen,341000,44,pcs,Tayang
+PRD-302,UMKM-025,SHAZA BY ADELINA,Blezer Tenun,Fesyen,517000,107,pcs,Tayang
+PRD-303,UMKM-025,SHAZA BY ADELINA,Obi Batik,Fesyen,560000,154,pcs,Tayang
+PRD-304,UMKM-025,SHAZA BY ADELINA,Vest Batik (S),Fesyen,581000,108,pcs,Tayang
+PRD-305,UMKM-025,SHAZA BY ADELINA,Blezer Tenun (S),Fesyen,388000,185,pcs,Tayang
+PRD-306,UMKM-025,SHAZA BY ADELINA,Obi Batik (S),Fesyen,699000,151,pcs,Tayang
+PRD-307,UMKM-025,SHAZA BY ADELINA,Vest Batik (M),Fesyen,488000,169,pcs,Tayang
+PRD-308,UMKM-025,SHAZA BY ADELINA,Blezer Tenun (M),Fesyen,136000,70,pcs,Tayang
+PRD-309,UMKM-026,Harumi (PT Harumi Kartini Studio),Dress Batik Tulis,Fesyen,344000,98,pcs,Tayang
+PRD-310,UMKM-026,Harumi (PT Harumi Kartini Studio),Blouse Batik Tulis,Fesyen,742000,97,pcs,Tayang
+PRD-311,UMKM-026,Harumi (PT Harumi Kartini Studio),Outer Modest Batik,Fesyen,375000,131,pcs,Tayang
+PRD-312,UMKM-026,Harumi (PT Harumi Kartini Studio),Dress Batik Tulis (S),Fesyen,139000,129,pcs,Tayang
+PRD-313,UMKM-026,Harumi (PT Harumi Kartini Studio),Blouse Batik Tulis (S),Fesyen,251000,130,pcs,Tayang
+PRD-314,UMKM-026,Harumi (PT Harumi Kartini Studio),Outer Modest Batik (S),Fesyen,462000,114,pcs,Tayang
+PRD-315,UMKM-026,Harumi (PT Harumi Kartini Studio),Dress Batik Tulis (M),Fesyen,585000,50,pcs,Tayang
+PRD-316,UMKM-026,Harumi (PT Harumi Kartini Studio),Blouse Batik Tulis (M),Fesyen,93000,122,pcs,Tayang
+PRD-317,UMKM-026,Harumi (PT Harumi Kartini Studio),Outer Modest Batik (M),Fesyen,108000,135,pcs,Tayang
+PRD-318,UMKM-026,Harumi (PT Harumi Kartini Studio),Dress Batik Tulis (L),Fesyen,692000,173,pcs,Tayang
+PRD-319,UMKM-026,Harumi (PT Harumi Kartini Studio),Blouse Batik Tulis (L),Fesyen,737000,74,pcs,Tayang
+PRD-320,UMKM-026,Harumi (PT Harumi Kartini Studio),Outer Modest Batik (L),Fesyen,182000,35,pcs,Tayang
+PRD-321,UMKM-026,Harumi (PT Harumi Kartini Studio),Dress Batik Tulis (Edisi Khusus),Fesyen,240000,137,pcs,Tayang
+PRD-322,UMKM-026,Harumi (PT Harumi Kartini Studio),Blouse Batik Tulis (Edisi Khusus),Fesyen,662000,189,pcs,Tayang
+PRD-323,UMKM-026,Harumi (PT Harumi Kartini Studio),Outer Modest Batik (Edisi Khusus),Fesyen,148000,89,pcs,Tayang
+PRD-324,UMKM-027,Batik Sakera,Wastra Batik Tulis,Fesyen,531000,72,pcs,Tayang
+PRD-325,UMKM-027,Batik Sakera,Kemeja Batik Pria,Fesyen,696000,13,pcs,Tayang
+PRD-326,UMKM-027,Batik Sakera,Dress Batik Wanita,Fesyen,332000,153,pcs,Tayang
+PRD-327,UMKM-027,Batik Sakera,Aksesoris Batik,Fesyen,635000,93,pcs,Tayang
+PRD-328,UMKM-027,Batik Sakera,Wastra Batik Tulis (S),Fesyen,605000,121,pcs,Tayang
+PRD-329,UMKM-027,Batik Sakera,Kemeja Batik Pria (S),Fesyen,146000,56,pcs,Tayang
+PRD-330,UMKM-027,Batik Sakera,Dress Batik Wanita (S),Fesyen,406000,76,pcs,Tayang
+PRD-331,UMKM-027,Batik Sakera,Aksesoris Batik (S),Fesyen,691000,146,pcs,Tayang
+PRD-332,UMKM-028,KIMMECCA by AURELLIE,Kimmecca Linen Etnik,Fesyen,672000,116,pcs,Tayang
+PRD-333,UMKM-028,KIMMECCA by AURELLIE,Dress Linen,Fesyen,465000,67,pcs,Tayang
+PRD-334,UMKM-028,KIMMECCA by AURELLIE,Blouse Linen,Fesyen,398000,118,pcs,Tayang
+PRD-335,UMKM-028,KIMMECCA by AURELLIE,Kimmecca Linen Etnik (S),Fesyen,504000,63,pcs,Tayang
+PRD-336,UMKM-028,KIMMECCA by AURELLIE,Dress Linen (S),Fesyen,560000,58,pcs,Tayang
+PRD-337,UMKM-028,KIMMECCA by AURELLIE,Blouse Linen (S),Fesyen,599000,56,pcs,Tayang
+PRD-338,UMKM-028,KIMMECCA by AURELLIE,Kimmecca Linen Etnik (M),Fesyen,492000,184,pcs,Tayang
+PRD-339,UMKM-028,KIMMECCA by AURELLIE,Dress Linen (M),Fesyen,730000,89,pcs,Menunggu
+PRD-340,UMKM-029,Omah Aksesoris Batik,Scarf Etnik,Craft,142000,143,pcs,Tayang
+PRD-341,UMKM-029,Omah Aksesoris Batik,Kalung Etnik,Craft,363000,186,pcs,Tayang
+PRD-342,UMKM-029,Omah Aksesoris Batik,Anting Etnik,Craft,84000,95,pcs,Tayang
+PRD-343,UMKM-029,Omah Aksesoris Batik,Gelang Etnik,Craft,194000,77,pcs,Tayang
+PRD-344,UMKM-029,Omah Aksesoris Batik,Scarf Etnik (S),Craft,69000,152,pcs,Tayang
+PRD-345,UMKM-029,Omah Aksesoris Batik,Kalung Etnik (S),Craft,386000,37,pcs,Tayang
+PRD-346,UMKM-029,Omah Aksesoris Batik,Anting Etnik (S),Craft,411000,124,pcs,Tayang
+PRD-347,UMKM-029,Omah Aksesoris Batik,Gelang Etnik (S),Craft,293000,121,pcs,Tayang
+PRD-348,UMKM-029,Omah Aksesoris Batik,Scarf Etnik (M),Craft,296000,147,pcs,Tayang
+PRD-349,UMKM-029,Omah Aksesoris Batik,Kalung Etnik (M),Craft,415000,139,pcs,Tayang
+PRD-350,UMKM-029,Omah Aksesoris Batik,Anting Etnik (M),Craft,251000,36,pcs,Tayang
+PRD-351,UMKM-029,Omah Aksesoris Batik,Gelang Etnik (M),Craft,478000,178,pcs,Tayang
+PRD-352,UMKM-029,Omah Aksesoris Batik,Scarf Etnik (L),Craft,345000,147,pcs,Tayang
+PRD-353,UMKM-029,Omah Aksesoris Batik,Kalung Etnik (L),Craft,491000,66,pcs,Tayang
+PRD-354,UMKM-029,Omah Aksesoris Batik,Anting Etnik (L),Craft,336000,190,pcs,Menunggu
+PRD-355,UMKM-030,Pulpio,Leather Journal,Craft,182000,22,pcs,Tayang
+PRD-356,UMKM-030,Pulpio,Bag Charm Kulit,Craft,462000,11,pcs,Tayang
+PRD-357,UMKM-030,Pulpio,Bracelet Kulit,Craft,331000,57,pcs,Tayang
+PRD-358,UMKM-030,Pulpio,Necklace Mutiara,Craft,108000,14,pcs,Tayang
+PRD-359,UMKM-030,Pulpio,Leather Journal (S),Craft,454000,100,pcs,Tayang
+PRD-360,UMKM-030,Pulpio,Bag Charm Kulit (S),Craft,195000,134,pcs,Tayang
+PRD-361,UMKM-030,Pulpio,Bracelet Kulit (S),Craft,346000,76,pcs,Tayang
+PRD-362,UMKM-030,Pulpio,Necklace Mutiara (S),Craft,411000,13,pcs,Tayang
+PRD-363,UMKM-030,Pulpio,Leather Journal (M),Craft,222000,195,pcs,Tayang
+PRD-364,UMKM-030,Pulpio,Bag Charm Kulit (M),Craft,354000,127,pcs,Menunggu
+PRD-365,UMKM-031,VITE,Perhiasan Silver Filigree 915,Craft,459000,186,pcs,Tayang
+PRD-366,UMKM-031,VITE,Tembaga Lapis Silver,Craft,487000,25,pcs,Tayang
+PRD-367,UMKM-031,VITE,Tembaga Lapis Emas,Craft,322000,47,pcs,Tayang
+PRD-368,UMKM-031,VITE,Mutiara Barok,Craft,299000,20,pcs,Tayang
+PRD-369,UMKM-031,VITE,Pin Logam Custom,Craft,179000,14,pcs,Tayang
+PRD-370,UMKM-031,VITE,Koin Logam Custom,Craft,316000,38,pcs,Tayang
+PRD-371,UMKM-031,VITE,Perhiasan Silver Filigree 915 (S),Craft,216000,112,pcs,Tayang
+PRD-372,UMKM-031,VITE,Tembaga Lapis Silver (S),Craft,391000,172,pcs,Tayang
+PRD-373,UMKM-031,VITE,Tembaga Lapis Emas (S),Craft,70000,118,pcs,Tayang
+PRD-374,UMKM-031,VITE,Mutiara Barok (S),Craft,297000,149,pcs,Tayang
+PRD-375,UMKM-031,VITE,Pin Logam Custom (S),Craft,123000,115,pcs,Menunggu
+PRD-376,UMKM-032,Jati Alasku,Peralatan Dapur Kayu Jati,Home Decor,401000,35,pcs,Tayang
+PRD-377,UMKM-032,Jati Alasku,Peralatan Rumah Kayu Jati,Home Decor,393000,114,pcs,Tayang
+PRD-378,UMKM-032,Jati Alasku,Talenan Jati,Home Decor,830000,20,pcs,Tayang
+PRD-379,UMKM-032,Jati Alasku,Mangkuk Jati,Home Decor,194000,59,pcs,Tayang
+PRD-380,UMKM-032,Jati Alasku,Peralatan Dapur Kayu Jati (S),Home Decor,333000,132,pcs,Tayang
+PRD-381,UMKM-032,Jati Alasku,Peralatan Rumah Kayu Jati (S),Home Decor,436000,136,pcs,Tayang
+PRD-382,UMKM-032,Jati Alasku,Talenan Jati (S),Home Decor,631000,108,pcs,Tayang
+PRD-383,UMKM-032,Jati Alasku,Mangkuk Jati (S),Home Decor,405000,146,pcs,Tayang
+PRD-384,UMKM-032,Jati Alasku,Peralatan Dapur Kayu Jati (M),Home Decor,606000,18,pcs,Tayang
+PRD-385,UMKM-032,Jati Alasku,Peralatan Rumah Kayu Jati (M),Home Decor,535000,170,pcs,Tayang
+PRD-386,UMKM-032,Jati Alasku,Talenan Jati (M),Home Decor,235000,161,pcs,Tayang
+PRD-387,UMKM-032,Jati Alasku,Mangkuk Jati (M),Home Decor,377000,183,pcs,Tayang
+PRD-388,UMKM-032,Jati Alasku,Peralatan Dapur Kayu Jati (L),Home Decor,229000,106,pcs,Tayang
+PRD-389,UMKM-032,Jati Alasku,Peralatan Rumah Kayu Jati (L),Home Decor,624000,56,pcs,Menunggu
+PRD-390,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Body Care Natural,Fragrance,161000,66,botol,Tayang
+PRD-391,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Perfume Natural,Fragrance,210000,30,botol,Tayang
+PRD-392,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Home Fragrance,Fragrance,212000,199,botol,Tayang
+PRD-393,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Reed Diffuser,Fragrance,414000,159,botol,Tayang
+PRD-394,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Body Care Natural (S),Fragrance,249000,105,botol,Tayang
+PRD-395,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Perfume Natural (S),Fragrance,400000,159,botol,Tayang
+PRD-396,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Home Fragrance (S),Fragrance,416000,122,botol,Tayang
+PRD-397,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Reed Diffuser (S),Fragrance,316000,190,botol,Tayang
+PRD-398,UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,Body Care Natural (M),Fragrance,291000,70,botol,Menunggu
+PRD-399,UMKM-034,Montana Aromatics,Parfum Scented Story 30ml,Fragrance,429000,42,botol,Tayang
+PRD-400,UMKM-034,Montana Aromatics,Parfum Scented Story 50ml,Fragrance,589000,162,botol,Tayang
+PRD-401,UMKM-034,Montana Aromatics,Parfum Scented Story 100ml,Fragrance,482000,182,botol,Tayang
+PRD-402,UMKM-034,Montana Aromatics,Parfum Scented Story 30ml (S),Fragrance,118000,186,botol,Tayang
+PRD-403,UMKM-034,Montana Aromatics,Parfum Scented Story 50ml (S),Fragrance,308000,92,botol,Tayang
+PRD-404,UMKM-034,Montana Aromatics,Parfum Scented Story 100ml (S),Fragrance,346000,128,botol,Tayang
+PRD-405,UMKM-034,Montana Aromatics,Parfum Scented Story 30ml (M),Fragrance,258000,152,botol,Tayang
+PRD-406,UMKM-034,Montana Aromatics,Parfum Scented Story 50ml (M),Fragrance,462000,91,botol,Tayang
+PRD-407,UMKM-034,Montana Aromatics,Parfum Scented Story 100ml (M),Fragrance,222000,154,botol,Tayang
+PRD-408,UMKM-034,Montana Aromatics,Parfum Scented Story 30ml (L),Fragrance,121000,184,botol,Tayang
+PRD-409,UMKM-034,Montana Aromatics,Parfum Scented Story 50ml (L),Fragrance,158000,132,botol,Tayang
+PRD-410,UMKM-034,Montana Aromatics,Parfum Scented Story 100ml (L),Fragrance,533000,136,botol,Tayang
+PRD-411,UMKM-034,Montana Aromatics,Parfum Scented Story 30ml (Edisi Khusus),Fragrance,132000,117,botol,Tayang
+PRD-412,UMKM-034,Montana Aromatics,Parfum Scented Story 50ml (Edisi Khusus),Fragrance,233000,41,botol,Menunggu
+PRD-413,UMKM-034,Montana Aromatics,Parfum Scented Story 100ml (Edisi Khusus),Fragrance,420000,12,botol,Tidak Disetujui
+PRD-414,UMKM-035,Global Essential Oil,Essential Oil Lavender,Personal Care,58000,83,botol,Tayang
+PRD-415,UMKM-035,Global Essential Oil,Essential Oil Peppermint,Personal Care,39000,136,botol,Tayang
+PRD-416,UMKM-035,Global Essential Oil,Ekstrak Tanaman Kosmetik,Personal Care,35000,193,botol,Tayang
+PRD-417,UMKM-035,Global Essential Oil,Minyak Atsiri Campuran,Personal Care,85000,132,botol,Tayang
+PRD-418,UMKM-035,Global Essential Oil,Essential Oil Lavender (S),Personal Care,217000,142,botol,Tayang
+PRD-419,UMKM-035,Global Essential Oil,Essential Oil Peppermint (S),Personal Care,199000,150,botol,Tayang
+PRD-420,UMKM-035,Global Essential Oil,Ekstrak Tanaman Kosmetik (S),Personal Care,67000,130,botol,Tayang
+PRD-421,UMKM-035,Global Essential Oil,Minyak Atsiri Campuran (S),Personal Care,156000,57,botol,Tayang
+PRD-422,UMKM-035,Global Essential Oil,Essential Oil Lavender (M),Personal Care,110000,63,botol,Tayang
+PRD-423,UMKM-035,Global Essential Oil,Essential Oil Peppermint (M),Personal Care,44000,17,botol,Tayang
+PRD-424,UMKM-035,Global Essential Oil,Ekstrak Tanaman Kosmetik (M),Personal Care,99000,155,botol,Tayang
+PRD-425,UMKM-035,Global Essential Oil,Minyak Atsiri Campuran (M),Personal Care,78000,16,botol,Tayang
+PRD-426,UMKM-035,Global Essential Oil,Essential Oil Lavender (L),Personal Care,135000,119,botol,Tayang
+PRD-427,UMKM-035,Global Essential Oil,Essential Oil Peppermint (L),Personal Care,267000,134,botol,Tayang
+PRD-428,UMKM-035,Global Essential Oil,Ekstrak Tanaman Kosmetik (L),Personal Care,112000,194,botol,Tayang
+PRD-429,UMKM-036,PT Herba Asa Nusa (Morning Glory),Essential Oil Herbal,Personal Care,158000,67,botol,Tayang
+PRD-430,UMKM-036,PT Herba Asa Nusa (Morning Glory),Minyak Herbal,Personal Care,40000,72,botol,Tayang
+PRD-431,UMKM-036,PT Herba Asa Nusa (Morning Glory),Perawatan Herbal,Personal Care,78000,178,botol,Tayang
+PRD-432,UMKM-036,PT Herba Asa Nusa (Morning Glory),Essential Oil Herbal (S),Personal Care,43000,182,botol,Tayang
+PRD-433,UMKM-036,PT Herba Asa Nusa (Morning Glory),Minyak Herbal (S),Personal Care,45000,142,botol,Tayang
+PRD-434,UMKM-036,PT Herba Asa Nusa (Morning Glory),Perawatan Herbal (S),Personal Care,136000,127,botol,Tayang
+PRD-435,UMKM-036,PT Herba Asa Nusa (Morning Glory),Essential Oil Herbal (M),Personal Care,285000,10,botol,Tayang
+PRD-436,UMKM-036,PT Herba Asa Nusa (Morning Glory),Minyak Herbal (M),Personal Care,124000,107,botol,Tayang
+PRD-437,UMKM-036,PT Herba Asa Nusa (Morning Glory),Perawatan Herbal (M),Personal Care,256000,39,botol,Tayang
+PRD-438,UMKM-037,Introvert Identity,Parfum Introvert 30ml,Fragrance,439000,142,botol,Tayang
+PRD-439,UMKM-037,Introvert Identity,Parfum Introvert 50ml,Fragrance,477000,49,botol,Tayang
+PRD-440,UMKM-037,Introvert Identity,Parfum Introvert 100ml,Fragrance,178000,142,botol,Tayang
+PRD-441,UMKM-037,Introvert Identity,Parfum Introvert 30ml (S),Fragrance,303000,100,botol,Tayang
+PRD-442,UMKM-037,Introvert Identity,Parfum Introvert 50ml (S),Fragrance,111000,154,botol,Tayang
+PRD-443,UMKM-037,Introvert Identity,Parfum Introvert 100ml (S),Fragrance,461000,53,botol,Tayang
+PRD-444,UMKM-037,Introvert Identity,Parfum Introvert 30ml (M),Fragrance,561000,169,botol,Tayang
+PRD-445,UMKM-037,Introvert Identity,Parfum Introvert 50ml (M),Fragrance,427000,190,botol,Tayang
+PRD-446,UMKM-037,Introvert Identity,Parfum Introvert 100ml (M),Fragrance,496000,18,botol,Tayang
+PRD-447,UMKM-037,Introvert Identity,Parfum Introvert 30ml (L),Fragrance,246000,144,botol,Tayang
+PRD-448,UMKM-037,Introvert Identity,Parfum Introvert 50ml (L),Fragrance,510000,91,botol,Tayang
+PRD-449,UMKM-037,Introvert Identity,Parfum Introvert 100ml (L),Fragrance,146000,29,botol,Tayang
+PRD-450,UMKM-037,Introvert Identity,Parfum Introvert 30ml (Edisi Khusus),Fragrance,453000,84,botol,Tayang
+PRD-451,UMKM-037,Introvert Identity,Parfum Introvert 50ml (Edisi Khusus),Fragrance,600000,161,botol,Tayang
+PRD-452,UMKM-037,Introvert Identity,Parfum Introvert 100ml (Edisi Khusus),Fragrance,113000,155,botol,Tayang
+PRD-453,UMKM-038,PT. Meta Biolife Indonesia,Propolis Premium,Healthy Beverage,90000,20,botol,Tayang
+PRD-454,UMKM-038,PT. Meta Biolife Indonesia,Herbal Propolis Kapsul,Healthy Beverage,159000,73,botol,Tayang
+PRD-455,UMKM-038,PT. Meta Biolife Indonesia,Herbal Propolis Cair,Healthy Beverage,169000,181,botol,Tayang
+PRD-456,UMKM-038,PT. Meta Biolife Indonesia,Propolis Premium (Kemasan 100g),Healthy Beverage,250000,45,botol,Tayang
+PRD-457,UMKM-038,PT. Meta Biolife Indonesia,Herbal Propolis Kapsul (Kemasan 100g),Healthy Beverage,127000,189,botol,Tayang
+PRD-458,UMKM-038,PT. Meta Biolife Indonesia,Herbal Propolis Cair (Kemasan 100g),Healthy Beverage,137000,41,botol,Tayang
+PRD-459,UMKM-038,PT. Meta Biolife Indonesia,Propolis Premium (Kemasan 250g),Healthy Beverage,105000,121,botol,Tayang
+PRD-460,UMKM-038,PT. Meta Biolife Indonesia,Herbal Propolis Kapsul (Kemasan 250g),Healthy Beverage,180000,140,botol,Tayang
+PRD-461,UMKM-038,PT. Meta Biolife Indonesia,Herbal Propolis Cair (Kemasan 250g),Healthy Beverage,61000,156,botol,Tayang
+PRD-462,UMKM-038,PT. Meta Biolife Indonesia,Propolis Premium (Kemasan 500g),Healthy Beverage,185000,136,botol,Menunggu
+PRD-463,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Bulu Mata Palsu Natural,Beauty,95000,117,pcs,Tayang
+PRD-464,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Bulu Mata Palsu Dramatic,Beauty,153000,18,pcs,Tayang
+PRD-465,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Lem Bulu Mata,Beauty,57000,80,pcs,Tayang
+PRD-466,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Perawatan Kecantikan,Beauty,275000,189,pcs,Tayang
+PRD-467,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Bulu Mata Palsu Natural (S),Beauty,255000,68,pcs,Tayang
+PRD-468,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Bulu Mata Palsu Dramatic (S),Beauty,113000,41,pcs,Tayang
+PRD-469,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Lem Bulu Mata (S),Beauty,51000,197,pcs,Tayang
+PRD-470,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Perawatan Kecantikan (S),Beauty,74000,105,pcs,Tayang
+PRD-471,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Bulu Mata Palsu Natural (M),Beauty,159000,95,pcs,Tayang
+PRD-472,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Bulu Mata Palsu Dramatic (M),Beauty,275000,84,pcs,Tayang
+PRD-473,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Lem Bulu Mata (M),Beauty,119000,16,pcs,Tayang
+PRD-474,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Perawatan Kecantikan (M),Beauty,69000,50,pcs,Tayang
+PRD-475,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Bulu Mata Palsu Natural (L),Beauty,136000,23,pcs,Tayang
+PRD-476,UMKM-039,Benita & Co | PT Benita Karya Kreasi,Bulu Mata Palsu Dramatic (L),Beauty,221000,86,pcs,Menunggu
+PRD-477,UMKM-040,PT Karina Design Nusantara,Dress Modest Ready-to-Wear,Fesyen,282000,29,pcs,Tayang
+PRD-478,UMKM-040,PT Karina Design Nusantara,Blouse Modest,Fesyen,102000,129,pcs,Tayang
+PRD-479,UMKM-040,PT Karina Design Nusantara,Outer Modest,Fesyen,392000,76,pcs,Tayang
+PRD-480,UMKM-040,PT Karina Design Nusantara,Setelan Modest,Fesyen,185000,39,pcs,Tayang
+PRD-481,UMKM-040,PT Karina Design Nusantara,Dress Modest Ready-to-Wear (S),Fesyen,659000,78,pcs,Tayang
+PRD-482,UMKM-040,PT Karina Design Nusantara,Blouse Modest (S),Fesyen,657000,100,pcs,Tayang
+PRD-483,UMKM-040,PT Karina Design Nusantara,Outer Modest (S),Fesyen,199000,36,pcs,Tayang
+PRD-484,UMKM-040,PT Karina Design Nusantara,Setelan Modest (S),Fesyen,609000,97,pcs,Tayang
+PRD-485,UMKM-040,PT Karina Design Nusantara,Dress Modest Ready-to-Wear (M),Fesyen,492000,54,pcs,Tayang
+PRD-486,UMKM-040,PT Karina Design Nusantara,Blouse Modest (M),Fesyen,193000,161,pcs,Tayang
+PRD-487,UMKM-040,PT Karina Design Nusantara,Outer Modest (M),Fesyen,310000,154,pcs,Tayang
+PRD-488,UMKM-040,PT Karina Design Nusantara,Setelan Modest (M),Fesyen,282000,57,pcs,Tayang
+PRD-489,UMKM-040,PT Karina Design Nusantara,Dress Modest Ready-to-Wear (L),Fesyen,360000,50,pcs,Tayang
+PRD-490,UMKM-040,PT Karina Design Nusantara,Blouse Modest (L),Fesyen,617000,195,pcs,Tayang
+PRD-491,UMKM-040,PT Karina Design Nusantara,Outer Modest (L),Fesyen,129000,26,pcs,Tayang
+PRD-492,UMKM-041,KoneKone,Tas Kain Tradisional,Craft,313000,97,pcs,Tayang
+PRD-493,UMKM-041,KoneKone,Dompet Kain,Craft,126000,125,pcs,Tayang
+PRD-494,UMKM-041,KoneKone,Topi Kain,Craft,174000,81,pcs,Tayang
+PRD-495,UMKM-041,KoneKone,Souvenir Kain,Craft,407000,65,pcs,Tayang
+PRD-496,UMKM-041,KoneKone,Tas Kain Tradisional (S),Craft,174000,161,pcs,Tayang
+PRD-497,UMKM-041,KoneKone,Dompet Kain (S),Craft,229000,50,pcs,Tayang
+PRD-498,UMKM-041,KoneKone,Topi Kain (S),Craft,461000,135,pcs,Tayang
+PRD-499,UMKM-041,KoneKone,Souvenir Kain (S),Craft,458000,23,pcs,Tayang
+PRD-500,UMKM-041,KoneKone,Tas Kain Tradisional (M),Craft,220000,183,pcs,Tayang
+PRD-501,UMKM-041,KoneKone,Dompet Kain (M),Craft,251000,16,pcs,Tayang
+PRD-502,UMKM-041,KoneKone,Topi Kain (M),Craft,251000,116,pcs,Tayang
+PRD-503,UMKM-041,KoneKone,Souvenir Kain (M),Craft,419000,137,pcs,Tayang
+PRD-504,UMKM-041,KoneKone,Tas Kain Tradisional (L),Craft,222000,103,pcs,Tayang
+PRD-505,UMKM-041,KoneKone,Dompet Kain (L),Craft,293000,106,pcs,Tayang
+PRD-506,UMKM-041,KoneKone,Topi Kain (L),Craft,277000,38,pcs,Tayang
+PRD-507,UMKM-041,KoneKone,Souvenir Kain (L),Craft,361000,11,pcs,Tayang
+PRD-508,UMKM-041,KoneKone,Tas Kain Tradisional (Edisi Khusus),Craft,211000,89,pcs,Menunggu
+PRD-509,UMKM-042,Rainmaker Craft,Koleksi Rajut Daily,Craft,201000,39,pcs,Tayang
+PRD-510,UMKM-042,Rainmaker Craft,Koleksi Rajut Sports,Craft,251000,192,pcs,Tayang
+PRD-511,UMKM-042,Rainmaker Craft,Koleksi Rajut Budaya,Craft,441000,126,pcs,Tayang
+PRD-512,UMKM-042,Rainmaker Craft,Tas Rajut,Craft,455000,21,pcs,Tayang
+PRD-513,UMKM-042,Rainmaker Craft,Koleksi Rajut Daily (S),Craft,461000,197,pcs,Tayang
+PRD-514,UMKM-042,Rainmaker Craft,Koleksi Rajut Sports (S),Craft,443000,24,pcs,Tayang
+PRD-515,UMKM-042,Rainmaker Craft,Koleksi Rajut Budaya (S),Craft,402000,126,pcs,Tayang
+PRD-516,UMKM-042,Rainmaker Craft,Tas Rajut (S),Craft,389000,161,pcs,Tayang
+PRD-517,UMKM-042,Rainmaker Craft,Koleksi Rajut Daily (M),Craft,332000,37,pcs,Tayang
+PRD-518,UMKM-042,Rainmaker Craft,Koleksi Rajut Sports (M),Craft,268000,126,pcs,Tayang
+PRD-519,UMKM-042,Rainmaker Craft,Koleksi Rajut Budaya (M),Craft,293000,64,pcs,Tayang
+PRD-520,UMKM-042,Rainmaker Craft,Tas Rajut (M),Craft,409000,158,pcs,Tayang
+PRD-521,UMKM-042,Rainmaker Craft,Koleksi Rajut Daily (L),Craft,381000,61,pcs,Tayang
+PRD-522,UMKM-042,Rainmaker Craft,Koleksi Rajut Sports (L),Craft,269000,34,pcs,Tayang
+PRD-523,UMKM-042,Rainmaker Craft,Koleksi Rajut Budaya (L),Craft,429000,114,pcs,Tayang
+PRD-524,UMKM-042,Rainmaker Craft,Tas Rajut (L),Craft,416000,140,pcs,Tayang
+PRD-525,UMKM-042,Rainmaker Craft,Koleksi Rajut Daily (Edisi Khusus),Craft,443000,139,pcs,Tayang

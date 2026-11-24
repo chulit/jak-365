@@ -89,14 +89,55 @@ modul lain dipelajari hanya untuk memahami alur/data yang masuk ke dashboard.
 
 | Kebutuhan rumus | Status di proyek ini |
 |---|---|
-| Realisasi (omzet, transaksi, pesanan, klik, produk) | Ada — dari tab Transaksi + UMKM |
-| Repeat (jumlah transaksi berulang) | BELUM — kolom `repeat_transaksi` masih kosong |
-| Inquiry (jumlah) | BELUM — tidak ada kolom inquiry di Transaksi |
-| Kanal aktif per UMKM (jumlah kanal) | SEBAGIAN — mitra per UMKM ada di Transaksi; jumlah kanal belum dihitung |
-| Target per UMKM per indikator | BELUM — diputuskan: target per UMKM (sesuai dokumen) |
-| T0 baseline | BELUM — tab Ringkasan masih kosong |
+| Realisasi (omzet, transaksi, pesanan, klik, produk) | Ada — dari tab Transaksi + UMKM. Catatan 2026-11-24: kolom `pesanan`/`omzet` dihapus dari tab UMKM (redundan — dashboard menghitung keduanya dari tab Transaksi). |
+| Repeat (jumlah transaksi berulang) | ADA — kolom `repeat_transaksi` terisi 2026-11-24 (total 346 = 28,6%, angka contoh deterministik) |
+| Inquiry (jumlah) | ADA — kolom `jumlah_inquiry` di Transaksi (total 2.136; Okt–Nov 734, angka contoh deterministik) |
+| Kanal aktif per UMKM (jumlah kanal) | ADA — kolom `id_kanal` di Transaksi; rata-rata 2,98 kanal/UMKM (Okt–Nov) |
+| Target per UMKM per indikator | ADA — tab Target, 42 baris; direbase ke Okt–Nov 2026-11-24 (Σ omzet Rp 91.800.982, transaksi 481, repeat 140, inquiry 881, kanal aktif 106) |
+| T0 baseline | ADA — T0 = Sep, diturunkan dari baris Sep di Transaksi (Pertumbuhan −26%); tab Ringkasan diisi total periode sebelumnya (5 bulan) untuk delta KPI |
 | Rubrik kesiapan katalog | BELUM — butuh data checklist per UMKM |
-| Skor terbobot + status (mis. 88 "Sangat Baik") | BELUM — bagian evaluasi (Step 7), di luar fokus dashboard |
+| Skor terbobot + status (mis. 88 "Sangat Baik") | ADA — 2026-11-24: Skor Kinerja terbobot agregat 88 "Sangat Baik" (Katalog 95, Kanal 100, Inquiry 83, Transaksi 83, Omzet 83, Repeat 82); per UMKM di dialog detail |
+
+## Model data — ID unik (keputusan user 2026-11-24)
+
+- Master data punya ID unik; antar-tab disambung pakai ID, bukan nama.
+  Nama (`nama_umkm`, `nama_mitra`, …) tetap ada sebagai label supaya Sheet
+  tetap bisa dibaca, tapi join di dashboard memakai ID.
+- `id_umkm`: `UMKM-001` … `UMKM-042`. `kode_peserta` (`JP-xxxxxxxx`,
+  format mockup) kolom terpisah di tab UMKM.
+- `id_mitra`: `MTR-001` … `MTR-006` (format mockup).
+- `id_produk`: `PRD-001` … (Katalog; jumlah = jumlah_produk).
+- `id_kanal`: `KNL-01` … `KNL-26` (daftar referensi 26 kanal).
+- `id_penugasan`: `PNG-001` … (tab Penugasan, bila dibuat).
+- Kunci asing: Transaksi → `id_umkm`, `id_mitra`, `id_kanal` (,
+  `id_produk` bila per pesanan); Katalog → `id_umkm`; Penugasan →
+  `id_umkm`, `id_mitra`, `id_kanal`; Klik_Link → `id_mitra`;
+  Target → `id_umkm`.
+- Alasan: join pakai nama rapuh — pergantian nama (konsolidasi TEI)
+  memutus sambungan; ID tidak berubah walau nama berubah.
+- **Transaksi tetap agregat (keputusan user 2026-11-24)**: 1 baris =
+  agregat bulanan per (`id_umkm`, `id_mitra`), ditambah kolom
+  `jumlah_inquiry` dan `id_kanal` (+ label `kanal_pemesanan`).
+  Konsekuensi: Produk Terlaris per produk TIDAK bisa dihitung dari
+  agregat; yang bisa: Inquiry, Kanal Aktif, skor terbobot.
+- **Nama produk Katalog (keputusan user 2026-11-24)**: diturunkan dari
+  `penjelasan_produk` TEI masing-masing UMKM; jumlah per UMKM =
+  `jumlah_produk` (total 525). Bila deskripsi tidak menyebut produk
+  spesifik, nama generik dari kategori — bisa dikoreksi belakangan.
+- **T0 baseline (keputusan user 2026-11-24)**: Sep sebagai T0, dari
+  data (Pertumbuhan = (Nov − Sep)/Sep, tetap −26%). Per-UMKM T0
+  diturunkan dari baris Sep di Transaksi (tidak perlu kolom baru).
+  Ringkasan diisi total periode SEBELUMNYA (5 bulan) untuk delta KPI —
+  BUKAN total Sep: delta membandingkan jendela 5 bulan dengan 5 bulan
+  sebelumnya, jadi baseline Sep (1 bulan) akan membuat delta +587%.
+- **Mitra + Penugasan (keputusan user 2026-11-24)**: keduanya tab
+  sendiri — Mitra 6 baris (`id_mitra`, nama, jenis, kanal, status;
+  PIC/kontak/email/dokumen/catatan kolomnya ada tapi kosong), Penugasan
+  42 baris (1 per UMKM × mitra utamanya — data kini 1 mitra per UMKM,
+  jadi bukan ~200 seperti perkiraan awal; kolom `id_penugasan`,
+  `id_umkm`, `id_mitra`, `id_kanal`, periode, status).
+- **Target +2 kolom** (untuk skor terbobot 6 bobot): `target_inquiry`,
+  `target_kanal_aktif`.
 
 ## Kanal referensi (26)
 

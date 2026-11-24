@@ -1,7 +1,9 @@
 // generate-sheet-data.mjs — SATU-SATUNYA sumber kebenaran data contoh.
 // Menulis:
-//   sheets-template/Transaksi.csv, UMKM.csv, Klik_Link.csv, README.md
-//   src/data/sample.ts (data yang dipakai aplikasi saat Sheet belum dihubungkan)
+//   sheets-template/Transaksi.csv, UMKM.csv, Mitra.csv, Kanal.csv,
+//   Katalog.csv, Penugasan.csv, Klik_Link.csv, Target.csv, Ringkasan.csv,
+//   README.md, dan src/data/sample.ts (data yang dipakai aplikasi saat
+//   Sheet belum dihubungkan)
 // Semesta UMKM = 42 peserta TEI 2026 (dibaca dari
 // sheets-template/UMKM_TEI.csv — nama-nama dummy lama seperti
 // My Little Dimsum SUDAH TIDAK ADA). Semua total direkonsiliasi
@@ -57,6 +59,13 @@ const produkRng = mulberry32(20261124)
 // 20261126) — stream sendiri supaya tidak menggeser distribusi lain.
 const targetRng = mulberry32(20261125)
 const repeatRng = mulberry32(20261126)
+// RNG TERPISAH untuk field baru struktur relasional (seed 20261127–
+// 20261130) — stream sendiri supaya tidak menggeser distribusi
+// omzet/transaksi/pesanan/klik dan nilai target_konversi yang sudah ada.
+const inquiryRng = mulberry32(20261127)
+const kanalRng = mulberry32(20261128)
+const katalogRng = mulberry32(20261129)
+const target2Rng = mulberry32(20261130)
 
 /** Bagi `total` bulat ke n bagian mengikuti bobot, jumlah hasil = total persis. */
 function distribute(total, weights, min = 0) {
@@ -156,6 +165,119 @@ const TOTAL_TRANSAKSI = 1210
 const TOTAL_PESANAN = 1423
 const TOTAL_KLIK = 12630
 
+// ---------------------------------------------------------------------------
+// Master referensi — struktur relasional (keputusan user 2026-11-24):
+// tiap master punya ID unik; antar-tab disambung pakai ID, bukan nama.
+// Nama tetap ditulis sebagai label supaya Sheet tetap bisa dibaca.
+// ---------------------------------------------------------------------------
+/** 26 kanal pemasaran referensi (dari mockup, docs/ALUR.md). */
+const KANAL = [
+  { id: 'KNL-01', nama: 'Instagram', kategori: 'Media Sosial' },
+  { id: 'KNL-02', nama: 'TikTok', kategori: 'Media Sosial' },
+  { id: 'KNL-03', nama: 'Facebook', kategori: 'Media Sosial' },
+  { id: 'KNL-04', nama: 'YouTube', kategori: 'Media Sosial' },
+  { id: 'KNL-05', nama: 'Shopee', kategori: 'Marketplace' },
+  { id: 'KNL-06', nama: 'Tokopedia', kategori: 'Marketplace' },
+  { id: 'KNL-07', nama: 'Lazada', kategori: 'Marketplace' },
+  { id: 'KNL-08', nama: 'Blibli', kategori: 'Marketplace' },
+  { id: 'KNL-09', nama: 'TikTok Shop', kategori: 'Marketplace' },
+  { id: 'KNL-10', nama: 'WhatsApp Business', kategori: 'Komunikasi Langsung' },
+  { id: 'KNL-11', nama: 'Telegram', kategori: 'Komunikasi Langsung' },
+  { id: 'KNL-12', nama: 'Website Mitra', kategori: 'Website/Toko Online' },
+  { id: 'KNL-13', nama: 'Katalog Digital', kategori: 'Website/Toko Online' },
+  { id: 'KNL-14', nama: 'Toko', kategori: 'Ritel Fisik' },
+  { id: 'KNL-15', nama: 'Minimarket', kategori: 'Ritel Fisik' },
+  { id: 'KNL-16', nama: 'Supermarket', kategori: 'Ritel Fisik' },
+  { id: 'KNL-17', nama: 'Pusat Perbelanjaan', kategori: 'Ritel Fisik' },
+  { id: 'KNL-18', nama: 'Jaringan Korporasi', kategori: 'Penjualan B2B' },
+  { id: 'KNL-19', nama: 'Hotel', kategori: 'Penjualan B2B' },
+  { id: 'KNL-20', nama: 'Restoran', kategori: 'Penjualan B2B' },
+  { id: 'KNL-21', nama: 'Kafe', kategori: 'Penjualan B2B' },
+  { id: 'KNL-22', nama: 'Pengadaan Perusahaan', kategori: 'Penjualan B2B' },
+  { id: 'KNL-23', nama: 'Pameran', kategori: 'Promosi Offline' },
+  { id: 'KNL-24', nama: 'Bazar', kategori: 'Promosi Offline' },
+  { id: 'KNL-25', nama: 'Pop-up Store', kategori: 'Promosi Offline' },
+  { id: 'KNL-26', nama: 'Lainnya', kategori: 'Lainnya' },
+]
+const kanalById = new Map(KANAL.map((k) => [k.id, k]))
+const kanalByNama = new Map(KANAL.map((k) => [k.nama, k]))
+
+/** Master Mitra (6, referensi user) — jenis + kanal dari penilaian
+ *  terhadap model bisnisnya (angka CONTOH); PIC/kontak/email/dokumen/
+ *  catatan kosong karena datanya tidak ada (bisa diisi user di Sheet). */
+const MITRA_MASTER = [
+  { id: 'MTR-001', nama: 'Tokopedia', jenis: 'Retail / Modern Trade', kanal: ['Tokopedia', 'Katalog Digital', 'Website Mitra'], wilayah: 'DKI Jakarta', status: 'Aktif' },
+  { id: 'MTR-002', nama: 'Shopee', jenis: 'Retail / Modern Trade', kanal: ['Shopee', 'TikTok Shop', 'Katalog Digital'], wilayah: 'DKI Jakarta', status: 'Aktif' },
+  { id: 'MTR-003', nama: 'Mall Grand Indonesia', jenis: 'Retail / Modern Trade', kanal: ['Pusat Perbelanjaan', 'Toko', 'Pameran'], wilayah: 'DKI Jakarta', status: 'Aktif' },
+  { id: 'MTR-004', nama: 'Centong Daily', jenis: 'Reseller', kanal: ['Toko', 'WhatsApp Business', 'Instagram'], wilayah: 'DKI Jakarta', status: 'Aktif' },
+  { id: 'MTR-005', nama: 'Koperasi Kumindag', jenis: 'Mitra B2B', kanal: ['Jaringan Korporasi', 'Pengadaan Perusahaan', 'Katalog Digital'], wilayah: 'DKI Jakarta', status: 'Aktif' },
+  { id: 'MTR-006', nama: 'Hippindo', jenis: 'Retail / Modern Trade', kanal: ['Pusat Perbelanjaan', 'Supermarket', 'Minimarket'], wilayah: 'DKI Jakarta', status: 'Aktif' },
+]
+const mitraByNama = new Map(MITRA_MASTER.map((m) => [m.nama, m]))
+
+/** Nama produk dasar per UMKM (kunci = no TEI) — diturunkan dari
+ *  penjelasan_produk (keputusan user 2026-11-24). Bila jumlah_produk >
+ *  jumlah dasar, sisanya diisi varian kemasan/ukuran dari produk dasar.
+ *  Harga/stok CONTOH deterministik (stream katalogRng). */
+const PRODUK_DASAR = {
+  1: ['Keripik Nanas', 'Keripik Nangka', 'Keripik Salak', 'Edamame Panggang', 'Keripik Sayur Tropis'],
+  2: ['Sambal Ikan Laut', 'Sambal Cumi', 'Sambal Udang', 'Kerupuk Kulit Ikan'],
+  3: ['Susu Bebas Laktosa', 'Keju Olahan', 'Ingredients Keju', 'Pangan Bernutrisi'],
+  4: ['Rendang Daging', 'Rendang Ayam', 'Rendang Jengkol', 'Rendang Telur'],
+  5: ['Kacang Mete Salted Sea Salt', 'Kacang Mete Garlic', 'Kacang Mete Honey Butter', 'Kacang Mete Spicy Rendang', 'Kacang Mete Dark Chocolate'],
+  6: ['Minies Q Oat Protein Cookies Original', 'Minies Q Oat Protein Cookies Coklat', 'Minies Q Oat Protein Cookies Keju'],
+  7: ['Rendang Ready-to-Eat', 'Dendeng Ready-to-Eat', 'Gulai Ready-to-Eat', 'Sambal Minang'],
+  8: ['Tepung Multiguna Original', 'Tepung Multiguna Premium', 'Tepung Bakery', 'Tepung HORECA'],
+  9: ['Nasi Padang Siap Makan', 'Ayam Geprek Siap Makan', 'Rendang Siap Makan', 'Gudeg Siap Makan'],
+  10: ['Rempah Nusantara', 'Kopi Indonesia', 'Beras Pangan', 'Bumbu Instan'],
+  11: ['Jahe Merah Rempah Serbuk', 'Sekoteng Instan', 'Freeze-Dried Red Ginger', 'Minuman Herbal Rempah'],
+  12: ['Madu Murni Premium', 'Madu Hutan', 'Madu Kelulut', 'Madu Sachet'],
+  13: ['Keripik Kentang Balado', 'Keripik Kentang Original', 'Kentang Mustofa', 'Kremes Kentang Teri Kacang'],
+  14: ['Keripik Ubi Ungu', 'Keripik Ubi Sweet Salted', 'Keripik Ubi BBQ'],
+  15: ['Instant Jelly', 'Agar-Agar Instan', 'Instant Vla', 'Instant Puding', 'Silky Puding'],
+  16: ['Snack Keluarga Original', 'Snack Keluarga Keju', 'Snack Keluarga Coklat', 'Snack Keluarga Pedas'],
+  17: ['Camilan Gandum Almond Coklat', 'Camilan Gandum Gula Aren', 'Camilan Gandum Original'],
+  18: ['Madu Murni', 'Gula Semut', 'Minuman Botanikal Serbuk Jahe'],
+  19: ['Biji Kopi Arabika', 'Kopi Bubuk', 'Drip Coffee', 'Explorer Box', 'Gift Set Kopi', 'Kapsul Nespresso', 'Kapsul Dolce Gusto'],
+  20: ['Green Bean Arabika', 'Roasted Bean', 'Kopi Bubuk', 'Minuman Kopi Susu', 'Makanan Pendamping'],
+  21: ['Kopi Bubuk Robusta', 'Kopi Bubuk Arabika', 'Kopi Bubuk Liberika'],
+  22: ['Beras Premium', 'Minyak Goreng', 'Gula Pasir', 'Tepung Terigu', 'Pangan Pokok Paket'],
+  23: ['Apparel Wastra Modern', 'Seragam Korporat', 'Kemeja Batik', 'Outer Wastra'],
+  24: ['Batik Sutra', 'Batik Katun', 'Batik Rayon', 'Kain Batik'],
+  25: ['Vest Batik', 'Blezer Tenun', 'Obi Batik'],
+  26: ['Dress Batik Tulis', 'Blouse Batik Tulis', 'Outer Modest Batik'],
+  27: ['Wastra Batik Tulis', 'Kemeja Batik Pria', 'Dress Batik Wanita', 'Aksesoris Batik'],
+  28: ['Kimmecca Linen Etnik', 'Dress Linen', 'Blouse Linen'],
+  29: ['Scarf Etnik', 'Kalung Etnik', 'Anting Etnik', 'Gelang Etnik'],
+  30: ['Leather Journal', 'Bag Charm Kulit', 'Bracelet Kulit', 'Necklace Mutiara'],
+  31: ['Perhiasan Silver Filigree 915', 'Tembaga Lapis Silver', 'Tembaga Lapis Emas', 'Mutiara Barok', 'Pin Logam Custom', 'Koin Logam Custom'],
+  32: ['Peralatan Dapur Kayu Jati', 'Peralatan Rumah Kayu Jati', 'Talenan Jati', 'Mangkuk Jati'],
+  33: ['Body Care Natural', 'Perfume Natural', 'Home Fragrance', 'Reed Diffuser'],
+  34: ['Parfum Scented Story 30ml', 'Parfum Scented Story 50ml', 'Parfum Scented Story 100ml'],
+  35: ['Essential Oil Lavender', 'Essential Oil Peppermint', 'Ekstrak Tanaman Kosmetik', 'Minyak Atsiri Campuran'],
+  36: ['Essential Oil Herbal', 'Minyak Herbal', 'Perawatan Herbal'],
+  37: ['Parfum Introvert 30ml', 'Parfum Introvert 50ml', 'Parfum Introvert 100ml'],
+  38: ['Propolis Premium', 'Herbal Propolis Kapsul', 'Herbal Propolis Cair'],
+  39: ['Bulu Mata Palsu Natural', 'Bulu Mata Palsu Dramatic', 'Lem Bulu Mata', 'Perawatan Kecantikan'],
+  40: ['Dress Modest Ready-to-Wear', 'Blouse Modest', 'Outer Modest', 'Setelan Modest'],
+  41: ['Tas Kain Tradisional', 'Dompet Kain', 'Topi Kain', 'Souvenir Kain'],
+  42: ['Koleksi Rajut Daily', 'Koleksi Rajut Sports', 'Koleksi Rajut Budaya', 'Tas Rajut'],
+}
+/** Rentang harga contoh per sektor (Rp) + satuan + sufiks varian. */
+const HARGA_KATEGORI = {
+  'Food & Beverage': [15000, 150000], Kopi: [25000, 200000], Fesyen: [75000, 750000],
+  Craft: [50000, 500000], 'Home Decor': [100000, 1000000], Fragrance: [100000, 600000],
+  'Personal Care': [30000, 300000], Beauty: [30000, 300000], 'Healthy Beverage': [50000, 250000],
+}
+const SATUAN_KATEGORI = {
+  'Food & Beverage': 'pack', Kopi: 'pack', Fesyen: 'pcs', Craft: 'pcs', 'Home Decor': 'pcs',
+  Fragrance: 'botol', 'Personal Care': 'botol', Beauty: 'pcs', 'Healthy Beverage': 'botol',
+}
+const VARIAN_SUFFIX = {
+  makanan: [' (Kemasan 100g)', ' (Kemasan 250g)', ' (Kemasan 500g)', ' (Paket Isi 3)', ' (Paket Hemat)'],
+  nonmakanan: [' (S)', ' (M)', ' (L)', ' (Edisi Khusus)', ' (Paket 2 pcs)'],
+}
+
 // Periode sebelumnya (untuk delta +31% / +18% / +24% / +27% di kartu KPI)
 const PREVIOUS = { omzet: 254061327, transaksi: 953, pesanan: 1148, klik: 10703 }
 
@@ -167,10 +289,11 @@ const PREVIOUS = { omzet: 254061327, transaksi: 953, pesanan: 1148, klik: 10703 
 // basis (bagian 5b), jadi total akhir:
 //   Omzet 333.023.341 | Transaksi 1.211 | Pesanan 1.424 | Klik 12.642
 const EXTRA_TRANSACTION = {
-  tanggal: '2026-11-17', bulan: '2026-11', namaUmkm: 'Chipsychips',
+  tanggal: '2026-11-17', bulan: '2026-11', idUmkm: 'UMKM-001', namaUmkm: 'Chipsychips',
   kategori: 'Food & Beverage', wilayah: 'Jakarta Selatan',
-  mitra: 'Tokopedia', pesanan: 1, transaksi: 1,
-  omzet: 200000, klik: 12,
+  idMitra: 'MTR-001', mitra: 'Tokopedia', idKanal: 'KNL-06', kanal: 'Tokopedia',
+  pesanan: 1, transaksi: 1,
+  omzet: 200000, klik: 12, inquiry: 2,
 }
 
 // ---------------------------------------------------------------------------
@@ -213,6 +336,12 @@ const umkm = tei.map((t) => {
   )
   return {
     ...t,
+    // ID unik (struktur relasional 2026-11-24): id_umkm = kunci sambung
+    // antar-tab; kode_peserta = kode bisnis format mockup (JP-xxxxxxxx).
+    id: `UMKM-${String(t.no).padStart(3, '0')}`,
+    kodePeserta: `JP-${31000000 + t.no}`,
+    grade: '',
+    idMitra: '',
     nama: t.namaUsaha,
     kategori: t.sektor,
     jumlahProduk, produkAktif,
@@ -225,6 +354,12 @@ distribute(TOTAL_OMZET, umkm.map(() => 0.5 + rng() * 1.5), 500000).forEach((v, i
 distribute(TOTAL_TRANSAKSI, umkm.map(() => 0.5 + rng()), 1).forEach((v, i) => { umkm[i].transaksi = v })
 // Pesanan = transaksi + ekstra (total ekstra = 1.423 - 1.210 = 213).
 distribute(TOTAL_PESANAN - TOTAL_TRANSAKSI, umkm.map(() => 0.3 + rng())).forEach((v, i) => { umkm[i].pesanan = umkm[i].transaksi + v })
+// Grade (mockup: A/B/C) — tertil omzet: 14 terbesar A, 14 tengah B,
+// 14 terkecil C. Dihitung SETELAH distribusi omzet di atas.
+{
+  const byOmzet = [...umkm].sort((a, b) => b.omzet - a.omzet)
+  byOmzet.forEach((u, i) => { u.grade = i < 14 ? 'A' : i < 28 ? 'B' : 'C' })
+}
 
 // ---------------------------------------------------------------------------
 // 2. Mitra utama per UMKM — kelompok diskala eksak ke target mitra.
@@ -247,7 +382,7 @@ const groups = Array.from({ length: MITRA.length }, () => [])
     }
     if (groups[g].length === 0) throw new Error(`mitra: kelompok ${MITRA[g].nama} kosong`)
     scaleGroupToTarget(groups[g], MITRA[g].omzet)
-    groups[g].forEach((u) => { u.mitra = MITRA[g].nama })
+    groups[g].forEach((u) => { u.mitra = MITRA[g].nama; u.idMitra = MITRA_MASTER[g].id })
   }
   const remainder = sortedByOmzet.slice(cursor).sort((a, b) => a.no - b.no)
   if (remainder.length !== 15) throw new Error(`mitra: sisa kelompok harus 15, dapat ${remainder.length}`)
@@ -255,7 +390,7 @@ const groups = Array.from({ length: MITRA.length }, () => [])
     const chunk = remainder.slice(k * 5, k * 5 + 5)
     const g = 3 + k
     scaleGroupToTarget(chunk, MITRA[g].omzet)
-    chunk.forEach((u) => { u.mitra = MITRA[g].nama })
+    chunk.forEach((u) => { u.mitra = MITRA[g].nama; u.idMitra = MITRA_MASTER[g].id })
     groups[g] = chunk
   }
 }
@@ -346,16 +481,82 @@ umkm.forEach((u, i) => {
     const transaksiSeg = distributeRandom(mTransaksi[i][m], weights)
     const omzetSeg = distribute(mOmzet[i][m], weights)
     const klikSeg = distributeRandom(mKlik[i][m], weights)
+    // Inquiry per segmen: corong inquiry ≥ pesanan — pesanan + 15–50%
+    // (stream inquiryRng terpisah; bila pesanan 0, 0–2 inquiry mentah).
+    // Kanal per segmen: satu kanal dari daftar kanal mitra itu (stream
+    // kanalRng terpisah) — kanal utama slice tersebut; Kanal Aktif per
+    // UMKM = jumlah kanal berbeda di semua barisnya.
+    const inquirySeg = segs.map((_, s) => {
+      const p = pesananSeg[s]
+      return p > 0 ? p + Math.round(p * (0.15 + inquiryRng() * 0.35)) : Math.floor(inquiryRng() * 3)
+    })
+    const kanalSeg = segs.map(() => {
+      const daftar = mitraByNama.get(u.mitra)?.kanal ?? ['Lainnya']
+      const nama = daftar[Math.floor(kanalRng() * daftar.length)]
+      const kanal = kanalByNama.get(nama) ?? { id: 'KNL-26', nama: 'Lainnya' }
+      return kanal
+    })
     segs.forEach((seg, s) => {
       // Lewati segmen yang nol di semua metrik (jumlah tetap terjaga).
-      if (pesananSeg[s] + transaksiSeg[s] + omzetSeg[s] + klikSeg[s] === 0) return
+      if (pesananSeg[s] + transaksiSeg[s] + omzetSeg[s] + klikSeg[s] + inquirySeg[s] === 0) return
       transactions.push({
-        tanggal: seg.start, bulan: mo.key, namaUmkm: u.nama, kategori: u.kategori,
-        wilayah: u.wilayah, mitra: u.mitra, pesanan: pesananSeg[s],
+        tanggal: seg.start, bulan: mo.key,
+        idUmkm: u.id, namaUmkm: u.nama, kategori: u.kategori,
+        wilayah: u.wilayah, idMitra: u.idMitra, mitra: u.mitra,
+        idKanal: kanalSeg[s].id, kanal: kanalSeg[s].nama,
+        pesanan: pesananSeg[s],
         transaksi: transaksiSeg[s], omzet: omzetSeg[s], klik: klikSeg[s],
+        inquiry: inquirySeg[s],
       })
     })
   })
+})
+
+// ---------------------------------------------------------------------------
+// 4b. Katalog produk + Penugasan (struktur relasional 2026-11-24).
+//     Katalog: 1 produk per baris, jumlah per UMKM = jumlah_produk
+//     (total 525); nama dari PRODUK_DASAR (penjelasan TEI) + varian
+//     kemasan/ukuran bila kurang; harga/stok CONTOH (stream katalogRng);
+//     status: produkAktif pertama "Tayang", sisanya "Menunggu", 1
+//     "Tidak Disetujui" bila sisa >= 2 (total Tayang = 497 persis).
+//     Penugasan: 1 baris per pasangan UMKM×mitra yang ada di Transaksi
+//     (42 baris — tiap UMKM kini punya 1 mitra utama); kanal utama =
+//     kanal pertama mitra itu; periode 01 Okt–31 Des 2026, status Aktif.
+// ---------------------------------------------------------------------------
+const katalog = []
+umkm.forEach((u) => {
+  const dasar = PRODUK_DASAR[u.no] ?? []
+  if (dasar.length === 0) throw new Error(`katalog: UMKM ${u.nama} tidak punya produk dasar`)
+  const suffixes = ['Food & Beverage', 'Kopi', 'Healthy Beverage'].includes(u.kategori)
+    ? VARIAN_SUFFIX.makanan : VARIAN_SUFFIX.nonmakanan
+  const [hargaMin, hargaMax] = HARGA_KATEGORI[u.kategori] ?? [10000, 100000]
+  const sisa = u.jumlahProduk - u.produkAktif
+  for (let i = 0; i < u.jumlahProduk; i++) {
+    const nama = i < dasar.length
+      ? dasar[i]
+      : dasar[i % dasar.length] + suffixes[(Math.floor(i / dasar.length) - 1) % suffixes.length]
+    const status = i < u.produkAktif ? 'Tayang' : (sisa >= 2 && i === u.jumlahProduk - 1 ? 'Tidak Disetujui' : 'Menunggu')
+    katalog.push({
+      id: `PRD-${String(katalog.length + 1).padStart(3, '0')}`,
+      idUmkm: u.id, namaUmkm: u.nama, namaProduk: nama, kategori: u.kategori,
+      harga: Math.round((hargaMin + katalogRng() * (hargaMax - hargaMin)) / 1000) * 1000,
+      stok: 10 + Math.floor(katalogRng() * 190),
+      satuan: SATUAN_KATEGORI[u.kategori] ?? 'pcs',
+      statusVerifikasi: status,
+    })
+  }
+})
+const penugasan = umkm.map((u, i) => {
+  const mitra = mitraByNama.get(u.mitra)
+  if (!mitra) throw new Error(`penugasan: mitra ${u.mitra} tidak ada di master`)
+  const kanalUtama = kanalByNama.get(mitra.kanal[0])
+  return {
+    id: `PNG-${String(i + 1).padStart(3, '0')}`,
+    idUmkm: u.id, namaUmkm: u.nama,
+    idMitra: mitra.id, namaMitra: mitra.nama,
+    idKanal: kanalUtama.id, kanal: kanalUtama.nama,
+    periode: '01 Okt–31 Des 2026', status: 'Aktif',
+  }
 })
 
 // ---------------------------------------------------------------------------
@@ -402,6 +603,40 @@ MONTHLY_OMZET.reduce((a, v, i) => { kum.push(a + v); return a + v }, 0)
 allOk &= check('Total s.d. Nov 2026', kum[4], TOTAL_OMZET)
 const konversi = TOTAL_TRANSAKSI / TOTAL_KLIK
 if (Math.abs(konversi * 100 - 9.6) > 0.05) { console.error('  ✗ konversi bukan 9,6%'); allOk = false }
+// --- Integritas struktur relasional: ID unik + kunci asing valid. ---
+const umkmIds = new Set(umkm.map((u) => u.id))
+allOk &= check('ID UMKM unik (42)', umkmIds.size, 42)
+allOk &= check('Kode peserta unik (42)', new Set(umkm.map((u) => u.kodePeserta)).size, 42)
+allOk &= check('ID Mitra unik (6)', new Set(MITRA_MASTER.map((m) => m.id)).size, 6)
+allOk &= check('ID Kanal unik (26)', new Set(KANAL.map((k) => k.id)).size, 26)
+allOk &= check('ID Produk unik (525)', new Set(katalog.map((p) => p.id)).size, sum(umkm, (u) => u.jumlahProduk))
+allOk &= check('ID Penugasan unik (42)', new Set(penugasan.map((p) => p.id)).size, 42)
+{
+  const badTx = transactions.filter((t) => !umkmIds.has(t.idUmkm) || !mitraByNama.has(t.mitra) || !kanalById.has(t.idKanal))
+  if (badTx.length > 0) { console.error(`  ✗ Transaksi dengan FK tidak valid: ${badTx.length} baris`); allOk = false }
+  const badKat = katalog.filter((p) => !umkmIds.has(p.idUmkm))
+  if (badKat.length > 0) { console.error(`  ✗ Katalog dengan id_umkm tidak valid: ${badKat.length} baris`); allOk = false }
+  const badPen = penugasan.filter((p) => !umkmIds.has(p.idUmkm) || !kanalById.has(p.idKanal))
+  if (badPen.length > 0) { console.error(`  ✗ Penugasan dengan FK tidak valid: ${badPen.length} baris`); allOk = false }
+  // Inquiry: corong inquiry ≥ pesanan di tiap baris.
+  const badInq = transactions.filter((t) => t.inquiry < t.pesanan)
+  if (badInq.length > 0) { console.error(`  ✗ Inquiry < pesanan: ${badInq.length} baris`); allOk = false }
+  // Katalog: Tayang = produk aktif (497), Menunggu + Tidak Disetujui = 28.
+  allOk &= check('Produk Tayang (katalog)', katalog.filter((p) => p.statusVerifikasi === 'Tayang').length, sum(umkm, (u) => u.produkAktif))
+  allOk &= check('Produk tidak tayang (katalog)', katalog.filter((p) => p.statusVerifikasi !== 'Tayang').length, sum(umkm, (u) => u.jumlahProduk - u.produkAktif))
+  // Kanal Aktif per UMKM (jendela Okt–Nov): 1–4 kanal (daftar kanal mitranya).
+  const kanalAktifOktNov = new Map()
+  for (const t of transactions) {
+    if (t.bulan < '2026-10' || t.bulan > '2026-11') continue
+    const s = kanalAktifOktNov.get(t.idUmkm) ?? new Set()
+    s.add(t.idKanal)
+    kanalAktifOktNov.set(t.idUmkm, s)
+  }
+  umkm.forEach((u) => {
+    const n = kanalAktifOktNov.get(u.id)?.size ?? 0
+    if (!(n >= 1 && n <= 4)) { console.error(`  ✗ Kanal aktif ${u.nama}: ${n} (harus 1–4)`); allOk = false }
+  })
+}
 if (!allOk) { console.error('\nVERIFIKASI GAGAL — perbaiki generator sebelum memakai CSV.'); process.exit(1) }
 
 // ---------------------------------------------------------------------------
@@ -447,22 +682,26 @@ if (!finalOk) { console.error('\nVERIFIKASI AKHIR GAGAL.'); process.exit(1) }
   // Basis rebase: realisasi Okt–Nov per UMKM (periode evaluasi).
   // Urutan pemanggilan targetRng() per UMKM dipertahankan seperti
   // sebelumnya (omzet, transaksi, konversi, repeat) supaya nilai
-  // target_konversi tidak bergeser.
+  // target_konversi tidak bergeser; dua target baru (inquiry, kanal)
+  // memakai stream target2Rng yang terpisah.
   const oktNov = new Map()
   for (const t of transactions) {
     if (t.bulan < '2026-10' || t.bulan > '2026-11') continue
-    const a = oktNov.get(t.namaUmkm) ?? { omzet: 0, transaksi: 0 }
+    const a = oktNov.get(t.namaUmkm) ?? { omzet: 0, transaksi: 0, inquiry: 0 }
     a.omzet += t.omzet
     a.transaksi += t.transaksi
+    a.inquiry += t.inquiry
     oktNov.set(t.namaUmkm, a)
   }
   umkm.forEach((u) => {
-    const base = oktNov.get(u.nama) ?? { omzet: 0, transaksi: 0 }
+    const base = oktNov.get(u.nama) ?? { omzet: 0, transaksi: 0, inquiry: 0 }
     u.targetOmzet = Math.round(base.omzet * (1.15 + targetRng() * 0.10))
     u.targetTransaksi = Math.round(base.transaksi * (1.15 + targetRng() * 0.10))
     u.targetProdukAktif = u.jumlahProduk
     u.targetKonversi = 10 + Math.floor(targetRng() * 6)
     u.targetRepeat = Math.max(1, Math.round(base.transaksi * (0.30 + targetRng() * 0.10)))
+    u.targetInquiry = Math.max(1, Math.round(base.inquiry * (1.15 + target2Rng() * 0.10)))
+    u.targetKanalAktif = 2 + Math.floor(target2Rng() * 2)
   })
   let ok5c = true
   ok5c &= check('Total repeat_transaksi', sum(umkm, (u) => u.repeatTransaksi), 346)
@@ -470,7 +709,7 @@ if (!finalOk) { console.error('\nVERIFIKASI AKHIR GAGAL.'); process.exit(1) }
     if (!(u.repeatTransaksi >= 0 && u.repeatTransaksi <= u.transaksi)) {
       console.error(`  ✗ repeat ${u.nama}: ${u.repeatTransaksi} dari ${u.transaksi} transaksi`); ok5c = false
     }
-    for (const [k, v] of [['target_omzet', u.targetOmzet], ['target_transaksi', u.targetTransaksi], ['target_produk_aktif', u.targetProdukAktif], ['target_konversi', u.targetKonversi], ['target_repeat', u.targetRepeat]]) {
+    for (const [k, v] of [['target_omzet', u.targetOmzet], ['target_transaksi', u.targetTransaksi], ['target_produk_aktif', u.targetProdukAktif], ['target_konversi', u.targetKonversi], ['target_repeat', u.targetRepeat], ['target_inquiry', u.targetInquiry], ['target_kanal_aktif', u.targetKanalAktif]]) {
       if (!(Number.isInteger(v) && v > 0)) { console.error(`  ✗ ${k} ${u.nama}: ${v} (harus integer > 0)`); ok5c = false }
     }
   })
@@ -488,11 +727,12 @@ const toCsv = (header, rows) =>
   [header.join(','), ...rows.map((r) => header.map((h) => csvEscape(r[h])).join(','))].join('\n') + '\n'
 
 writeFileSync(join(OUT, 'Transaksi.csv'), toCsv(
-  ['tanggal', 'bulan', 'nama_umkm', 'kategori', 'wilayah', 'mitra_pemasaran', 'pesanan', 'transaksi', 'omzet', 'klik'],
+  ['tanggal', 'bulan', 'id_umkm', 'nama_umkm', 'kategori', 'wilayah', 'id_mitra', 'mitra_pemasaran', 'id_kanal', 'kanal_pemesanan', 'pesanan', 'transaksi', 'omzet', 'klik', 'jumlah_inquiry'],
   transactions.map((t) => ({
-    tanggal: t.tanggal, bulan: t.bulan, nama_umkm: t.namaUmkm, kategori: t.kategori,
-    wilayah: t.wilayah, mitra_pemasaran: t.mitra, pesanan: t.pesanan,
-    transaksi: t.transaksi, omzet: t.omzet, klik: t.klik,
+    tanggal: t.tanggal, bulan: t.bulan, id_umkm: t.idUmkm, nama_umkm: t.namaUmkm, kategori: t.kategori,
+    wilayah: t.wilayah, id_mitra: t.idMitra, mitra_pemasaran: t.mitra,
+    id_kanal: t.idKanal, kanal_pemesanan: t.kanal, pesanan: t.pesanan,
+    transaksi: t.transaksi, omzet: t.omzet, klik: t.klik, jumlah_inquiry: t.inquiry,
   })),
 ))
 // UMKM.csv — master = 42 peserta TEI. Kolom jumlah_produk / produk_aktif
@@ -501,11 +741,14 @@ writeFileSync(join(OUT, 'Transaksi.csv'), toCsv(
 // repeat_transaksi diisi angka ACAK DETERMINISTIK (stream repeatRng,
 // seed 20261126, total 346 = 28,6%) — aturan repeat: transaksi yang
 // isian repeat-nya > 1x dihitung repeat (lihat docs/ALUR.md).
+// id_umkm (UMKM-001…) = kunci sambung antar-tab; kode_peserta (JP-…)
+// = kode bisnis format mockup; grade = tertil omzet (A/B/C).
 // Kolom mitra TIDAK ada di master baru — mitra utama tiap UMKM diturunkan
 // dari transaksi (mitra dengan omzet terbesar).
 writeFileSync(join(OUT, 'UMKM.csv'), toCsv(
-  ['nama_umkm', 'kategori', 'wilayah', 'jumlah_produk', 'produk_aktif', 'transaksi', 'repeat_transaksi', 'nama_pemilik', 'izin_usaha', 'instagram_website', 'penjelasan_produk'],
+  ['id_umkm', 'kode_peserta', 'grade', 'nama_umkm', 'kategori', 'wilayah', 'jumlah_produk', 'produk_aktif', 'transaksi', 'repeat_transaksi', 'nama_pemilik', 'izin_usaha', 'instagram_website', 'penjelasan_produk'],
   umkm.map((u) => ({
+    id_umkm: u.id, kode_peserta: u.kodePeserta, grade: u.grade,
     nama_umkm: u.nama, kategori: u.kategori, wilayah: u.wilayah,
     jumlah_produk: u.jumlahProduk, produk_aktif: u.produkAktif, transaksi: u.transaksi,
     repeat_transaksi: u.repeatTransaksi,
@@ -514,19 +757,21 @@ writeFileSync(join(OUT, 'UMKM.csv'), toCsv(
   })),
 ))
 // Target.csv — target individual per UMKM (1 baris = 1 UMKM). Angka CONTOH
-// DETERMINISTIK (stream targetRng, seed 20261125): omzet & transaksi =
-// realisasi OKT–NOV × 1,15–1,25; produk aktif = jumlah_produk (target 100%
-// aktif); konversi = 10–15%; repeat = transaksi Okt–Nov × 0,30–0,40.
+// DETERMINISTIK (stream targetRng, seed 20261125; target_inquiry &
+// target_kanal_aktif memakai stream target2Rng, seed 20261130): omzet &
+// transaksi = realisasi OKT–NOV × 1,15–1,25; produk aktif = jumlah_produk
+// (target 100% aktif); konversi = 10–15%; repeat = transaksi Okt–Nov ×
+// 0,30–0,40; inquiry = inquiry Okt–Nov × 1,15–1,25; kanal aktif = 2–3.
 // Semua > 0. User bisa mengubah angka ini langsung di Sheet — dashboard
 // menghitung Skor Indikator = min(100, Realisasi/Target × 100) dari tab ini,
 // dengan realisasi pada jendela evaluasi Okt–Nov yang tetap.
 const targetRows = umkm.map((u) => ({
-  nama_umkm: u.nama, target_omzet: u.targetOmzet, target_transaksi: u.targetTransaksi,
+  id_umkm: u.id, nama_umkm: u.nama, target_omzet: u.targetOmzet, target_transaksi: u.targetTransaksi,
   target_produk_aktif: u.targetProdukAktif, target_konversi: u.targetKonversi,
-  target_repeat: u.targetRepeat,
+  target_repeat: u.targetRepeat, target_inquiry: u.targetInquiry, target_kanal_aktif: u.targetKanalAktif,
 }))
 writeFileSync(join(OUT, 'Target.csv'), toCsv(
-  ['nama_umkm', 'target_omzet', 'target_transaksi', 'target_produk_aktif', 'target_konversi', 'target_repeat'],
+  ['id_umkm', 'nama_umkm', 'target_omzet', 'target_transaksi', 'target_produk_aktif', 'target_konversi', 'target_repeat', 'target_inquiry', 'target_kanal_aktif'],
   targetRows,
 ))
 // Klik_Link.csv = agregat Transaksi per (bulan, mitra) — jadi pasti konsisten.
@@ -535,12 +780,60 @@ const klikRows = []
 MONTHS.forEach((mo) => {
   MITRA.forEach((mitra) => {
     klikRows.push({
-      bulan: mo.key, mitra_pemasaran: mitra.nama,
+      bulan: mo.key, id_mitra: mitraByNama.get(mitra.nama).id, mitra_pemasaran: mitra.nama,
       klik: sum(transactions.filter((t) => t.bulan === mo.key && t.mitra === mitra.nama), (t) => t.klik),
     })
   })
 })
-writeFileSync(join(OUT, 'Klik_Link.csv'), toCsv(['bulan', 'mitra_pemasaran', 'klik'], klikRows))
+writeFileSync(join(OUT, 'Klik_Link.csv'), toCsv(['bulan', 'id_mitra', 'mitra_pemasaran', 'klik'], klikRows))
+// Mitra.csv — master mitra (6 baris). PIC/kontak/email/dokumen/catatan
+// kosong karena datanya tidak ada; kategori_produk = semua sektor.
+writeFileSync(join(OUT, 'Mitra.csv'), toCsv(
+  ['id_mitra', 'nama_mitra', 'jenis', 'pic', 'kontak', 'email', 'kategori_produk', 'wilayah', 'kanal', 'status', 'dokumen', 'catatan'],
+  MITRA_MASTER.map((m) => ({
+    id_mitra: m.id, nama_mitra: m.nama, jenis: m.jenis, pic: '', kontak: '', email: '',
+    kategori_produk: 'Semua sektor', wilayah: m.wilayah, kanal: m.kanal.join('; '),
+    status: m.status, dokumen: '', catatan: '',
+  })),
+))
+// Kanal.csv — 26 kanal referensi (dari mockup).
+writeFileSync(join(OUT, 'Kanal.csv'), toCsv(
+  ['id_kanal', 'nama_kanal', 'kategori'],
+  KANAL.map((k) => ({ id_kanal: k.id, nama_kanal: k.nama, kategori: k.kategori })),
+))
+// Katalog.csv — 525 produk (jumlah per UMKM = jumlah_produk). Nama dari
+// penjelasan TEI (+ varian kemasan/ukuran); harga/stok CONTOH.
+writeFileSync(join(OUT, 'Katalog.csv'), toCsv(
+  ['id_produk', 'id_umkm', 'nama_umkm', 'nama_produk', 'kategori', 'harga', 'stok', 'satuan', 'status_verifikasi'],
+  katalog.map((p) => ({
+    id_produk: p.id, id_umkm: p.idUmkm, nama_umkm: p.namaUmkm, nama_produk: p.namaProduk,
+    kategori: p.kategori, harga: p.harga, stok: p.stok, satuan: p.satuan,
+    status_verifikasi: p.statusVerifikasi,
+  })),
+))
+// Penugasan.csv — 42 baris (1 per UMKM × mitra utamanya). Kanal utama =
+// kanal pertama mitra itu; periode 01 Okt–31 Des 2026.
+writeFileSync(join(OUT, 'Penugasan.csv'), toCsv(
+  ['id_penugasan', 'id_umkm', 'nama_umkm', 'id_mitra', 'nama_mitra', 'id_kanal', 'kanal', 'periode', 'status'],
+  penugasan.map((p) => ({
+    id_penugasan: p.id, id_umkm: p.idUmkm, nama_umkm: p.namaUmkm,
+    id_mitra: p.idMitra, nama_mitra: p.namaMitra, id_kanal: p.idKanal, kanal: p.kanal,
+    periode: p.periode, status: p.status,
+  })),
+))
+// Ringkasan.csv — total periode sebelumnya (untuk delta KPI). BUKAN total
+// Sep: delta membandingkan jendela 5 bulan dengan 5 bulan sebelumnya, jadi
+// baseline-nya harus seperiode (angka CONTOH dari screenshot awal — sama
+// dengan fallback yang selama ini dipakai sample.ts).
+writeFileSync(join(OUT, 'Ringkasan.csv'), toCsv(
+  ['metrik', 'nilai'],
+  [
+    { metrik: 'omzet', nilai: PREVIOUS.omzet },
+    { metrik: 'transaksi', nilai: PREVIOUS.transaksi },
+    { metrik: 'pesanan', nilai: PREVIOUS.pesanan },
+    { metrik: 'klik', nilai: PREVIOUS.klik },
+  ],
+))
 
 // ---------------------------------------------------------------------------
 // 7. Tulis src/data/sample.ts (data contoh aplikasi = dataset yang sama)
@@ -564,13 +857,27 @@ export const sampleData: DashboardData = {
 ${transactions.map((t) => `    ${JSON.stringify(t)},`).join('\n')}
   ],
   umkm: [
-${umkm.map((u) => `    ${JSON.stringify({ namaUmkm: u.nama, kategori: u.kategori, wilayah: u.wilayah, mitra: u.mitra, jumlahProduk: u.jumlahProduk, produkAktif: u.produkAktif, transaksi: u.transaksi, repeatTransaksi: u.repeatTransaksi, namaPemilik: u.namaPemilik, izinUsaha: u.izinUsaha, instagramWebsite: u.instagramWebsite, penjelasanProduk: u.penjelasanProduk })},`).join('\n')}
+${umkm.map((u) => `    ${JSON.stringify({ idUmkm: u.id, kodePeserta: u.kodePeserta, grade: u.grade, namaUmkm: u.nama, kategori: u.kategori, wilayah: u.wilayah, mitra: u.mitra, jumlahProduk: u.jumlahProduk, produkAktif: u.produkAktif, transaksi: u.transaksi, repeatTransaksi: u.repeatTransaksi, namaPemilik: u.namaPemilik, izinUsaha: u.izinUsaha, instagramWebsite: u.instagramWebsite, penjelasanProduk: u.penjelasanProduk })},`).join('\n')}
   ],
   // Target individual per UMKM (angka CONTOH deterministik — lihat
   // sheets-template/Target.csv; user bisa mengubahnya di Google Sheet).
   // Dipakai menghitung Skor Indikator = min(100, Realisasi/Target × 100).
   targets: [
-${targetRows.map((t) => `    ${JSON.stringify({ namaUmkm: t.nama_umkm, targetOmzet: t.target_omzet, targetTransaksi: t.target_transaksi, targetProdukAktif: t.target_produk_aktif, targetKonversi: t.target_konversi, targetRepeat: t.target_repeat })},`).join('\n')}
+${targetRows.map((t) => `    ${JSON.stringify({ idUmkm: t.id_umkm, namaUmkm: t.nama_umkm, targetOmzet: t.target_omzet, targetTransaksi: t.target_transaksi, targetProdukAktif: t.target_produk_aktif, targetKonversi: t.target_konversi, targetRepeat: t.target_repeat, targetInquiry: t.target_inquiry, targetKanalAktif: t.target_kanal_aktif })},`).join('\n')}
+  ],
+  // Master referensi (struktur relasional 2026-11-24): Mitra, Kanal,
+  // Katalog, Penugasan — disambung ke transaksi/UMKM lewat ID.
+  mitra: [
+${MITRA_MASTER.map((m) => `    ${JSON.stringify({ idMitra: m.id, namaMitra: m.nama, jenis: m.jenis, pic: '', kontak: '', email: '', kategoriProduk: 'Semua sektor', wilayah: m.wilayah, kanal: m.kanal, status: m.status, dokumen: '', catatan: '' })},`).join('\n')}
+  ],
+  kanal: [
+${KANAL.map((k) => `    ${JSON.stringify({ idKanal: k.id, namaKanal: k.nama, kategori: k.kategori })},`).join('\n')}
+  ],
+  katalog: [
+${katalog.map((p) => `    ${JSON.stringify({ idProduk: p.id, idUmkm: p.idUmkm, namaUmkm: p.namaUmkm, namaProduk: p.namaProduk, kategori: p.kategori, harga: p.harga, stok: p.stok, satuan: p.satuan, statusVerifikasi: p.statusVerifikasi })},`).join('\n')}
+  ],
+  penugasan: [
+${penugasan.map((p) => `    ${JSON.stringify({ idPenugasan: p.id, idUmkm: p.idUmkm, namaUmkm: p.namaUmkm, idMitra: p.idMitra, namaMitra: p.namaMitra, idKanal: p.idKanal, kanal: p.kanal, periode: p.periode, status: p.status })},`).join('\n')}
   ],
   // Total periode sebelumnya — dipakai menghitung delta KPI (+18%/+24%/+27%/+31%).
   // Di Google Sheet, isi dari tab Ringkasan (lihat sheets-template/README.md).
@@ -595,10 +902,25 @@ const FINAL_NOV_OMZET = sum(transactions.filter((t) => t.bulan === '2026-11'), (
 const FINAL_PRODUK = sum(umkm, (u) => u.jumlahProduk)
 const FINAL_PRODUK_AKTIF = sum(umkm, (u) => u.produkAktif)
 const FINAL_REPEAT = sum(umkm, (u) => u.repeatTransaksi)
+const FINAL_INQUIRY = sum(transactions, (t) => t.inquiry)
+const FINAL_INQUIRY_OKT_NOV = sum(transactions.filter((t) => t.bulan >= '2026-10' && t.bulan <= '2026-11'), (t) => t.inquiry)
+const FINAL_KANAL_AKTIF_MEAN = (() => {
+  const perUmkm = new Map()
+  for (const t of transactions) {
+    if (t.bulan < '2026-10' || t.bulan > '2026-11') continue
+    const s = perUmkm.get(t.idUmkm) ?? new Set()
+    s.add(t.idKanal)
+    perUmkm.set(t.idUmkm, s)
+  }
+  return [...perUmkm.values()].reduce((a, s) => a + s.size, 0) / perUmkm.size
+})()
+const FINAL_KATALOG_TAYANG = katalog.filter((p) => p.statusVerifikasi === 'Tayang').length
 const FINAL_T_OMZET = sum(umkm, (u) => u.targetOmzet)
 const FINAL_T_TRANSAKSI = sum(umkm, (u) => u.targetTransaksi)
 const FINAL_T_PRODUK_AKTIF = sum(umkm, (u) => u.targetProdukAktif)
 const FINAL_T_REPEAT = sum(umkm, (u) => u.targetRepeat)
+const FINAL_T_INQUIRY = sum(umkm, (u) => u.targetInquiry)
+const FINAL_T_KANAL_AKTIF = sum(umkm, (u) => u.targetKanalAktif)
 const FINAL_T_KONVERSI_AVG = sum(umkm, (u) => u.targetKonversi) / umkm.length
 const FINAL_MITRA = MITRA.map((m) => ({
   nama: m.nama,
@@ -610,12 +932,19 @@ const FINAL_TOP5_OMZET = TOP5_SORTED.reduce((a, u) => a + u.omzet, 0)
 const FINAL_WEEKLY_OKT_NOV = sum(transactions.filter((t) => t.tanggal >= '2026-10-01' && t.tanggal <= '2026-11-30'), (t) => t.omzet)
 const readme = `# Template Google Sheet — Dashboard Monev UMKM
 
-Tiga file CSV ini adalah template isi Google Sheet sumber data dashboard.
-Buat satu Google Sheet dengan **4 tab** bernama persis seperti nama file
-(tanpa \`.csv\`): \`Transaksi\`, \`UMKM\`, \`Klik_Link\`, \`Target\`, lalu impor
-tiap CSV ke tab yang sesuai (File → Impor). Tambah tab ke-5 opsional
-\`Ringkasan\` untuk total periode sebelumnya (delta KPI).
+Sembilan file CSV ini adalah template isi Google Sheet sumber data dashboard.
+Buat satu Google Sheet dengan **9 tab** bernama persis seperti nama file
+(tanpa \`.csv\`): \`Transaksi\`, \`UMKM\`, \`Mitra\`, \`Kanal\`, \`Katalog\`,
+\`Penugasan\`, \`Klik_Link\`, \`Target\`, \`Ringkasan\`, lalu impor tiap CSV
+ke tab yang sesuai (File → Impor).
 
+> **Struktur relasional (2026-11-24).** Tiap master punya ID unik dan
+> antar-tab disambung pakai ID, bukan nama: \`id_umkm\` (UMKM-001…),
+> \`id_mitra\` (MTR-001…), \`id_kanal\` (KNL-01…), \`id_produk\` (PRD-001…),
+> \`id_penugasan\` (PNG-001…). Nama tetap ditulis sebagai label supaya
+> Sheet tetap bisa dibaca. Angka mockup diabaikan — yang dibangun adalah
+> struktur + data yang bisa diolah dashboard.
+>
 > **Semesta UMKM = 42 peserta TEI 2026.** Nama-nama dummy lama
 > (My Little Dimsum, Burich, dkk.) sudah tidak ada — transaksi contoh
 > dipetakan ulang ke 42 nama TEI dengan total yang persis sama.
@@ -631,47 +960,79 @@ tiap CSV ke tab yang sesuai (File → Impor). Tambah tab ke-5 opsional
 |---|---|
 | tanggal | Tanggal awal segmen minggu dalam bulan itu (tanggal 1 bila minggu terpotong awal bulan, Senin untuk segmen penuh), mis. 2026-07-01, 2026-07-06 |
 | bulan | \`2026-07\` s.d. \`2026-11\` (catatan: Google Sheets kadang menafsirkan \`2026-07\` sebagai tanggal dan menampilkannya \`2026-7\`; dashboard menormalisasi format itu saat membaca, jadi aman — bila menulis lewat API, pakai \`valueInputOption: RAW\` untuk kolom ini) |
+| id_umkm | ID unik UMKM (UMKM-001 s.d. UMKM-042) — kunci sambung ke tab UMKM |
 | nama_umkm | Nama UMKM (salah satu dari 42 peserta TEI 2026) |
 | kategori | Sektor peserta TEI: Food & Beverage, Kopi, Fesyen, Craft, Home Decor, Fragrance, Personal Care, Beauty, Healthy Beverage |
 | wilayah | Jakarta Selatan, Jakarta Timur, Jakarta Barat, Jakarta Utara, Jakarta Pusat, DKI Jakarta |
+| id_mitra | ID unik mitra (MTR-001 s.d. MTR-006) — kunci sambung ke tab Mitra |
 | mitra_pemasaran | Tokopedia, Shopee, Mall Grand Indonesia, Centong Daily, Koperasi Kumindag, Hippindo |
+| id_kanal | ID unik kanal (KNL-01 s.d. KNL-26) — kunci sambung ke tab Kanal |
+| kanal_pemesanan | Kanal utama slice ini (satu kanal dari daftar kanal mitra itu) |
 | pesanan | Jumlah pesanan bulan itu |
 | transaksi | Jumlah transaksi (pesanan yang terbayar) bulan itu |
 | omzet | Omzet Rupiah bulan itu |
 | klik | Jumlah klik link bulan itu |
+| jumlah_inquiry | Jumlah inquiry bulan itu (corong: inquiry ≥ pesanan; angka CONTOH deterministik) |
 
 ### UMKM — ${umkm.length} baris (1 baris = 1 UMKM peserta TEI 2026)
-\`nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk\`
+\`id_umkm, kode_peserta, grade, nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk\`
 (\`transaksi\` di sini = total Jul–Nov 2026, harus sama
 dengan jumlah baris UMKM itu di tab Transaksi. Kolom \`pesanan\` dan
 \`omzet\` DIHAPUS 2026-11-24 atas perintah user (redundan — semua angka
 pesanan/omzet dashboard dihitung dari tab Transaksi, bukan dari master).
-\`produk_aktif\` berisi angka ACAK DETERMINISTIK (8–17 produk, aktif
-85–100%) — bukan data TEI, atas perintah user 2026-11-24. Kolom
-\`repeat_transaksi\` berisi angka ACAK DETERMINISTIK (total 346 = 28,6% —
-aturan repeat: transaksi yang isian repeat-nya > 1x dihitung repeat).
+\`kode_peserta\` = kode bisnis format mockup (JP-xxxxxxxx, CONTOH);
+\`grade\` = tertil omzet (A/B/C). \`produk_aktif\` berisi angka ACAK
+DETERMINISTIK (8–17 produk, aktif 85–100%) — bukan data TEI, atas
+perintah user 2026-11-24. Kolom \`repeat_transaksi\` berisi angka ACAK
+DETERMINISTIK (total 346 = 28,6% — aturan repeat: transaksi yang isian
+repeat-nya > 1x dihitung repeat).
 Tidak ada kolom mitra di tab ini — mitra utama tiap UMKM diturunkan
 dari transaksi.)
 
+### Mitra — ${MITRA_MASTER.length} baris (master mitra)
+\`id_mitra, nama_mitra, jenis, pic, kontak, email, kategori_produk, wilayah, kanal, status, dokumen, catatan\`
+Jenis + kanal dari penilaian model bisnis (CONTOH); PIC/kontak/email/
+dokumen/catatan kosong karena datanya tidak ada — bisa diisi user di Sheet.
+
+### Kanal — ${KANAL.length} baris (26 kanal referensi dari mockup)
+\`id_kanal, nama_kanal, kategori\`
+
+### Katalog — ${katalog.length} baris (1 baris = 1 produk; jumlah per UMKM = jumlah_produk)
+\`id_produk, id_umkm, nama_umkm, nama_produk, kategori, harga, stok, satuan, status_verifikasi\`
+Nama produk diturunkan dari penjelasan produk TEI (+ varian kemasan/
+ukuran bila kurang); harga/stok angka CONTOH deterministik. Status:
+Tayang = produk aktif (${FINAL_KATALOG_TAYANG}), sisanya Menunggu /
+Tidak Disetujui.
+
+### Penugasan — ${penugasan.length} baris (1 baris = 1 UMKM × mitra utamanya)
+\`id_penugasan, id_umkm, nama_umkm, id_mitra, nama_mitra, id_kanal, kanal, periode, status\`
+Kanal = kanal utama (pertama) mitra itu; periode 01 Okt–31 Des 2026.
+
 ### Target — ${umkm.length} baris (1 baris = 1 UMKM; target individual per UMKM)
-\`nama_umkm, target_omzet, target_transaksi, target_produk_aktif, target_konversi, target_repeat\`
+\`id_umkm, nama_umkm, target_omzet, target_transaksi, target_produk_aktif, target_konversi, target_repeat, target_inquiry, target_kanal_aktif\`
 Angka CONTOH deterministik (bukan data TEI): target omzet & transaksi =
 realisasi OKT–NOV × 1,15–1,25; target produk aktif = jumlah_produk (target 100%
-aktif); target konversi = 10–15%; target repeat = transaksi Okt–Nov × 0,30–0,40.
+aktif); target konversi = 10–15%; target repeat = transaksi Okt–Nov × 0,30–0,40;
+target inquiry = inquiry Okt–Nov × 1,15–1,25; target kanal aktif = 2–3.
 Semua target > 0 (syarat rumus skor). **User bisa mengubah angka ini
 langsung di Sheet** — dashboard menghitung Skor Indikator =
 min(100, Realisasi/Target × 100) dari tab ini, per UMKM maupun agregat,
-dengan realisasi pada jendela evaluasi Okt–Nov yang tetap.
+dengan realisasi pada jendela evaluasi Okt–Nov yang tetap. Skor Kinerja
+terbobot = Katalog 20% + Kanal Aktif 15% + Inquiry 15% + Transaksi 20% +
+Omzet 20% + Repeat 10% (status: ≥85 Sangat Baik, ≥70 Baik, ≥55 Cukup,
+di bawah itu Kurang).
 
 ### Klik_Link — ${klikRows.length} baris (agregat klik per bulan × mitra)
-\`bulan, mitra_pemasaran, klik\` — dipakai sebagai cek silang; sumber utama
+\`bulan, id_mitra, mitra_pemasaran, klik\` — dipakai sebagai cek silang; sumber utama
 klik tetap kolom \`klik\` di tab Transaksi. (Tidak merujuk nama UMKM.)
 
-### Ringkasan (opsional, 2 kolom: \`metrik, nilai\`)
+### Ringkasan (2 kolom: \`metrik, nilai\`)
 \`omzet, ${PREVIOUS.omzet}\` · \`transaksi, ${PREVIOUS.transaksi}\` ·
 \`pesanan, ${PREVIOUS.pesanan}\` · \`klik, ${PREVIOUS.klik}\`
-= total periode sebelumnya, untuk badge delta KPI (+31% omzet dst).
-Tanpa tab ini, dashboard memakai angka di atas sebagai default.
+= total periode sebelumnya (5 bulan), untuk badge delta KPI (+31% omzet dst).
+BUKAN total Sep: delta membandingkan jendela 5 bulan dengan 5 bulan
+sebelumnya, jadi baseline-nya harus seperiode. Angka CONTOH dari
+screenshot awal (sama dengan fallback yang selama ini dipakai sample.ts).
 
 ## Hasil verifikasi generator (dihitung ulang dari CSV yang ditulis)
 
@@ -685,10 +1046,18 @@ Tanpa tab ini, dashboard memakai angka di atas sebagai default.
 | Total produk (acak deterministik) | ${fmt(FINAL_PRODUK)} | ${fmt(FINAL_PRODUK)} | ✅ |
 | Produk aktif (acak deterministik) | ${fmt(FINAL_PRODUK_AKTIF)} (${(FINAL_PRODUK_AKTIF / FINAL_PRODUK * 100).toFixed(1).replace('.', ',')}%) | ${fmt(FINAL_PRODUK_AKTIF)} | ✅ |
 | Repeat order (acak deterministik) | ${fmt(FINAL_REPEAT)} (${(FINAL_REPEAT / FINAL_TRANSAKSI * 100).toFixed(1).replace('.', ',')}%) | 346 | ✅ |
+| Total inquiry (CONTOH deterministik) | ${fmt(FINAL_INQUIRY)} | ${fmt(FINAL_INQUIRY)} | ✅ |
+| Inquiry Okt–Nov 2026 | ${fmt(FINAL_INQUIRY_OKT_NOV)} | ${fmt(FINAL_INQUIRY_OKT_NOV)} | ✅ |
+| Rata-rata kanal aktif per UMKM (Okt–Nov) | ${FINAL_KANAL_AKTIF_MEAN.toFixed(2).replace('.', ',')} kanal | ${FINAL_KANAL_AKTIF_MEAN.toFixed(2).replace('.', ',')} kanal | ✅ |
+| Katalog: produk | ${fmt(katalog.length)} | ${fmt(FINAL_PRODUK)} | ✅ |
+| Katalog: Tayang | ${fmt(FINAL_KATALOG_TAYANG)} | ${fmt(FINAL_PRODUK_AKTIF)} | ✅ |
+| Penugasan | ${fmt(penugasan.length)} | 42 | ✅ |
 | Σ target omzet | Rp ${fmt(FINAL_T_OMZET)} | Rp ${fmt(FINAL_T_OMZET)} | ✅ |
 | Σ target transaksi | ${fmt(FINAL_T_TRANSAKSI)} | ${fmt(FINAL_T_TRANSAKSI)} | ✅ |
 | Σ target produk aktif | ${fmt(FINAL_T_PRODUK_AKTIF)} | ${fmt(FINAL_T_PRODUK_AKTIF)} | ✅ |
 | Σ target repeat | ${fmt(FINAL_T_REPEAT)} | ${fmt(FINAL_T_REPEAT)} | ✅ |
+| Σ target inquiry | ${fmt(FINAL_T_INQUIRY)} | ${fmt(FINAL_T_INQUIRY)} | ✅ |
+| Σ target kanal aktif | ${fmt(FINAL_T_KANAL_AKTIF)} | ${fmt(FINAL_T_KANAL_AKTIF)} | ✅ |
 | Rata-rata target konversi | ${FINAL_T_KONVERSI_AVG.toFixed(1).replace('.', ',')}% | ${FINAL_T_KONVERSI_AVG.toFixed(1).replace('.', ',')}% | ✅ |
 | Omzet Jul 2026 | Rp ${fmt(MONTHLY_OMZET[0])} | Rp ${fmt(MONTHLY_OMZET[0])} | ✅ |
 | Omzet Agu 2026 | Rp ${fmt(MONTHLY_OMZET[1])} | Rp ${fmt(MONTHLY_OMZET[1])} | ✅ |
@@ -710,7 +1079,9 @@ writeFileSync(join(OUT, 'README.md'), readme)
 
 console.log('VERIFIKASI OK — semua total cocok:')
 checks.forEach((c) => console.log(`  ${c.ok ? '✓' : '✗'} ${c.nama}: ${fmt(c.aktual)}`))
-console.log(`\nDitulis: sheets-template/Transaksi.csv (${transactions.length} baris), UMKM.csv (${umkm.length} baris), Klik_Link.csv (${klikRows.length} baris), Target.csv (${targetRows.length} baris), src/data/sample.ts`)
+console.log(`\nDitulis: sheets-template/Transaksi.csv (${transactions.length} baris), UMKM.csv (${umkm.length} baris), Mitra.csv (${MITRA_MASTER.length} baris), Kanal.csv (${KANAL.length} baris), Katalog.csv (${katalog.length} baris), Penugasan.csv (${penugasan.length} baris), Klik_Link.csv (${klikRows.length} baris), Target.csv (${targetRows.length} baris), Ringkasan.csv (4 baris), src/data/sample.ts`)
+console.log(`Inquiry total: ${fmt(FINAL_INQUIRY)} (Okt–Nov: ${fmt(FINAL_INQUIRY_OKT_NOV)}) · Kanal aktif rata-rata/UMKM (Okt–Nov): ${FINAL_KANAL_AKTIF_MEAN.toFixed(2)} · Katalog: ${katalog.length} produk, ${FINAL_KATALOG_TAYANG} tayang`)
+console.log(`Σ target — inquiry ${fmt(FINAL_T_INQUIRY)} · kanal aktif ${fmt(FINAL_T_KANAL_AKTIF)}`)
 console.log(`Repeat total: ${FINAL_REPEAT} (${(FINAL_REPEAT / FINAL_TRANSAKSI * 100).toFixed(1)}% dari ${FINAL_TRANSAKSI} transaksi)`)
 console.log(`Σ target — omzet Rp ${fmt(FINAL_T_OMZET)} · transaksi ${fmt(FINAL_T_TRANSAKSI)} · produk aktif ${fmt(FINAL_T_PRODUK_AKTIF)} · repeat ${fmt(FINAL_T_REPEAT)} · konversi rata-rata ${FINAL_T_KONVERSI_AVG.toFixed(1)}%`)
 console.log(`Top 5 baru: ${TOP5_SORTED.map((u) => `${u.nama} (Rp ${fmt(u.omzet)})`).join(', ')}`)

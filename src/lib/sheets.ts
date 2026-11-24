@@ -1,9 +1,16 @@
 import { sampleData } from '../data/sample'
-import type { DashboardData, PreviousTotals, Transaction, UmkmMaster, UmkmTarget } from './types'
+import type {
+  DashboardData, KanalRef, MitraMaster, Penugasan, PreviousTotals, ProdukKatalog,
+  Transaction, UmkmMaster, UmkmTarget,
+} from './types'
 
 export const SHEET_TABS = {
   transaksi: 'Transaksi',
   umkm: 'UMKM',
+  mitra: 'Mitra',
+  kanal: 'Kanal',
+  katalog: 'Katalog',
+  penugasan: 'Penugasan',
   klikLink: 'Klik_Link',
   ringkasan: 'Ringkasan',
   target: 'Target',
@@ -98,9 +105,11 @@ function rowsToObjects(rows: string[][]): Record<string, string>[] {
  * Muat data dari Google Sheet via endpoint gviz CSV (tanpa API key).
  * Syarat: Sheet dibagikan "Siapa saja yang memiliki link dapat melihat"
  * dan punya tab Transaksi + UMKM (lihat sheets-template/README.md).
- * Tab Klik_Link dipakai sebagai cek silang; tab Ringkasan (opsional)
- * berisi total periode sebelumnya untuk delta KPI; tab Target (opsional)
- * berisi target individual per UMKM untuk Skor Indikator.
+ * Tab Klik_Link dipakai sebagai cek silang; tab Ringkasan berisi total
+ * periode sebelumnya untuk delta KPI; tab Target berisi target individual
+ * per UMKM untuk Skor Indikator; tab Mitra/Kanal/Katalog/Penugasan
+ * adalah master referensi struktur relasional (ID unik) — bila tidak
+ * ada, dashboard tetap jalan dari Transaksi + UMKM.
  * Lempar Error bila Sheet tidak terbaca — pemanggil menampilkan pesan
  * dan tetap memakai data contoh.
  */
@@ -117,14 +126,19 @@ export async function loadFromGoogleSheet(sheetId: string): Promise<DashboardDat
     .map((r) => ({
       tanggal: r.tanggal || `${normalizeMonth(r.bulan)}-15`,
       bulan: normalizeMonth(r.bulan),
+      idUmkm: r.id_umkm || '',
       namaUmkm: r.nama_umkm,
       kategori: r.kategori || 'Lainnya',
       wilayah: r.wilayah || '—',
+      idMitra: r.id_mitra || '',
       mitra: r.mitra_pemasaran || '—',
+      idKanal: r.id_kanal || '',
+      kanal: r.kanal_pemesanan || '—',
       pesanan: num(r.pesanan),
       transaksi: num(r.transaksi),
       omzet: num(r.omzet),
       klik: num(r.klik),
+      inquiry: num(r.jumlah_inquiry),
     }))
   if (transactions.length === 0) throw new Error('Tab "Transaksi" kosong atau format kolomnya tidak dikenali.')
 
@@ -137,6 +151,9 @@ export async function loadFromGoogleSheet(sheetId: string): Promise<DashboardDat
       //  semua angka pesanan/omzet dihitung dari tab Transaksi.)
       const fromTx = transactions.filter((t) => t.namaUmkm === r.nama_umkm)
       return {
+        idUmkm: r.id_umkm || '',
+        kodePeserta: r.kode_peserta || '—',
+        grade: r.grade || '—',
         namaUmkm: r.nama_umkm,
         kategori: r.kategori || 'Lainnya',
         wilayah: r.wilayah || '—',
@@ -155,6 +172,72 @@ export async function loadFromGoogleSheet(sheetId: string): Promise<DashboardDat
         penjelasanProduk: r.penjelasan_produk || '',
       }
     })
+
+  // Master referensi (opsional, dibaca independen): Mitra, Kanal,
+  // Katalog, Penugasan. Bila tab tidak ada / gagal dibaca, array kosong
+  // — dashboard tetap jalan dari Transaksi + UMKM (nama sebagai label).
+  const loadOptional = async <T>(tab: string, map: (r: Record<string, string>) => T): Promise<T[]> => {
+    try {
+      return rowsToObjects(await fetchTabCsv(id, tab)).filter((r) => Object.values(r).some((v) => v)).map(map)
+    } catch {
+      return []
+    }
+  }
+  const [mitra, kanal, katalog, penugasan] = await Promise.all([
+    loadOptional<MitraMaster>(SHEET_TABS.mitra, (r) => ({
+      idMitra: r.id_mitra || '',
+      namaMitra: r.nama_mitra || '—',
+      jenis: r.jenis || '—',
+      pic: r.pic || '',
+      kontak: r.kontak || '',
+      email: r.email || '',
+      kategoriProduk: r.kategori_produk || '—',
+      wilayah: r.wilayah || '—',
+      kanal: (r.kanal || '').split(';').map((s) => s.trim()).filter(Boolean),
+      status: r.status || '—',
+      dokumen: r.dokumen || '',
+      catatan: r.catatan || '',
+    })),
+    loadOptional<KanalRef>(SHEET_TABS.kanal, (r) => ({
+      idKanal: r.id_kanal || '',
+      namaKanal: r.nama_kanal || '—',
+      kategori: r.kategori || '—',
+    })),
+    loadOptional<ProdukKatalog>(SHEET_TABS.katalog, (r) => ({
+      idProduk: r.id_produk || '',
+      idUmkm: r.id_umkm || '',
+      namaUmkm: r.nama_umkm || '—',
+      namaProduk: r.nama_produk || '—',
+      kategori: r.kategori || 'Lainnya',
+      harga: num(r.harga),
+      stok: num(r.stok),
+      satuan: r.satuan || 'pcs',
+      statusVerifikasi: r.status_verifikasi || '—',
+    })),
+    loadOptional<Penugasan>(SHEET_TABS.penugasan, (r) => ({
+      idPenugasan: r.id_penugasan || '',
+      idUmkm: r.id_umkm || '',
+      namaUmkm: r.nama_umkm || '—',
+      idMitra: r.id_mitra || '',
+      namaMitra: r.nama_mitra || '—',
+      idKanal: r.id_kanal || '',
+      kanal: r.kanal || '—',
+      periode: r.periode || '—',
+      status: r.status || '—',
+    })),
+  ])
+
+  // Backfill ID yang kosong di Transaksi dari master (berdasarkan nama):
+  // Sheet lama / baris yang diedit manual mungkin belum membawa ID —
+  // sambungan tetap jalan lewat nama, bukan putus.
+  const umkmByName = new Map(umkm.map((u) => [u.namaUmkm, u]))
+  const mitraByName = new Map(mitra.map((m) => [m.namaMitra, m]))
+  const kanalByName = new Map(kanal.map((k) => [k.namaKanal, k]))
+  transactions.forEach((t) => {
+    if (!t.idUmkm) t.idUmkm = umkmByName.get(t.namaUmkm)?.idUmkm ?? ''
+    if (!t.idMitra) t.idMitra = mitraByName.get(t.mitra)?.idMitra ?? ''
+    if (!t.idKanal) t.idKanal = kanalByName.get(t.kanal)?.idKanal ?? ''
+  })
 
   // Cek silang Klik_Link (opsional): hanya peringatan bila tidak cocok.
   try {
@@ -197,12 +280,15 @@ export async function loadFromGoogleSheet(sheetId: string): Promise<DashboardDat
     const parsed: UmkmTarget[] = targetRows
       .filter((r) => r.nama_umkm)
       .map((r) => ({
+        idUmkm: r.id_umkm || '',
         namaUmkm: r.nama_umkm,
         targetOmzet: num(r.target_omzet),
         targetTransaksi: num(r.target_transaksi),
         targetProdukAktif: num(r.target_produk_aktif),
         targetKonversi: num(r.target_konversi),
         targetRepeat: num(r.target_repeat),
+        targetInquiry: num(r.target_inquiry),
+        targetKanalAktif: num(r.target_kanal_aktif),
       }))
       .filter((t) => t.targetOmzet > 0 || t.targetTransaksi > 0 || t.targetRepeat > 0)
     if (parsed.length > 0) {
@@ -214,5 +300,5 @@ export async function loadFromGoogleSheet(sheetId: string): Promise<DashboardDat
     targetsError = err instanceof Error ? err.message : 'Tab "Target" tidak bisa dibaca.'
   }
 
-  return { transactions, umkm, previous, targets, targetsError }
+  return { transactions, umkm, previous, targets, targetsError, mitra, kanal, katalog, penugasan }
 }

@@ -218,6 +218,46 @@ export function skorIndikator(realisasi: number, target: number): number | null 
   return Math.min(100, Math.round((realisasi / target) * 100))
 }
 
+/** Bobot evaluasi (docs/ALUR.md, total 100%): Katalog 20%, Kanal Aktif
+ *  15%, Inquiry 15%, Transaksi 20%, Omzet 20%, Repeat Order 10%. */
+export const BOBOT = {
+  katalog: 0.2,
+  kanal: 0.15,
+  inquiry: 0.15,
+  transaksi: 0.2,
+  omzet: 0.2,
+  repeat: 0.1,
+} as const
+export type SkorComponentId = keyof typeof BOBOT
+
+/** Status Skor Kinerja dari total terbobot (contoh mockup: 88 =
+ *  "Sangat Baik"). */
+export function statusSkor(skor: number | null): string | null {
+  if (skor === null) return null
+  if (skor >= 85) return 'Sangat Baik'
+  if (skor >= 70) return 'Baik'
+  if (skor >= 55) return 'Cukup'
+  return 'Kurang'
+}
+
+export interface SkorKinerja {
+  /** Total terbobot 0–100 (null bila ada komponen yang tidak punya skor). */
+  skor: number | null
+  status: string | null
+}
+
+/** Skor Kinerja terbobot = Σ(bobot × skor komponen). Hanya dihitung bila
+ *  KEENAM komponen punya skor — bila satu saja "—", total ikut "—"
+ *  (jujur, bukan skor parsial yang menyamar jadi total). */
+export function skorTerbobot(scores: Partial<Record<SkorComponentId, number | null>>): SkorKinerja {
+  const entries = (Object.keys(BOBOT) as SkorComponentId[]).map(
+    (k) => [BOBOT[k], scores[k]] as const,
+  )
+  if (entries.some(([, s]) => s === null || s === undefined)) return { skor: null, status: null }
+  const skor = Math.round(entries.reduce((a, [w, s]) => a + w * (s as number), 0))
+  return { skor, status: statusSkor(skor) }
+}
+
 /** Jendela evaluasi TETAP (docs/ALUR.md): target ditetapkan untuk
  *  periode Okt–Nov 2026, jadi skor capaian dihitung dari realisasi
  *  periode ini — TERLEPAS dari filter periode yang dipilih user. */
@@ -295,10 +335,17 @@ export interface UmkmDetail {
   /** Label periode jendela, mis. "Okt – Nov 2026". */
   periodeLabel: string
   mitraRows: UmkmMitraRow[]
+  /** Total inquiry pada jendela evaluasi Okt–Nov yang tetap. */
+  inquiry: number
+  /** Jumlah kanal berbeda pada jendela evaluasi Okt–Nov yang tetap. */
+  kanalAktif: number
+  /** Skor Kinerja terbobot (6 bobot mockup) untuk UMKM ini. */
+  skorKinerja: SkorKinerja
   /** Skor capaian per UMKM vs target individualnya
-   *  (Omzet, Transaksi, Katalog, Repeat) — realisasi Omzet/Transaksi/
-   *  Repeat berjangkar ke jendela evaluasi Okt–Nov yang tetap (bukan
-   *  jendela filter dialog); Katalog memakai total master. */
+   *  (Omzet, Transaksi, Katalog, Repeat, Inquiry, Kanal) — realisasi
+   *  Omzet/Transaksi/Repeat/Inquiry/Kanal berjangkar ke jendela evaluasi
+   *  Okt–Nov yang tetap (bukan jendela filter dialog); Katalog memakai
+   *  total master. */
   skorRows: UmkmSkorRow[]
 }
 
@@ -375,10 +422,12 @@ export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: s
 
   // Skor capaian per UMKM vs target individualnya (tab Target) —
   // berjangkar ke JENDELA EVALUASI Okt–Nov yang tetap (bukan jendela
-  // filter dialog): Omzet/Transaksi memakai realisasi Okt–Nov;
-  // Katalog memakai total master (produkAktif / targetProdukAktif);
-  // Repeat memakai total master, diskalakan ke Okt–Nov dengan pangsa
-  // transaksi (sama seperti repeat agregat di computeDashboard).
+  // filter dialog): Omzet/Transaksi/Inquiry/Kanal memakai realisasi
+  // Okt–Nov; Katalog memakai total master (produkAktif /
+  // targetProdukAktif); Repeat memakai total master, diskalakan ke
+  // Okt–Nov dengan pangsa transaksi (sama seperti repeat agregat di
+  // computeDashboard). Target dicari lewat id_umkm dulu, nama sebagai
+  // cadangan (Sheet lama / baris tanpa ID).
   const fmtInt = (n: number): string => Math.round(n).toLocaleString('id-ID')
   const fmtRp = (n: number): string => `Rp ${fmtInt(n)}`
   const txEval = data.transactions.filter(
@@ -386,7 +435,10 @@ export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: s
   )
   const omzetEval = sum(txEval.map((t) => t.omzet))
   const transaksiEval = sum(txEval.map((t) => t.transaksi))
-  const target = data.targets.find((t) => t.namaUmkm === nama)
+  const inquiryEval = sum(txEval.map((t) => t.inquiry))
+  const kanalAktif = new Set(txEval.map((t) => t.idKanal || t.kanal)).size
+  const target = (master.idUmkm ? data.targets.find((t) => t.idUmkm === master.idUmkm) : undefined)
+    ?? data.targets.find((t) => t.namaUmkm === nama)
   const repeatWindow =
     master.repeatTransaksi !== null && master.transaksi > 0 && transaksiEval > 0
       ? Math.round(master.repeatTransaksi * (transaksiEval / master.transaksi))
@@ -414,7 +466,26 @@ export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: s
       realisasi: repeatWindow !== null ? `${fmtInt(repeatWindow)} transaksi` : '—',
       target: target ? `${fmtInt(target.targetRepeat)} transaksi` : '—',
     },
+    {
+      id: 'inquiry', title: 'Inquiry',
+      skor: target ? skorIndikator(inquiryEval, target.targetInquiry) : null,
+      realisasi: `${fmtInt(inquiryEval)} inquiry`, target: target ? `${fmtInt(target.targetInquiry)} inquiry` : '—',
+    },
+    {
+      id: 'kanal', title: 'Kanal Aktif',
+      skor: target ? skorIndikator(kanalAktif, target.targetKanalAktif) : null,
+      realisasi: `${kanalAktif} kanal`, target: target ? `${fmtInt(target.targetKanalAktif)} kanal` : '—',
+    },
   ]
+  const skorById = new Map(skorRows.map((r) => [r.id, r.skor]))
+  const skorKinerja = skorTerbobot({
+    katalog: skorById.get('katalog') ?? null,
+    kanal: skorById.get('kanal') ?? null,
+    inquiry: skorById.get('inquiry') ?? null,
+    transaksi: skorById.get('transaksi') ?? null,
+    omzet: skorById.get('omzet') ?? null,
+    repeat: skorById.get('repeat') ?? null,
+  })
 
   return {
     rank,
@@ -441,6 +512,9 @@ export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: s
     weekly: weeklyPointsFromTx(tx, filters.startMonth, filters.endMonth),
     periodeLabel: periodeLabel(filters.startMonth, filters.endMonth),
     mitraRows,
+    inquiry: inquiryEval,
+    kanalAktif,
+    skorKinerja,
     skorRows,
   }
 }
@@ -464,6 +538,8 @@ export interface ComputedDashboard {
   /** Label jendela evaluasi untuk seksi skor, mis. "Periode evaluasi
    *  Okt–Nov" — menjelaskan kenapa skor tidak mengikuti filter periode. */
   skorPeriodeLabel: string
+  /** Skor Kinerja terbobot agregat (6 bobot mockup) + status. */
+  skorKinerja: SkorKinerja
   /** Pesan error bila tab Target gagal dibaca (null = Target terbaca);
    *  diteruskan ke seksi Capaian Indikator agar skor tampil "—" dengan
    *  catatan jujur, bukan angka contoh dari sample.ts. */
@@ -589,9 +665,14 @@ export function computeDashboard(data: DashboardData, filters: Filters): Compute
 
   // Target agregat = jumlah target UMKM yang terfilter (konversi memakai
   // rata-rata target_konversi, karena target itu berupa persen).
-  const targetByUmkm = new Map(data.targets.map((t) => [t.namaUmkm, t]))
+  // Target dicari lewat id_umkm dulu, nama sebagai cadangan.
+  const targetByUmkm = new Map<string, UmkmTarget>()
+  data.targets.forEach((t) => {
+    if (t.idUmkm) targetByUmkm.set(t.idUmkm, t)
+    targetByUmkm.set(t.namaUmkm, t)
+  })
   const targetsFiltered: UmkmTarget[] = master
-    .map((u) => targetByUmkm.get(u.namaUmkm))
+    .map((u) => (u.idUmkm ? targetByUmkm.get(u.idUmkm) : undefined) ?? targetByUmkm.get(u.namaUmkm))
     .filter((t): t is UmkmTarget => t !== undefined)
   const hasTargetData = targetsFiltered.length > 0
   const targetProdukAktif = sum(targetsFiltered.map((t) => t.targetProdukAktif))
@@ -599,7 +680,44 @@ export function computeDashboard(data: DashboardData, filters: Filters): Compute
     ? sum(targetsFiltered.map((t) => t.targetKonversi)) / targetsFiltered.length
     : 0
   const targetRepeat = sum(targetsFiltered.map((t) => t.targetRepeat))
+  const targetOmzet = sum(targetsFiltered.map((t) => t.targetOmzet))
+  const targetTransaksi = sum(targetsFiltered.map((t) => t.targetTransaksi))
+  const targetInquiry = sum(targetsFiltered.map((t) => t.targetInquiry))
+  const targetKanalAktifMean = hasTargetData
+    ? sum(targetsFiltered.map((t) => t.targetKanalAktif)) / targetsFiltered.length
+    : 0
   const fmtPct1 = (n: number): string => `${n.toFixed(1).replace('.', ',')}%`
+
+  // Realisasi jendela evaluasi: omzet + inquiry + kanal aktif per UMKM
+  // (rata-rata kanal berbeda per UMKM dalam jendela Okt–Nov).
+  const omzetEval = sum(txEval.map((t) => t.omzet))
+  const inquiryEval = sum(txEval.map((t) => t.inquiry))
+  const kanalPerUmkmEval = new Map<string, Set<string>>()
+  txEval.forEach((t) => {
+    const key = t.idUmkm || t.namaUmkm
+    const s = kanalPerUmkmEval.get(key) ?? new Set<string>()
+    s.add(t.idKanal || t.kanal)
+    kanalPerUmkmEval.set(key, s)
+  })
+  const kanalAktifValues = [...kanalPerUmkmEval.values()].map((s) => s.size)
+  const kanalAktifMean = kanalAktifValues.length > 0
+    ? kanalAktifValues.reduce((a, b) => a + b, 0) / kanalAktifValues.length
+    : 0
+  const fmtMean1 = (n: number): string => n.toFixed(1).replace('.', ',')
+
+  // Skor per komponen (6 bobot mockup) + Skor Kinerja terbobot.
+  const hasEvalRows = txEval.length > 0
+  const skorKatalog = hasProdukData && hasTargetData ? skorIndikator(produkAktif, targetProdukAktif) : null
+  const skorKanal = hasTargetData && hasEvalRows ? skorIndikator(kanalAktifMean, targetKanalAktifMean) : null
+  const skorInquiry = hasTargetData && hasEvalRows ? skorIndikator(inquiryEval, targetInquiry) : null
+  const skorTransaksi = hasTargetData && hasEvalRows ? skorIndikator(transaksiEval, targetTransaksi) : null
+  const skorOmzet = hasTargetData && hasEvalRows ? skorIndikator(omzetEval, targetOmzet) : null
+  const skorRepeat = hasRepeatData && hasTargetData ? skorIndikator(repeatFiltered, targetRepeat) : null
+  const skorKonversi = hasTargetData && klikEval > 0 ? skorIndikator(konversiPct, targetKonversiAvg) : null
+  const skorKinerja = skorTerbobot({
+    katalog: skorKatalog, kanal: skorKanal, inquiry: skorInquiry,
+    transaksi: skorTransaksi, omzet: skorOmzet, repeat: skorRepeat,
+  })
 
   // Pertumbuhan Omzet (docs/ALUR.md): (T2 − T0) / T0 × 100%, dengan
   // T0 = omzet BULANAN bulan sebelum periode (mis. Okt–Nov → T0 = Sep),
@@ -620,19 +738,43 @@ export function computeDashboard(data: DashboardData, filters: Filters): Compute
     {
       id: 'katalog', title: 'Produktivitas Katalog', sub: '(Produk Aktif)',
       display: hasProdukData ? `${fmtInt(produkAktif)} / ${fmtInt(totalProduk)}` : '—', percent: katalogPct, delta: null,
-      skor: hasProdukData && hasTargetData ? skorIndikator(produkAktif, targetProdukAktif) : null,
+      skor: skorKatalog,
       targetLabel: hasTargetData ? `Target ${fmtInt(targetProdukAktif)} produk` : null,
+    },
+    {
+      id: 'kanal', title: 'Kanal Aktif', sub: '(Kanal Pemasaran)',
+      display: hasEvalRows ? `${fmtMean1(kanalAktifMean)} kanal/UMKM` : '—', percent: null, delta: null,
+      skor: skorKanal,
+      targetLabel: hasTargetData ? `Target ${fmtMean1(targetKanalAktifMean)} kanal/UMKM` : null,
+    },
+    {
+      id: 'inquiry', title: 'Inquiry', sub: '(Permintaan Masuk)',
+      display: hasEvalRows ? `${fmtInt(inquiryEval)} inquiry` : '—', percent: null, delta: null,
+      skor: skorInquiry,
+      targetLabel: hasTargetData ? `Target ${fmtInt(targetInquiry)} inquiry` : null,
+    },
+    {
+      id: 'transaksi', title: 'Transaksi', sub: '(Periode Evaluasi)',
+      display: hasEvalRows ? `${fmtInt(transaksiEval)} transaksi` : '—', percent: null, delta: null,
+      skor: skorTransaksi,
+      targetLabel: hasTargetData ? `Target ${fmtInt(targetTransaksi)} transaksi` : null,
+    },
+    {
+      id: 'omzet', title: 'Omzet', sub: '(Periode Evaluasi)',
+      display: hasEvalRows ? fmtRp(omzetEval) : '—', percent: null, delta: null,
+      skor: skorOmzet,
+      targetLabel: hasTargetData ? `Target ${fmtRp(targetOmzet)}` : null,
     },
     {
       id: 'konversi', title: 'Konversi', sub: '(Klik → Transaksi)',
       display: `${fmtInt(transaksiEval)} / ${fmtInt(klikEval)}`, percent: konversiPct, delta: null,
-      skor: hasTargetData && klikEval > 0 ? skorIndikator(konversiPct, targetKonversiAvg) : null,
+      skor: skorKonversi,
       targetLabel: hasTargetData ? `Target ${fmtPct1(targetKonversiAvg)}` : null,
     },
     {
       id: 'repeat', title: 'Repeat Order', sub: '',
       display: hasRepeatData ? `${fmtInt(repeatFiltered)} transaksi` : '—', percent: repeatPct, delta: null,
-      skor: hasRepeatData && hasTargetData ? skorIndikator(repeatFiltered, targetRepeat) : null,
+      skor: skorRepeat,
       targetLabel: hasTargetData ? `Target ${fmtInt(targetRepeat)} transaksi` : null,
     },
     {
@@ -669,6 +811,7 @@ export function computeDashboard(data: DashboardData, filters: Filters): Compute
     indikator,
     topUmkm,
     skorPeriodeLabel: EVAL_LABEL,
+    skorKinerja,
     targetsError: data.targetsError ?? null,
     totals: { umkmAktif, produk: totalProduk, klik, pesanan, transaksi, omzet },
   }

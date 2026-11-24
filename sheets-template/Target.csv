@@ -1,43 +1,43 @@
-nama_umkm,target_omzet,target_transaksi,target_produk_aktif,target_konversi,target_repeat
-Chipsychips,3653319,14,9,14,4
-Machili,1033338,7,14,15,2
-PT Antara Vita Global,3949941,11,16,15,3
-Dapur Bunda by Unie,874492,17,10,14,5
-PT Amood Healthy Foods,1370576,12,13,13,4
-PT Inovasi Mitra Sudjarwo,1189430,9,8,14,3
-Sari Rasso,3086771,14,11,10,4
-Bakerzmix,2863920,14,16,14,4
-PT. Kolaborasi Berkat Bangsa (Skyeats),1170895,7,16,13,2
-Raisya SFnB,2779066,7,12,11,2
-PT. AgroTomboIndonesia,2310225,7,10,14,2
-TJAP NYONYA YO,1191261,16,11,15,5
-Dapur mutiara (cemilan mutiara),1130280,9,13,14,3
-UBEUBE,1382339,14,9,13,3
-CV.Natura International,2199079,8,8,15,3
-Gogofield,3341330,9,13,13,2
-PT. ASIK DAPAT CUAN,1067493,13,14,15,4
-PT Al Mubarokah Herbal Jakarta,2842633,12,12,14,4
-kopi Awal Kisah,1904532,16,15,11,5
-Hitman/Kopi Hitman Hitam Manis,1021778,12,15,12,4
-KOPI BUBUK TANI KOPI,3204319,7,12,15,2
-FOOD STATION,2634767,10,14,14,3
-TEPA SELIRA,3404640,9,17,13,2
-"Nusa Karya Ananta, PT (Batik Harni)",1032058,14,12,11,4
-SHAZA BY ADELINA,1843631,10,8,11,3
-Harumi (PT Harumi Kartini Studio),2367560,16,15,13,5
-Batik Sakera,3069727,13,8,10,4
-KIMMECCA by AURELLIE,958371,7,8,14,2
-Omah Aksesoris Batik,2701693,12,15,15,3
-Pulpio,3318259,8,10,11,3
-VITE,2191465,13,11,14,4
-Jati Alasku,1291671,14,14,11,4
-Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,1033966,8,9,11,2
-Montana Aromatics,2708199,9,15,12,2
-Global Essential Oil,2877065,15,15,14,5
-PT Herba Asa Nusa (Morning Glory),2127263,12,9,15,4
-Introvert Identity,3476567,7,15,10,2
-PT. Meta Biolife Indonesia,2022724,16,10,10,4
-Benita & Co | PT Benita Karya Kreasi,3612292,13,14,13,3
-PT Karina Design Nusantara,2335745,15,15,14,4
-KoneKone,1417235,16,17,13,5
-Rainmaker Craft,1809067,9,17,15,2
+id_umkm,nama_umkm,target_omzet,target_transaksi,target_produk_aktif,target_konversi,target_repeat,target_inquiry,target_kanal_aktif
+UMKM-001,Chipsychips,3653319,14,9,14,4,26,2
+UMKM-002,Machili,1033338,7,14,15,2,14,2
+UMKM-003,PT Antara Vita Global,3949941,11,16,15,3,21,3
+UMKM-004,Dapur Bunda by Unie,874492,17,10,14,5,23,2
+UMKM-005,PT Amood Healthy Foods,1370576,12,13,13,4,20,3
+UMKM-006,PT Inovasi Mitra Sudjarwo,1189430,9,8,14,3,20,3
+UMKM-007,Sari Rasso,3086771,14,11,10,4,28,2
+UMKM-008,Bakerzmix,2863920,14,16,14,4,25,2
+UMKM-009,PT. Kolaborasi Berkat Bangsa (Skyeats),1170895,7,16,13,2,14,2
+UMKM-010,Raisya SFnB,2779066,7,12,11,2,16,3
+UMKM-011,PT. AgroTomboIndonesia,2310225,7,10,14,2,12,2
+UMKM-012,TJAP NYONYA YO,1191261,16,11,15,5,24,2
+UMKM-013,Dapur mutiara (cemilan mutiara),1130280,9,13,14,3,15,3
+UMKM-014,UBEUBE,1382339,14,9,13,3,20,3
+UMKM-015,CV.Natura International,2199079,8,8,15,3,16,3
+UMKM-016,Gogofield,3341330,9,13,13,2,27,2
+UMKM-017,PT. ASIK DAPAT CUAN,1067493,13,14,15,4,18,2
+UMKM-018,PT Al Mubarokah Herbal Jakarta,2842633,12,12,14,4,19,2
+UMKM-019,kopi Awal Kisah,1904532,16,15,11,5,30,3
+UMKM-020,Hitman/Kopi Hitman Hitam Manis,1021778,12,15,12,4,22,3
+UMKM-021,KOPI BUBUK TANI KOPI,3204319,7,12,15,2,19,3
+UMKM-022,FOOD STATION,2634767,10,14,14,3,21,2
+UMKM-023,TEPA SELIRA,3404640,9,17,13,2,18,2
+UMKM-024,"Nusa Karya Ananta, PT (Batik Harni)",1032058,14,12,11,4,24,3
+UMKM-025,SHAZA BY ADELINA,1843631,10,8,11,3,19,2
+UMKM-026,Harumi (PT Harumi Kartini Studio),2367560,16,15,13,5,27,3
+UMKM-027,Batik Sakera,3069727,13,8,10,4,23,3
+UMKM-028,KIMMECCA by AURELLIE,958371,7,8,14,2,18,2
+UMKM-029,Omah Aksesoris Batik,2701693,12,15,15,3,24,3
+UMKM-030,Pulpio,3318259,8,10,11,3,13,3
+UMKM-031,VITE,2191465,13,11,14,4,22,2
+UMKM-032,Jati Alasku,1291671,14,14,11,4,27,3
+UMKM-033,Secret Potion / PT. BRIGHTON CHEMINDO SEJAHTERA,1033966,8,9,11,2,17,3
+UMKM-034,Montana Aromatics,2708199,9,15,12,2,17,3
+UMKM-035,Global Essential Oil,2877065,15,15,14,5,26,2
+UMKM-036,PT Herba Asa Nusa (Morning Glory),2127263,12,9,15,4,20,3
+UMKM-037,Introvert Identity,3476567,7,15,10,2,18,3
+UMKM-038,PT. Meta Biolife Indonesia,2022724,16,10,10,4,23,3
+UMKM-039,Benita & Co | PT Benita Karya Kreasi,3612292,13,14,13,3,25,2
+UMKM-040,PT Karina Design Nusantara,2335745,15,15,14,4,25,3
+UMKM-041,KoneKone,1417235,16,17,13,5,26,2
+UMKM-042,Rainmaker Craft,1809067,9,17,15,2,19,2

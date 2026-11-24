@@ -1,31 +1,31 @@
-bulan,mitra_pemasaran,klik
-2026-07,Tokopedia,1093
-2026-07,Shopee,875
-2026-07,Mall Grand Indonesia,670
-2026-07,Centong Daily,204
-2026-07,Koperasi Kumindag,204
-2026-07,Hippindo,204
-2026-08,Tokopedia,938
-2026-08,Shopee,749
-2026-08,Mall Grand Indonesia,572
-2026-08,Centong Daily,173
-2026-08,Koperasi Kumindag,174
-2026-08,Hippindo,174
-2026-09,Tokopedia,830
-2026-09,Shopee,661
-2026-09,Mall Grand Indonesia,506
-2026-09,Centong Daily,155
-2026-09,Koperasi Kumindag,154
-2026-09,Hippindo,154
-2026-10,Tokopedia,737
-2026-10,Shopee,590
-2026-10,Mall Grand Indonesia,450
-2026-10,Centong Daily,138
-2026-10,Koperasi Kumindag,138
-2026-10,Hippindo,137
-2026-11,Tokopedia,666
-2026-11,Shopee,525
-2026-11,Mall Grand Indonesia,402
-2026-11,Centong Daily,122
-2026-11,Koperasi Kumindag,123
-2026-11,Hippindo,124
+bulan,id_mitra,mitra_pemasaran,klik
+2026-07,MTR-001,Tokopedia,1093
+2026-07,MTR-002,Shopee,875
+2026-07,MTR-003,Mall Grand Indonesia,670
+2026-07,MTR-004,Centong Daily,204
+2026-07,MTR-005,Koperasi Kumindag,204
+2026-07,MTR-006,Hippindo,204
+2026-08,MTR-001,Tokopedia,938
+2026-08,MTR-002,Shopee,749
+2026-08,MTR-003,Mall Grand Indonesia,572
+2026-08,MTR-004,Centong Daily,173
+2026-08,MTR-005,Koperasi Kumindag,174
+2026-08,MTR-006,Hippindo,174
+2026-09,MTR-001,Tokopedia,830
+2026-09,MTR-002,Shopee,661
+2026-09,MTR-003,Mall Grand Indonesia,506
+2026-09,MTR-004,Centong Daily,155
+2026-09,MTR-005,Koperasi Kumindag,154
+2026-09,MTR-006,Hippindo,154
+2026-10,MTR-001,Tokopedia,737
+2026-10,MTR-002,Shopee,590
+2026-10,MTR-003,Mall Grand Indonesia,450
+2026-10,MTR-004,Centong Daily,138
+2026-10,MTR-005,Koperasi Kumindag,138
+2026-10,MTR-006,Hippindo,137
+2026-11,MTR-001,Tokopedia,666
+2026-11,MTR-002,Shopee,525
+2026-11,MTR-003,Mall Grand Indonesia,402
+2026-11,MTR-004,Centong Daily,122
+2026-11,MTR-005,Koperasi Kumindag,123
+2026-11,MTR-006,Hippindo,124
