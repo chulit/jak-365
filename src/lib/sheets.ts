@@ -132,9 +132,9 @@ export async function loadFromGoogleSheet(sheetId: string): Promise<DashboardDat
     .filter((r) => r.nama_umkm)
     .map((r) => {
       const transaksi = num(r.transaksi)
-      const pesanan = num(r.pesanan)
-      const omzet = num(r.omzet)
-      // Bila tab UMKM tidak membawa total transaksi/omzet, hitung dari Transaksi.
+      // Bila tab UMKM tidak membawa total transaksi, hitung dari Transaksi.
+      // (Kolom pesanan/omzet dihapus dari master 2026-11-24 — redundan;
+      //  semua angka pesanan/omzet dihitung dari tab Transaksi.)
       const fromTx = transactions.filter((t) => t.namaUmkm === r.nama_umkm)
       return {
         namaUmkm: r.nama_umkm,
@@ -148,8 +148,6 @@ export async function loadFromGoogleSheet(sheetId: string): Promise<DashboardDat
         jumlahProduk: numOrNull(r.jumlah_produk),
         produkAktif: numOrNull(r.produk_aktif),
         transaksi: transaksi || fromTx.reduce((a, t) => a + t.transaksi, 0),
-        pesanan: pesanan || fromTx.reduce((a, t) => a + t.pesanan, 0),
-        omzet: omzet || fromTx.reduce((a, t) => a + t.omzet, 0),
         repeatTransaksi: numOrNull(r.repeat_transaksi),
         namaPemilik: r.nama_pemilik || '—',
         izinUsaha: r.izin_usaha || '—',

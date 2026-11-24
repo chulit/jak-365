@@ -32,8 +32,6 @@ export interface UmkmMaster {
   produkAktif: number | null
   /** Total Jul–Nov 2026 (harus = jumlah baris UMKM itu di Transaksi) */
   transaksi: number
-  pesanan: number
-  omzet: number
   /** null = tidak ada data repeat di master */
   repeatTransaksi: number | null
   /** Nama pemilik usaha (data master TEI) */

@@ -504,11 +504,11 @@ writeFileSync(join(OUT, 'Transaksi.csv'), toCsv(
 // Kolom mitra TIDAK ada di master baru — mitra utama tiap UMKM diturunkan
 // dari transaksi (mitra dengan omzet terbesar).
 writeFileSync(join(OUT, 'UMKM.csv'), toCsv(
-  ['nama_umkm', 'kategori', 'wilayah', 'jumlah_produk', 'produk_aktif', 'transaksi', 'pesanan', 'omzet', 'repeat_transaksi', 'nama_pemilik', 'izin_usaha', 'instagram_website', 'penjelasan_produk'],
+  ['nama_umkm', 'kategori', 'wilayah', 'jumlah_produk', 'produk_aktif', 'transaksi', 'repeat_transaksi', 'nama_pemilik', 'izin_usaha', 'instagram_website', 'penjelasan_produk'],
   umkm.map((u) => ({
     nama_umkm: u.nama, kategori: u.kategori, wilayah: u.wilayah,
     jumlah_produk: u.jumlahProduk, produk_aktif: u.produkAktif, transaksi: u.transaksi,
-    pesanan: u.pesanan, omzet: u.omzet, repeat_transaksi: u.repeatTransaksi,
+    repeat_transaksi: u.repeatTransaksi,
     nama_pemilik: u.namaPemilik, izin_usaha: u.izinUsaha,
     instagram_website: u.instagramWebsite, penjelasan_produk: u.penjelasanProduk,
   })),
@@ -564,7 +564,7 @@ export const sampleData: DashboardData = {
 ${transactions.map((t) => `    ${JSON.stringify(t)},`).join('\n')}
   ],
   umkm: [
-${umkm.map((u) => `    ${JSON.stringify({ namaUmkm: u.nama, kategori: u.kategori, wilayah: u.wilayah, mitra: u.mitra, jumlahProduk: u.jumlahProduk, produkAktif: u.produkAktif, transaksi: u.transaksi, pesanan: u.pesanan, omzet: u.omzet, repeatTransaksi: u.repeatTransaksi, namaPemilik: u.namaPemilik, izinUsaha: u.izinUsaha, instagramWebsite: u.instagramWebsite, penjelasanProduk: u.penjelasanProduk })},`).join('\n')}
+${umkm.map((u) => `    ${JSON.stringify({ namaUmkm: u.nama, kategori: u.kategori, wilayah: u.wilayah, mitra: u.mitra, jumlahProduk: u.jumlahProduk, produkAktif: u.produkAktif, transaksi: u.transaksi, repeatTransaksi: u.repeatTransaksi, namaPemilik: u.namaPemilik, izinUsaha: u.izinUsaha, instagramWebsite: u.instagramWebsite, penjelasanProduk: u.penjelasanProduk })},`).join('\n')}
   ],
   // Target individual per UMKM (angka CONTOH deterministik — lihat
   // sheets-template/Target.csv; user bisa mengubahnya di Google Sheet).
@@ -641,9 +641,11 @@ tiap CSV ke tab yang sesuai (File → Impor). Tambah tab ke-5 opsional
 | klik | Jumlah klik link bulan itu |
 
 ### UMKM — ${umkm.length} baris (1 baris = 1 UMKM peserta TEI 2026)
-\`nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, pesanan, omzet, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk\`
-(\`transaksi\`/\`pesanan\`/\`omzet\` di sini = total Jul–Nov 2026, harus sama
-dengan jumlah baris UMKM itu di tab Transaksi. Kolom \`jumlah_produk\` dan
+\`nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk\`
+(\`transaksi\` di sini = total Jul–Nov 2026, harus sama
+dengan jumlah baris UMKM itu di tab Transaksi. Kolom \`pesanan\` dan
+\`omzet\` DIHAPUS 2026-11-24 atas perintah user (redundan — semua angka
+pesanan/omzet dashboard dihitung dari tab Transaksi, bukan dari master).
 \`produk_aktif\` berisi angka ACAK DETERMINISTIK (8–17 produk, aktif
 85–100%) — bukan data TEI, atas perintah user 2026-11-24. Kolom
 \`repeat_transaksi\` berisi angka ACAK DETERMINISTIK (total 346 = 28,6% —

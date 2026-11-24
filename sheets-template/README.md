@@ -31,9 +31,11 @@ tiap CSV ke tab yang sesuai (File → Impor). Tambah tab ke-5 opsional
 | klik | Jumlah klik link bulan itu |
 
 ### UMKM — 42 baris (1 baris = 1 UMKM peserta TEI 2026)
-`nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, pesanan, omzet, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk`
-(`transaksi`/`pesanan`/`omzet` di sini = total Jul–Nov 2026, harus sama
-dengan jumlah baris UMKM itu di tab Transaksi. Kolom `jumlah_produk` dan
+`nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk`
+(`transaksi` di sini = total Jul–Nov 2026, harus sama
+dengan jumlah baris UMKM itu di tab Transaksi. Kolom `pesanan` dan
+`omzet` DIHAPUS 2026-11-24 atas perintah user (redundan — semua angka
+pesanan/omzet dashboard dihitung dari tab Transaksi, bukan dari master).
 `produk_aktif` berisi angka ACAK DETERMINISTIK (8–17 produk, aktif
 85–100%) — bukan data TEI, atas perintah user 2026-11-24. Kolom
 `repeat_transaksi` berisi angka ACAK DETERMINISTIK (total 346 = 28,6% —
