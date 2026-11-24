@@ -2,8 +2,7 @@
 import { computed } from 'vue'
 import type { EChartsOption } from 'echarts'
 import { PieChart } from 'lucide-vue-next'
-import { VChart } from '@/lib/echarts'
-import { chartPalette, isDark } from '@/lib/theme'
+import { VChart, chartPalette } from '@/lib/echarts'
 import { formatPercent, formatRupiah } from '@/lib/format'
 import type { MitraRow } from '@/lib/compute'
 import Card from './ui/Card.vue'
@@ -29,14 +28,14 @@ const props = defineProps<{
 const colorOf = (nama: string, idx: number): string =>
   MITRA_COLORS[nama] ?? FALLBACK_COLORS[idx % FALLBACK_COLORS.length]
 
-const palette = computed(() => chartPalette(isDark.value))
+const palette = chartPalette
 
 const option = computed<EChartsOption>(() => ({
   tooltip: {
     trigger: 'item',
-    backgroundColor: palette.value.tooltipBg,
+    backgroundColor: palette.tooltipBg,
     borderWidth: 0,
-    textStyle: { color: palette.value.tooltipText, fontSize: 12 },
+    textStyle: { color: palette.tooltipText, fontSize: 12 },
     formatter: (p: unknown) => {
       const item = p as { name?: string; value?: number; percent?: number }
       return `${item.name ?? ''}<br/><b>${formatRupiah(Number(item.value ?? 0))}</b> (${formatPercent(item.percent ?? 0, 1)})`
@@ -50,7 +49,7 @@ const option = computed<EChartsOption>(() => ({
       avoidLabelOverlap: true,
       label: { show: false },
       labelLine: { show: false },
-      itemStyle: { borderColor: palette.value.itemBorder, borderWidth: 2 },
+      itemStyle: { borderColor: palette.itemBorder, borderWidth: 2 },
       emphasis: { scale: true, scaleSize: 4 },
       data: props.rows.map((r, i) => ({
         name: r.nama, value: r.omzet, itemStyle: { color: colorOf(r.nama, i) },

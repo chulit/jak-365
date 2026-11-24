@@ -2,8 +2,7 @@
 import { computed } from 'vue'
 import type { EChartsOption } from 'echarts'
 import { TrendingUp } from 'lucide-vue-next'
-import { VChart } from '@/lib/echarts'
-import { chartPalette, isDark } from '@/lib/theme'
+import { VChart, chartPalette } from '@/lib/echarts'
 import { formatRupiah } from '@/lib/format'
 import type { Granularity, MonthlyPoint, WeeklyPoint } from '@/lib/compute'
 import Card from './ui/Card.vue'
@@ -21,7 +20,7 @@ const props = defineProps<{
 }>()
 const emit = defineEmits<{ (e: 'update:granularity', value: Granularity): void }>()
 
-const palette = computed(() => chartPalette(isDark.value))
+const palette = chartPalette
 const isWeekly = computed(() => props.granularity === 'mingguan')
 
 /** Baris grafik: bulanan = nilai berjalan per bulan; mingguan = omzet per minggu. */
@@ -41,7 +40,7 @@ const option = computed<EChartsOption>(() => {
   const rows = chartRows.value
   const labels = rows.map((r) => r.label)
   const values = rows.map((r) => r.omzet)
-  const c = palette.value
+  const c = palette
   // Bulanan: tandai titik terakhir (= Total Omzet). Mingguan: tandai minggu
   // dengan omzet terbesar, karena tidak ada satu titik yang = total.
   const markIdx = isWeekly.value

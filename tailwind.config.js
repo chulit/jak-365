@@ -1,5 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  // Fitur dark mode dihapus 2026-11-25. 'class' sengaja dipertahankan
+  // (bukan default Tailwind 'media') supaya varian dark: yang tersisa
+  // di markup tidak pernah aktif — tidak ada kode yang lagi menambahkan
+  // class "dark" ke <html>, jadi dashboard selalu terang, apa pun
+  // preferensi sistem perangkat.
   darkMode: ['class'],
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {

@@ -2,8 +2,7 @@
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import type { EChartsOption } from 'echarts'
 import { Banknote, ChevronLeft, ChevronRight, ExternalLink, Globe, ShoppingCart, Store, TrendingUp, User, X } from 'lucide-vue-next'
-import { VChart } from '@/lib/echarts'
-import { chartPalette, isDark } from '@/lib/theme'
+import { VChart, chartPalette } from '@/lib/echarts'
 import { formatNumber, formatPercent, formatRupiah } from '@/lib/format'
 import type { Granularity, UmkmDetail } from '@/lib/compute'
 import Badge from './ui/Badge.vue'
@@ -116,13 +115,13 @@ const chartSubtitle = computed(() =>
     : `Omzet (garis, Rp) dan transaksi (batang) ${props.periodeLabel} — mengikuti filter periode yang aktif.`,
 )
 
-const palette = computed(() => chartPalette(isDark.value))
+const palette = chartPalette
 
 const chartOption = computed<EChartsOption>(() => {
   const labels = chartRows.value.map((r) => r.label)
   const omzet = chartRows.value.map((r) => r.omzet)
   const transaksi = chartRows.value.map((r) => r.transaksi)
-  const c = palette.value
+  const c = palette
   return {
     grid: { left: 8, right: 8, top: 32, bottom: 8, containLabel: true },
     legend: {
@@ -190,7 +189,7 @@ const chartOption = computed<EChartsOption>(() => {
 })
 
 const mitraOption = computed<EChartsOption>(() => {
-  const c = palette.value
+  const c = palette
   const rows = props.detail?.mitraRows ?? []
   return {
   grid: { left: 8, right: 48, top: 8, bottom: 8, containLabel: true },
