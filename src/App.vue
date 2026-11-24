@@ -19,10 +19,11 @@ import KpiCard from '@/components/KpiCard.vue'
 import MitraDonut from '@/components/MitraDonut.vue'
 import OmzetChart from '@/components/OmzetChart.vue'
 import IndikatorUMKM from '@/components/IndikatorUMKM.vue'
-import SheetConnector, { type SheetStatus } from '@/components/SheetConnector.vue'
 import TopUmkmTable from '@/components/TopUmkmTable.vue'
 import UmkmDetailDialog from '@/components/UmkmDetailDialog.vue'
 import AllUmkmDialog from '@/components/AllUmkmDialog.vue'
+
+type SheetStatus = 'contoh' | 'memuat' | 'terhubung' | 'error'
 
 const STORAGE_KEY = 'monev-sheet-id'
 
@@ -100,16 +101,6 @@ async function loadSheet(): Promise<void> {
   }
 }
 
-function resetToSample(): void {
-  data.value = sampleData
-  connectedId.value = null
-  sheetId.value = ''
-  localStorage.removeItem(STORAGE_KEY)
-  sheetStatus.value = 'contoh'
-  sheetError.value = null
-  loadedAt.value = null
-}
-
 onMounted(() => {
   if (sheetId.value.trim()) void loadSheet()
 })
@@ -121,14 +112,32 @@ onMounted(() => {
       <AppHeader />
 
       <div class="mt-5 space-y-4">
-        <SheetConnector
-          v-model="sheetId"
-          :status="sheetStatus"
-          :error="sheetError"
-          :connected-id="connectedId"
-          @load="loadSheet"
-          @reset="resetToSample"
-        />
+        <!-- Status pemuatan Sheet: hanya tampil saat memuat / gagal.
+             Kartu "Sumber Data" lama dihapus — tidak ada di mockup, dan
+             ID Sheet kini dibekukan lewat VITE_SHEET_ID saat build. -->
+        <div
+          v-if="sheetStatus === 'error'"
+          class="flex flex-col gap-2 rounded-2xl border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 p-4 shadow-card sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p class="text-sm leading-relaxed text-red-700 dark:text-red-300">
+            <span class="font-semibold">Gagal memuat Google Sheet.</span>
+            {{ sheetError ?? 'Periksa koneksi lalu coba lagi.' }}
+            Angka di bawah ini adalah data contoh, bukan data asli.
+          </p>
+          <button
+            type="button"
+            class="shrink-0 rounded-lg bg-red-600 px-3 py-2 text-sm font-medium text-white hover:bg-red-700"
+            @click="loadSheet"
+          >
+            Coba lagi
+          </button>
+        </div>
+        <div
+          v-else-if="sheetStatus === 'memuat'"
+          class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 text-sm text-slate-500 dark:text-slate-400 shadow-card"
+        >
+          Memuat data terbaru dari Google Sheet…
+        </div>
 
         <!-- Filter -->
         <section class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 shadow-card sm:p-5">
@@ -138,15 +147,6 @@ onMounted(() => {
             :kategori-options="options.kategori"
             :wilayah-options="options.wilayah"
           />
-          <p class="mt-3 text-xs leading-relaxed text-slate-400">
-            Angka dihitung sejak Jul 2026 sampai akhir periode terpilih — mengikuti
-            cara hitung pada dashboard referensi. Grafik Tren Omzet hanya menampilkan
-            bulan-bulan dalam periode terpilih; toggle Bulanan / Mingguan di atas
-            grafik mengubah granularitas tren (Mingguan menampilkan omzet per
-            minggu). Panel detail UMKM menampilkan angka dalam periode terpilih
-            saja dan mengikuti toggle Bulanan / Mingguan yang sama. Mengubah filter
-            akan menghitung ulang seluruh kartu, grafik, dan tabel di bawah ini.
-          </p>
         </section>
 
         <!-- KPI -->
