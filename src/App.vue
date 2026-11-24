@@ -14,6 +14,7 @@ import { computeDashboard, computeUmkmDetail, filterOptions, type Filters, type 
 import { loadFromGoogleSheet, sheetIdFromEnv } from '@/lib/sheets'
 import type { DashboardData } from '@/lib/types'
 import AppHeader from '@/components/AppHeader.vue'
+import DashboardSkeleton from '@/components/DashboardSkeleton.vue'
 import FilterBar from '@/components/FilterBar.vue'
 import KpiCard from '@/components/KpiCard.vue'
 import MitraDonut from '@/components/MitraDonut.vue'
@@ -112,9 +113,11 @@ onMounted(() => {
       <AppHeader />
 
       <div class="mt-5 space-y-4">
-        <!-- Status pemuatan Sheet: hanya tampil saat memuat / gagal.
+        <!-- Status pemuatan Sheet: hanya tampil saat gagal.
              Kartu "Sumber Data" lama dihapus — tidak ada di mockup, dan
-             ID Sheet kini dibekukan lewat VITE_SHEET_ID saat build. -->
+             ID Sheet kini dibekukan lewat VITE_SHEET_ID saat build.
+             Saat memuat, tampil skeleton layar penuh (DashboardSkeleton),
+             bukan label teks. -->
         <div
           v-if="sheetStatus === 'error'"
           class="flex flex-col gap-2 rounded-2xl border border-red-200 dark:border-red-500/30 bg-red-50 dark:bg-red-500/10 p-4 shadow-card sm:flex-row sm:items-center sm:justify-between"
@@ -132,13 +135,9 @@ onMounted(() => {
             Coba lagi
           </button>
         </div>
-        <div
-          v-else-if="sheetStatus === 'memuat'"
-          class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 text-sm text-slate-500 dark:text-slate-400 shadow-card"
-        >
-          Memuat data terbaru dari Google Sheet…
-        </div>
 
+        <DashboardSkeleton v-if="sheetStatus === 'memuat'" />
+        <template v-else>
         <!-- Filter -->
         <section class="rounded-2xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 shadow-card sm:p-5">
           <FilterBar
@@ -222,6 +221,7 @@ onMounted(() => {
           </p>
           <p>Monitoring &amp; Evaluasi UMKM</p>
         </footer>
+        </template>
       </div>
     </div>
   </div>
