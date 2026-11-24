@@ -20,11 +20,11 @@ defineProps<{
     <div class="flex items-start justify-between gap-2">
       <div class="min-w-0">
         <p class="truncate text-xs font-medium text-slate-500 dark:text-slate-400">{{ title }}</p>
-        <p class="mt-1.5 truncate text-lg font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-xl" :title="value">
+        <p class="mt-1.5 truncate text-base font-bold tracking-tight text-slate-900 dark:text-slate-100 sm:text-lg" :title="value">
           {{ value }}
         </p>
       </div>
-      <span :class="`flex size-9 shrink-0 items-center justify-center rounded-lg ${iconClass}`">
+      <span :class="`hidden size-9 shrink-0 items-center justify-center rounded-lg sm:flex ${iconClass}`">
         <component :is="icon" class="size-4" />
       </span>
     </div>

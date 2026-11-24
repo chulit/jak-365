@@ -164,7 +164,7 @@ onMounted(() => {
 
         <!-- Grafik -->
         <section class="grid gap-4 lg:grid-cols-5">
-          <div class="lg:col-span-3">
+          <div class="min-w-0 lg:col-span-3">
             <OmzetChart
               :points="dashboard.trendPoints"
               :weekly-points="dashboard.weeklyPoints"
@@ -174,17 +174,17 @@ onMounted(() => {
               @update:granularity="granularity = $event"
             />
           </div>
-          <div class="lg:col-span-2">
+          <div class="min-w-0 lg:col-span-2">
             <MitraDonut :rows="dashboard.mitra" :total="dashboard.totalOmzet" />
           </div>
         </section>
 
         <!-- Indikator + Top UMKM -->
         <section class="grid gap-4 lg:grid-cols-5">
-          <div class="lg:col-span-2">
+          <div class="min-w-0 lg:col-span-2">
             <IndikatorUMKM :items="dashboard.indikator" :targets-error="dashboard.targetsError" :skor-periode-label="dashboard.skorPeriodeLabel" />
           </div>
-          <div class="lg:col-span-3">
+          <div class="min-w-0 lg:col-span-3">
             <TopUmkmTable :rows="dashboard.topUmkm" @select="selectUmkm" @show-all="showAllUmkm = true" />
           </div>
         </section>
@@ -215,7 +215,7 @@ onMounted(() => {
         <footer class="flex flex-col gap-1 pb-2 pt-1 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
           <p>
             Sumber data:
-            <span class="font-medium text-slate-500 dark:text-slate-400">
+            <span class="break-all font-medium text-slate-500 dark:text-slate-400">
               {{ connectedId ? `Google Sheet (${connectedId})` : 'Data contoh — src/data/sample.ts' }}
             </span>
             <span v-if="loadedAt"> · dimuat {{ loadedAt.toLocaleString('id-ID') }} WIB</span>
