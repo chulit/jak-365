@@ -27,7 +27,7 @@ Tiga hal penting dari gambar di atas:
    Build mengubah kode Vue + TypeScript menjadi file HTML/CSS/JS statis
    di folder `dist/`. Folder `dist/` inilah yang diunggah ke Pages.
 3. **Data tidak ikut di-deploy.** Angka dashboard dibaca langsung dari
-   Google Sheet setiap kali halaman dibuka (lihat `guide/PANDUAN.md`).
+   Google Sheet setiap kali halaman dibuka (lihat `docs/PANDUAN.md`).
    Mengubah isi Sheet tidak butuh deploy sama sekali.
 
 File yang mengatur seluruh proses ini:
