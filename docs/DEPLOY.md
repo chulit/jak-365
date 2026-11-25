@@ -7,6 +7,17 @@ Semua perintah di sini sudah dicoba pada project ini.
 **Alamat live:** https://chulit.github.io/jak-365/
 **Repo:** `git@github.com:chulit/jak-365.git` (branch `main`)
 
+## Daftar Isi
+
+- [1. Gambaran besar: bagaimana dashboard ini tayang](#1-gambaran-besar-bagaimana-dashboard-ini-tayang)
+- [2. Yang perlu disiapkan](#2-yang-perlu-disiapkan)
+- [3. Menjalankan di komputer sendiri (pertama kali)](#3-menjalankan-di-komputer-sendiri-pertama-kali)
+- [4. Cara deploy (alur normal)](#4-cara-deploy-alur-normal)
+- [5. Yang TIDAK perlu deploy](#5-yang-tidak-perlu-deploy)
+- [6. Mengganti ID Google Sheet](#6-mengganti-id-google-sheet)
+- [7. File-file penting](#7-file-file-penting)
+- [8. Masalah yang sering terjadi](#8-masalah-yang-sering-terjadi)
+
 ---
 
 ## 1. Gambaran besar: bagaimana dashboard ini tayang

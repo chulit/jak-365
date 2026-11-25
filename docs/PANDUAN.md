@@ -8,6 +8,18 @@ Dokumen ini menjelaskan cara membaca setiap angka di dashboard dan dari
 mana angka itu berasal. Semua angka di sini merujuk pada data yang sedang
 live saat dokumen ini ditulis (2026-11-25).
 
+## Daftar Isi
+
+- [1. Dari mana datanya](#1-dari-mana-datanya)
+- [2. Filter (baris paling atas)](#2-filter-baris-paling-atas)
+- [3. Kartu KPI (6 kartu di bawah filter)](#3-kartu-kpi-6-kartu-di-bawah-filter)
+- [4. Tren Omzet (grafik garis + batang)](#4-tren-omzet-grafik-garis--batang)
+- [5. Pangsa Mitra (donut)](#5-pangsa-mitra-donut)
+- [6. Capaian Indikator UMKM + Skor Kinerja](#6-capaian-indikator-umkm--skor-kinerja)
+- [7. Top 5 UMKM (tabel kanan bawah)](#7-top-5-umkm-tabel-kanan-bawah)
+- [8. Hal yang perlu dipahami dengan jujur](#8-hal-yang-perlu-dipahami-dengan-jujur)
+- [9. Cara memperbarui data](#9-cara-memperbarui-data)
+
 ---
 
 ## 1. Dari mana datanya
