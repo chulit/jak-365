@@ -19,7 +19,7 @@ live saat dokumen ini ditulis (2026-11-25).
 - [7. Top 5 UMKM (tabel kanan bawah)](#7-top-5-umkm-tabel-kanan-bawah)
 - [8. Hal yang perlu dipahami dengan jujur](#8-hal-yang-perlu-dipahami-dengan-jujur)
 - [9. Cara memperbarui data](#9-cara-memperbarui-data)
-- [10. Cara mengetes rumus](#10-cara-mengetes-rumus)
+- [10. Cara mengetes rumus (dari dashboard saja)](#10-cara-mengetes-rumus-dari-dashboard-saja)
 
 ---
 
@@ -209,9 +209,9 @@ baris membuka **dialog detail** UMKM itu:
    `jumlah_produk` / `produk_aktif` (525/497), `repeat_transaksi`
    (346), `jumlah_inquiry` (2.136), dan semua target adalah **angka
    contoh deterministik** — dibuat dengan rumus yang bisa diulang dari
-   generator (`scripts/generate-sheet-data.mjs`), bukan dicatat dari
-   lapangan. Yang murni dari pencatatan adalah omzet, transaksi,
-   pesanan, dan klik per UMKM per bulan.
+   generator data, bukan dicatat dari lapangan. Yang murni dari
+   pencatatan adalah omzet, transaksi, pesanan, dan klik per UMKM
+   per bulan.
 2. **Nama produk di Katalog diturunkan dari penjelasan TEI**
    masing-masing UMKM. Kalau deskripsinya tidak menyebut produk
    spesifik, namanya generik dari kategori — bisa dikoreksi langsung
@@ -229,65 +229,43 @@ baris membuka **dialog detail** UMKM itu:
 
 - **Ubah angka:** edit langsung tab yang bersangkutan di Google Sheet,
   lalu muat ulang halaman dashboard. Tidak perlu deploy ulang.
-- **Regenerasi dari generator:** ubah `scripts/generate-sheet-data.mjs`,
-  jalankan `node scripts/generate-sheet-data.mjs`, lalu
-  `node scripts/write-sheet.mjs` untuk menulis ulang ke-9 tab dari
-  `sheets-template/*.csv`. Skrip ini memverifikasi total tetap
-  (333.023.341 / 1.211 / 1.424 / 12.642) sebelum menulis.
+- **Regenerasi data dari generator:** dikerjakan dari komputer
+  pengembang — caranya ada di `sheets-template/README.md`.
 - **Alur lengkap 7 langkah** (Master Mitra → Evaluasi) terdokumentasi
   di `docs/ALUR.md`.
 
-## 10. Cara mengetes rumus
+## 10. Cara mengetes rumus (dari dashboard saja)
 
-Ada tiga cara, dari yang paling otomatis sampai yang paling manual.
-Ketiganya saling melengkapi — tidak ada satu pun yang sendirian
-membuktikan semuanya benar.
+Dashboard ini sengaja punya angka yang saling mengunci — satu angka
+bisa dicek dari angka lain di layar yang sama, tanpa membuka Sheet
+atau menjalankan apa pun.
 
-### Cara 1 — Skrip otomatis (paling lengkap)
+1. **KPI vs grafik Tren.** Total Omzet 333.023.341 harus sama persis
+   dengan titik terakhir grafik (Nov). Begitu juga Transaksi 1.211,
+   Pesanan 1.424, Klik 12.642. Kalau ada yang beda, ada yang salah
+   hitung.
+2. **Donut mitra.** Jumlahkan keenam mitra — harus 333.023.341.
+   Persennya juga bisa dicek: Tokopedia 112.258.500 / 333.023.341
+   = 33,7%.
+3. **Skor Kinerja 88.** Hitung dari keenam skor di bawahnya:
+   95×20% + 100×15% + 83×15% + 83×20% + 83×20% + 82×10% = 88.
+   Kalau satu skor berubah, totalnya harus ikut berubah.
+4. **Konversi.** 1.211 / 12.642 = 9,6% (angka ini ada di indikator),
+   skornya 74 = 9,6 / 13,0 × 100.
+5. **Dialog UMKM.** Buka Chipsychips — tiap baris skor menampilkan
+   realisasi dan targetnya, jadi tinggal hitung pakai kalkulator:
+   realisasi / target × 100, maksimal 100. Skor Kinerja di dialog
+   adalah rata-rata terbobot keenam baris tersebut.
+6. **Mode Mingguan.** Jumlahkan 10 batang minggu — harus 76.194.341,
+   sama dengan "Omzet (Periode Evaluasi)" di bagian indikator.
+7. **Filter.** Ganti periode ke Agu–Sep, Omzet harus jadi
+   256.829.000. Pilih Mitra Tokopedia, harus 86.471.918. Kalau
+   angkanya tidak berubah, filternya yang mati.
 
-```bash
-node scripts/verify-formulas.mjs
-```
-
-Skrip ini menguji rumus terhadap **Sheet live** dalam 3 lapis:
-
-1. Mengambil ke-9 tab Sheet live (sumber yang sama dengan dashboard).
-2. Menjalankan rumus **asli aplikasi** (`src/lib/compute.ts`).
-3. Menghitung ulang angka yang sama dengan aritmetika polos langsung
-   dari baris CSV, lalu membandingkan ketiganya dengan nilai harapan.
-
-Yang diperiksa (97 pemeriksaan): jumlah baris tiap tab, total omzet /
-transaksi / pesanan / klik / inquiry, omzet tiap bulan, realisasi
-Okt–Nov, ketujuh skor + Skor Kinerja terbobot + status, pertumbuhan,
-delta KPI vs Ringkasan, Top 5, pangsa mitra, dialog detail satu UMKM
-(Chipsychips: omzet jendela Rp 3.102.904, Skor Kinerja 92), mode
-Mingguan (10 minggu), dan integritas ID antar-tab.
-
-Hasilnya `97 lolos, 0 gagal` dan kode keluar 0 bila semua cocok.
-Bila ada yang gagal, skrip mencetak baris `FAIL` beserta angka aktual
-vs harapan — dari situ ketahuan apakah yang salah rumusnya, datanya,
-atau nilai harapannya yang sudah kedaluwarsa.
-
-### Cara 2 — Cek manual satu UMKM (paling mudah dipahami)
-
-1. Buka dialog detail satu UMKM di dashboard, mis. Chipsychips.
-2. Catat satu baris skor, mis. Omzet: realisasi Okt–Nov
-   Rp 3.102.904, Skor 85.
-3. Buka tab `Target` di Sheet, cari baris Chipsychips, catat
-   `target_omzet`-nya.
-4. Hitung dengan kalkulator: `3.102.904 / target_omzet × 100`,
-   dibulatkan, maksimal 100. Hasilnya harus 85.
-5. Ulangi untuk satu-dua baris lain (mis. Inquiry atau Kanal Aktif).
-
-Cara ini menguji satu rumus dalam satu menit, tanpa menjalankan apa pun.
-
-### Cara 3 — Bandingkan dengan Sheet langsung
-
-Buka tab `Transaksi` di Google Sheet, pakai filter bawaan Sheets
-(Data → Buat filter) untuk memilih satu bulan atau satu UMKM, lalu
-jumlahkan kolomnya (Sheets menampilkan jumlah otomatis di pojok kanan
-bawah saat sel diblok). Bandingkan dengan angka yang sama di dashboard
-— mis. jumlah kolom `omzet` untuk bulan 2026-11 harus 35.720.341.
+Catatan jujur: yang tidak bisa dicek dari dashboard saja adalah
+target per UMKM (hanya ada di tab Target Sheet) dan angka periode
+sebelumnya untuk delta +31% dan kawan-kawan (hanya ada di tab
+Ringkasan). Dua itu tetap harus dilihat di Sheet.
 
 ---
 

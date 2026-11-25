@@ -225,6 +225,7 @@ Mengganti Sheet berarti mengubah **keduanya**, lalu push. Perhatian:
 | `src/data/sample.ts` | Data contoh — hanya dipakai kalau tidak ada ID Sheet |
 | `scripts/generate-sheet-data.mjs` | Generator data: satu-satunya sumber kebenaran untuk CSV + data contoh |
 | `scripts/write-sheet.mjs` | Menulis ulang ke-9 tab Sheet dari `sheets-template/*.csv` |
+| `scripts/verify-formulas.mjs` | Menguji rumus terhadap Sheet live (97 pemeriksaan: jalankan `node scripts/verify-formulas.mjs`, keluar 0 bila semua cocok) |
 | `sheets-template/*.csv` | Salinan lokal tiap tab Sheet (dipakai generator + verifikasi) |
 | `.env` / `.env.example` | ID Sheet lokal (`.env` tidak masuk Git) |
 
