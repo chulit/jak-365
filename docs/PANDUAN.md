@@ -19,6 +19,7 @@ live saat dokumen ini ditulis (2026-11-25).
 - [7. Top 5 UMKM (tabel kanan bawah)](#7-top-5-umkm-tabel-kanan-bawah)
 - [8. Hal yang perlu dipahami dengan jujur](#8-hal-yang-perlu-dipahami-dengan-jujur)
 - [9. Cara memperbarui data](#9-cara-memperbarui-data)
+- [10. Cara mengetes rumus](#10-cara-mengetes-rumus)
 
 ---
 
@@ -235,6 +236,58 @@ baris membuka **dialog detail** UMKM itu:
   (333.023.341 / 1.211 / 1.424 / 12.642) sebelum menulis.
 - **Alur lengkap 7 langkah** (Master Mitra → Evaluasi) terdokumentasi
   di `docs/ALUR.md`.
+
+## 10. Cara mengetes rumus
+
+Ada tiga cara, dari yang paling otomatis sampai yang paling manual.
+Ketiganya saling melengkapi — tidak ada satu pun yang sendirian
+membuktikan semuanya benar.
+
+### Cara 1 — Skrip otomatis (paling lengkap)
+
+```bash
+node scripts/verify-formulas.mjs
+```
+
+Skrip ini menguji rumus terhadap **Sheet live** dalam 3 lapis:
+
+1. Mengambil ke-9 tab Sheet live (sumber yang sama dengan dashboard).
+2. Menjalankan rumus **asli aplikasi** (`src/lib/compute.ts`).
+3. Menghitung ulang angka yang sama dengan aritmetika polos langsung
+   dari baris CSV, lalu membandingkan ketiganya dengan nilai harapan.
+
+Yang diperiksa (97 pemeriksaan): jumlah baris tiap tab, total omzet /
+transaksi / pesanan / klik / inquiry, omzet tiap bulan, realisasi
+Okt–Nov, ketujuh skor + Skor Kinerja terbobot + status, pertumbuhan,
+delta KPI vs Ringkasan, Top 5, pangsa mitra, dialog detail satu UMKM
+(Chipsychips: omzet jendela Rp 3.102.904, Skor Kinerja 92), mode
+Mingguan (10 minggu), dan integritas ID antar-tab.
+
+Hasilnya `97 lolos, 0 gagal` dan kode keluar 0 bila semua cocok.
+Bila ada yang gagal, skrip mencetak baris `FAIL` beserta angka aktual
+vs harapan — dari situ ketahuan apakah yang salah rumusnya, datanya,
+atau nilai harapannya yang sudah kedaluwarsa.
+
+### Cara 2 — Cek manual satu UMKM (paling mudah dipahami)
+
+1. Buka dialog detail satu UMKM di dashboard, mis. Chipsychips.
+2. Catat satu baris skor, mis. Omzet: realisasi Okt–Nov
+   Rp 3.102.904, Skor 85.
+3. Buka tab `Target` di Sheet, cari baris Chipsychips, catat
+   `target_omzet`-nya.
+4. Hitung dengan kalkulator: `3.102.904 / target_omzet × 100`,
+   dibulatkan, maksimal 100. Hasilnya harus 85.
+5. Ulangi untuk satu-dua baris lain (mis. Inquiry atau Kanal Aktif).
+
+Cara ini menguji satu rumus dalam satu menit, tanpa menjalankan apa pun.
+
+### Cara 3 — Bandingkan dengan Sheet langsung
+
+Buka tab `Transaksi` di Google Sheet, pakai filter bawaan Sheets
+(Data → Buat filter) untuk memilih satu bulan atau satu UMKM, lalu
+jumlahkan kolomnya (Sheets menampilkan jumlah otomatis di pojok kanan
+bawah saat sel diblok). Bandingkan dengan angka yang sama di dashboard
+— mis. jumlah kolom `omzet` untuk bulan 2026-11 harus 35.720.341.
 
 ---
 
