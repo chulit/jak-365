@@ -252,8 +252,8 @@ const mitraOption = computed<EChartsOption>(() => {
             </div>
             <div v-if="detail" class="mt-1.5 flex flex-wrap items-center gap-1.5">
               <Badge variant="secondary">{{ detail.kategori }}</Badge>
-              <Badge variant="outline">{{ detail.wilayah }}</Badge>
-              <Badge variant="success">{{ detail.mitra }}</Badge>
+              <Badge v-if="detail.wilayah !== '—'" variant="outline">{{ detail.wilayah }}</Badge>
+              <Badge v-if="detail.mitra !== '—'" variant="success">{{ detail.mitra }}</Badge>
             </div>
             <p v-else class="mt-1 text-xs text-slate-500 dark:text-slate-400">Periode {{ periodeLabel }}</p>
           </div>
@@ -293,6 +293,9 @@ const mitraOption = computed<EChartsOption>(() => {
           </div>
 
           <!-- Skor capaian vs target individual per UMKM -->
+          <div v-if="!detail.hasTransaksi" class="mt-4 rounded-xl border border-amber-200 dark:border-amber-500/30 bg-amber-50 dark:bg-amber-500/10 p-3 text-sm leading-relaxed text-amber-800 dark:text-amber-200">
+            Belum ada transaksi pada periode {{ periodeLabel }}. Angka penjualan di bawah ini 0 — yang ditampilkan adalah profil usaha dari master UMKM.
+          </div>
           <div v-if="detail.skorRows.some((r) => r.skor !== null)" class="mt-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800 p-4">
             <h3 class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-slate-100">
               <TrendingUp class="size-4 text-primary" />
@@ -330,7 +333,7 @@ const mitraOption = computed<EChartsOption>(() => {
             </p>
           </div>
 
-          <!-- Profil usaha (data master TEI 2026) -->
+          <!-- Profil usaha (data master UMKM) -->
           <div class="mt-5 rounded-xl border border-slate-200 dark:border-slate-700 bg-[#F8FAFC] dark:bg-slate-800 p-4">
             <h3 class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-slate-100">
               <Store class="size-4 text-primary" />
@@ -395,8 +398,12 @@ const mitraOption = computed<EChartsOption>(() => {
                 <dd class="mt-1 leading-relaxed text-slate-700 dark:text-slate-300">{{ detail.penjelasanProduk || '—' }}</dd>
               </div>
             </dl>
-            <p class="mt-3 text-xs leading-relaxed text-slate-400">
+            <p v-if="detail.program.includes('TEI 2026')" class="mt-3 text-xs leading-relaxed text-slate-400">
               Peserta Trade Expo Indonesia (TEI) 2026, 14–18 Oktober 2026, ICE BSD.
+              Nomor WhatsApp PIC sengaja tidak ditampilkan.
+            </p>
+            <p v-else class="mt-3 text-xs leading-relaxed text-slate-400">
+              Peserta Pendampingan Ekspor 2026.
               Nomor WhatsApp PIC sengaja tidak ditampilkan.
             </p>
           </div>
@@ -413,8 +420,8 @@ const mitraOption = computed<EChartsOption>(() => {
             <VChart :option="chartOption" class="mt-2 h-64 w-full sm:h-72" autoresize />
           </div>
 
-          <!-- Grafik per mitra -->
-          <div class="mt-5">
+          <!-- Grafik per mitra (disembunyikan bila tidak ada data mitra) -->
+          <div v-if="detail.mitraRows.length > 0" class="mt-5">
             <h3 class="flex items-center gap-2 text-sm font-semibold text-slate-900 dark:text-slate-100">
               <Banknote class="size-4 text-primary" />
               Penjualan per Mitra Pemasaran

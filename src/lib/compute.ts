@@ -314,6 +314,9 @@ export interface UmkmDetail {
   avgOmzetPerTransaksi: number
   /** Pangsa terhadap total omzet terfilter (0–1). */
   share: number
+  /** false = UMKM ini tidak punya transaksi dalam jendela/filter aktif
+   *  (angka penjualan 0, skor "—"); dialog menampilkan catatan. */
+  hasTransaksi: boolean
   /** null = master tidak punya data produk (tampil "—"). */
   jumlahProduk: number | null
   /** null = master tidak punya data produk (tampil "—"). */
@@ -364,8 +367,10 @@ export interface UmkmDetail {
  * Mitra/Kategori/Wilayah yang sama seperti dashboard tetap dipakai.
  * "Mitra utama" diturunkan dari transaksi (mitra dengan omzet terbesar
  * dalam jendela), karena master baru tidak punya kolom mitra.
- * Mengembalikan null bila UMKM tidak punya transaksi dalam jendela
- * tersebut (pemanggil menampilkan pesan sopan, bukan angka 0).
+ * UMKM tanpa transaksi dalam jendela tetap mendapat detail (bukan null):
+ * angka penjualan 0, skor "—", dan `hasTransaksi: false` — pemanggil
+ * menampilkan catatan "belum ada transaksi". Null hanya bila nama
+ * tidak ada di master.
  */
 export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: string): UmkmDetail | null {
   const rawEndIdx = MONTHS.findIndex((m) => m.key === filters.endMonth)
@@ -386,7 +391,9 @@ export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: s
   const tx = data.transactions.filter(
     (t) => t.namaUmkm === nama && inWindow(t) && matchesOtherFilters(t),
   )
-  if (tx.length === 0) return null
+  // UMKM tanpa transaksi dalam jendela tetap lanjut dengan angka 0
+  // (lihat hasTransaksi) — bukan null — supaya dialognya bisa dibuka
+  // dari "Lihat Semua" dan menampilkan profil usahanya.
 
   // Penyebut pangsa = total omzet SEMUA UMKM dalam jendela yang sama
   // (dengan filter mitra/kategori/wilayah yang sama).
@@ -417,12 +424,13 @@ export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: s
     .map(([mitra, omzetMitra]) => ({ nama: mitra, omzet: omzetMitra, share: omzet > 0 ? omzetMitra / omzet : 0 }))
     .sort((a, b) => b.omzet - a.omzet)
 
-  // Peringkat dalam urutan omzet JENDELA periode (bukan sejak Jul).
-  const omzetByUmkm = new Map<string, number>()
-  data.transactions
-    .filter((t) => inWindow(t) && matchesOtherFilters(t))
-    .forEach((t) => omzetByUmkm.set(t.namaUmkm, (omzetByUmkm.get(t.namaUmkm) ?? 0) + t.omzet))
-  const rank = [...omzetByUmkm.entries()].sort((a, b) => b[1] - a[1]).findIndex(([n]) => n === nama) + 1
+  // Peringkat dalam urutan omzet JENDELA periode (bukan sejak Jul) —
+  // master tanpa transaksi ikut diurutkan (omzet 0, peringkat akhir),
+  // jadi UMKM tanpa transaksi tetap punya peringkat, bukan 0.
+  const rank = topUmkmRows(
+    data.transactions.filter((t) => inWindow(t) && matchesOtherFilters(t)),
+    data.umkm.filter((u) => matchesOtherFilters(u)),
+  ).findIndex((r) => r.nama === nama) + 1
 
   // Skor capaian per UMKM vs target individualnya (tab Target) —
   // berjangkar ke JENDELA EVALUASI Okt–Nov yang tetap (bukan jendela
@@ -505,6 +513,7 @@ export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: s
     klik,
     avgOmzetPerTransaksi: transaksi > 0 ? omzet / transaksi : 0,
     share: totalOmzetFiltered > 0 ? omzet / totalOmzetFiltered : 0,
+    hasTransaksi: tx.length > 0,
     jumlahProduk: master.jumlahProduk,
     produkAktif: master.produkAktif,
     repeatTransaksi: master.repeatTransaksi,
@@ -555,6 +564,39 @@ export interface ComputedDashboard {
 }
 
 const sum = (values: number[]): number => values.reduce((a, b) => a + b, 0)
+
+/**
+ * Daftar UMKM berdasarkan omzet, dari transaksi + master.
+ * Master yang cocok filter tapi tidak punya transaksi (mis. 28 peserta
+ * Pendampingan Ekspor 2026) tetap masuk dengan transaksi/omzet 0, di
+ * urutan akhir — supaya mereka kelihatan di "Lihat Semua", bukan hilang.
+ * Dipakai Top UMKM (transaksi kumulatif s.d. akhir periode) dan peringkat
+ * dialog (transaksi dalam jendela periode).
+ */
+function topUmkmRows(
+  tx: DashboardData['transactions'],
+  master: DashboardData['umkm'],
+): TopUmkmRow[] {
+  const byUmkm = new Map<string, TopUmkmRow>()
+  tx.forEach((t) => {
+    const row = byUmkm.get(t.namaUmkm) ?? {
+      rank: 0, nama: t.namaUmkm, kategori: t.kategori, wilayah: t.wilayah, transaksi: 0, omzet: 0,
+    }
+    row.transaksi += t.transaksi
+    row.omzet += t.omzet
+    byUmkm.set(t.namaUmkm, row)
+  })
+  master.forEach((u) => {
+    if (!byUmkm.has(u.namaUmkm)) {
+      byUmkm.set(u.namaUmkm, {
+        rank: 0, nama: u.namaUmkm, kategori: u.kategori, wilayah: u.wilayah, transaksi: 0, omzet: 0,
+      })
+    }
+  })
+  return [...byUmkm.values()]
+    .sort((a, b) => b.omzet - a.omzet)
+    .map((row, i) => ({ ...row, rank: i + 1 }))
+}
 
 /**
  * Semua KPI dihitung dari data mentah — tidak ada angka KPI yang di-hardcode.
@@ -793,19 +835,9 @@ export function computeDashboard(data: DashboardData, filters: Filters): Compute
     },
   ]
 
-  // Top UMKM berdasarkan omzet (terfilter)
-  const byUmkm = new Map<string, TopUmkmRow>()
-  tx.forEach((t) => {
-    const row = byUmkm.get(t.namaUmkm) ?? {
-      rank: 0, nama: t.namaUmkm, kategori: t.kategori, wilayah: t.wilayah, transaksi: 0, omzet: 0,
-    }
-    row.transaksi += t.transaksi
-    row.omzet += t.omzet
-    byUmkm.set(t.namaUmkm, row)
-  })
-  const topUmkm = [...byUmkm.values()]
-    .sort((a, b) => b.omzet - a.omzet)
-    .map((row, i) => ({ ...row, rank: i + 1 }))
+  // Top UMKM berdasarkan omzet (terfilter) — termasuk master tanpa
+  // transaksi (0, urutan akhir). Lihat topUmkmRows.
+  const topUmkm = topUmkmRows(tx, master)
 
   return {
     kpis,

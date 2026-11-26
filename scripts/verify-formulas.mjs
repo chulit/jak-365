@@ -366,6 +366,28 @@ check('Baris inquiry < pesanan', tx.filter((t) => t.inquiry < t.pesanan).length,
 check('Tab Target terbaca (targetsError null)', data.targetsError, null)
 check('Jumlah target', data.targets.length, 42)
 
+// J. UMKM tanpa transaksi tetap tampil (master, 0 di urutan akhir)
+section('J. UMKM tanpa transaksi tetap tampil')
+check('Top UMKM (aplikasi)', app.topUmkm.length, 70)
+check('Top UMKM tanpa transaksi', app.topUmkm.filter((r) => r.transaksi === 0).length, 28)
+check('Top UMKM tanpa omzet', app.topUmkm.filter((r) => r.omzet === 0).length, 28)
+{
+  const ranksNol = app.topUmkm.filter((r) => r.transaksi === 0).map((r) => r.rank)
+  check('Peringkat UMKM tanpa transaksi 43–70 (min)', Math.min(...ranksNol), 43)
+  check('Peringkat UMKM tanpa transaksi 43–70 (maks)', Math.max(...ranksNol), 70)
+  check('Top 5 tetap dari yang bertransaksi', app.topUmkm.slice(0, 5).every((r) => r.transaksi > 0), true)
+}
+const miumosa = compute.computeUmkmDetail(data, FILTERS, 'Miumosa')
+check('Dialog Miumosa tidak null', miumosa !== null, true)
+check('Dialog Miumosa hasTransaksi false', miumosa?.hasTransaksi, false)
+check('Dialog Miumosa omzet 0', miumosa?.omzet, 0)
+check('Dialog Miumosa transaksi 0', miumosa?.transaksi, 0)
+check('Dialog Miumosa program', miumosa?.program, 'Pendampingan Ekspor 2026')
+check('Dialog Miumosa perusahaan', miumosa?.namaPerusahaan, 'PT. Miumosa Artha Mandiri')
+check('Dialog Miumosa peringkat 43–70', miumosa !== null && miumosa.rank >= 43 && miumosa.rank <= 70, true)
+check('Dialog Miumosa skor semua —', miumosa?.skorRows?.every((r) => r.skor === null) ?? false, true)
+check('Dialog Miumosa Skor Kinerja —', miumosa?.skorKinerja?.skor ?? null, null)
+
 console.log(`\n${passed} lolos, ${failed} gagal.`)
 if (failed > 0) { console.log('ADA RUMUS/DATA YANG TIDAK COCOK — lihat baris FAIL di atas.'); process.exit(1) }
 console.log('Semua rumus cocok dengan Sheet live.')

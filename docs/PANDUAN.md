@@ -190,14 +190,16 @@ Lima UMKM dengan omzet tertinggi (sampai akhir periode terpilih):
 | 4 | Chipsychips | Rp 12.913.504 |
 | 5 | TEPA SELIRA | Rp 12.038.871 |
 
-Tombol **"Lihat Semua"** menampilkan ke-42 UMKM. Klik salah satu
-baris membuka **dialog detail** UMKM itu:
+Tombol **"Lihat Semua"** menampilkan ke-70 UMKM — 42 yang punya
+transaksi ditambah 28 yang belum punya transaksi (tampil dengan
+angka 0 di urutan akhir). Klik salah satu baris membuka **dialog
+detail** UMKM itu:
 
 - **Profil Usaha** — pemilik, program yang diikuti, perusahaan (bila
   diketahui), izin usaha, Instagram/website, dan penjelasan produk
-  (dari master UMKM). Catatan: 28 peserta Pendampingan Ekspor yang
-  belum punya transaksi tidak muncul di daftar ini — mereka hanya ada
-  di tab UMKM di Sheet.
+  (dari master UMKM). UMKM yang belum punya transaksi tetap bisa
+  dibuka — dialognya menampilkan profil usaha dan catatan "Belum ada
+  transaksi", dengan angka penjualan 0 dan skor "—".
 - **Skor Capaian (vs Target)** — 6 skor indikator UMKM itu beserta
   realisasi vs targetnya, dan Skor Kinerja UMKM itu.
 - **Grafik + tabel bulanan/mingguan** — mengikuti filter periode dan
