@@ -10,29 +10,32 @@
 // 2026 (dibaca dari sheets-template/UMKM_EKSPOR.csv — disalin dari PDF
 // "Data Peserta Pendampingan Ekspor 2026"; kolom No. WhatsApp PIC
 // SENGAJA tidak disalin karena Sheet ini publik). 12 peserta ikut
-// KEDUA program. Hanya 42 peserta TEI yang punya transaksi/katalog/
-// penugasan/target — 28 peserta Ekspor murni master (0 transaksi),
+// KEDUA program. Hanya 42 peserta TEI yang punya katalog/
+// penugasan/target — dari 28 peserta Ekspor, baru UMKM-043 yang punya
+// 1 transaksi tes (2026-11-26), 27 sisanya murni master (0 transaksi),
 // jadi semua total direkonsiliasi secara eksak (assert di akhir script):
-//   Omzet 333.023.341 | Transaksi 1.211 | Pesanan 1.424 | Klik 12.642
+//   Omzet 334.023.341 | Transaksi 1.212 | Pesanan 1.425 | Klik 12.647
 //   (basis screenshot 332.823.341 / 1.210 / 1.423 / 12.630, ditambah
-//    1 transaksi tes Chipsychips 2026-11-17 — lihat EXTRA_TRANSACTION
+//    2 transaksi tes — Chipsychips 2026-11-17 (Rp 200.000) dan
+//    UMKM-043 2026-11-26 (Rp 1.000.000) — lihat EXTRA_TRANSACTIONS
 //    di bawah, ditambahkan SETELAH verifikasi basis supaya alokasi
 //    bulanan tidak berubah)
 //   UMKM 42 (peserta TEI 2026) — jumlah_produk/produk_aktif angka acak
 //   deterministik (perintah user 2026-11-24, seed 20261124); TEI tidak
 //   punya data produk/repeat. repeat_transaksi diisi angka acak
-//   deterministik (seed 20261126, total 346 = 28,6% seperti mockup lama).
+//   deterministik (seed 20261126, total 346 = 28,5% seperti mockup lama).
 //   Target per UMKM (tab Target, seed 20261125) — angka CONTOH
 //   deterministik, bisa diubah user di Sheet; skor indikator =
 //   min(100, Realisasi/Target × 100).
 //   Tren berjalan: Jul 136.761.925, Agu 208.378.885, Sep 256.829.000,
-//                   Okt 297.303.000, Nov 332.823.341
-//   Mitra (6, referensi user 2026-11-24): Tokopedia 112.058.500,
+//                   Okt 297.303.000, Nov 334.023.341 (basis 332.823.341
+//                   + 2 transaksi tes)
+//   Mitra (6, referensi user 2026-11-24): Tokopedia 113.258.500,
 //          Shopee 89.614.000, Mall Grand Indonesia 68.492.341,
 //          Centong Daily 20.886.167, Koperasi Kumindag 20.886.167,
 //          Hippindo 20.886.166 (tiga terakhir memecah kelompok
 //          62.658.500, masing-masing 5 UMKM urut daftar TEI).
-//          Basis + transaksi tes Chipsychips (Tokopedia): total akhir
+//          Basis + 2 transaksi tes (Tokopedia): total akhir
 //          Tokopedia 112.258.500.
 // Jalankan: node scripts/generate-sheet-data.mjs
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
@@ -286,20 +289,31 @@ const VARIAN_SUFFIX = {
 // Periode sebelumnya (untuk delta +31% / +18% / +24% / +27% di kartu KPI)
 const PREVIOUS = { omzet: 254061327, transaksi: 953, pesanan: 1148, klik: 10703 }
 
-// Transaksi tes (ditambahkan 2026-11-17 atas permintaan user, semula
-// untuk My Little Dimsum — kini menempel ke Chipsychips, peserta TEI
-// pertama di daftar, karena nama-nama dummy sudah tidak ada):
-// 1 baris baru — BUKAN mengubah baris agregat November yang sudah ada.
+// Transaksi tes (ditambahkan atas permintaan user — baris baru, BUKAN
+// mengubah baris agregat yang sudah ada):
+//   1. 2026-11-17 Chipsychips (peserta TEI pertama) — Rp 200.000.
+//   2. 2026-11-26 "Minuman serbuk instan" (UMKM-043, peserta
+//      Pendampingan Ekspor pertama) — Rp 1.000.000, supaya UMKM-043
+//      punya angka di dashboard.
 // Ditambahkan ke `transactions` dan ke master UMKM setelah verifikasi
 // basis (bagian 5b), jadi total akhir:
-//   Omzet 333.023.341 | Transaksi 1.211 | Pesanan 1.424 | Klik 12.642
-const EXTRA_TRANSACTION = {
-  tanggal: '2026-11-17', bulan: '2026-11', idUmkm: 'UMKM-001', namaUmkm: 'Chipsychips',
-  kategori: 'Food & Beverage', wilayah: 'Jakarta Selatan',
-  idMitra: 'MTR-001', mitra: 'Tokopedia', idKanal: 'KNL-06', kanal: 'Tokopedia',
-  pesanan: 1, transaksi: 1,
-  omzet: 200000, klik: 12, inquiry: 2,
-}
+//   Omzet 334.023.341 | Transaksi 1.212 | Pesanan 1.425 | Klik 12.647
+const EXTRA_TRANSACTIONS = [
+  {
+    tanggal: '2026-11-17', bulan: '2026-11', idUmkm: 'UMKM-001', namaUmkm: 'Chipsychips',
+    kategori: 'Food & Beverage', wilayah: 'Jakarta Selatan',
+    idMitra: 'MTR-001', mitra: 'Tokopedia', idKanal: 'KNL-06', kanal: 'Tokopedia',
+    pesanan: 1, transaksi: 1,
+    omzet: 200000, klik: 12, inquiry: 2,
+  },
+  {
+    tanggal: '2026-11-26', bulan: '2026-11', idUmkm: 'UMKM-043', namaUmkm: 'Minuman serbuk instan',
+    kategori: 'Food & Beverage', wilayah: '',
+    idMitra: 'MTR-001', mitra: 'Tokopedia', idKanal: 'KNL-06', kanal: 'Tokopedia',
+    pesanan: 1, transaksi: 1,
+    omzet: 1000000, klik: 5, inquiry: 1,
+  },
+]
 
 // ---------------------------------------------------------------------------
 // 1. Daftar UMKM: 42 peserta TEI 2026 (input dari UMKM_TEI.csv).
@@ -753,25 +767,27 @@ allOk &= check('ID Penugasan unik (42)', new Set(penugasan.map((p) => p.id)).siz
 if (!allOk) { console.error('\nVERIFIKASI GAGAL — perbaiki generator sebelum memakai CSV.'); process.exit(1) }
 
 // ---------------------------------------------------------------------------
-// 5b. Transaksi tes (EXTRA_TRANSACTION) — SETELAH verifikasi basis.
+// 5b. Transaksi tes (EXTRA_TRANSACTIONS) — SETELAH verifikasi basis.
 //      Baris baru ditambahkan apa adanya; baris agregat lama tidak diubah.
 // ---------------------------------------------------------------------------
-transactions.push({ ...EXTRA_TRANSACTION })
-{
-  const target = umkm.find((u) => u.nama === EXTRA_TRANSACTION.namaUmkm)
-  if (!target) throw new Error('5b: Chipsychips tidak ditemukan di master UMKM')
-  target.transaksi += EXTRA_TRANSACTION.transaksi
-  target.pesanan += EXTRA_TRANSACTION.pesanan
-  target.omzet += EXTRA_TRANSACTION.omzet
+for (const extra of EXTRA_TRANSACTIONS) {
+  transactions.push({ ...extra })
+  // Cari di umkmAll (70), bukan umkm (42 TEI) — UMKM-043 dst. hanya
+  // ada di umkmAll.
+  const target = umkmAll.find((u) => u.nama === extra.namaUmkm)
+  if (!target) throw new Error(`5b: ${extra.namaUmkm} tidak ditemukan di master UMKM`)
+  target.transaksi += extra.transaksi
+  target.pesanan += extra.pesanan
+  target.omzet += extra.omzet
 }
 // Verifikasi total akhir (basis + transaksi tes)
 let finalOk = true
-finalOk &= check('Total omzet akhir', sum(transactions, (t) => t.omzet), 333023341)
-finalOk &= check('Total transaksi akhir', sum(transactions, (t) => t.transaksi), 1211)
-finalOk &= check('Total pesanan akhir', sum(transactions, (t) => t.pesanan), 1424)
-finalOk &= check('Total klik akhir', sum(transactions, (t) => t.klik), 12642)
-finalOk &= check('Omzet Nov 2026 akhir', sum(transactions.filter((t) => t.bulan === '2026-11'), (t) => t.omzet), 35720341)
-finalOk &= check('Omzet Okt–Nov mingguan akhir', sum(transactions.filter((t) => t.tanggal >= '2026-10-01' && t.tanggal <= '2026-11-30'), (t) => t.omzet), 76194341)
+finalOk &= check('Total omzet akhir', sum(transactions, (t) => t.omzet), 334023341)
+finalOk &= check('Total transaksi akhir', sum(transactions, (t) => t.transaksi), 1212)
+finalOk &= check('Total pesanan akhir', sum(transactions, (t) => t.pesanan), 1425)
+finalOk &= check('Total klik akhir', sum(transactions, (t) => t.klik), 12647)
+finalOk &= check('Omzet Nov 2026 akhir', sum(transactions.filter((t) => t.bulan === '2026-11'), (t) => t.omzet), 36720341)
+finalOk &= check('Omzet Okt–Nov mingguan akhir', sum(transactions.filter((t) => t.tanggal >= '2026-10-01' && t.tanggal <= '2026-11-30'), (t) => t.omzet), 77194341)
 finalOk &= check('Chipsychips omzet akhir', sum(transactions.filter((t) => t.namaUmkm === 'Chipsychips'), (t) => t.omzet), umkm.find((u) => u.nama === 'Chipsychips').omzet)
 finalOk &= check('Chipsychips transaksi akhir', sum(transactions.filter((t) => t.namaUmkm === 'Chipsychips'), (t) => t.transaksi), umkm.find((u) => u.nama === 'Chipsychips').transaksi)
 if (!finalOk) { console.error('\nVERIFIKASI AKHIR GAGAL.'); process.exit(1) }
@@ -779,8 +795,8 @@ if (!finalOk) { console.error('\nVERIFIKASI AKHIR GAGAL.'); process.exit(1) }
 // ---------------------------------------------------------------------------
 // 5c. Repeat + Target per UMKM (angka CONTOH deterministik — bukan data
 //      TEI; user bisa mengubahnya di Sheet). Dihitung SETELAH 5b supaya
-//      memakai omzet/transaksi FINAL (basis + transaksi tes Chipsychips).
-//      Repeat: total 346 (28,6% seperti mockup lama), dibagi proporsional
+//      memakai omzet/transaksi FINAL (basis + 2 transaksi tes).
+//      Repeat: total 346 (28,5% seperti mockup lama), dibagi proporsional
 //      transaksi final dengan jitter ±15% (stream repeatRng) — tiap UMKM
 //      ≈ 25–35% dari transaksinya, selalu <= transaksi.
 //      Target (REBASE Okt–Nov, 2026-11-24): omzet & transaksi =
@@ -855,7 +871,7 @@ writeFileSync(join(OUT, 'Transaksi.csv'), toCsv(
 // TEI tidak punya data produk; 28 baris Ekspor KOSONG (null → "—")
 // karena PDF Ekspor tidak punya data produk. Kolom repeat_transaksi
 // diisi angka ACAK DETERMINISTIK (stream repeatRng, seed 20261126,
-// total 346 = 28,6%) — aturan repeat: transaksi yang isian
+// total 346 = 28,5%) — aturan repeat: transaksi yang isian
 // repeat-nya > 1x dihitung repeat (lihat docs/ALUR.md); baris Ekspor
 // kosong.
 // id_umkm (UMKM-001…) = kunci sambung antar-tab; kode_peserta (JP-…)
@@ -967,12 +983,13 @@ const sampleTs = `// -----------------------------------------------------------
 // Pendampingan Ekspor 2026 (12 ikut keduanya — lihat
 // scripts/generate-sheet-data.mjs seksi 1b). Bukan lagi nama-nama dummy lama.
 // Angka-angka di sini persis dengan screenshot dashboard:
-//   Omzet 333.023.341 | Transaksi 1.211 | Pesanan 1.424 | Klik 12.642
+//   Omzet 334.023.341 | Transaksi 1.212 | Pesanan 1.425 | Klik 12.647
 //   UMKM 42 (peserta TEI 2026) — jumlah_produk/produk_aktif angka acak
 //   deterministik (perintah user 2026-11-24); repeat_transaksi terisi
-//   (total 346 = 28,6%); target per UMKM di field targets (angka contoh,
+//   (total 346 = 28,5%); target per UMKM di field targets (angka contoh,
 //   bisa diubah di Sheet).
-//   (+1 transaksi tes Chipsychips 2026-11-17: Rp 200.000)
+//   (+2 transaksi tes: Chipsychips 2026-11-17 Rp 200.000 dan
+//    Minuman serbuk instan / UMKM-043 2026-11-26 Rp 1.000.000)
 // ---------------------------------------------------------------------------
 import type { DashboardData } from '../lib/types'
 
@@ -1016,7 +1033,7 @@ writeFileSync(join(ROOT, 'src', 'data', 'sample.ts'), sampleTs)
 // 8. Tulis sheets-template/README.md berisi hasil verifikasi
 // ---------------------------------------------------------------------------
 const fmt = (n) => n.toLocaleString('id-ID')
-// Total AKHIR (basis + transaksi tes EXTRA_TRANSACTION) — dipakai di
+// Total AKHIR (basis + transaksi tes EXTRA_TRANSACTIONS) — dipakai di
 // tabel verifikasi README agar regenerasi tidak mengembalikan angka lama.
 const FINAL_OMZET = sum(transactions, (t) => t.omzet)
 const FINAL_TRANSAKSI = sum(transactions, (t) => t.transaksi)
@@ -1114,7 +1131,7 @@ pesanan/omzet dashboard dihitung dari tab Transaksi, bukan dari master).
 \`produk_aktif\` berisi angka ACAK
 DETERMINISTIK (8–17 produk, aktif 85–100%) — bukan data TEI, atas
 perintah user 2026-11-24; baris Ekspor kosong. Kolom \`repeat_transaksi\` berisi angka ACAK
-DETERMINISTIK (total 346 = 28,6% — aturan repeat: transaksi yang isian
+DETERMINISTIK (total 346 = 28,5% — aturan repeat: transaksi yang isian
 repeat-nya > 1x dihitung repeat).
 Tidak ada kolom mitra di tab ini — mitra utama tiap UMKM diturunkan
 dari transaksi. \`program\` = program pendampingan yang diikuti

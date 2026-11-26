@@ -5,12 +5,13 @@
 // Pendampingan Ekspor 2026 (12 ikut keduanya — lihat
 // scripts/generate-sheet-data.mjs seksi 1b). Bukan lagi nama-nama dummy lama.
 // Angka-angka di sini persis dengan screenshot dashboard:
-//   Omzet 333.023.341 | Transaksi 1.211 | Pesanan 1.424 | Klik 12.642
+//   Omzet 334.023.341 | Transaksi 1.212 | Pesanan 1.425 | Klik 12.647
 //   UMKM 42 (peserta TEI 2026) — jumlah_produk/produk_aktif angka acak
 //   deterministik (perintah user 2026-11-24); repeat_transaksi terisi
-//   (total 346 = 28,6%); target per UMKM di field targets (angka contoh,
+//   (total 346 = 28,5%); target per UMKM di field targets (angka contoh,
 //   bisa diubah di Sheet).
-//   (+1 transaksi tes Chipsychips 2026-11-17: Rp 200.000)
+//   (+2 transaksi tes: Chipsychips 2026-11-17 Rp 200.000 dan
+//    Minuman serbuk instan / UMKM-043 2026-11-26 Rp 1.000.000)
 // ---------------------------------------------------------------------------
 import type { DashboardData } from '../lib/types'
 
@@ -1151,6 +1152,7 @@ export const sampleData: DashboardData = {
     {"tanggal":"2026-11-23","bulan":"2026-11","idUmkm":"UMKM-042","namaUmkm":"Rainmaker Craft","kategori":"Craft","wilayah":"Jakarta Selatan","idMitra":"MTR-003","mitra":"Mall Grand Indonesia","idKanal":"KNL-17","kanal":"Pusat Perbelanjaan","pesanan":2,"transaksi":0,"omzet":142476,"klik":9,"inquiry":2},
     {"tanggal":"2026-11-30","bulan":"2026-11","idUmkm":"UMKM-042","namaUmkm":"Rainmaker Craft","kategori":"Craft","wilayah":"Jakarta Selatan","idMitra":"MTR-003","mitra":"Mall Grand Indonesia","idKanal":"KNL-17","kanal":"Pusat Perbelanjaan","pesanan":0,"transaksi":0,"omzet":26899,"klik":2,"inquiry":0},
     {"tanggal":"2026-11-17","bulan":"2026-11","idUmkm":"UMKM-001","namaUmkm":"Chipsychips","kategori":"Food & Beverage","wilayah":"Jakarta Selatan","idMitra":"MTR-001","mitra":"Tokopedia","idKanal":"KNL-06","kanal":"Tokopedia","pesanan":1,"transaksi":1,"omzet":200000,"klik":12,"inquiry":2},
+    {"tanggal":"2026-11-26","bulan":"2026-11","idUmkm":"UMKM-043","namaUmkm":"Minuman serbuk instan","kategori":"Food & Beverage","wilayah":"","idMitra":"MTR-001","mitra":"Tokopedia","idKanal":"KNL-06","kanal":"Tokopedia","pesanan":1,"transaksi":1,"omzet":1000000,"klik":5,"inquiry":1},
   ],
   umkm: [
     {"idUmkm":"UMKM-001","kodePeserta":"JP-31000001","grade":"A","namaUmkm":"Chipsychips","kategori":"Food & Beverage","wilayah":"Jakarta Selatan","mitra":"Tokopedia","jumlahProduk":9,"produkAktif":9,"transaksi":35,"repeatTransaksi":11,"namaPemilik":"Richardo Petricius Utoyo","izinUsaha":"PT","instagramWebsite":"instagram.com/chipsychips_id","penjelasanProduk":"Makanan ringan sehat dari olahan buah dan sayur tropis: nanas, nangka, salak, hingga edamame.","program":"TEI 2026","namaPerusahaan":""},
@@ -1195,7 +1197,7 @@ export const sampleData: DashboardData = {
     {"idUmkm":"UMKM-040","kodePeserta":"JP-31000040","grade":"B","namaUmkm":"PT Karina Design Nusantara","kategori":"Fesyen","wilayah":"Jakarta Pusat","mitra":"Mall Grand Indonesia","jumlahProduk":15,"produkAktif":15,"transaksi":37,"repeatTransaksi":10,"namaPemilik":"Rina Angrainy","izinUsaha":"NIB, HKI","instagramWebsite":"instagram.com/karinadesignofficial","penjelasanProduk":"Merek fesyen santun (modest fashion) sejak 2014, koleksi ready-to-wear kontemporer terinspirasi warisan budaya Indonesia.","program":"TEI 2026","namaPerusahaan":""},
     {"idUmkm":"UMKM-041","kodePeserta":"JP-31000041","grade":"B","namaUmkm":"KoneKone","kategori":"Craft","wilayah":"Jakarta Selatan","mitra":"Hippindo","jumlahProduk":17,"produkAktif":16,"transaksi":38,"repeatTransaksi":12,"namaPemilik":"Alfiza Mardhotillah","izinUsaha":"NIB, HKI, PT Perorangan","instagramWebsite":"instagram.com/konekone.id","penjelasanProduk":"Produk handmade: Tas, Dompet, Topi, souvenir dari kain tradisional Indonesia, sulam tangan & bordir mesin manual, konsep zero waste.","program":"TEI 2026","namaPerusahaan":""},
     {"idUmkm":"UMKM-042","kodePeserta":"JP-31000042","grade":"B","namaUmkm":"Rainmaker Craft","kategori":"Craft","wilayah":"Jakarta Selatan","mitra":"Mall Grand Indonesia","jumlahProduk":17,"produkAktif":17,"transaksi":21,"repeatTransaksi":6,"namaPemilik":"Dessy","izinUsaha":"NIB","instagramWebsite":"instagram.com/rainmaker.craft","penjelasanProduk":"Merek kriya rajut berbasis slow fashion: koleksi daily, sports, hingga lini berunsur budaya.","program":"TEI 2026","namaPerusahaan":""},
-    {"idUmkm":"UMKM-043","kodePeserta":"JP-31000043","grade":"","namaUmkm":"Minuman serbuk instan","kategori":"Food & Beverage","wilayah":"","mitra":"","jumlahProduk":null,"produkAktif":null,"transaksi":0,"repeatTransaksi":null,"namaPemilik":"Agnes Sukenty Niken P","izinUsaha":"","instagramWebsite":"","penjelasanProduk":"","program":"Pendampingan Ekspor 2026","namaPerusahaan":"PT INGPAWON SUKSES SELARAS"},
+    {"idUmkm":"UMKM-043","kodePeserta":"JP-31000043","grade":"","namaUmkm":"Minuman serbuk instan","kategori":"Food & Beverage","wilayah":"","mitra":"","jumlahProduk":null,"produkAktif":null,"transaksi":1,"repeatTransaksi":null,"namaPemilik":"Agnes Sukenty Niken P","izinUsaha":"","instagramWebsite":"","penjelasanProduk":"","program":"Pendampingan Ekspor 2026","namaPerusahaan":"PT INGPAWON SUKSES SELARAS"},
     {"idUmkm":"UMKM-044","kodePeserta":"JP-31000044","grade":"","namaUmkm":"Miumosa","kategori":"Fesyen","wilayah":"","mitra":"","jumlahProduk":null,"produkAktif":null,"transaksi":0,"repeatTransaksi":null,"namaPemilik":"Anindya Sukarni","izinUsaha":"","instagramWebsite":"","penjelasanProduk":"","program":"Pendampingan Ekspor 2026","namaPerusahaan":"PT. Miumosa Artha Mandiri"},
     {"idUmkm":"UMKM-045","kodePeserta":"JP-31000045","grade":"","namaUmkm":"Inabee","kategori":"Fesyen","wilayah":"","mitra":"","jumlahProduk":null,"produkAktif":null,"transaksi":0,"repeatTransaksi":null,"namaPemilik":"","izinUsaha":"","instagramWebsite":"","penjelasanProduk":"","program":"Pendampingan Ekspor 2026","namaPerusahaan":"Inabee"},
     {"idUmkm":"UMKM-046","kodePeserta":"JP-31000046","grade":"","namaUmkm":"Bonwie, La'Cookish","kategori":"Food & Beverage","wilayah":"","mitra":"","jumlahProduk":null,"produkAktif":null,"transaksi":0,"repeatTransaksi":null,"namaPemilik":"Christine K Purnama","izinUsaha":"","instagramWebsite":"","penjelasanProduk":"","program":"Pendampingan Ekspor 2026","namaPerusahaan":"Omah Sedap/PT Omah Sedap Nusantara"},

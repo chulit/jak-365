@@ -27,7 +27,7 @@ ke tab yang sesuai (File → Impor).
 
 ## Struktur tab
 
-### Transaksi — 1135 baris (tiap agregat 1 UMKM × 1 bulan dipecah per minggu ISO, + 1 baris transaksi tes Chipsychips 2026-11-17)
+### Transaksi — 1136 baris (tiap agregat 1 UMKM × 1 bulan dipecah per minggu ISO, + 1 baris transaksi tes Chipsychips 2026-11-17)
 | Kolom | Isi |
 |---|---|
 | tanggal | Tanggal awal segmen minggu dalam bulan itu (tanggal 1 bila minggu terpotong awal bulan, Senin untuk segmen penuh), mis. 2026-07-01, 2026-07-06 |
@@ -58,7 +58,7 @@ pesanan/omzet dashboard dihitung dari tab Transaksi, bukan dari master).
 `produk_aktif` berisi angka ACAK
 DETERMINISTIK (8–17 produk, aktif 85–100%) — bukan data TEI, atas
 perintah user 2026-11-24; baris Ekspor kosong. Kolom `repeat_transaksi` berisi angka ACAK
-DETERMINISTIK (total 346 = 28,6% — aturan repeat: transaksi yang isian
+DETERMINISTIK (total 346 = 28,5% — aturan repeat: transaksi yang isian
 repeat-nya > 1x dihitung repeat).
 Tidak ada kolom mitra di tab ini — mitra utama tiap UMKM diturunkan
 dari transaksi. `program` = program pendampingan yang diikuti
@@ -114,17 +114,17 @@ screenshot awal (sama dengan fallback yang selama ini dipakai sample.ts).
 
 | Ukuran | Hasil | Target | Status |
 |---|---|---|---|
-| Total omzet | Rp 333.023.341 | Rp 333.023.341 | ✅ |
-| Total transaksi | 1.211 | 1.211 | ✅ |
-| Total pesanan | 1.424 | 1.424 | ✅ |
-| Total klik | 12.642 | 12.642 | ✅ |
+| Total omzet | Rp 334.023.341 | Rp 334.023.341 | ✅ |
+| Total transaksi | 1.212 | 1.212 | ✅ |
+| Total pesanan | 1.425 | 1.425 | ✅ |
+| Total klik | 12.647 | 12.647 | ✅ |
 | UMKM aktif | 42 | 42 | ✅ |
 | Total produk (acak deterministik) | 525 | 525 | ✅ |
 | Produk aktif (acak deterministik) | 497 (94,7%) | 497 | ✅ |
-| Repeat order (acak deterministik) | 346 (28,6%) | 346 | ✅ |
-| Total inquiry (CONTOH deterministik) | 2.136 | 2.136 | ✅ |
-| Inquiry Okt–Nov 2026 | 734 | 734 | ✅ |
-| Rata-rata kanal aktif per UMKM (Okt–Nov) | 2,98 kanal | 2,98 kanal | ✅ |
+| Repeat order (acak deterministik) | 346 (28,5%) | 346 | ✅ |
+| Total inquiry (CONTOH deterministik) | 2.137 | 2.137 | ✅ |
+| Inquiry Okt–Nov 2026 | 735 | 735 | ✅ |
+| Rata-rata kanal aktif per UMKM (Okt–Nov) | 2,93 kanal | 2,93 kanal | ✅ |
 | Katalog: produk | 525 | 525 | ✅ |
 | Katalog: Tayang | 497 | 497 | ✅ |
 | Penugasan | 42 | 42 | ✅ |
@@ -139,12 +139,12 @@ screenshot awal (sama dengan fallback yang selama ini dipakai sample.ts).
 | Omzet Agu 2026 | Rp 71.616.960 | Rp 71.616.960 | ✅ |
 | Omzet Sep 2026 | Rp 48.450.115 | Rp 48.450.115 | ✅ |
 | Omzet Okt 2026 | Rp 40.474.000 | Rp 40.474.000 | ✅ |
-| Omzet Nov 2026 | Rp 35.720.341 | Rp 35.720.341 | ✅ |
-| Total omzet s.d. Nov 2026 | Rp 333.023.341 | Rp 333.023.341 | ✅ |
-| Omzet mingguan Okt–Nov 2026 (10 minggu) | Rp 76.194.341 | Rp 76.194.341 | ✅ |
-| Tokopedia (9 UMKM) | Rp 112.258.500 (33,7%) | Rp 112.258.500 | ✅ |
-| Shopee (9 UMKM) | Rp 89.614.000 (26,9%) | Rp 89.614.000 | ✅ |
-| Mall Grand Indonesia (9 UMKM) | Rp 68.492.341 (20,6%) | Rp 68.492.341 | ✅ |
+| Omzet Nov 2026 | Rp 36.720.341 | Rp 36.720.341 | ✅ |
+| Total omzet s.d. Nov 2026 | Rp 334.023.341 | Rp 334.023.341 | ✅ |
+| Omzet mingguan Okt–Nov 2026 (10 minggu) | Rp 77.194.341 | Rp 76.194.341 | ✅ |
+| Tokopedia (9 UMKM) | Rp 113.258.500 (33,9%) | Rp 113.258.500 | ✅ |
+| Shopee (9 UMKM) | Rp 89.614.000 (26,8%) | Rp 89.614.000 | ✅ |
+| Mall Grand Indonesia (9 UMKM) | Rp 68.492.341 (20,5%) | Rp 68.492.341 | ✅ |
 | Centong Daily (5 UMKM) | Rp 20.886.167 (6,3%) | Rp 20.886.167 | ✅ |
 | Koperasi Kumindag (5 UMKM) | Rp 20.886.167 (6,3%) | Rp 20.886.167 | ✅ |
 | Hippindo (5 UMKM) | Rp 20.886.166 (6,3%) | Rp 20.886.166 | ✅ |

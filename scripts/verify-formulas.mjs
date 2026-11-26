@@ -215,12 +215,12 @@ const evalTx = tx.filter(inEval)
 
 // A. Jumlah baris per tab
 section('A. Jumlah baris per tab')
-check('Transaksi (data)', tabs.Transaksi.length - 1, 1135)
+check('Transaksi (data)', tabs.Transaksi.length - 1, 1136)
 check('UMKM (data)', tabs.UMKM.length - 1, 70)
 check('UMKM program TEI 2026', data.umkm.filter((u) => u.program.includes('TEI 2026')).length, 42)
 check('UMKM program Pendampingan Ekspor 2026', data.umkm.filter((u) => u.program.includes('Pendampingan Ekspor 2026')).length, 40)
 check('UMKM ikut kedua program', data.umkm.filter((u) => u.program.includes(';')).length, 12)
-check('UMKM Ekspor tanpa transaksi', data.umkm.filter((u) => u.program === 'Pendampingan Ekspor 2026' && u.transaksi === 0).length, 28)
+check('UMKM Ekspor tanpa transaksi', data.umkm.filter((u) => u.program === 'Pendampingan Ekspor 2026' && u.transaksi === 0).length, 27)
 check('Mitra (data)', tabs.Mitra.length - 1, 6)
 check('Kanal (data)', tabs.Kanal.length - 1, 26)
 check('Katalog (data)', tabs.Katalog.length - 1, 525)
@@ -237,22 +237,22 @@ const indTotal = {
   inquiry: sum(tx.map((t) => t.inquiry)),
 }
 check('Total Omzet (aplikasi)', app.totals.omzet, indTotal.omzet)
-check('Total Omzet = 333.023.341', indTotal.omzet, 333023341)
+check('Total Omzet = 334.023.341', indTotal.omzet, 334023341)
 check('Total Transaksi (aplikasi)', app.totals.transaksi, indTotal.transaksi)
-check('Total Transaksi = 1.211', indTotal.transaksi, 1211)
+check('Total Transaksi = 1.212', indTotal.transaksi, 1212)
 check('Total Pesanan (aplikasi)', app.totals.pesanan, indTotal.pesanan)
-check('Total Pesanan = 1.424', indTotal.pesanan, 1424)
+check('Total Pesanan = 1.425', indTotal.pesanan, 1425)
 check('Total Klik (aplikasi)', app.totals.klik, indTotal.klik)
-check('Total Klik = 12.642', indTotal.klik, 12642)
-check('Total Inquiry', indTotal.inquiry, 2136)
+check('Total Klik = 12.647', indTotal.klik, 12647)
+check('Total Inquiry', indTotal.inquiry, 2137)
 check('Klik_Link total = kolom klik Transaksi', sum(rowsToObjects(tabs.Klik_Link).map((r) => num(r.klik))), indTotal.klik)
 
 // C. Omzet per bulan
 section('C. Omzet per bulan')
-for (const [bulan, harapan] of [['2026-07', 136761925], ['2026-08', 71616960], ['2026-09', 48450115], ['2026-10', 40474000], ['2026-11', 35720341]]) {
+for (const [bulan, harapan] of [['2026-07', 136761925], ['2026-08', 71616960], ['2026-09', 48450115], ['2026-10', 40474000], ['2026-11', 36720341]]) {
   check(`Omzet ${bulan}`, sum(tx.filter((t) => t.bulan === bulan).map((t) => t.omzet)), harapan)
 }
-check('Tren Okt–Nov (kumulatif)', app.trendPoints.map((p) => p.value).join(', '), '297303000, 333023341')
+check('Tren Okt–Nov (kumulatif)', app.trendPoints.map((p) => p.value).join(', '), '297303000, 334023341')
 
 // D. Jendela evaluasi Okt–Nov
 section('D. Realisasi Okt–Nov (aplikasi vs hitung ulang)')
@@ -260,14 +260,14 @@ const indEval = {
   omzet: sum(evalTx.map((t) => t.omzet)), transaksi: sum(evalTx.map((t) => t.transaksi)),
   inquiry: sum(evalTx.map((t) => t.inquiry)), klik: sum(evalTx.map((t) => t.klik)),
 }
-check('Omzet Okt–Nov', indEval.omzet, 76194341)
-check('Transaksi Okt–Nov', indEval.transaksi, 401)
-check('Inquiry Okt–Nov', indEval.inquiry, 734)
-check('Klik Okt–Nov', indEval.klik, 4152)
+check('Omzet Okt–Nov', indEval.omzet, 77194341)
+check('Transaksi Okt–Nov', indEval.transaksi, 402)
+check('Inquiry Okt–Nov', indEval.inquiry, 735)
+check('Klik Okt–Nov', indEval.klik, 4157)
 const kanalPerUmkm = {}
 evalTx.forEach((t) => { (kanalPerUmkm[t.idUmkm] ??= new Set()).add(t.idKanal) })
 const kanalMean = Object.values(kanalPerUmkm).reduce((a, s) => a + s.size, 0) / Object.keys(kanalPerUmkm).length
-check('Kanal aktif mean/UMKM', kanalMean, 2.98, 0.01)
+check('Kanal aktif mean/UMKM', kanalMean, 2.93, 0.01)
 const repMaster = sum(data.umkm.map((u) => u.repeatTransaksi ?? 0))
 const trxMaster = sum(data.umkm.map((u) => u.transaksi))
 const repeatEval = Math.round(repMaster * (indEval.transaksi / trxMaster))
@@ -287,7 +287,7 @@ const indSkor = {
   konversi: skor(indEval.transaksi / indEval.klik * 100, sum(data.targets.map((t) => t.targetKonversi)) / data.targets.length),
 }
 const appSkor = Object.fromEntries(app.indikator.map((i) => [i.id, i.skor]))
-for (const [id, harapan] of [['katalog', 95], ['kanal', 100], ['inquiry', 83], ['transaksi', 83], ['omzet', 83], ['repeat', 82], ['konversi', 74]]) {
+for (const [id, harapan] of [['katalog', 95], ['kanal', 100], ['inquiry', 83], ['transaksi', 84], ['omzet', 84], ['repeat', 82], ['konversi', 74]]) {
   check(`Skor ${id} (aplikasi)`, appSkor[id], indSkor[id])
   check(`Skor ${id} = ${harapan}`, indSkor[id], harapan)
 }
@@ -296,8 +296,8 @@ const indTerbobot = Math.round(Object.entries(bobot).reduce((a, [k, w]) => a + w
 check('Skor Kinerja terbobot (aplikasi)', app.skorKinerja.skor, indTerbobot)
 check('Skor Kinerja = 88 Sangat Baik', indTerbobot, 88)
 check('Status Skor Kinerja', app.skorKinerja.status, 'Sangat Baik')
-const pertumbuhan = (35720341 - 48450115) / 48450115 * 100
-check('Pertumbuhan (Nov vs Sep)', pertumbuhan, -26.3, 0.1)
+const pertumbuhan = (36720341 - 48450115) / 48450115 * 100
+check('Pertumbuhan (Nov vs Sep)', pertumbuhan, -24.2, 0.1)
 check('Pertumbuhan di indikator (aplikasi)', app.indikator.find((i) => i.id === 'pertumbuhan').delta * 100, pertumbuhan, 0.5)
 
 // F. Delta KPI vs Ringkasan
@@ -320,7 +320,7 @@ top5.forEach(([nama, omzet], i) => {
   check(`Top ${i + 1} nama`, app.topUmkm[i].nama, nama)
   check(`Top ${i + 1} omzet`, app.topUmkm[i].omzet, omzet)
 })
-for (const [nama, omzet] of [['Tokopedia', 112258500], ['Shopee', 89614000], ['Mall Grand Indonesia', 68492341], ['Centong Daily', 20886167], ['Koperasi Kumindag', 20886167], ['Hippindo', 20886166]]) {
+for (const [nama, omzet] of [['Tokopedia', 113258500], ['Shopee', 89614000], ['Mall Grand Indonesia', 68492341], ['Centong Daily', 20886167], ['Koperasi Kumindag', 20886167], ['Hippindo', 20886166]]) {
   check(`Mitra ${nama}`, app.mitra.find((m) => m.nama === nama)?.omzet, omzet)
 }
 
@@ -354,7 +354,7 @@ check('Dialog Skor Kinerja', detail.skorKinerja.skor, chipTerbobot)
 section('I. Mode Mingguan + integritas ID')
 const weekly = compute.computeWeeklyPoints(data, FILTERS)
 check('Jumlah minggu Okt–Nov', weekly.length, 10)
-check('Jumlah omzet mingguan = 76.194.341', sum(weekly.map((w) => w.omzet)), 76194341)
+check('Jumlah omzet mingguan = 77.194.341', sum(weekly.map((w) => w.omzet)), 77194341)
 const umkmIds = new Set(data.umkm.map((u) => u.idUmkm))
 const mitraIds = new Set(data.mitra.map((m) => m.idMitra))
 const kanalIds = new Set(data.kanal.map((k) => k.idKanal))
@@ -369,12 +369,12 @@ check('Jumlah target', data.targets.length, 42)
 // J. UMKM tanpa transaksi tetap tampil (master, 0 di urutan akhir)
 section('J. UMKM tanpa transaksi tetap tampil')
 check('Top UMKM (aplikasi)', app.topUmkm.length, 70)
-check('Top UMKM tanpa transaksi', app.topUmkm.filter((r) => r.transaksi === 0).length, 28)
-check('Top UMKM tanpa omzet', app.topUmkm.filter((r) => r.omzet === 0).length, 28)
+check('Top UMKM tanpa transaksi', app.topUmkm.filter((r) => r.transaksi === 0).length, 27)
+check('Top UMKM tanpa omzet', app.topUmkm.filter((r) => r.omzet === 0).length, 27)
 {
   const ranksNol = app.topUmkm.filter((r) => r.transaksi === 0).map((r) => r.rank)
-  check('Peringkat UMKM tanpa transaksi 43–70 (min)', Math.min(...ranksNol), 43)
-  check('Peringkat UMKM tanpa transaksi 43–70 (maks)', Math.max(...ranksNol), 70)
+  check('Peringkat UMKM tanpa transaksi 44–70 (min)', Math.min(...ranksNol), 44)
+  check('Peringkat UMKM tanpa transaksi 44–70 (maks)', Math.max(...ranksNol), 70)
   check('Top 5 tetap dari yang bertransaksi', app.topUmkm.slice(0, 5).every((r) => r.transaksi > 0), true)
 }
 const miumosa = compute.computeUmkmDetail(data, FILTERS, 'Miumosa')
@@ -384,7 +384,7 @@ check('Dialog Miumosa omzet 0', miumosa?.omzet, 0)
 check('Dialog Miumosa transaksi 0', miumosa?.transaksi, 0)
 check('Dialog Miumosa program', miumosa?.program, 'Pendampingan Ekspor 2026')
 check('Dialog Miumosa perusahaan', miumosa?.namaPerusahaan, 'PT. Miumosa Artha Mandiri')
-check('Dialog Miumosa peringkat 43–70', miumosa !== null && miumosa.rank >= 43 && miumosa.rank <= 70, true)
+check('Dialog Miumosa peringkat 44–70', miumosa !== null && miumosa.rank >= 44 && miumosa.rank <= 70, true)
 check('Dialog Miumosa skor semua —', miumosa?.skorRows?.every((r) => r.skor === null) ?? false, true)
 check('Dialog Miumosa Skor Kinerja —', miumosa?.skorKinerja?.skor ?? null, null)
 
