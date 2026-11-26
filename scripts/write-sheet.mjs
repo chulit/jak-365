@@ -1,7 +1,9 @@
 // write-sheet.mjs — menulis ulang semua tab Google Sheet dari
 // sheets-template/*.csv (sumber: scripts/generate-sheet-data.mjs).
-// Membuat dulu 5 tab baru (Mitra, Kanal, Katalog, Penugasan, Ringkasan),
-// lalu tiap tab: CLEAR seluruh extent lama, lalu UPDATE per chunk 150
+// Membuat dulu tab yang BELUM ADA (Mitra, Kanal, Katalog, Penugasan,
+// Ringkasan) — tab yang sudah ada dilewati (idempotent; dulu script
+// ini gagal bila tab sudah ada, diperbaiki 2026-11-26).
+// Lalu tiap tab: CLEAR seluruh extent lama, lalu UPDATE per chunk 150
 // baris dengan valueInputOption RAW (supaya "2026-07" tidak berubah
 // jadi "2026-7").
 // Jalankan: node scripts/write-sheet.mjs
@@ -84,7 +86,19 @@ function writeTab(tab, csvFile, chunkRows = 150) {
   }
 }
 
-addSheets(['Mitra', 'Kanal', 'Katalog', 'Penugasan', 'Ringkasan'])
+function existingTabs() {
+  const out = gws(['sheets', 'spreadsheets', 'get',
+    '--params', JSON.stringify({ spreadsheetId: SHEET_ID })])
+  const meta = JSON.parse(out)
+  return new Set((meta.sheets ?? []).map((s) => s.properties?.title).filter(Boolean))
+}
+
+{
+  const existing = existingTabs()
+  const missing = ['Mitra', 'Kanal', 'Katalog', 'Penugasan', 'Ringkasan'].filter((t) => !existing.has(t))
+  if (missing.length > 0) addSheets(missing)
+  else console.log('Semua tab sudah ada — lewati pembuatan tab.')
+}
 writeTab('Transaksi', 'Transaksi.csv')
 writeTab('UMKM', 'UMKM.csv')
 writeTab('Mitra', 'Mitra.csv')

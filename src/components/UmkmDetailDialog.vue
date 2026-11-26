@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
 import type { EChartsOption } from 'echarts'
-import { Banknote, ChevronLeft, ChevronRight, ExternalLink, Globe, ShoppingCart, Store, TrendingUp, User, X } from 'lucide-vue-next'
+import { Award, Banknote, Building2, ChevronLeft, ChevronRight, ExternalLink, Globe, ShoppingCart, Store, TrendingUp, User, X } from 'lucide-vue-next'
 import { VChart, chartPalette } from '@/lib/echarts'
 import { formatNumber, formatPercent, formatRupiah } from '@/lib/format'
 import type { Granularity, UmkmDetail } from '@/lib/compute'
@@ -342,6 +342,20 @@ const mitraOption = computed<EChartsOption>(() => {
                 <div class="min-w-0">
                   <dt class="text-xs text-slate-500 dark:text-slate-400">Pemilik</dt>
                   <dd class="mt-0.5 font-medium text-slate-900 dark:text-slate-100">{{ detail.namaPemilik }}</dd>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <Award class="mt-0.5 size-4 shrink-0 text-slate-400" />
+                <div class="min-w-0">
+                  <dt class="text-xs text-slate-500 dark:text-slate-400">Program</dt>
+                  <dd class="mt-0.5 font-medium text-slate-900 dark:text-slate-100">{{ detail.program }}</dd>
+                </div>
+              </div>
+              <div v-if="detail.namaPerusahaan" class="flex gap-3">
+                <Building2 class="mt-0.5 size-4 shrink-0 text-slate-400" />
+                <div class="min-w-0">
+                  <dt class="text-xs text-slate-500 dark:text-slate-400">Perusahaan</dt>
+                  <dd class="mt-0.5 font-medium text-slate-900 dark:text-slate-100">{{ detail.namaPerusahaan }}</dd>
                 </div>
               </div>
               <div class="flex gap-3">

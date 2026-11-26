@@ -328,6 +328,10 @@ export interface UmkmDetail {
   instagramWebsite: string
   /** Data master TEI: penjelasan produk. */
   penjelasanProduk: string
+  /** Program pendampingan yang diikuti (dari master). */
+  program: string
+  /** Nama perusahaan (badan usaha) bila diketahui (dari master). */
+  namaPerusahaan: string
   /** Rincian per bulan — HANYA bulan dalam jendela periode terpilih. */
   monthly: UmkmMonthlyRow[]
   /** Rincian per minggu (omzet per minggu) dalam jendela periode terpilih. */
@@ -508,6 +512,8 @@ export function computeUmkmDetail(data: DashboardData, filters: Filters, nama: s
     izinUsaha: master.izinUsaha,
     instagramWebsite: master.instagramWebsite,
     penjelasanProduk: master.penjelasanProduk,
+    program: master.program,
+    namaPerusahaan: master.namaPerusahaan,
     monthly,
     weekly: weeklyPointsFromTx(tx, filters.startMonth, filters.endMonth),
     periodeLabel: periodeLabel(filters.startMonth, filters.endMonth),
@@ -824,7 +830,9 @@ export function computeDashboard(data: DashboardData, filters: Filters): Compute
  * dropdown Mitra akan kosong).
  */
 export function filterOptions(data: DashboardData): { mitra: string[]; kategori: string[]; wilayah: string[] } {
-  const uniq = (values: string[]): string[] => [...new Set(values)].sort((a, b) => a.localeCompare(b, 'id'))
+  // '—' tidak pernah jadi opsi filter (muncul dari master yang belum
+  // punya mitra/wilayah — mis. 28 baris Pendampingan Ekspor tanpa wilayah).
+  const uniq = (values: string[]): string[] => [...new Set(values)].filter((v) => v && v !== '—').sort((a, b) => a.localeCompare(b, 'id'))
   return {
     mitra: uniq([...data.transactions.map((t) => t.mitra), ...data.umkm.map((u) => u.mitra)]),
     kategori: uniq([...data.transactions.map((t) => t.kategori), ...data.umkm.map((u) => u.kategori)]),

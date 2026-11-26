@@ -1,12 +1,13 @@
 # Panduan Membaca Dashboard Monev UMKM
 
 Dashboard **Monitoring & Evaluasi UMKM** (Step 6 dari 7 alur Jakpreneur 365)
-di https://chulit.github.io/jak-365/ — memantau 42 UMKM peserta
-Trade Expo Indonesia (TEI) 2026 dan 6 mitra pemasarannya.
+di https://chulit.github.io/jak-365/ — memantau 70 UMKM (42 peserta
+Trade Expo Indonesia (TEI) 2026 dan 28 peserta Pendampingan Ekspor 2026;
+12 ikut keduanya) dan 6 mitra pemasarannya.
 
 Dokumen ini menjelaskan cara membaca setiap angka di dashboard dan dari
 mana angka itu berasal. Semua angka di sini merujuk pada data yang sedang
-live saat dokumen ini ditulis (2026-11-25).
+live saat dokumen ini ditulis (2026-11-26).
 
 ## Daftar Isi
 
@@ -38,7 +39,7 @@ Sheet itu punya 9 tab. Masing-masing tab dan kegunaannya:
 
 | Tab | Isi | Dipakai untuk |
 |---|---|---|
-| `UMKM` | 42 UMKM peserta TEI 2026: nama, pemilik, sektor, wilayah, izin usaha, Instagram/website, penjelasan produk | Master UMKM, profil usaha di dialog detail, Total Produk, Repeat Order |
+| `UMKM` | 70 UMKM (42 peserta TEI 2026 + 28 peserta Pendampingan Ekspor 2026, 12 ikut keduanya): nama, pemilik, sektor, wilayah, izin usaha, Instagram/website, penjelasan produk, program, nama perusahaan | Master UMKM, profil usaha di dialog detail, Total Produk, Repeat Order |
 | `Mitra` | 6 mitra pemasaran: nama, jenis, kanal, status | Donut pangsa mitra, filter Mitra |
 | `Kanal` | 26 kanal pemasaran referensi (Instagram, Tokopedia, WhatsApp Business, dst.) | Kanal Aktif per UMKM |
 | `Katalog` | 525 produk dari penjelasan TEI tiap UMKM (497 Tayang, 26 Menunggu, 2 Tidak Disetujui) | Produktivitas Katalog |
@@ -192,8 +193,11 @@ Lima UMKM dengan omzet tertinggi (sampai akhir periode terpilih):
 Tombol **"Lihat Semua"** menampilkan ke-42 UMKM. Klik salah satu
 baris membuka **dialog detail** UMKM itu:
 
-- **Profil Usaha** — pemilik, izin usaha, Instagram/website, dan
-  penjelasan produk (dari master TEI).
+- **Profil Usaha** — pemilik, program yang diikuti, perusahaan (bila
+  diketahui), izin usaha, Instagram/website, dan penjelasan produk
+  (dari master UMKM). Catatan: 28 peserta Pendampingan Ekspor yang
+  belum punya transaksi tidak muncul di daftar ini — mereka hanya ada
+  di tab UMKM di Sheet.
 - **Skor Capaian (vs Target)** — 6 skor indikator UMKM itu beserta
   realisasi vs targetnya, dan Skor Kinerja UMKM itu.
 - **Grafik + tabel bulanan/mingguan** — mengikuti filter periode dan

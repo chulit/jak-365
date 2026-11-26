@@ -13,13 +13,17 @@ ke tab yang sesuai (File → Impor).
 > Sheet tetap bisa dibaca. Angka mockup diabaikan — yang dibangun adalah
 > struktur + data yang bisa diolah dashboard.
 >
-> **Semesta UMKM = 42 peserta TEI 2026.** Nama-nama dummy lama
+> **Semesta UMKM = 70 baris: 42 peserta TEI 2026 + 28 peserta
+> Pendampingan Ekspor 2026 (12 ikut keduanya).** Nama-nama dummy lama
 > (My Little Dimsum, Burich, dkk.) sudah tidak ada — transaksi contoh
 > dipetakan ulang ke 42 nama TEI dengan total yang persis sama.
-> Daftar peserta dibaca generator dari `UMKM_TEI.csv` di folder ini
+> Daftar TEI dibaca generator dari `UMKM_TEI.csv` di folder ini
 > (file sumber dari PDF peserta TEI 2026, 14–18 Okt 2026, ICE BSD);
-> file itu BUKAN tab Sheet — tab `UMKM_TEI` yang dulu terpisah sudah
-> dihapus karena isinya kini tercakup di tab `UMKM`.
+> daftar Ekspor dibaca dari `UMKM_EKSPOR.csv` (disalin dari PDF
+> "Data Peserta Pendampingan Ekspor 2026" — kolom No. WhatsApp PIC
+> sengaja tidak disalin karena Sheet ini publik). Kedua file itu BUKAN
+> tab Sheet — tab `UMKM_TEI` yang dulu terpisah sudah dihapus karena
+> isinya kini tercakup di tab `UMKM`.
 
 ## Struktur tab
 
@@ -42,20 +46,24 @@ ke tab yang sesuai (File → Impor).
 | klik | Jumlah klik link bulan itu |
 | jumlah_inquiry | Jumlah inquiry bulan itu (corong: inquiry ≥ pesanan; angka CONTOH deterministik) |
 
-### UMKM — 42 baris (1 baris = 1 UMKM peserta TEI 2026)
-`id_umkm, kode_peserta, grade, nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk`
+### UMKM — 70 baris (42 peserta TEI 2026 + 28 peserta Pendampingan Ekspor 2026; 12 ikut keduanya)
+`id_umkm, kode_peserta, grade, nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk, program, nama_perusahaan`
 (`transaksi` di sini = total Jul–Nov 2026, harus sama
-dengan jumlah baris UMKM itu di tab Transaksi. Kolom `pesanan` dan
+dengan jumlah baris UMKM itu di tab Transaksi — 28 baris Ekspor 0
+karena belum ada transaksinya. Kolom `pesanan` dan
 `omzet` DIHAPUS 2026-11-24 atas perintah user (redundan — semua angka
 pesanan/omzet dashboard dihitung dari tab Transaksi, bukan dari master).
 `kode_peserta` = kode bisnis format mockup (JP-xxxxxxxx, CONTOH);
-`grade` = tertil omzet (A/B/C). `produk_aktif` berisi angka ACAK
+`grade` = tertil omzet (A/B/C, hanya 42 TEI — baris Ekspor kosong).
+`produk_aktif` berisi angka ACAK
 DETERMINISTIK (8–17 produk, aktif 85–100%) — bukan data TEI, atas
-perintah user 2026-11-24. Kolom `repeat_transaksi` berisi angka ACAK
+perintah user 2026-11-24; baris Ekspor kosong. Kolom `repeat_transaksi` berisi angka ACAK
 DETERMINISTIK (total 346 = 28,6% — aturan repeat: transaksi yang isian
 repeat-nya > 1x dihitung repeat).
 Tidak ada kolom mitra di tab ini — mitra utama tiap UMKM diturunkan
-dari transaksi.)
+dari transaksi. `program` = program pendampingan yang diikuti
+("TEI 2026", "Pendampingan Ekspor 2026", atau keduanya dipisah "; ");
+`nama_perusahaan` = nama badan usaha bila diketahui dari PDF Ekspor.)
 
 ### Mitra — 6 baris (master mitra)
 `id_mitra, nama_mitra, jenis, pic, kontak, email, kategori_produk, wilayah, kanal, status, dokumen, catatan`

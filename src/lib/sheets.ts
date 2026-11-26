@@ -170,6 +170,8 @@ export async function loadFromGoogleSheet(sheetId: string): Promise<DashboardDat
         izinUsaha: r.izin_usaha || '—',
         instagramWebsite: r.instagram_website || '',
         penjelasanProduk: r.penjelasan_produk || '',
+        program: r.program || '—',
+        namaPerusahaan: r.nama_perusahaan || '',
       }
     })
 

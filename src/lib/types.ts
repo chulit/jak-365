@@ -58,6 +58,11 @@ export interface UmkmMaster {
   instagramWebsite: string
   /** Penjelasan produk (data master TEI) */
   penjelasanProduk: string
+  /** Program pendampingan yang diikuti ("TEI 2026", "Pendampingan
+   *  Ekspor 2026", atau keduanya dipisah "; ") — '—' bila belum ada. */
+  program: string
+  /** Nama perusahaan (badan usaha) bila diketahui, '' bila tidak. */
+  namaPerusahaan: string
 }
 
 /** Target individual per UMKM (tab Target di Google Sheet) — angka

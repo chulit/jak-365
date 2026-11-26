@@ -142,6 +142,8 @@ function buildData(tabs) {
         izinUsaha: r.izin_usaha || '—',
         instagramWebsite: r.instagram_website || '',
         penjelasanProduk: r.penjelasan_produk || '',
+        program: r.program || '—',
+        namaPerusahaan: r.nama_perusahaan || '',
       }
     })
   const mitra = rowsToObjects(tabs.Mitra).map((r) => ({
@@ -214,7 +216,11 @@ const evalTx = tx.filter(inEval)
 // A. Jumlah baris per tab
 section('A. Jumlah baris per tab')
 check('Transaksi (data)', tabs.Transaksi.length - 1, 1135)
-check('UMKM (data)', tabs.UMKM.length - 1, 42)
+check('UMKM (data)', tabs.UMKM.length - 1, 70)
+check('UMKM program TEI 2026', data.umkm.filter((u) => u.program.includes('TEI 2026')).length, 42)
+check('UMKM program Pendampingan Ekspor 2026', data.umkm.filter((u) => u.program.includes('Pendampingan Ekspor 2026')).length, 40)
+check('UMKM ikut kedua program', data.umkm.filter((u) => u.program.includes(';')).length, 12)
+check('UMKM Ekspor tanpa transaksi', data.umkm.filter((u) => u.program === 'Pendampingan Ekspor 2026' && u.transaksi === 0).length, 28)
 check('Mitra (data)', tabs.Mitra.length - 1, 6)
 check('Kanal (data)', tabs.Kanal.length - 1, 26)
 check('Katalog (data)', tabs.Katalog.length - 1, 525)

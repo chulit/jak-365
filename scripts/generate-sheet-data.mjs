@@ -4,10 +4,15 @@
 //   Katalog.csv, Penugasan.csv, Klik_Link.csv, Target.csv, Ringkasan.csv,
 //   README.md, dan src/data/sample.ts (data yang dipakai aplikasi saat
 //   Sheet belum dihubungkan)
-// Semesta UMKM = 42 peserta TEI 2026 (dibaca dari
+// Semesta UMKM = 70 baris: 42 peserta TEI 2026 (dibaca dari
 // sheets-template/UMKM_TEI.csv — nama-nama dummy lama seperti
-// My Little Dimsum SUDAH TIDAK ADA). Semua total direkonsiliasi
-// secara eksak (assert di akhir script):
+// My Little Dimsum SUDAH TIDAK ADA) + 28 peserta Pendampingan Ekspor
+// 2026 (dibaca dari sheets-template/UMKM_EKSPOR.csv — disalin dari PDF
+// "Data Peserta Pendampingan Ekspor 2026"; kolom No. WhatsApp PIC
+// SENGAJA tidak disalin karena Sheet ini publik). 12 peserta ikut
+// KEDUA program. Hanya 42 peserta TEI yang punya transaksi/katalog/
+// penugasan/target — 28 peserta Ekspor murni master (0 transaksi),
+// jadi semua total direkonsiliasi secara eksak (assert di akhir script):
 //   Omzet 333.023.341 | Transaksi 1.211 | Pesanan 1.424 | Klik 12.642
 //   (basis screenshot 332.823.341 / 1.210 / 1.423 / 12.630, ditambah
 //    1 transaksi tes Chipsychips 2026-11-17 — lihat EXTRA_TRANSACTION
@@ -338,9 +343,13 @@ const umkm = tei.map((t) => {
     ...t,
     // ID unik (struktur relasional 2026-11-24): id_umkm = kunci sambung
     // antar-tab; kode_peserta = kode bisnis format mockup (JP-xxxxxxxx).
+    // program = program pendampingan yang diikuti (diperbarui di seksi 1b
+    // untuk 12 peserta yang ikut Pendampingan Ekspor juga).
     id: `UMKM-${String(t.no).padStart(3, '0')}`,
     kodePeserta: `JP-${31000000 + t.no}`,
     grade: '',
+    program: 'TEI 2026',
+    namaPerusahaan: '',
     idMitra: '',
     nama: t.namaUsaha,
     kategori: t.sektor,
@@ -360,6 +369,102 @@ distribute(TOTAL_PESANAN - TOTAL_TRANSAKSI, umkm.map(() => 0.3 + rng())).forEach
   const byOmzet = [...umkm].sort((a, b) => b.omzet - a.omzet)
   byOmzet.forEach((u, i) => { u.grade = i < 14 ? 'A' : i < 28 ? 'B' : 'C' })
 }
+
+// ---------------------------------------------------------------------------
+// 1b. Peserta Pendampingan Ekspor 2026 (keputusan user 2026-11-26):
+//     digabung ke master UMKM + kolom `program`.
+//     Input: sheets-template/UMKM_EKSPOR.csv (40 baris, disalin dari PDF
+//     "Data Peserta Pendampingan Ekspor 2026" — kolom No. WhatsApp PIC
+//     SENGAJA tidak disalin: Sheet ini publik).
+//     Hasil: 12 baris COCOK dengan peserta TEI (program jadi
+//     "TEI 2026; Pendampingan Ekspor 2026" + nama perusahaan dari PDF);
+//     28 baris BARU (UMKM-043…070, program "Pendampingan Ekspor 2026",
+//     tanpa transaksi/katalog/penugasan/target — 0 transaksi, jadi
+//     total KPI, Top 5, dan Skor Kinerja TIDAK berubah).
+//     Kategori PDF dinormalisasi ke kategori Sheet: Agriculture & Food
+//     Products → Food & Beverage; Fashion & Apparel → Fesyen;
+//     Beauty, Wellness & Personal Care → Beauty; Home, Lifestyle &
+//     Craft Products → Craft. (Kategori 12 yang cocok TIDAK ditimpa —
+//     Sheet lebih spesifik, mis. Meta Biolife tetap Healthy Beverage.)
+//     nama_pemilik diisi dari Nama PIC HANYA bila jabatannya pemilik/
+//     pendiri/direktur/CEO; Pendamping, Creative Director, Sales
+//     Manager, Anggota Sales → kosong ("—").
+//     wilayah / izin / IG / penjelasan produk tidak ada di PDF → kosong.
+// ---------------------------------------------------------------------------
+const KATEGORI_EKSPOR = {
+  'Agriculture & Food Products': 'Food & Beverage',
+  'Fashion & Apparel': 'Fesyen',
+  'Beauty, Wellness & Personal Care': 'Beauty',
+  'Home, Lifestyle & Craft Products': 'Craft',
+}
+const JABATAN_PEMILIK = new Set([
+  'pemilik', 'pemilik/direktur', 'founder', 'founder & ceo', 'direktur',
+  'direktur utama', 'ceo', 'owner', 'co founder', 'co founder /coo', 'cofounder',
+])
+const normNama = (s) => (s ?? '').toLowerCase().replace(/\b(pt|cv|tbk)\b\.?/g, '').replace(/[^a-z0-9]/g, '')
+const eksporCsv = parseCsv(readFileSync(join(OUT, 'UMKM_EKSPOR.csv'), 'utf8'))
+const eksporHeader = eksporCsv[0]
+const eCol = (name) => {
+  const i = eksporHeader.indexOf(name)
+  if (i < 0) throw new Error(`UMKM_EKSPOR.csv: kolom "${name}" tidak ditemukan`)
+  return i
+}
+const ekspor = eksporCsv.slice(1).map((r) => ({
+  no: Number(r[eCol('no')]) || 0,
+  namaPic: r[eCol('nama_pic')] ?? '',
+  jabatanPic: r[eCol('jabatan_pic')] ?? '',
+  namaPerusahaan: r[eCol('nama_perusahaan')] ?? '',
+  merkUsaha: r[eCol('merk_usaha')] ?? '',
+  ket: r[eCol('ket')] ?? '',
+}))
+if (ekspor.length !== 40) throw new Error(`UMKM_EKSPOR.csv: peserta harus 40, dapat ${ekspor.length}`)
+const eksporBaru = []
+let eksporCocok = 0
+for (const e of ekspor) {
+  if (!e.merkUsaha) throw new Error('UMKM_EKSPOR.csv: ada baris tanpa merk_usaha')
+  const kategori = KATEGORI_EKSPOR[e.ket]
+  if (!kategori) throw new Error(`UMKM_EKSPOR.csv: ket "${e.ket}" belum dipetakan ke kategori Sheet`)
+  const cocok = umkm.filter((u) =>
+    normNama(e.merkUsaha) === normNama(u.nama) ||
+    normNama(e.namaPerusahaan) === normNama(u.nama) ||
+    normNama(u.nama).includes(normNama(e.merkUsaha)) ||
+    normNama(e.merkUsaha).includes(normNama(u.nama)),
+  )
+  if (cocok.length > 1) throw new Error(`UMKM_EKSPOR.csv: "${e.merkUsaha}" cocok dengan ${cocok.length} baris TEI`)
+  if (cocok.length === 1) {
+    cocok[0].program = 'TEI 2026; Pendampingan Ekspor 2026'
+    cocok[0].namaPerusahaan = e.namaPerusahaan
+    eksporCocok++
+    continue
+  }
+  const idx = eksporBaru.length
+  eksporBaru.push({
+    no: 43 + idx,
+    namaPemilik: JABATAN_PEMILIK.has(e.jabatanPic.trim().toLowerCase()) ? e.namaPic : '',
+    namaUsaha: e.merkUsaha,
+    wilayah: '',
+    sektor: kategori,
+    izinUsaha: '',
+    instagramWebsite: '',
+    penjelasanProduk: '',
+    id: `UMKM-${String(43 + idx).padStart(3, '0')}`,
+    kodePeserta: `JP-${31000000 + 43 + idx}`,
+    grade: '',
+    program: 'Pendampingan Ekspor 2026',
+    namaPerusahaan: e.namaPerusahaan,
+    nama: e.merkUsaha,
+    kategori,
+    jumlahProduk: null, produkAktif: null,
+    omzet: 0, transaksi: 0, pesanan: 0, mitra: '', idMitra: '',
+    repeatTransaksi: null,
+  })
+}
+if (eksporCocok !== 12) throw new Error(`UMKM_EKSPOR.csv: cocok harus 12, dapat ${eksporCocok}`)
+if (eksporBaru.length !== 28) throw new Error(`UMKM_EKSPOR.csv: baris baru harus 28, dapat ${eksporBaru.length}`)
+// umkmAll = SEMUA baris master (70) — dipakai HANYA untuk tab UMKM.csv
+// dan sample.ts. Semua hitungan (transaksi, katalog, penugasan, target,
+// repeat, skor) tetap memakai `umkm` (42 TEI) supaya total tidak berubah.
+const umkmAll = [...umkm, ...eksporBaru]
 
 // ---------------------------------------------------------------------------
 // 2. Mitra utama per UMKM — kelompok diskala eksak ke target mitra.
@@ -607,6 +712,14 @@ if (Math.abs(konversi * 100 - 9.6) > 0.05) { console.error('  ✗ konversi bukan
 const umkmIds = new Set(umkm.map((u) => u.id))
 allOk &= check('ID UMKM unik (42)', umkmIds.size, 42)
 allOk &= check('Kode peserta unik (42)', new Set(umkm.map((u) => u.kodePeserta)).size, 42)
+// Master gabungan (TEI + Pendampingan Ekspor): 70 baris, ID/kode unik.
+allOk &= check('Jumlah baris master UMKM (TEI + Ekspor)', umkmAll.length, 70)
+allOk &= check('ID UMKM unik (70)', new Set(umkmAll.map((u) => u.id)).size, 70)
+allOk &= check('Kode peserta unik (70)', new Set(umkmAll.map((u) => u.kodePeserta)).size, 70)
+allOk &= check('UMKM program TEI 2026', umkmAll.filter((u) => u.program.includes('TEI 2026')).length, 42)
+allOk &= check('UMKM program Pendampingan Ekspor 2026', umkmAll.filter((u) => u.program.includes('Pendampingan Ekspor 2026')).length, 40)
+allOk &= check('UMKM ikut kedua program', umkmAll.filter((u) => u.program.includes(';')).length, 12)
+allOk &= check('UMKM Ekspor tanpa transaksi', eksporBaru.filter((u) => u.transaksi === 0).length, 28)
 allOk &= check('ID Mitra unik (6)', new Set(MITRA_MASTER.map((m) => m.id)).size, 6)
 allOk &= check('ID Kanal unik (26)', new Set(KANAL.map((k) => k.id)).size, 26)
 allOk &= check('ID Produk unik (525)', new Set(katalog.map((p) => p.id)).size, sum(umkm, (u) => u.jumlahProduk))
@@ -735,25 +848,34 @@ writeFileSync(join(OUT, 'Transaksi.csv'), toCsv(
     transaksi: t.transaksi, omzet: t.omzet, klik: t.klik, jumlah_inquiry: t.inquiry,
   })),
 ))
-// UMKM.csv — master = 42 peserta TEI. Kolom jumlah_produk / produk_aktif
-// diisi angka ACAK DETERMINISTIK (stream produkRng, seed 20261124) atas
-// perintah user 2026-11-24 — TEI tidak punya data produk. Kolom
-// repeat_transaksi diisi angka ACAK DETERMINISTIK (stream repeatRng,
-// seed 20261126, total 346 = 28,6%) — aturan repeat: transaksi yang
-// isian repeat-nya > 1x dihitung repeat (lihat docs/ALUR.md).
+// UMKM.csv — master = 70 baris: 42 peserta TEI + 28 peserta
+// Pendampingan Ekspor 2026 (12 ikut keduanya — lihat seksi 1b).
+// Kolom jumlah_produk / produk_aktif diisi angka ACAK DETERMINISTIK
+// (stream produkRng, seed 20261124) atas perintah user 2026-11-24 —
+// TEI tidak punya data produk; 28 baris Ekspor KOSONG (null → "—")
+// karena PDF Ekspor tidak punya data produk. Kolom repeat_transaksi
+// diisi angka ACAK DETERMINISTIK (stream repeatRng, seed 20261126,
+// total 346 = 28,6%) — aturan repeat: transaksi yang isian
+// repeat-nya > 1x dihitung repeat (lihat docs/ALUR.md); baris Ekspor
+// kosong.
 // id_umkm (UMKM-001…) = kunci sambung antar-tab; kode_peserta (JP-…)
-// = kode bisnis format mockup; grade = tertil omzet (A/B/C).
+// = kode bisnis format mockup; grade = tertil omzet (A/B/C, hanya
+// 42 TEI — baris Ekspor kosong karena belum ada omzet).
 // Kolom mitra TIDAK ada di master baru — mitra utama tiap UMKM diturunkan
 // dari transaksi (mitra dengan omzet terbesar).
+// Kolom program = program pendampingan yang diikuti; nama_perusahaan =
+// nama badan usaha bila diketahui dari PDF Ekspor (12 yang cocok +
+// 28 baru), kosong untuk 30 TEI lainnya.
 writeFileSync(join(OUT, 'UMKM.csv'), toCsv(
-  ['id_umkm', 'kode_peserta', 'grade', 'nama_umkm', 'kategori', 'wilayah', 'jumlah_produk', 'produk_aktif', 'transaksi', 'repeat_transaksi', 'nama_pemilik', 'izin_usaha', 'instagram_website', 'penjelasan_produk'],
-  umkm.map((u) => ({
+  ['id_umkm', 'kode_peserta', 'grade', 'nama_umkm', 'kategori', 'wilayah', 'jumlah_produk', 'produk_aktif', 'transaksi', 'repeat_transaksi', 'nama_pemilik', 'izin_usaha', 'instagram_website', 'penjelasan_produk', 'program', 'nama_perusahaan'],
+  umkmAll.map((u) => ({
     id_umkm: u.id, kode_peserta: u.kodePeserta, grade: u.grade,
     nama_umkm: u.nama, kategori: u.kategori, wilayah: u.wilayah,
     jumlah_produk: u.jumlahProduk, produk_aktif: u.produkAktif, transaksi: u.transaksi,
     repeat_transaksi: u.repeatTransaksi,
     nama_pemilik: u.namaPemilik, izin_usaha: u.izinUsaha,
     instagram_website: u.instagramWebsite, penjelasan_produk: u.penjelasanProduk,
+    program: u.program, nama_perusahaan: u.namaPerusahaan,
   })),
 ))
 // Target.csv — target individual per UMKM (1 baris = 1 UMKM). Angka CONTOH
@@ -841,7 +963,9 @@ writeFileSync(join(OUT, 'Ringkasan.csv'), toCsv(
 const sampleTs = `// ---------------------------------------------------------------------------
 // DATA CONTOH — digenerate oleh scripts/generate-sheet-data.mjs
 // JANGAN EDIT MANUAL: jalankan ulang generator bila angka contoh berubah.
-// Semesta UMKM = 42 peserta TEI 2026 (bukan lagi nama-nama dummy lama).
+// Semesta UMKM = 70 baris: 42 peserta TEI 2026 + 28 peserta
+// Pendampingan Ekspor 2026 (12 ikut keduanya — lihat
+// scripts/generate-sheet-data.mjs seksi 1b). Bukan lagi nama-nama dummy lama.
 // Angka-angka di sini persis dengan screenshot dashboard:
 //   Omzet 333.023.341 | Transaksi 1.211 | Pesanan 1.424 | Klik 12.642
 //   UMKM 42 (peserta TEI 2026) — jumlah_produk/produk_aktif angka acak
@@ -857,7 +981,7 @@ export const sampleData: DashboardData = {
 ${transactions.map((t) => `    ${JSON.stringify(t)},`).join('\n')}
   ],
   umkm: [
-${umkm.map((u) => `    ${JSON.stringify({ idUmkm: u.id, kodePeserta: u.kodePeserta, grade: u.grade, namaUmkm: u.nama, kategori: u.kategori, wilayah: u.wilayah, mitra: u.mitra, jumlahProduk: u.jumlahProduk, produkAktif: u.produkAktif, transaksi: u.transaksi, repeatTransaksi: u.repeatTransaksi, namaPemilik: u.namaPemilik, izinUsaha: u.izinUsaha, instagramWebsite: u.instagramWebsite, penjelasanProduk: u.penjelasanProduk })},`).join('\n')}
+${umkmAll.map((u) => `    ${JSON.stringify({ idUmkm: u.id, kodePeserta: u.kodePeserta, grade: u.grade, namaUmkm: u.nama, kategori: u.kategori, wilayah: u.wilayah, mitra: u.mitra, jumlahProduk: u.jumlahProduk, produkAktif: u.produkAktif, transaksi: u.transaksi, repeatTransaksi: u.repeatTransaksi, namaPemilik: u.namaPemilik, izinUsaha: u.izinUsaha, instagramWebsite: u.instagramWebsite, penjelasanProduk: u.penjelasanProduk, program: u.program, namaPerusahaan: u.namaPerusahaan })},`).join('\n')}
   ],
   // Target individual per UMKM (angka CONTOH deterministik — lihat
   // sheets-template/Target.csv; user bisa mengubahnya di Google Sheet).
@@ -945,13 +1069,17 @@ ke tab yang sesuai (File → Impor).
 > Sheet tetap bisa dibaca. Angka mockup diabaikan — yang dibangun adalah
 > struktur + data yang bisa diolah dashboard.
 >
-> **Semesta UMKM = 42 peserta TEI 2026.** Nama-nama dummy lama
+> **Semesta UMKM = 70 baris: 42 peserta TEI 2026 + 28 peserta
+> Pendampingan Ekspor 2026 (12 ikut keduanya).** Nama-nama dummy lama
 > (My Little Dimsum, Burich, dkk.) sudah tidak ada — transaksi contoh
 > dipetakan ulang ke 42 nama TEI dengan total yang persis sama.
-> Daftar peserta dibaca generator dari \`UMKM_TEI.csv\` di folder ini
+> Daftar TEI dibaca generator dari \`UMKM_TEI.csv\` di folder ini
 > (file sumber dari PDF peserta TEI 2026, 14–18 Okt 2026, ICE BSD);
-> file itu BUKAN tab Sheet — tab \`UMKM_TEI\` yang dulu terpisah sudah
-> dihapus karena isinya kini tercakup di tab \`UMKM\`.
+> daftar Ekspor dibaca dari \`UMKM_EKSPOR.csv\` (disalin dari PDF
+> "Data Peserta Pendampingan Ekspor 2026" — kolom No. WhatsApp PIC
+> sengaja tidak disalin karena Sheet ini publik). Kedua file itu BUKAN
+> tab Sheet — tab \`UMKM_TEI\` yang dulu terpisah sudah dihapus karena
+> isinya kini tercakup di tab \`UMKM\`.
 
 ## Struktur tab
 
@@ -974,20 +1102,24 @@ ke tab yang sesuai (File → Impor).
 | klik | Jumlah klik link bulan itu |
 | jumlah_inquiry | Jumlah inquiry bulan itu (corong: inquiry ≥ pesanan; angka CONTOH deterministik) |
 
-### UMKM — ${umkm.length} baris (1 baris = 1 UMKM peserta TEI 2026)
-\`id_umkm, kode_peserta, grade, nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk\`
+### UMKM — ${umkmAll.length} baris (42 peserta TEI 2026 + 28 peserta Pendampingan Ekspor 2026; 12 ikut keduanya)
+\`id_umkm, kode_peserta, grade, nama_umkm, kategori, wilayah, jumlah_produk, produk_aktif, transaksi, repeat_transaksi, nama_pemilik, izin_usaha, instagram_website, penjelasan_produk, program, nama_perusahaan\`
 (\`transaksi\` di sini = total Jul–Nov 2026, harus sama
-dengan jumlah baris UMKM itu di tab Transaksi. Kolom \`pesanan\` dan
+dengan jumlah baris UMKM itu di tab Transaksi — 28 baris Ekspor 0
+karena belum ada transaksinya. Kolom \`pesanan\` dan
 \`omzet\` DIHAPUS 2026-11-24 atas perintah user (redundan — semua angka
 pesanan/omzet dashboard dihitung dari tab Transaksi, bukan dari master).
 \`kode_peserta\` = kode bisnis format mockup (JP-xxxxxxxx, CONTOH);
-\`grade\` = tertil omzet (A/B/C). \`produk_aktif\` berisi angka ACAK
+\`grade\` = tertil omzet (A/B/C, hanya 42 TEI — baris Ekspor kosong).
+\`produk_aktif\` berisi angka ACAK
 DETERMINISTIK (8–17 produk, aktif 85–100%) — bukan data TEI, atas
-perintah user 2026-11-24. Kolom \`repeat_transaksi\` berisi angka ACAK
+perintah user 2026-11-24; baris Ekspor kosong. Kolom \`repeat_transaksi\` berisi angka ACAK
 DETERMINISTIK (total 346 = 28,6% — aturan repeat: transaksi yang isian
 repeat-nya > 1x dihitung repeat).
 Tidak ada kolom mitra di tab ini — mitra utama tiap UMKM diturunkan
-dari transaksi.)
+dari transaksi. \`program\` = program pendampingan yang diikuti
+("TEI 2026", "Pendampingan Ekspor 2026", atau keduanya dipisah "; ");
+\`nama_perusahaan\` = nama badan usaha bila diketahui dari PDF Ekspor.)
 
 ### Mitra — ${MITRA_MASTER.length} baris (master mitra)
 \`id_mitra, nama_mitra, jenis, pic, kontak, email, kategori_produk, wilayah, kanal, status, dokumen, catatan\`
@@ -1079,7 +1211,7 @@ writeFileSync(join(OUT, 'README.md'), readme)
 
 console.log('VERIFIKASI OK — semua total cocok:')
 checks.forEach((c) => console.log(`  ${c.ok ? '✓' : '✗'} ${c.nama}: ${fmt(c.aktual)}`))
-console.log(`\nDitulis: sheets-template/Transaksi.csv (${transactions.length} baris), UMKM.csv (${umkm.length} baris), Mitra.csv (${MITRA_MASTER.length} baris), Kanal.csv (${KANAL.length} baris), Katalog.csv (${katalog.length} baris), Penugasan.csv (${penugasan.length} baris), Klik_Link.csv (${klikRows.length} baris), Target.csv (${targetRows.length} baris), Ringkasan.csv (4 baris), src/data/sample.ts`)
+console.log(`\nDitulis: sheets-template/Transaksi.csv (${transactions.length} baris), UMKM.csv (${umkmAll.length} baris), Mitra.csv (${MITRA_MASTER.length} baris), Kanal.csv (${KANAL.length} baris), Katalog.csv (${katalog.length} baris), Penugasan.csv (${penugasan.length} baris), Klik_Link.csv (${klikRows.length} baris), Target.csv (${targetRows.length} baris), Ringkasan.csv (4 baris), src/data/sample.ts`)
 console.log(`Inquiry total: ${fmt(FINAL_INQUIRY)} (Okt–Nov: ${fmt(FINAL_INQUIRY_OKT_NOV)}) · Kanal aktif rata-rata/UMKM (Okt–Nov): ${FINAL_KANAL_AKTIF_MEAN.toFixed(2)} · Katalog: ${katalog.length} produk, ${FINAL_KATALOG_TAYANG} tayang`)
 console.log(`Σ target — inquiry ${fmt(FINAL_T_INQUIRY)} · kanal aktif ${fmt(FINAL_T_KANAL_AKTIF)}`)
 console.log(`Repeat total: ${FINAL_REPEAT} (${(FINAL_REPEAT / FINAL_TRANSAKSI * 100).toFixed(1)}% dari ${FINAL_TRANSAKSI} transaksi)`)
