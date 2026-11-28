@@ -10,14 +10,15 @@
 // 2026 (dibaca dari sheets-template/UMKM_EKSPOR.csv — disalin dari PDF
 // "Data Peserta Pendampingan Ekspor 2026"; kolom No. WhatsApp PIC
 // SENGAJA tidak disalin karena Sheet ini publik). 12 peserta ikut
-// KEDUA program. Hanya 42 peserta TEI yang punya katalog/
-// penugasan/target — dari 28 peserta Ekspor, baru UMKM-043 yang punya
-// 1 transaksi tes (2026-11-26), 27 sisanya murni master (0 transaksi),
-// jadi semua total direkonsiliasi secara eksak (assert di akhir script):
-//   Omzet 334.023.341 | Transaksi 1.212 | Pesanan 1.425 | Klik 12.647
+// KEDUA program. Hanya 42 peserta TEI yang punya katalog/target —
+// 28 peserta Ekspor kini punya transaksi contoh juga (perintah user
+// 2026-11-28, seksi 2b/3b/4c), jadi semua total direkonsiliasi secara
+// eksak (assert di akhir script):
+//   Omzet 556.023.341 | Transaksi 2.012 | Pesanan 2.375 | Klik 21.047
 //   (basis screenshot 332.823.341 / 1.210 / 1.423 / 12.630, ditambah
-//    2 transaksi tes — Chipsychips 2026-11-17 (Rp 200.000) dan
-//    UMKM-043 2026-11-26 (Rp 1.000.000) — lihat EXTRA_TRANSACTIONS
+//    transaksi contoh 28 Ekspor Rp 222.000.000 + 2 transaksi tes —
+//    Chipsychips 2026-11-17 (Rp 200.000) dan UMKM-043 2026-11-26
+//    (Rp 1.000.000) — lihat EXTRA_TRANSACTIONS
 //    di bawah, ditambahkan SETELAH verifikasi basis supaya alokasi
 //    bulanan tidak berubah)
 //   UMKM 42 (peserta TEI 2026) — jumlah_produk/produk_aktif angka acak
@@ -74,6 +75,11 @@ const inquiryRng = mulberry32(20261127)
 const kanalRng = mulberry32(20261128)
 const katalogRng = mulberry32(20261129)
 const target2Rng = mulberry32(20261130)
+// RNG TERPISAH untuk transaksi 28 peserta Ekspor (seed 20261201–
+// 20261203) — stream sendiri supaya distribusi 42 TEI tidak bergeser.
+const eksporRng = mulberry32(20261201)
+const eksporInquiryRng = mulberry32(20261202)
+const eksporKanalRng = mulberry32(20261203)
 
 /** Bagi `total` bulat ke n bagian mengikuti bobot, jumlah hasil = total persis. */
 function distribute(total, weights, min = 0) {
@@ -97,10 +103,16 @@ function distribute(total, weights, min = 0) {
  *  peluang tiap bagian proporsional bobotnya. Untuk total kecil jauh
  *  lebih merata antar segmen daripada largest remainder. */
 function distributeRandom(total, weights) {
+  return distributeRandomWith(rng, total, weights)
+}
+
+/** Seperti distributeRandom, tapi memakai rngFn yang diberikan (dipakai
+ *  seksi 4 supaya 28 Ekspor punya stream sendiri). */
+function distributeRandomWith(rngFn, total, weights) {
   const wSum = weights.reduce((a, b) => a + b, 0)
   const out = new Array(weights.length).fill(0)
   for (let k = 0; k < total; k++) {
-    let r = rng() * wSum
+    let r = rngFn() * wSum
     let i = 0
     while (i < weights.length - 1 && r > weights[i]) { r -= weights[i]; i++ }
     out[i]++
@@ -172,6 +184,19 @@ const TOTAL_OMZET = 332823341
 const TOTAL_TRANSAKSI = 1210
 const TOTAL_PESANAN = 1423
 const TOTAL_KLIK = 12630
+
+// Total CONTOH untuk 28 peserta Ekspor (perintah user 2026-11-28:
+// "random transaksi" untuk 28 UMKM baru). Skala per UMKM sama seperti
+// TEI (rata-rata ~Rp 7,9 jt / ~29 transaksi), dibulatkan. Inquiry
+// dihitung per segmen seperti TEI (pesanan + 15–50%), bukan total tetap.
+const EKSPOR_TOTAL_OMZET = 222000000
+const EKSPOR_TOTAL_TRANSAKSI = 800
+const EKSPOR_TOTAL_PESANAN = 950
+const EKSPOR_TOTAL_KLIK = 8400
+const EKSPOR_MONTHLY_OMZET = [91200000, 47800000, 32400000, 27000000, 23600000] // 222.000.000
+const EKSPOR_MONTHLY_TRANSAKSI = [205, 175, 155, 139, 126] // 800
+const EKSPOR_MONTHLY_PESANAN = [244, 208, 186, 166, 146] // 950
+const EKSPOR_MONTHLY_KLIK = [2162, 1849, 1636, 1457, 1296] // 8.400
 
 // ---------------------------------------------------------------------------
 // Master referensi — struktur relasional (keputusan user 2026-11-24):
@@ -516,6 +541,27 @@ const groups = Array.from({ length: MITRA.length }, () => [])
 if (groups.flat().length !== umkm.length) throw new Error('mitra: jumlah UMKM tidak cocok')
 
 // ---------------------------------------------------------------------------
+// 2b. Mitra + total per UMKM untuk 28 peserta Ekspor (perintah user
+//     2026-11-28: "random transaksi" untuk 28 UMKM baru).
+//     Mitra: round-robin urut daftar PDF (5,5,5,5,4,4). Total per UMKM:
+//     bobot acak (stream eksporRng) dengan total tetap EKSPOR_TOTAL_*,
+//     min 1 transaksi/pesanan/klik dan min Rp 300.000 omzet per UMKM —
+//     supaya ke-28 UMKM pasti punya angka (tidak ada yang 0).
+// ---------------------------------------------------------------------------
+{
+  const weights = eksporBaru.map(() => 0.5 + eksporRng())
+  const omzet = distribute(EKSPOR_TOTAL_OMZET, weights, 300000)
+  const transaksi = distribute(EKSPOR_TOTAL_TRANSAKSI, omzet, 1)
+  const pesanan = distribute(EKSPOR_TOTAL_PESANAN, omzet, 1)
+  eksporBaru.forEach((u, i) => {
+    u.omzet = omzet[i]; u.transaksi = transaksi[i]; u.pesanan = pesanan[i]
+    const mitra = MITRA[i % MITRA.length]
+    u.mitra = mitra.nama; u.idMitra = MITRA_MASTER[i % MITRA.length].id
+  })
+}
+const eksporKlikPerUmkm = distribute(EKSPOR_TOTAL_KLIK, eksporBaru.map((u) => u.omzet), 1)
+
+// ---------------------------------------------------------------------------
 // 3. Alokasi bulanan per UMKM (matriks eksak baris & kolom)
 //    Baris: jumlah 5 bulan = total UMKM. Kolom: jumlah per bulan = target.
 //    Perbaikan kolom dilakukan dengan memindah unit antar bulan DALAM
@@ -551,6 +597,13 @@ const mTransaksi = allocateMonthly(umkm.map((u) => u.transaksi), MONTHLY_TRANSAK
 const mPesanan = allocateMonthly(umkm.map((u) => u.pesanan), MONTHLY_PESANAN)
 const mKlik = allocateMonthly(klikPerUmkm, MONTHLY_KLIK)
 
+// 3b. Alokasi bulanan 28 Ekspor (matriks eksak yang sama, target bulanan
+//     EKSPOR_MONTHLY_*).
+const emOmzet = allocateMonthly(eksporBaru.map((u) => u.omzet), EKSPOR_MONTHLY_OMZET)
+const emTransaksi = allocateMonthly(eksporBaru.map((u) => u.transaksi), EKSPOR_MONTHLY_TRANSAKSI)
+const emPesanan = allocateMonthly(eksporBaru.map((u) => u.pesanan), EKSPOR_MONTHLY_PESANAN)
+const emKlik = allocateMonthly(eksporKlikPerUmkm, EKSPOR_MONTHLY_KLIK)
+
 // ---------------------------------------------------------------------------
 // 4. Bangun baris Transaksi — tiap agregat UMKM x bulan DIPECAH PER MINGGU.
 //    Satu bulan dipecah menjadi segmen minggu ISO (Senin–Minggu) yang
@@ -580,56 +633,69 @@ function weekSegmentsInMonth(year, monthIndex) {
   return segs
 }
 
-const transactions = []
-umkm.forEach((u, i) => {
-  MONTHS.forEach((mo, m) => {
-    const [year, month] = mo.key.split('-').map(Number)
-    const segs = weekSegmentsInMonth(year, month - 1)
-    // Bobot = jumlah hari × jitter deterministik per baris (±15%). Tanpa
-    // jitter, distribute() (largest remainder, seri = indeks) akan selalu
-    // memberikan sisa hitungan kecil ke segmen yang sama, sehingga total
-    // transaksi mingguan jadi timpang (mis. minggu ke-2 selalu jauh lebih
-    // besar). Satu set bobot dipakai untuk keempat metrik dalam baris
-    // yang sama, jadi pesanan/transaksi/omzet/klik tetap proporsional.
-    const weights = segs.map((s) => s.days * (0.85 + rng() * 0.3))
-    // Hitungan kecil (pesanan/transaksi/klik, biasanya 1–30 per baris)
-    // dibagi dengan undian multinomial per unit: largest remainder
-    // akan selalu menguntungkan segmen tengah untuk total kecil,
-    // sehingga minggu pertama/terakhir bulan tampak kosong.
-    const pesananSeg = distributeRandom(mPesanan[i][m], weights)
-    const transaksiSeg = distributeRandom(mTransaksi[i][m], weights)
-    const omzetSeg = distribute(mOmzet[i][m], weights)
-    const klikSeg = distributeRandom(mKlik[i][m], weights)
-    // Inquiry per segmen: corong inquiry ≥ pesanan — pesanan + 15–50%
-    // (stream inquiryRng terpisah; bila pesanan 0, 0–2 inquiry mentah).
-    // Kanal per segmen: satu kanal dari daftar kanal mitra itu (stream
-    // kanalRng terpisah) — kanal utama slice tersebut; Kanal Aktif per
-    // UMKM = jumlah kanal berbeda di semua barisnya.
-    const inquirySeg = segs.map((_, s) => {
-      const p = pesananSeg[s]
-      return p > 0 ? p + Math.round(p * (0.15 + inquiryRng() * 0.35)) : Math.floor(inquiryRng() * 3)
-    })
-    const kanalSeg = segs.map(() => {
-      const daftar = mitraByNama.get(u.mitra)?.kanal ?? ['Lainnya']
-      const nama = daftar[Math.floor(kanalRng() * daftar.length)]
-      const kanal = kanalByNama.get(nama) ?? { id: 'KNL-26', nama: 'Lainnya' }
-      return kanal
-    })
-    segs.forEach((seg, s) => {
-      // Lewati segmen yang nol di semua metrik (jumlah tetap terjaga).
-      if (pesananSeg[s] + transaksiSeg[s] + omzetSeg[s] + klikSeg[s] + inquirySeg[s] === 0) return
-      transactions.push({
-        tanggal: seg.start, bulan: mo.key,
-        idUmkm: u.id, namaUmkm: u.nama, kategori: u.kategori,
-        wilayah: u.wilayah, idMitra: u.idMitra, mitra: u.mitra,
-        idKanal: kanalSeg[s].id, kanal: kanalSeg[s].nama,
-        pesanan: pesananSeg[s],
-        transaksi: transaksiSeg[s], omzet: omzetSeg[s], klik: klikSeg[s],
-        inquiry: inquirySeg[s],
+/** Bangun baris Transaksi untuk satu daftar UMKM (tiap agregat UMKM x
+ *  bulan dipecah per minggu). `streams` = { rng, inquiryRng, kanalRng }.
+ *  Dipanggil 2x: 42 TEI dengan stream lama (hasilnya harus byte-identik
+ *  dengan sebelumnya) dan 28 Ekspor dengan stream eksporRng (seksi 4c). */
+function buildTxRows(list, mOmzet, mTransaksi, mPesanan, mKlik, streams) {
+  const rows = []
+  list.forEach((u, i) => {
+    MONTHS.forEach((mo, m) => {
+      const [year, month] = mo.key.split('-').map(Number)
+      const segs = weekSegmentsInMonth(year, month - 1)
+      // Bobot = jumlah hari × jitter deterministik per baris (±15%). Tanpa
+      // jitter, distribute() (largest remainder, seri = indeks) akan selalu
+      // memberikan sisa hitungan kecil ke segmen yang sama, sehingga total
+      // transaksi mingguan jadi timpang (mis. minggu ke-2 selalu jauh lebih
+      // besar). Satu set bobot dipakai untuk keempat metrik dalam baris
+      // yang sama, jadi pesanan/transaksi/omzet/klik tetap proporsional.
+      const weights = segs.map((s) => s.days * (0.85 + streams.rng() * 0.3))
+      // Hitungan kecil (pesanan/transaksi/klik, biasanya 1–30 per baris)
+      // dibagi dengan undian multinomial per unit: largest remainder
+      // akan selalu menguntungkan segmen tengah untuk total kecil,
+      // sehingga minggu pertama/terakhir bulan tampak kosong.
+      const pesananSeg = distributeRandomWith(streams.rng, mPesanan[i][m], weights)
+      const transaksiSeg = distributeRandomWith(streams.rng, mTransaksi[i][m], weights)
+      const omzetSeg = distribute(mOmzet[i][m], weights)
+      const klikSeg = distributeRandomWith(streams.rng, mKlik[i][m], weights)
+      // Inquiry per segmen: corong inquiry ≥ pesanan — pesanan + 15–50%
+      // (bila pesanan 0, 0–2 inquiry mentah).
+      // Kanal per segmen: satu kanal dari daftar kanal mitra itu —
+      // kanal utama slice tersebut; Kanal Aktif per UMKM = jumlah kanal
+      // berbeda di semua barisnya.
+      const inquirySeg = segs.map((_, s) => {
+        const p = pesananSeg[s]
+        return p > 0 ? p + Math.round(p * (0.15 + streams.inquiryRng() * 0.35)) : Math.floor(streams.inquiryRng() * 3)
+      })
+      const kanalSeg = segs.map(() => {
+        const daftar = mitraByNama.get(u.mitra)?.kanal ?? ['Lainnya']
+        const nama = daftar[Math.floor(streams.kanalRng() * daftar.length)]
+        const kanal = kanalByNama.get(nama) ?? { id: 'KNL-26', nama: 'Lainnya' }
+        return kanal
+      })
+      segs.forEach((seg, s) => {
+        // Lewati segmen yang nol di semua metrik (jumlah tetap terjaga).
+        if (pesananSeg[s] + transaksiSeg[s] + omzetSeg[s] + klikSeg[s] + inquirySeg[s] === 0) return
+        rows.push({
+          tanggal: seg.start, bulan: mo.key,
+          idUmkm: u.id, namaUmkm: u.nama, kategori: u.kategori,
+          wilayah: u.wilayah, idMitra: u.idMitra, mitra: u.mitra,
+          idKanal: kanalSeg[s].id, kanal: kanalSeg[s].nama,
+          pesanan: pesananSeg[s],
+          transaksi: transaksiSeg[s], omzet: omzetSeg[s], klik: klikSeg[s],
+          inquiry: inquirySeg[s],
+        })
       })
     })
   })
-})
+  return rows
+}
+
+const transactions = buildTxRows(umkm, mOmzet, mTransaksi, mPesanan, mKlik, { rng, inquiryRng, kanalRng })
+
+// 4c. Baris Transaksi 28 peserta Ekspor (matriks em* dari seksi 3b,
+//     stream eksporRng — distribusi 42 TEI di atas tidak bergeser).
+const transactionsEkspor = buildTxRows(eksporBaru, emOmzet, emTransaksi, emPesanan, emKlik, { rng: eksporRng, inquiryRng: eksporInquiryRng, kanalRng: eksporKanalRng })
 
 // ---------------------------------------------------------------------------
 // 4b. Katalog produk + Penugasan (struktur relasional 2026-11-24).
@@ -639,7 +705,7 @@ umkm.forEach((u, i) => {
 //     status: produkAktif pertama "Tayang", sisanya "Menunggu", 1
 //     "Tidak Disetujui" bila sisa >= 2 (total Tayang = 497 persis).
 //     Penugasan: 1 baris per pasangan UMKM×mitra yang ada di Transaksi
-//     (42 baris — tiap UMKM kini punya 1 mitra utama); kanal utama =
+//     (70 baris — tiap UMKM kini punya 1 mitra utama); kanal utama =
 //     kanal pertama mitra itu; periode 01 Okt–31 Des 2026, status Aktif.
 // ---------------------------------------------------------------------------
 const katalog = []
@@ -665,7 +731,7 @@ umkm.forEach((u) => {
     })
   }
 })
-const penugasan = umkm.map((u, i) => {
+const penugasan = umkmAll.map((u, i) => {
   const mitra = mitraByNama.get(u.mitra)
   if (!mitra) throw new Error(`penugasan: mitra ${u.mitra} tidak ada di master`)
   const kanalUtama = kanalByNama.get(mitra.kanal[0])
@@ -733,33 +799,43 @@ allOk &= check('Kode peserta unik (70)', new Set(umkmAll.map((u) => u.kodePesert
 allOk &= check('UMKM program TEI 2026', umkmAll.filter((u) => u.program.includes('TEI 2026')).length, 42)
 allOk &= check('UMKM program Pendampingan Ekspor 2026', umkmAll.filter((u) => u.program.includes('Pendampingan Ekspor 2026')).length, 40)
 allOk &= check('UMKM ikut kedua program', umkmAll.filter((u) => u.program.includes(';')).length, 12)
-allOk &= check('UMKM Ekspor tanpa transaksi', eksporBaru.filter((u) => u.transaksi === 0).length, 28)
+allOk &= check('UMKM Ekspor tanpa transaksi', eksporBaru.filter((u) => u.transaksi === 0).length, 0)
 allOk &= check('ID Mitra unik (6)', new Set(MITRA_MASTER.map((m) => m.id)).size, 6)
 allOk &= check('ID Kanal unik (26)', new Set(KANAL.map((k) => k.id)).size, 26)
 allOk &= check('ID Produk unik (525)', new Set(katalog.map((p) => p.id)).size, sum(umkm, (u) => u.jumlahProduk))
-allOk &= check('ID Penugasan unik (42)', new Set(penugasan.map((p) => p.id)).size, 42)
+allOk &= check('ID Penugasan unik (70)', new Set(penugasan.map((p) => p.id)).size, 70)
+// Total per UMKM Ekspor di Transaksi harus sama dengan total masternya.
+eksporBaru.forEach((u) => {
+  const rows = transactionsEkspor.filter((t) => t.namaUmkm === u.nama)
+  allOk &= check(`Total omzet ${u.nama}`, sum(rows, (t) => t.omzet), u.omzet)
+  allOk &= check(`Total transaksi ${u.nama}`, sum(rows, (t) => t.transaksi), u.transaksi)
+  allOk &= check(`Total pesanan ${u.nama}`, sum(rows, (t) => t.pesanan), u.pesanan)
+})
 {
   const badTx = transactions.filter((t) => !umkmIds.has(t.idUmkm) || !mitraByNama.has(t.mitra) || !kanalById.has(t.idKanal))
   if (badTx.length > 0) { console.error(`  ✗ Transaksi dengan FK tidak valid: ${badTx.length} baris`); allOk = false }
+  const umkmAllIds = new Set(umkmAll.map((u) => u.id))
+  const badTxEkspor = transactionsEkspor.filter((t) => !umkmAllIds.has(t.idUmkm) || !mitraByNama.has(t.mitra) || !kanalById.has(t.idKanal))
+  if (badTxEkspor.length > 0) { console.error(`  ✗ Transaksi Ekspor dengan FK tidak valid: ${badTxEkspor.length} baris`); allOk = false }
   const badKat = katalog.filter((p) => !umkmIds.has(p.idUmkm))
   if (badKat.length > 0) { console.error(`  ✗ Katalog dengan id_umkm tidak valid: ${badKat.length} baris`); allOk = false }
-  const badPen = penugasan.filter((p) => !umkmIds.has(p.idUmkm) || !kanalById.has(p.idKanal))
+  const badPen = penugasan.filter((p) => !umkmAllIds.has(p.idUmkm) || !kanalById.has(p.idKanal))
   if (badPen.length > 0) { console.error(`  ✗ Penugasan dengan FK tidak valid: ${badPen.length} baris`); allOk = false }
   // Inquiry: corong inquiry ≥ pesanan di tiap baris.
-  const badInq = transactions.filter((t) => t.inquiry < t.pesanan)
+  const badInq = [...transactions, ...transactionsEkspor].filter((t) => t.inquiry < t.pesanan)
   if (badInq.length > 0) { console.error(`  ✗ Inquiry < pesanan: ${badInq.length} baris`); allOk = false }
   // Katalog: Tayang = produk aktif (497), Menunggu + Tidak Disetujui = 28.
   allOk &= check('Produk Tayang (katalog)', katalog.filter((p) => p.statusVerifikasi === 'Tayang').length, sum(umkm, (u) => u.produkAktif))
   allOk &= check('Produk tidak tayang (katalog)', katalog.filter((p) => p.statusVerifikasi !== 'Tayang').length, sum(umkm, (u) => u.jumlahProduk - u.produkAktif))
   // Kanal Aktif per UMKM (jendela Okt–Nov): 1–4 kanal (daftar kanal mitranya).
   const kanalAktifOktNov = new Map()
-  for (const t of transactions) {
+  for (const t of [...transactions, ...transactionsEkspor]) {
     if (t.bulan < '2026-10' || t.bulan > '2026-11') continue
     const s = kanalAktifOktNov.get(t.idUmkm) ?? new Set()
     s.add(t.idKanal)
     kanalAktifOktNov.set(t.idUmkm, s)
   }
-  umkm.forEach((u) => {
+  umkmAll.forEach((u) => {
     const n = kanalAktifOktNov.get(u.id)?.size ?? 0
     if (!(n >= 1 && n <= 4)) { console.error(`  ✗ Kanal aktif ${u.nama}: ${n} (harus 1–4)`); allOk = false }
   })
@@ -780,14 +856,21 @@ for (const extra of EXTRA_TRANSACTIONS) {
   target.pesanan += extra.pesanan
   target.omzet += extra.omzet
 }
-// Verifikasi total akhir (basis + transaksi tes)
+// Gabungan untuk total akhir + penulisan CSV/sample (42 TEI + 28 Ekspor
+// + transaksi tes).
+const allTransactions = [...transactions, ...transactionsEkspor]
+// Verifikasi total akhir (basis + 28 Ekspor + transaksi tes)
 let finalOk = true
-finalOk &= check('Total omzet akhir', sum(transactions, (t) => t.omzet), 334023341)
-finalOk &= check('Total transaksi akhir', sum(transactions, (t) => t.transaksi), 1212)
-finalOk &= check('Total pesanan akhir', sum(transactions, (t) => t.pesanan), 1425)
-finalOk &= check('Total klik akhir', sum(transactions, (t) => t.klik), 12647)
-finalOk &= check('Omzet Nov 2026 akhir', sum(transactions.filter((t) => t.bulan === '2026-11'), (t) => t.omzet), 36720341)
-finalOk &= check('Omzet Okt–Nov mingguan akhir', sum(transactions.filter((t) => t.tanggal >= '2026-10-01' && t.tanggal <= '2026-11-30'), (t) => t.omzet), 77194341)
+finalOk &= check('Total omzet akhir', sum(allTransactions, (t) => t.omzet), 556023341)
+finalOk &= check('Total transaksi akhir', sum(allTransactions, (t) => t.transaksi), 2012)
+finalOk &= check('Total pesanan akhir', sum(allTransactions, (t) => t.pesanan), 2375)
+finalOk &= check('Total klik akhir', sum(allTransactions, (t) => t.klik), 21047)
+finalOk &= check('Omzet Nov 2026 akhir', sum(allTransactions.filter((t) => t.bulan === '2026-11'), (t) => t.omzet), 60320341)
+finalOk &= check('Omzet Okt–Nov mingguan akhir', sum(allTransactions.filter((t) => t.tanggal >= '2026-10-01' && t.tanggal <= '2026-11-30'), (t) => t.omzet), 127794341)
+finalOk &= check('Total omzet Ekspor (28)', sum(transactionsEkspor, (t) => t.omzet), 222000000)
+finalOk &= check('Total transaksi Ekspor (28)', sum(transactionsEkspor, (t) => t.transaksi), 800)
+finalOk &= check('Total pesanan Ekspor (28)', sum(transactionsEkspor, (t) => t.pesanan), 950)
+finalOk &= check('Total klik Ekspor (28)', sum(transactionsEkspor, (t) => t.klik), 8400)
 finalOk &= check('Chipsychips omzet akhir', sum(transactions.filter((t) => t.namaUmkm === 'Chipsychips'), (t) => t.omzet), umkm.find((u) => u.nama === 'Chipsychips').omzet)
 finalOk &= check('Chipsychips transaksi akhir', sum(transactions.filter((t) => t.namaUmkm === 'Chipsychips'), (t) => t.transaksi), umkm.find((u) => u.nama === 'Chipsychips').transaksi)
 if (!finalOk) { console.error('\nVERIFIKASI AKHIR GAGAL.'); process.exit(1) }
@@ -857,7 +940,7 @@ const toCsv = (header, rows) =>
 
 writeFileSync(join(OUT, 'Transaksi.csv'), toCsv(
   ['tanggal', 'bulan', 'id_umkm', 'nama_umkm', 'kategori', 'wilayah', 'id_mitra', 'mitra_pemasaran', 'id_kanal', 'kanal_pemesanan', 'pesanan', 'transaksi', 'omzet', 'klik', 'jumlah_inquiry'],
-  transactions.map((t) => ({
+  allTransactions.map((t) => ({
     tanggal: t.tanggal, bulan: t.bulan, id_umkm: t.idUmkm, nama_umkm: t.namaUmkm, kategori: t.kategori,
     wilayah: t.wilayah, id_mitra: t.idMitra, mitra_pemasaran: t.mitra,
     id_kanal: t.idKanal, kanal_pemesanan: t.kanal, pesanan: t.pesanan,
@@ -876,7 +959,7 @@ writeFileSync(join(OUT, 'Transaksi.csv'), toCsv(
 // kosong.
 // id_umkm (UMKM-001…) = kunci sambung antar-tab; kode_peserta (JP-…)
 // = kode bisnis format mockup; grade = tertil omzet (A/B/C, hanya
-// 42 TEI — baris Ekspor kosong karena belum ada omzet).
+// 42 TEI — baris Ekspor kosong karena grade tidak dihitung untuk mereka).
 // Kolom mitra TIDAK ada di master baru — mitra utama tiap UMKM diturunkan
 // dari transaksi (mitra dengan omzet terbesar).
 // Kolom program = program pendampingan yang diikuti; nama_perusahaan =
@@ -919,7 +1002,7 @@ MONTHS.forEach((mo) => {
   MITRA.forEach((mitra) => {
     klikRows.push({
       bulan: mo.key, id_mitra: mitraByNama.get(mitra.nama).id, mitra_pemasaran: mitra.nama,
-      klik: sum(transactions.filter((t) => t.bulan === mo.key && t.mitra === mitra.nama), (t) => t.klik),
+      klik: sum(allTransactions.filter((t) => t.bulan === mo.key && t.mitra === mitra.nama), (t) => t.klik),
     })
   })
 })
@@ -949,7 +1032,7 @@ writeFileSync(join(OUT, 'Katalog.csv'), toCsv(
     status_verifikasi: p.statusVerifikasi,
   })),
 ))
-// Penugasan.csv — 42 baris (1 per UMKM × mitra utamanya). Kanal utama =
+// Penugasan.csv — 70 baris (1 per UMKM × mitra utamanya). Kanal utama =
 // kanal pertama mitra itu; periode 01 Okt–31 Des 2026.
 writeFileSync(join(OUT, 'Penugasan.csv'), toCsv(
   ['id_penugasan', 'id_umkm', 'nama_umkm', 'id_mitra', 'nama_mitra', 'id_kanal', 'kanal', 'periode', 'status'],
@@ -983,7 +1066,9 @@ const sampleTs = `// -----------------------------------------------------------
 // Pendampingan Ekspor 2026 (12 ikut keduanya — lihat
 // scripts/generate-sheet-data.mjs seksi 1b). Bukan lagi nama-nama dummy lama.
 // Angka-angka di sini persis dengan screenshot dashboard:
-//   Omzet 334.023.341 | Transaksi 1.212 | Pesanan 1.425 | Klik 12.647
+//   Omzet 556.023.341 | Transaksi 2.012 | Pesanan 2.375 | Klik 21.047
+//   (42 TEI + 28 Ekspor dengan transaksi contoh, perintah user
+//    2026-11-28; lihat seksi 2b/3b/4c)
 //   UMKM 42 (peserta TEI 2026) — jumlah_produk/produk_aktif angka acak
 //   deterministik (perintah user 2026-11-24); repeat_transaksi terisi
 //   (total 346 = 28,5%); target per UMKM di field targets (angka contoh,
@@ -995,7 +1080,7 @@ import type { DashboardData } from '../lib/types'
 
 export const sampleData: DashboardData = {
   transactions: [
-${transactions.map((t) => `    ${JSON.stringify(t)},`).join('\n')}
+${allTransactions.map((t) => `    ${JSON.stringify(t)},`).join('\n')}
   ],
   umkm: [
 ${umkmAll.map((u) => `    ${JSON.stringify({ idUmkm: u.id, kodePeserta: u.kodePeserta, grade: u.grade, namaUmkm: u.nama, kategori: u.kategori, wilayah: u.wilayah, mitra: u.mitra, jumlahProduk: u.jumlahProduk, produkAktif: u.produkAktif, transaksi: u.transaksi, repeatTransaksi: u.repeatTransaksi, namaPemilik: u.namaPemilik, izinUsaha: u.izinUsaha, instagramWebsite: u.instagramWebsite, penjelasanProduk: u.penjelasanProduk, program: u.program, namaPerusahaan: u.namaPerusahaan })},`).join('\n')}
@@ -1033,21 +1118,21 @@ writeFileSync(join(ROOT, 'src', 'data', 'sample.ts'), sampleTs)
 // 8. Tulis sheets-template/README.md berisi hasil verifikasi
 // ---------------------------------------------------------------------------
 const fmt = (n) => n.toLocaleString('id-ID')
-// Total AKHIR (basis + transaksi tes EXTRA_TRANSACTIONS) — dipakai di
+// Total AKHIR (basis + 28 Ekspor + transaksi tes EXTRA_TRANSACTIONS) — dipakai di
 // tabel verifikasi README agar regenerasi tidak mengembalikan angka lama.
-const FINAL_OMZET = sum(transactions, (t) => t.omzet)
-const FINAL_TRANSAKSI = sum(transactions, (t) => t.transaksi)
-const FINAL_PESANAN = sum(transactions, (t) => t.pesanan)
-const FINAL_KLIK = sum(transactions, (t) => t.klik)
-const FINAL_NOV_OMZET = sum(transactions.filter((t) => t.bulan === '2026-11'), (t) => t.omzet)
+const FINAL_OMZET = sum(allTransactions, (t) => t.omzet)
+const FINAL_TRANSAKSI = sum(allTransactions, (t) => t.transaksi)
+const FINAL_PESANAN = sum(allTransactions, (t) => t.pesanan)
+const FINAL_KLIK = sum(allTransactions, (t) => t.klik)
+const FINAL_NOV_OMZET = sum(allTransactions.filter((t) => t.bulan === '2026-11'), (t) => t.omzet)
 const FINAL_PRODUK = sum(umkm, (u) => u.jumlahProduk)
 const FINAL_PRODUK_AKTIF = sum(umkm, (u) => u.produkAktif)
 const FINAL_REPEAT = sum(umkm, (u) => u.repeatTransaksi)
-const FINAL_INQUIRY = sum(transactions, (t) => t.inquiry)
-const FINAL_INQUIRY_OKT_NOV = sum(transactions.filter((t) => t.bulan >= '2026-10' && t.bulan <= '2026-11'), (t) => t.inquiry)
+const FINAL_INQUIRY = sum(allTransactions, (t) => t.inquiry)
+const FINAL_INQUIRY_OKT_NOV = sum(allTransactions.filter((t) => t.bulan >= '2026-10' && t.bulan <= '2026-11'), (t) => t.inquiry)
 const FINAL_KANAL_AKTIF_MEAN = (() => {
   const perUmkm = new Map()
-  for (const t of transactions) {
+  for (const t of allTransactions) {
     if (t.bulan < '2026-10' || t.bulan > '2026-11') continue
     const s = perUmkm.get(t.idUmkm) ?? new Set()
     s.add(t.idKanal)
@@ -1065,12 +1150,12 @@ const FINAL_T_KANAL_AKTIF = sum(umkm, (u) => u.targetKanalAktif)
 const FINAL_T_KONVERSI_AVG = sum(umkm, (u) => u.targetKonversi) / umkm.length
 const FINAL_MITRA = MITRA.map((m) => ({
   nama: m.nama,
-  omzet: sum(transactions.filter((t) => t.mitra === m.nama), (t) => t.omzet),
+  omzet: sum(allTransactions.filter((t) => t.mitra === m.nama), (t) => t.omzet),
   umkm: groups[MITRA.indexOf(m)].length,
 }))
 const TOP5_SORTED = [...umkm].sort((a, b) => b.omzet - a.omzet).slice(0, 5)
 const FINAL_TOP5_OMZET = TOP5_SORTED.reduce((a, u) => a + u.omzet, 0)
-const FINAL_WEEKLY_OKT_NOV = sum(transactions.filter((t) => t.tanggal >= '2026-10-01' && t.tanggal <= '2026-11-30'), (t) => t.omzet)
+const FINAL_WEEKLY_OKT_NOV = sum(allTransactions.filter((t) => t.tanggal >= '2026-10-01' && t.tanggal <= '2026-11-30'), (t) => t.omzet)
 const readme = `# Template Google Sheet — Dashboard Monev UMKM
 
 Sembilan file CSV ini adalah template isi Google Sheet sumber data dashboard.
@@ -1100,7 +1185,7 @@ ke tab yang sesuai (File → Impor).
 
 ## Struktur tab
 
-### Transaksi — ${transactions.length} baris (tiap agregat 1 UMKM × 1 bulan dipecah per minggu ISO, + 1 baris transaksi tes Chipsychips 2026-11-17)
+### Transaksi — ${allTransactions.length} baris (tiap agregat 1 UMKM × 1 bulan dipecah per minggu ISO; 42 TEI + 28 Ekspor + 2 baris transaksi tes)
 | Kolom | Isi |
 |---|---|
 | tanggal | Tanggal awal segmen minggu dalam bulan itu (tanggal 1 bila minggu terpotong awal bulan, Senin untuk segmen penuh), mis. 2026-07-01, 2026-07-06 |
@@ -1228,7 +1313,7 @@ writeFileSync(join(OUT, 'README.md'), readme)
 
 console.log('VERIFIKASI OK — semua total cocok:')
 checks.forEach((c) => console.log(`  ${c.ok ? '✓' : '✗'} ${c.nama}: ${fmt(c.aktual)}`))
-console.log(`\nDitulis: sheets-template/Transaksi.csv (${transactions.length} baris), UMKM.csv (${umkmAll.length} baris), Mitra.csv (${MITRA_MASTER.length} baris), Kanal.csv (${KANAL.length} baris), Katalog.csv (${katalog.length} baris), Penugasan.csv (${penugasan.length} baris), Klik_Link.csv (${klikRows.length} baris), Target.csv (${targetRows.length} baris), Ringkasan.csv (4 baris), src/data/sample.ts`)
+console.log(`\nDitulis: sheets-template/Transaksi.csv (${allTransactions.length} baris), UMKM.csv (${umkmAll.length} baris), Mitra.csv (${MITRA_MASTER.length} baris), Kanal.csv (${KANAL.length} baris), Katalog.csv (${katalog.length} baris), Penugasan.csv (${penugasan.length} baris), Klik_Link.csv (${klikRows.length} baris), Target.csv (${targetRows.length} baris), Ringkasan.csv (4 baris), src/data/sample.ts`)
 console.log(`Inquiry total: ${fmt(FINAL_INQUIRY)} (Okt–Nov: ${fmt(FINAL_INQUIRY_OKT_NOV)}) · Kanal aktif rata-rata/UMKM (Okt–Nov): ${FINAL_KANAL_AKTIF_MEAN.toFixed(2)} · Katalog: ${katalog.length} produk, ${FINAL_KATALOG_TAYANG} tayang`)
 console.log(`Σ target — inquiry ${fmt(FINAL_T_INQUIRY)} · kanal aktif ${fmt(FINAL_T_KANAL_AKTIF)}`)
 console.log(`Repeat total: ${FINAL_REPEAT} (${(FINAL_REPEAT / FINAL_TRANSAKSI * 100).toFixed(1)}% dari ${FINAL_TRANSAKSI} transaksi)`)

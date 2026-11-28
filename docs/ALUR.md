@@ -90,9 +90,9 @@ modul lain dipelajari hanya untuk memahami alur/data yang masuk ke dashboard.
 | Kebutuhan rumus | Status di proyek ini |
 |---|---|
 | Realisasi (omzet, transaksi, pesanan, klik, produk) | Ada — dari tab Transaksi + UMKM. Catatan 2026-11-24: kolom `pesanan`/`omzet` dihapus dari tab UMKM (redundan — dashboard menghitung keduanya dari tab Transaksi). |
-| Repeat (jumlah transaksi berulang) | ADA — kolom `repeat_transaksi` terisi 2026-11-24 (total 346 = 28,5%, angka contoh deterministik) |
-| Inquiry (jumlah) | ADA — kolom `jumlah_inquiry` di Transaksi (total 2.137; Okt–Nov 735, angka contoh deterministik) |
-| Kanal aktif per UMKM (jumlah kanal) | ADA — kolom `id_kanal` di Transaksi; rata-rata 2,93 kanal/UMKM (Okt–Nov) |
+| Repeat (jumlah transaksi berulang) | ADA — kolom `repeat_transaksi` terisi 2026-11-24 (total 346 = 17,2%, angka contoh deterministik) |
+| Inquiry (jumlah) | ADA — kolom `jumlah_inquiry` di Transaksi (total 3.592; Okt–Nov 1.244, angka contoh deterministik) |
+| Kanal aktif per UMKM (jumlah kanal) | ADA — kolom `id_kanal` di Transaksi; rata-rata 2,97 kanal/UMKM (Okt–Nov) |
 | Target per UMKM per indikator | ADA — tab Target, 42 baris; direbase ke Okt–Nov 2026-11-24 (Σ omzet Rp 91.800.982, transaksi 481, repeat 140, inquiry 881, kanal aktif 106) |
 | T0 baseline | ADA — T0 = Sep, diturunkan dari baris Sep di Transaksi (Pertumbuhan −26%); tab Ringkasan diisi total periode sebelumnya (5 bulan) untuk delta KPI |
 | Rubrik kesiapan katalog | BELUM — butuh data checklist per UMKM |
@@ -125,8 +125,8 @@ modul lain dipelajari hanya untuk memahami alur/data yang masuk ke dashboard.
   `jumlah_produk` (total 525). Bila deskripsi tidak menyebut produk
   spesifik, nama generik dari kategori — bisa dikoreksi belakangan.
 - **T0 baseline (keputusan user 2026-11-24)**: Sep sebagai T0, dari
-  data (Pertumbuhan = (Nov − Sep)/Sep, −24% setelah 1 transaksi tes
-  UMKM-043 masuk Nov 2026). Per-UMKM T0
+  data (Pertumbuhan = (Nov − Sep)/Sep, −25% setelah 28 Ekspor masuk
+  Nov 2026). Per-UMKM T0
   diturunkan dari baris Sep di Transaksi (tidak perlu kolom baru).
   Ringkasan diisi total periode SEBELUMNYA (5 bulan) untuk delta KPI —
   BUKAN total Sep: delta membandingkan jendela 5 bulan dengan 5 bulan

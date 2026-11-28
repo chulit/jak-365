@@ -43,7 +43,7 @@ Sheet itu punya 9 tab. Masing-masing tab dan kegunaannya:
 | `Mitra` | 6 mitra pemasaran: nama, jenis, kanal, status | Donut pangsa mitra, filter Mitra |
 | `Kanal` | 26 kanal pemasaran referensi (Instagram, Tokopedia, WhatsApp Business, dst.) | Kanal Aktif per UMKM |
 | `Katalog` | 525 produk dari penjelasan TEI tiap UMKM (497 Tayang, 26 Menunggu, 2 Tidak Disetujui) | Produktivitas Katalog |
-| `Penugasan` | 42 baris: 1 mitra utama per UMKM, periode 01 Okt–31 Des 2026 | Penugasan mitra ke UMKM |
+| `Penugasan` | 70 baris: 1 mitra utama per UMKM, periode 01 Okt–31 Des 2026 | Penugasan mitra ke UMKM |
 | `Transaksi` | 1.135 baris agregat bulanan per (UMKM, mitra): pesanan, transaksi, omzet, klik, jumlah inquiry | Hampir semua angka: KPI, tren, Top UMKM, skor |
 | `Klik_Link` | Klik link per mitra per bulan | Total Klik Link |
 | `Target` | Target per UMKM: omzet, transaksi, produk aktif, repeat, inquiry, kanal aktif | Semua skor (realisasi dibanding target) |
@@ -58,16 +58,16 @@ Kanal Aktif, dan skor terbobot.
 
 | Angka | Nilai |
 |---|---|
-| Total Omzet (Jul–Nov) | Rp 334.023.341 |
-| Total Transaksi | 1.212 |
-| Total Pesanan | 1.425 |
-| Total Klik Link | 12.647 |
-| Total Inquiry | 2.137 (Okt–Nov: 735) |
+| Total Omzet (Jul–Nov) | Rp 556.023.341 |
+| Total Transaksi | 2.012 |
+| Total Pesanan | 2.375 |
+| Total Klik Link | 21.047 |
+| Total Inquiry | 3.592 (Okt–Nov: 1.244) |
 | Total Produk / Produk Aktif | 525 / 497 |
-| Repeat Order | 346 (28,5%) |
+| Repeat Order | 346 (17,2%) |
 
-Omzet per bulan: Jul Rp 136.761.925 · Agu Rp 71.616.960 ·
-Sep Rp 48.450.115 · Okt Rp 40.474.000 · Nov Rp 36.720.341.
+Omzet per bulan: Jul Rp 227.961.925 · Agu Rp 119.416.960 ·
+Sep Rp 80.850.115 · Okt Rp 67.474.000 · Nov Rp 60.320.341.
 
 ---
 
@@ -89,24 +89,28 @@ ulang semua angka di bawahnya.
 
 | Kartu | Artinya | Nilai bawaan (Okt–Nov) |
 |---|---|---|
-| **UMKM Aktif** | UMKM yang punya transaksi sampai akhir periode terpilih | 43 |
+| **UMKM Aktif** | UMKM yang punya transaksi sampai akhir periode terpilih | 70 |
 | **Total Produk** | Jumlah produk di Katalog (dari master UMKM, tidak ikut periode) | 525 |
-| **Total Klik Link** | Klik link sampai akhir periode terpilih | 12.647 |
-| **Total Pesanan** | Pesanan sampai akhir periode terpilih | 1.425 |
-| **Total Transaksi** | Transaksi sampai akhir periode terpilih | 1.212 |
-| **Total Omzet** | Omzet sampai akhir periode terpilih | Rp 334.023.341 |
+| **Total Klik Link** | Klik link sampai akhir periode terpilih | 21.047 |
+| **Total Pesanan** | Pesanan sampai akhir periode terpilih | 2.375 |
+| **Total Transaksi** | Transaksi sampai akhir periode terpilih | 2.012 |
+| **Total Omzet** | Omzet sampai akhir periode terpilih | Rp 556.023.341 |
 
 **Baca dengan hati-hati — angka KPI itu berjalan sejak Jul 2026.**
-"Total Omzet" di periode Okt–Nov menunjukkan Rp 334.023.341, yaitu
+"Total Omzet" di periode Okt–Nov menunjukkan Rp 556.023.341, yaitu
 total sejak Jul sampai akhir Nov. Omzet yang khusus terjadi di Okt–Nov
-saja adalah Rp 77.194.341 — angka itu ada di bagian Capaian Indikator
+saja adalah Rp 127.794.341 — angka itu ada di bagian Capaian Indikator
 ("Omzet (Periode Evaluasi)"). Prinsip yang sama berlaku untuk Klik,
 Pesanan, dan Transaksi. Titik terakhir grafik Tren selalu sama dengan
 Total Omzet.
 
 **Angka % kecil di bawah 4 kartu terakhir (delta)** membandingkan
 angka terpilih dengan periode sebelumnya (tab `Ringkasan`).
-Bawaan: Omzet +31% · Transaksi +27% · Pesanan +24% · Klik +18%.
+Bawaan: Omzet +119% · Transaksi +111% · Pesanan +107% · Klik +97%.
+Delta sebesar ini BUKAN pertumbuhan penjualan — total naik karena 28
+peserta Ekspor baru mendapat transaksi contoh (28 Nov 2026),
+sementara pembandingnya (tab `Ringkasan`) masih dari periode
+sebelumnya yang hanya berisi 42 TEI.
 Kalau filter Mitra/Kategori/Wilayah aktif, delta diskalakan secara
 proporsional dengan pangsa filter itu.
 
@@ -116,10 +120,10 @@ proporsional dengan pangsa filter itu.
 
 - **Mode Bulanan (bawaan):** garis nilai berjalan per bulan sejak Jul,
   tapi hanya bulan di dalam periode terpilih yang ditampilkan.
-  Mis. Okt–Nov → 2 titik: Okt Rp 297.303.000, Nov Rp 334.023.341.
+  Mis. Okt–Nov → 2 titik: Okt Rp 495.703.000, Nov Rp 556.023.341.
 - **Mode Mingguan** (tombol Bulanan/Mingguan): omzet per minggu di
   dalam periode terpilih. Okt–Nov = 10 minggu yang totalnya
-  Rp 77.194.341 (inilah omzet khusus jendela Okt–Nov).
+  Rp 127.794.341 (inilah omzet khusus jendela Okt–Nov).
 - Batang di grafik yang sama menunjukkan jumlah transaksi.
 
 ## 5. Pangsa Mitra (donut)
@@ -128,12 +132,12 @@ Pembagian omzet antar 6 mitra (sampai akhir periode terpilih):
 
 | Mitra | Omzet | Pangsa |
 |---|---|---|
-| Tokopedia | Rp 113.258.500 | 33,9% |
-| Shopee | Rp 89.614.000 | 26,8% |
-| Mall Grand Indonesia | Rp 68.492.341 | 20,5% |
-| Centong Daily | Rp 20.886.167 | 6,3% |
-| Koperasi Kumindag | Rp 20.886.167 | 6,3% |
-| Hippindo | Rp 20.886.166 | 6,3% |
+| Tokopedia | Rp 158.373.107 | 28,5% |
+| Shopee | Rp 129.394.579 | 23,3% |
+| Mall Grand Indonesia | Rp 100.689.824 | 18,1% |
+| Centong Daily | Rp 60.609.121 | 10,9% |
+| Koperasi Kumindag | Rp 60.814.192 | 10,9% |
+| Hippindo | Rp 46.142.518 | 8,3% |
 
 ## 6. Capaian Indikator UMKM + Skor Kinerja
 
@@ -147,13 +151,13 @@ Delapan indikator (nilai agregat saat ini):
 | Indikator | Realisasi (Okt–Nov) | Target | Skor | Bobot |
 |---|---|---|---|---|
 | Produktivitas Katalog (Produk Aktif) | 497 / 525 produk | 525 | 95 | 20% |
-| Kanal Aktif (Kanal Pemasaran) | 2,93 kanal/UMKM | 2,52 | 100 | 15% |
-| Inquiry (Permintaan Masuk) | 735 | 881 | 83 | 15% |
-| Transaksi (Periode Evaluasi) | 402 | 481 | 84 | 20% |
-| Omzet (Periode Evaluasi) | Rp 77.194.341 | Rp 91.800.982 | 84 | 20% |
-| Konversi (Klik → Transaksi) | 9,7% (402/4.157) | 13,0% | 74 | — |
+| Kanal Aktif (Kanal Pemasaran) | 2,97 kanal/UMKM | 2,52 | 100 | 15% |
+| Inquiry (Permintaan Masuk) | 1.244 | 881 | 100 | 15% |
+| Transaksi (Periode Evaluasi) | 667 | 481 | 100 | 20% |
+| Omzet (Periode Evaluasi) | Rp 127.794.341 | Rp 91.800.982 | 100 | 20% |
+| Konversi (Klik → Transaksi) | 9,7% (667/6.910) | 13,0% | 74 | — |
 | Repeat Order | 115 | 140 | 82 | 10% |
-| Pertumbuhan Omzet | −24% (Nov vs Sep) | — | — | — |
+| Pertumbuhan Omzet | −25% (Nov vs Sep) | — | — | — |
 
 **Dua hal yang tidak ikut filter periode:**
 
@@ -163,14 +167,14 @@ Delapan indikator (nilai agregat saat ini):
    (Pengecualian: Katalog memakai total master, dan Pertumbuhan
    memakai Sep sebagai T0.)
 2. **Pertumbuhan = (Nov − Sep) / Sep × 100%.** Sep adalah baseline
-   (T0) dari data: (36.720.341 − 48.450.115) / 48.450.115 = **−24%**.
+   (T0) dari data: (60.320.341 − 80.850.115) / 80.850.115 = **−25%**.
    Angka negatif ini jujur — omzet Nov memang lebih kecil dari Sep.
 
 **Skor Kinerja** adalah rata-rata terbobot keenam indikator berbobot
 (Katalog 20% + Kanal 15% + Inquiry 15% + Transaksi 20% + Omzet 20% +
 Repeat 10%):
 
-> **88 — "Sangat Baik"**
+> **97 — "Sangat Baik"**
 
 Status: ≥85 Sangat Baik · ≥70 Baik · ≥55 Cukup · di bawah itu Kurang.
 Konversi dan Pertumbuhan tidak masuk ke Skor Kinerja — Konversi hanya
@@ -188,18 +192,17 @@ Lima UMKM dengan omzet tertinggi (sampai akhir periode terpilih):
 | 2 | Benita & Co \| PT Benita Karya Kreasi | Rp 13.157.896 |
 | 3 | Introvert Identity | Rp 13.099.851 |
 | 4 | Chipsychips | Rp 12.913.504 |
-| 5 | TEPA SELIRA | Rp 12.038.871 |
+| 5 | Innerst | Rp 12.060.080 |
 
-Tombol **"Lihat Semua"** menampilkan ke-70 UMKM — 42 yang punya
-transaksi ditambah 28 yang belum punya transaksi (tampil dengan
-angka 0 di urutan akhir). Klik salah satu baris membuka **dialog
-detail** UMKM itu:
+Tombol **"Lihat Semua"** menampilkan ke-70 UMKM — semuanya kini
+punya transaksi (42 TEI + 28 Ekspor dengan transaksi contoh sejak
+28 Nov 2026). Klik salah satu baris membuka **dialog detail**
+UMKM itu:
 
 - **Profil Usaha** — pemilik, program yang diikuti, perusahaan (bila
   diketahui), izin usaha, Instagram/website, dan penjelasan produk
-  (dari master UMKM). UMKM yang belum punya transaksi tetap bisa
-  dibuka — dialognya menampilkan profil usaha dan catatan "Belum ada
-  transaksi", dengan angka penjualan 0 dan skor "—".
+  (dari master UMKM). UMKM Ekspor (28) belum punya baris Target, jadi
+  dialognya menampilkan angka penjualan nyata tapi skornya "—".
 - **Skor Capaian (vs Target)** — 6 skor indikator UMKM itu beserta
   realisasi vs targetnya, dan Skor Kinerja UMKM itu.
 - **Grafik + tabel bulanan/mingguan** — mengikuti filter periode dan
@@ -213,7 +216,7 @@ detail** UMKM itu:
 
 1. **Tidak semua angka adalah hasil ukur lapangan.**
    `jumlah_produk` / `produk_aktif` (525/497), `repeat_transaksi`
-   (346), `jumlah_inquiry` (2.137), dan semua target adalah **angka
+   (346), `jumlah_inquiry` (3.592), dan semua target adalah **angka
    contoh deterministik** — dibuat dengan rumus yang bisa diulang dari
    generator data, bukan dicatat dari lapangan. Yang murni dari
    pencatatan adalah omzet, transaksi, pesanan, dan klik per UMKM
@@ -246,26 +249,26 @@ Dashboard ini sengaja punya angka yang saling mengunci — satu angka
 bisa dicek dari angka lain di layar yang sama, tanpa membuka Sheet
 atau menjalankan apa pun.
 
-1. **KPI vs grafik Tren.** Total Omzet 334.023.341 harus sama persis
-   dengan titik terakhir grafik (Nov). Begitu juga Transaksi 1.212,
-   Pesanan 1.425, Klik 12.647. Kalau ada yang beda, ada yang salah
+1. **KPI vs grafik Tren.** Total Omzet 556.023.341 harus sama persis
+   dengan titik terakhir grafik (Nov). Begitu juga Transaksi 2.012,
+   Pesanan 2.375, Klik 21.047. Kalau ada yang beda, ada yang salah
    hitung.
-2. **Donut mitra.** Jumlahkan keenam mitra — harus 334.023.341.
-   Persennya juga bisa dicek: Tokopedia 113.258.500 / 334.023.341
-   = 33,9%.
-3. **Skor Kinerja 88.** Hitung dari keenam skor di bawahnya:
-   95×20% + 100×15% + 83×15% + 84×20% + 84×20% + 82×10% = 88.
+2. **Donut mitra.** Jumlahkan keenam mitra — harus 556.023.341.
+   Persennya juga bisa dicek: Tokopedia 158.373.107 / 556.023.341
+   = 28,5%.
+3. **Skor Kinerja 97.** Hitung dari keenam skor di bawahnya:
+   95×20% + 100×15% + 100×15% + 100×20% + 100×20% + 82×10% = 97.
    Kalau satu skor berubah, totalnya harus ikut berubah.
-4. **Konversi.** 1.212 / 12.647 = 9,6% (angka ini ada di indikator),
+4. **Konversi.** 2.012 / 21.047 = 9,6% (angka ini ada di indikator),
    skornya 74 = 9,6 / 13,0 × 100.
 5. **Dialog UMKM.** Buka Chipsychips — tiap baris skor menampilkan
    realisasi dan targetnya, jadi tinggal hitung pakai kalkulator:
    realisasi / target × 100, maksimal 100. Skor Kinerja di dialog
    adalah rata-rata terbobot keenam baris tersebut.
-6. **Mode Mingguan.** Jumlahkan 10 batang minggu — harus 77.194.341,
+6. **Mode Mingguan.** Jumlahkan 10 batang minggu — harus 127.794.341,
    sama dengan "Omzet (Periode Evaluasi)" di bagian indikator.
 7. **Filter.** Ganti periode ke Agu–Sep, Omzet harus jadi
-   256.829.000. Pilih Mitra Tokopedia, harus 86.471.918. Kalau
+   428.229.000. Pilih Mitra Tokopedia, harus 121.303.646. Kalau
    angkanya tidak berubah, filternya yang mati.
 
 Catatan jujur: yang tidak bisa dicek dari dashboard saja adalah

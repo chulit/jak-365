@@ -1135,3 +1135,759 @@ tanggal,bulan,id_umkm,nama_umkm,kategori,wilayah,id_mitra,mitra_pemasaran,id_kan
 2026-11-30,2026-11,UMKM-042,Rainmaker Craft,Craft,Jakarta Selatan,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,26899,2,0
 2026-11-17,2026-11,UMKM-001,Chipsychips,Food & Beverage,Jakarta Selatan,MTR-001,Tokopedia,KNL-06,Tokopedia,1,1,200000,12,2
 2026-11-26,2026-11,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,1,1000000,5,1
+2026-07-01,2026-07,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,0,420829,11,1
+2026-07-06,2026-07,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,3,1,663549,14,4
+2026-07-13,2026-07,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,3,624016,10,1
+2026-07-20,2026-07,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,579226,16,2
+2026-07-27,2026-07,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,2,453546,14,2
+2026-08-01,2026-08,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,0,96119,3,1
+2026-08-03,2026-08,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,3,342838,19,1
+2026-08-10,2026-08,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,0,335801,11,3
+2026-08-17,2026-08,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,1,305538,10,1
+2026-08-24,2026-08,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,0,312230,13,1
+2026-08-31,2026-08,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,1,44182,0,2
+2026-09-01,2026-09,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,1,187972,14,2
+2026-09-07,2026-09,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,2,236561,10,1
+2026-09-14,2026-09,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,211687,10,0
+2026-09-21,2026-09,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,0,244004,7,1
+2026-09-28,2026-09,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,2,93611,8,3
+2026-10-01,2026-10,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,1,111589,4,2
+2026-10-05,2026-10,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,1,185810,8,3
+2026-10-12,2026-10,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,2,188150,10,1
+2026-10-19,2026-10,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,191355,15,2
+2026-10-26,2026-10,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,0,134626,7,3
+2026-11-01,2026-11,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,0,22014,2,1
+2026-11-02,2026-11,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,1,158273,11,1
+2026-11-09,2026-11,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,2,162438,9,1
+2026-11-16,2026-11,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,1,172670,8,1
+2026-11-23,2026-11,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,3,0,170757,8,4
+2026-11-30,2026-11,UMKM-043,Minuman serbuk instan,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,23185,1,2
+2026-07-01,2026-07,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,0,0,393342,6,2
+2026-07-06,2026-07,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,3,0,619236,14,4
+2026-07-13,2026-07,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,3,2,606044,21,4
+2026-07-20,2026-07,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,0,4,520840,13,2
+2026-07-27,2026-07,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,1,0,440752,7,1
+2026-08-01,2026-08,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-05,Shopee,1,0,94152,2,1
+2026-08-03,2026-08,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-05,Shopee,2,1,312223,14,3
+2026-08-10,2026-08,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,2,3,320181,12,2
+2026-08-17,2026-08,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-05,Shopee,0,1,310579,12,0
+2026-08-24,2026-08,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,1,0,273076,12,1
+2026-08-31,2026-08,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,0,0,42138,1,2
+2026-09-01,2026-09,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,2,1,189361,10,3
+2026-09-07,2026-09,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,1,0,205219,7,1
+2026-09-14,2026-09,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,2,1,243323,13,3
+2026-09-21,2026-09,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,0,1,194299,9,1
+2026-09-28,2026-09,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,0,1,84453,7,2
+2026-10-01,2026-10,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,0,0,105457,8,2
+2026-10-05,2026-10,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,1,1,161774,9,1
+2026-10-12,2026-10,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,1,2,176791,6,1
+2026-10-19,2026-10,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,3,1,156307,9,4
+2026-10-26,2026-10,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,0,0,163550,9,1
+2026-11-01,2026-11,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,0,0,22219,1,0
+2026-11-02,2026-11,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,0,1,133222,6,2
+2026-11-09,2026-11,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-05,Shopee,1,1,162724,12,1
+2026-11-16,2026-11,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,2,1,162528,8,3
+2026-11-23,2026-11,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-13,Katalog Digital,1,1,163783,10,1
+2026-11-30,2026-11,UMKM-044,Miumosa,Fesyen,,MTR-002,Shopee,KNL-09,TikTok Shop,0,0,23211,0,0
+2026-07-01,2026-07,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,1,302172,7,1
+2026-07-06,2026-07,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,2,516044,14,3
+2026-07-13,2026-07,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,2,1,561049,11,2
+2026-07-20,2026-07,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,0,432842,10,1
+2026-07-27,2026-07,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,1,342691,9,1
+2026-08-01,2026-08,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,1,66178,2,1
+2026-08-03,2026-08,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,249832,11,0
+2026-08-10,2026-08,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,1,237076,6,0
+2026-08-17,2026-08,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,2,275848,11,1
+2026-08-24,2026-08,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,3,0,265923,14,4
+2026-08-31,2026-08,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,34522,0,1
+2026-09-01,2026-09,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,2,170128,7,2
+2026-09-07,2026-09,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,159261,11,0
+2026-09-14,2026-09,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,195714,10,0
+2026-09-21,2026-09,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,3,2,175107,9,4
+2026-09-28,2026-09,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,0,65311,2,1
+2026-10-01,2026-10,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,0,87407,6,1
+2026-10-05,2026-10,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,131029,7,2
+2026-10-12,2026-10,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,161599,6,0
+2026-10-19,2026-10,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,2,3,141731,6,2
+2026-10-26,2026-10,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,0,116168,9,1
+2026-11-01,2026-11,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,0,16378,1,2
+2026-11-02,2026-11,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,0,129852,7,3
+2026-11-09,2026-11,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,1,114626,5,0
+2026-11-16,2026-11,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,1,122292,10,1
+2026-11-23,2026-11,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,1,152840,8,2
+2026-11-30,2026-11,UMKM-045,Inabee,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,21613,0,1
+2026-07-01,2026-07,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,1,1,680674,22,1
+2026-07-06,2026-07,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,3,3,1013691,20,4
+2026-07-13,2026-07,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,5,2,1044003,22,6
+2026-07-20,2026-07,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,2,887112,16,3
+2026-07-27,2026-07,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,0,2,693433,22,1
+2026-08-01,2026-08,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,1,136397,7,1
+2026-08-03,2026-08,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,2,485592,16,1
+2026-08-10,2026-08,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,3,4,546802,23,4
+2026-08-17,2026-08,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,1,477779,15,3
+2026-08-24,2026-08,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,3,1,543744,22,4
+2026-08-31,2026-08,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,73327,5,2
+2026-09-01,2026-09,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,1,1,325094,18,1
+2026-09-07,2026-09,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,3,0,354082,11,3
+2026-09-14,2026-09,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,2,302793,19,3
+2026-09-21,2026-09,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,3,3,391970,27,4
+2026-09-28,2026-09,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,0,1,160412,2,1
+2026-10-01,2026-10,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,0,1,143758,8,0
+2026-10-05,2026-10,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,1,2,298233,9,1
+2026-10-12,2026-10,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,1,277071,18,3
+2026-10-19,2026-10,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,3,3,327426,21,4
+2026-10-26,2026-10,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,0,232137,13,3
+2026-11-01,2026-11,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,31623,1,0
+2026-11-02,2026-11,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,1,4,276251,19,1
+2026-11-09,2026-11,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,0,230545,15,3
+2026-11-16,2026-11,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,1,1,255542,15,1
+2026-11-23,2026-11,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,3,0,289968,9,4
+2026-11-30,2026-11,UMKM-046,"Bonwie, La'Cookish",Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,33684,2,2
+2026-07-01,2026-07,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,0,0,517613,14,1
+2026-07-06,2026-07,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,4,3,700891,11,6
+2026-07-13,2026-07,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,2,906892,21,0
+2026-07-20,2026-07,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,2,752335,19,4
+2026-07-27,2026-07,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,2,1,563943,16,3
+2026-08-01,2026-08,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,2,0,130431,8,2
+2026-08-03,2026-08,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,2,3,399826,20,3
+2026-08-10,2026-08,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,2,1,400947,11,3
+2026-08-17,2026-08,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,2,388076,12,1
+2026-08-24,2026-08,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,0,418236,18,1
+2026-08-31,2026-08,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,0,66344,1,0
+2026-09-01,2026-09,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,0,221842,9,4
+2026-09-07,2026-09,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,0,1,297411,16,0
+2026-09-14,2026-09,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,3,3,267652,14,4
+2026-09-21,2026-09,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,1,308455,16,2
+2026-09-28,2026-09,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,1,127340,7,1
+2026-10-01,2026-10,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,0,150372,6,1
+2026-10-05,2026-10,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,2,197844,8,1
+2026-10-12,2026-10,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,2,1,251660,15,3
+2026-10-19,2026-10,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,2,2,226251,8,3
+2026-10-26,2026-10,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,0,192790,18,0
+2026-11-01,2026-11,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,0,29099,0,0
+2026-11-02,2026-11,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,1,214320,12,0
+2026-11-09,2026-11,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,2,1,227006,7,3
+2026-11-16,2026-11,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,1,176593,16,4
+2026-11-23,2026-11,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,2,210974,10,1
+2026-11-30,2026-11,UMKM-047,sniff sniff,Beauty,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,0,0,32617,4,0
+2026-07-01,2026-07,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,3,347557,9,1
+2026-07-06,2026-07,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,2,0,544403,14,3
+2026-07-13,2026-07,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,2,0,447817,9,3
+2026-07-20,2026-07,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,1,548927,12,1
+2026-07-27,2026-07,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,1,1,399444,10,1
+2026-08-01,2026-08,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,0,76858,4,1
+2026-08-03,2026-08,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,2,1,272402,14,3
+2026-08-10,2026-08,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-16,Supermarket,0,0,234364,6,2
+2026-08-17,2026-08,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-16,Supermarket,2,1,297749,11,2
+2026-08-24,2026-08,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-16,Supermarket,0,1,280076,11,0
+2026-08-31,2026-08,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,0,1,37822,0,1
+2026-09-01,2026-09,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-16,Supermarket,0,0,149910,11,0
+2026-09-07,2026-09,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,2,2,204657,10,2
+2026-09-14,2026-09,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,2,0,206739,3,3
+2026-09-21,2026-09,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,1,2,176739,14,1
+2026-09-28,2026-09,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,74850,3,1
+2026-10-01,2026-10,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,1,0,98374,8,1
+2026-10-05,2026-10,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-16,Supermarket,2,1,137616,8,2
+2026-10-12,2026-10,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,145316,6,0
+2026-10-19,2026-10,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,1,2,148468,5,1
+2026-10-26,2026-10,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,0,1,147638,10,2
+2026-11-01,2026-11,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,18904,2,2
+2026-11-02,2026-11,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,2,0,150625,10,2
+2026-11-09,2026-11,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-15,Minimarket,0,1,153704,4,0
+2026-11-16,2026-11,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,1,135880,11,0
+2026-11-23,2026-11,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,1,114945,5,1
+2026-11-30,2026-11,UMKM-048,Ghawean Dewe,Craft,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,0,18050,1,1
+2026-07-01,2026-07,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,5,1,766569,17,7
+2026-07-06,2026-07,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,3,1,1132834,21,4
+2026-07-13,2026-07,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,4,2,1207145,32,5
+2026-07-20,2026-07,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,2,1048920,22,1
+2026-07-27,2026-07,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,4,798945,26,1
+2026-08-01,2026-08,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,2,148848,11,1
+2026-08-03,2026-08,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-13,Katalog Digital,3,2,515493,18,4
+2026-08-10,2026-08,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,3,624760,29,3
+2026-08-17,2026-08,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-06,Tokopedia,2,3,575508,20,3
+2026-08-24,2026-08,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-13,Katalog Digital,5,1,649879,20,6
+2026-08-31,2026-08,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,82232,1,2
+2026-09-01,2026-09,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,1,353226,16,3
+2026-09-07,2026-09,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,5,1,442727,22,7
+2026-09-14,2026-09,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,2,376436,21,3
+2026-09-21,2026-09,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,2,433834,26,1
+2026-09-28,2026-09,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,1,153896,5,1
+2026-10-01,2026-10,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,1,217315,9,2
+2026-10-05,2026-10,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,2,304685,15,2
+2026-10-12,2026-10,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-06,Tokopedia,4,1,347709,12,5
+2026-10-19,2026-10,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-13,Katalog Digital,4,1,323449,25,5
+2026-10-26,2026-10,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,2,273609,18,1
+2026-11-01,2026-11,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,39782,2,2
+2026-11-02,2026-11,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-13,Katalog Digital,4,2,332675,17,5
+2026-11-09,2026-11,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,2,295286,14,1
+2026-11-16,2026-11,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,3,307809,19,1
+2026-11-23,2026-11,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,1,260489,16,1
+2026-11-30,2026-11,UMKM-049,Innerst,Beauty,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,46020,2,1
+2026-07-01,2026-07,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,0,1,673337,10,2
+2026-07-06,2026-07,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,5,4,909947,26,7
+2026-07-13,2026-07,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,4,957060,27,1
+2026-07-20,2026-07,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,4,0,943461,22,5
+2026-07-27,2026-07,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,1,0,566827,11,1
+2026-08-01,2026-08,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,0,120189,5,3
+2026-08-03,2026-08,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,3,2,435630,14,4
+2026-08-10,2026-08,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,0,2,495215,14,2
+2026-08-17,2026-08,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,0,2,488151,20,2
+2026-08-24,2026-08,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,4,2,523186,28,5
+2026-08-31,2026-08,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,0,0,60658,1,0
+2026-09-01,2026-09,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,2,304480,17,3
+2026-09-07,2026-09,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,0,1,321559,19,1
+2026-09-14,2026-09,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,3,1,370943,15,4
+2026-09-21,2026-09,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,2,287730,14,3
+2026-09-28,2026-09,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,1,154329,8,1
+2026-10-01,2026-10,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,1,1,158898,12,1
+2026-10-05,2026-10,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,1,2,241596,19,1
+2026-10-12,2026-10,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,2,1,250923,12,2
+2026-10-19,2026-10,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,2,1,276860,12,3
+2026-10-26,2026-10,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,1,1,270923,10,1
+2026-11-01,2026-11,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,0,0,33250,1,0
+2026-11-02,2026-11,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,2,2,239907,10,2
+2026-11-09,2026-11,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,2,246148,10,1
+2026-11-16,2026-11,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,0,230372,14,3
+2026-11-23,2026-11,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,2,1,263044,22,3
+2026-11-30,2026-11,UMKM-050,Mbrebes Mili,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,0,0,35469,0,0
+2026-07-01,2026-07,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,2,308699,10,1
+2026-07-06,2026-07,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,1,397428,8,3
+2026-07-13,2026-07,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,0,371028,10,1
+2026-07-20,2026-07,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,0,453390,9,1
+2026-07-27,2026-07,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,1,285148,6,0
+2026-08-01,2026-08,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,58610,3,0
+2026-08-03,2026-08,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,199051,4,2
+2026-08-10,2026-08,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,2,221924,8,3
+2026-08-17,2026-08,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,1,213128,6,1
+2026-08-24,2026-08,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,0,232062,15,1
+2026-08-31,2026-08,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,0,26871,1,0
+2026-09-01,2026-09,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,117388,4,0
+2026-09-07,2026-09,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,0,164739,10,3
+2026-09-14,2026-09,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,2,142022,6,2
+2026-09-21,2026-09,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,1,151829,8,3
+2026-09-28,2026-09,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,69071,5,1
+2026-10-01,2026-10,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,1,77685,3,1
+2026-10-05,2026-10,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,0,122780,4,2
+2026-10-12,2026-10,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,1,113188,5,0
+2026-10-19,2026-10,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,1,108766,9,2
+2026-10-26,2026-10,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,115122,8,1
+2026-11-01,2026-11,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,13586,1,0
+2026-11-02,2026-11,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,1,110209,4,2
+2026-11-09,2026-11,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,123972,10,2
+2026-11-16,2026-11,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,0,94950,5,1
+2026-11-23,2026-11,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,1,110054,6,3
+2026-11-30,2026-11,UMKM-051,Papinka,Fesyen,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,1,17080,0,1
+2026-07-01,2026-07,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,2,1,371019,6,3
+2026-07-06,2026-07,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,465967,11,0
+2026-07-13,2026-07,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,1,495657,10,3
+2026-07-20,2026-07,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,0,2,448501,11,2
+2026-07-27,2026-07,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,1,308865,12,3
+2026-08-01,2026-08,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,70828,2,1
+2026-08-03,2026-08,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,1,218666,9,3
+2026-08-10,2026-08,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,1,223393,8,2
+2026-08-17,2026-08,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,0,1,266604,8,1
+2026-08-24,2026-08,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,3,1,279950,12,4
+2026-08-31,2026-08,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,35980,3,2
+2026-09-01,2026-09,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,1,1,128812,10,1
+2026-09-07,2026-09,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,1,0,182323,8,1
+2026-09-14,2026-09,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,1,182244,9,1
+2026-09-21,2026-09,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,2,1,181956,10,3
+2026-09-28,2026-09,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,1,67168,1,2
+2026-10-01,2026-10,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,1,2,88381,4,1
+2026-10-05,2026-10,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,153453,10,0
+2026-10-12,2026-10,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,1,1,137751,8,1
+2026-10-19,2026-10,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,2,0,123930,8,3
+2026-10-26,2026-10,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,115237,3,0
+2026-11-01,2026-11,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,0,0,17158,2,2
+2026-11-02,2026-11,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,0,0,118871,9,0
+2026-11-09,2026-11,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,0,0,132728,6,2
+2026-11-16,2026-11,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,121845,5,2
+2026-11-23,2026-11,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,3,3,131099,7,3
+2026-11-30,2026-11,UMKM-052,BOLDSESSION,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,19135,1,2
+2026-07-01,2026-07,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,2,1,738832,19,3
+2026-07-06,2026-07,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,3,1178897,30,1
+2026-07-13,2026-07,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,4,1196568,24,4
+2026-07-20,2026-07,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,3,1,1071604,31,4
+2026-07-27,2026-07,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,3,2,729480,12,4
+2026-08-01,2026-08,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,0,164839,4,1
+2026-08-03,2026-08,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,4,4,607024,25,5
+2026-08-10,2026-08,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,2,5,600131,34,3
+2026-08-17,2026-08,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,2,1,599324,16,2
+2026-08-24,2026-08,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,2,0,516565,19,3
+2026-08-31,2026-08,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,0,88380,2,0
+2026-09-01,2026-09,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,1,355508,23,1
+2026-09-07,2026-09,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,2,389175,19,4
+2026-09-14,2026-09,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,4,3,466270,23,6
+2026-09-21,2026-09,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,3,2,377108,16,4
+2026-09-28,2026-09,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,0,158193,7,1
+2026-10-01,2026-10,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,0,187262,8,1
+2026-10-05,2026-10,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,0,364055,19,1
+2026-10-12,2026-10,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,3,285754,20,4
+2026-10-19,2026-10,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,2,1,306614,16,3
+2026-10-26,2026-10,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,4,4,311526,15,6
+2026-11-01,2026-11,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,0,43042,2,1
+2026-11-02,2026-11,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,1,265987,15,1
+2026-11-09,2026-11,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,2,2,311597,15,3
+2026-11-16,2026-11,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,1,303441,17,1
+2026-11-23,2026-11,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,2,302173,17,3
+2026-11-30,2026-11,UMKM-053,APB SAMBAL,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,0,0,45723,4,1
+2026-07-01,2026-07,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,3,2,702117,19,4
+2026-07-06,2026-07,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,0,807780,19,1
+2026-07-13,2026-07,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,3,2,818196,21,4
+2026-07-20,2026-07,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,3,2,1055537,20,4
+2026-07-27,2026-07,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,1,3,588650,15,1
+2026-08-01,2026-08,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,1,0,138893,4,1
+2026-08-03,2026-08,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,1,2,454868,22,1
+2026-08-10,2026-08,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,2,0,441773,10,3
+2026-08-17,2026-08,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,4,2,480937,23,6
+2026-08-24,2026-08,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,1,4,490294,20,1
+2026-08-31,2026-08,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,0,75198,2,2
+2026-09-01,2026-09,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,4,2,286974,15,6
+2026-09-07,2026-09,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,1,1,360702,15,1
+2026-09-14,2026-09,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,1,298198,16,1
+2026-09-21,2026-09,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,1,3,306821,16,1
+2026-09-28,2026-09,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,0,158510,9,1
+2026-10-01,2026-10,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,1,1,163858,5,1
+2026-10-05,2026-10,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,0,1,239667,16,1
+2026-10-12,2026-10,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,3,1,280522,12,4
+2026-10-19,2026-10,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,1,3,284617,17,1
+2026-10-26,2026-10,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,2,0,207340,14,3
+2026-11-01,2026-11,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,35549,2,0
+2026-11-02,2026-11,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,2,0,255671,14,2
+2026-11-09,2026-11,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,2,0,224779,10,3
+2026-11-16,2026-11,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,1,223679,7,1
+2026-11-23,2026-11,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,1,4,255139,20,1
+2026-11-30,2026-11,UMKM-054,Leure Cocoa,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,0,0,33098,3,2
+2026-07-01,2026-07,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,2,780246,19,3
+2026-07-06,2026-07,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,3,952941,30,3
+2026-07-13,2026-07,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,0,937462,22,3
+2026-07-20,2026-07,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,5,2,949493,14,7
+2026-07-27,2026-07,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,3,777223,19,0
+2026-08-01,2026-08,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,0,144497,10,1
+2026-08-03,2026-08,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,3,2,544643,19,4
+2026-08-10,2026-08,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,2,457291,19,1
+2026-08-17,2026-08,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,3,3,607092,21,4
+2026-08-24,2026-08,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,1,476556,18,3
+2026-08-31,2026-08,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,0,74680,2,1
+2026-09-01,2026-09,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,2,0,305736,20,2
+2026-09-07,2026-09,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,2,340568,16,1
+2026-09-14,2026-09,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,2,3,398538,18,3
+2026-09-21,2026-09,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,2,383862,16,3
+2026-09-28,2026-09,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,2,0,133518,9,2
+2026-10-01,2026-10,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,1,170785,10,1
+2026-10-05,2026-10,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,2,288645,15,3
+2026-10-12,2026-10,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,1,316212,13,1
+2026-10-19,2026-10,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,2,253418,16,1
+2026-10-26,2026-10,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,4,1,272792,16,5
+2026-11-01,2026-11,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,39964,1,2
+2026-11-02,2026-11,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,0,281528,23,3
+2026-11-09,2026-11,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,3,3,279068,12,4
+2026-11-16,2026-11,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,1,247758,14,1
+2026-11-23,2026-11,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,2,255150,10,1
+2026-11-30,2026-11,UMKM-055,Jivana Tea Lab,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,34447,3,0
+2026-07-01,2026-07,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,1,612807,16,2
+2026-07-06,2026-07,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,4,0,766058,16,6
+2026-07-13,2026-07,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,1,862277,15,1
+2026-07-20,2026-07,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,3,4,889773,20,3
+2026-07-27,2026-07,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,0,2,491994,19,1
+2026-08-01,2026-08,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,0,0,103016,5,2
+2026-08-03,2026-08,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,2,4,409663,12,3
+2026-08-10,2026-08,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,0,1,402640,16,0
+2026-08-17,2026-08,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,3,1,462649,23,4
+2026-08-24,2026-08,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,3,1,465389,16,4
+2026-08-31,2026-08,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,0,0,55493,1,0
+2026-09-01,2026-09,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,1,293051,16,3
+2026-09-07,2026-09,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,1,256841,14,3
+2026-09-14,2026-09,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,1,1,276316,15,1
+2026-09-21,2026-09,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,1,330036,16,1
+2026-09-28,2026-09,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,2,130842,4,1
+2026-10-01,2026-10,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,2,1,147695,9,3
+2026-10-05,2026-10,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,0,2,224620,11,2
+2026-10-12,2026-10,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,2,2,226029,13,3
+2026-10-19,2026-10,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,1,258203,11,2
+2026-10-26,2026-10,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,0,216025,14,1
+2026-11-01,2026-11,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,0,0,29795,3,0
+2026-11-02,2026-11,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,1,215800,6,3
+2026-11-09,2026-11,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,2,222808,11,1
+2026-11-16,2026-11,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,2,209299,12,1
+2026-11-23,2026-11,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,2,0,231102,16,2
+2026-11-30,2026-11,UMKM-056,OGH Butterfly Pea Flower Tea,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,0,0,28703,3,2
+2026-07-01,2026-07,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,4,0,448567,11,5
+2026-07-06,2026-07,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,2,787704,17,3
+2026-07-13,2026-07,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,3,725535,15,1
+2026-07-20,2026-07,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,1,713254,20,1
+2026-07-27,2026-07,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,1,447166,11,3
+2026-08-01,2026-08,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,114371,3,2
+2026-08-03,2026-08,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,3,2,321654,14,3
+2026-08-10,2026-08,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,1,404500,14,2
+2026-08-17,2026-08,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,2,395895,17,2
+2026-08-24,2026-08,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,1,355334,14,3
+2026-08-31,2026-08,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,44676,1,1
+2026-09-01,2026-09,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,2,1,246133,12,3
+2026-09-07,2026-09,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,1,279130,10,1
+2026-09-14,2026-09,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,2,258743,16,1
+2026-09-21,2026-09,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,0,222836,10,1
+2026-09-28,2026-09,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,1,102370,8,1
+2026-10-01,2026-10,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,0,124575,4,1
+2026-10-05,2026-10,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,2,190180,11,1
+2026-10-12,2026-10,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,3,1,228554,10,4
+2026-10-19,2026-10,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,2,185731,14,2
+2026-10-26,2026-10,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,0,195303,11,1
+2026-11-01,2026-11,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,25323,1,1
+2026-11-02,2026-11,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,0,203759,13,3
+2026-11-09,2026-11,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,2,184941,14,1
+2026-11-16,2026-11,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,0,160397,10,1
+2026-11-23,2026-11,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,2,205330,6,1
+2026-11-30,2026-11,UMKM-057,Raya Craft,Craft,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,28194,1,2
+2026-07-01,2026-07,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,1,0,291379,7,1
+2026-07-06,2026-07,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,4,0,485429,6,5
+2026-07-13,2026-07,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,1,2,507913,12,1
+2026-07-20,2026-07,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,0,3,535169,17,2
+2026-07-27,2026-07,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,310350,9,0
+2026-08-01,2026-08,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,0,1,76925,3,2
+2026-08-03,2026-08,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,2,290497,11,2
+2026-08-10,2026-08,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,1,229922,12,0
+2026-08-17,2026-08,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,2,0,231828,8,3
+2026-08-24,2026-08,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,1,0,255116,7,1
+2026-08-31,2026-08,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,0,0,32219,2,0
+2026-09-01,2026-09,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,0,1,149685,7,0
+2026-09-07,2026-09,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,1,1,184386,10,1
+2026-09-14,2026-09,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,2,0,160112,5,3
+2026-09-21,2026-09,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,1,2,172632,9,1
+2026-09-28,2026-09,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,89981,7,1
+2026-10-01,2026-10,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,95789,5,1
+2026-10-05,2026-10,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,1,0,140049,6,1
+2026-10-12,2026-10,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,1,0,133805,5,1
+2026-10-19,2026-10,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,2,138834,12,2
+2026-10-26,2026-10,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,1,122186,6,1
+2026-11-01,2026-11,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,19132,0,0
+2026-11-02,2026-11,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,116046,8,1
+2026-11-09,2026-11,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,1,1,123574,7,1
+2026-11-16,2026-11,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-14,Toko,2,1,144835,10,3
+2026-11-23,2026-11,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,1,130127,4,2
+2026-11-30,2026-11,UMKM-058,ADIA Lavani,Fesyen,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,17532,1,2
+2026-07-01,2026-07,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,3,681303,18,2
+2026-07-06,2026-07,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,3,982014,23,4
+2026-07-13,2026-07,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,4,0,961520,20,6
+2026-07-20,2026-07,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,2,1170245,28,1
+2026-07-27,2026-07,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,4,2,693774,17,6
+2026-08-01,2026-08,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,0,138071,6,1
+2026-08-03,2026-08,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,3,1,487170,16,4
+2026-08-10,2026-08,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,1,561147,25,1
+2026-08-17,2026-08,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,3,572124,21,0
+2026-08-24,2026-08,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,4,3,525755,22,5
+2026-08-31,2026-08,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,0,68445,1,1
+2026-09-01,2026-09,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,3,346671,14,1
+2026-09-07,2026-09,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,3,346452,18,2
+2026-09-14,2026-09,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,3,1,364945,16,4
+2026-09-21,2026-09,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,5,1,353146,19,6
+2026-09-28,2026-09,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,0,183511,13,1
+2026-10-01,2026-10,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,0,154496,7,1
+2026-10-05,2026-10,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,4,297756,18,1
+2026-10-12,2026-10,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,1,319645,18,1
+2026-10-19,2026-10,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,3,1,319528,16,4
+2026-10-26,2026-10,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,3,1,237513,13,4
+2026-11-01,2026-11,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,0,36950,2,2
+2026-11-02,2026-11,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,2,3,243843,14,3
+2026-11-09,2026-11,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,2,254066,16,1
+2026-11-16,2026-11,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,0,287862,9,1
+2026-11-23,2026-11,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,1,304780,22,4
+2026-11-30,2026-11,UMKM-059,Serella Food,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,0,34089,1,1
+2026-07-01,2026-07,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,0,1,281066,8,0
+2026-07-06,2026-07,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-16,Supermarket,0,2,458906,12,2
+2026-07-13,2026-07,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-16,Supermarket,2,1,408560,8,2
+2026-07-20,2026-07,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,2,0,452298,8,2
+2026-07-27,2026-07,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,1,1,367756,11,1
+2026-08-01,2026-08,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,0,62313,3,2
+2026-08-03,2026-08,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,204050,7,1
+2026-08-10,2026-08,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-16,Supermarket,2,0,217727,12,3
+2026-08-17,2026-08,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-16,Supermarket,1,2,256154,10,1
+2026-08-24,2026-08,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,1,254310,8,1
+2026-08-31,2026-08,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,1,37227,0,1
+2026-09-01,2026-09,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-16,Supermarket,2,2,136474,6,3
+2026-09-07,2026-09,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,0,1,169646,8,2
+2026-09-14,2026-09,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,1,0,149235,6,1
+2026-09-21,2026-09,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-16,Supermarket,1,0,160806,10,1
+2026-09-28,2026-09,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,83205,5,0
+2026-10-01,2026-10,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,1,82648,1,1
+2026-10-05,2026-10,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,3,1,128414,10,4
+2026-10-12,2026-10,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-16,Supermarket,0,0,126936,8,2
+2026-10-19,2026-10,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,1,127430,8,2
+2026-10-26,2026-10,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,1,0,117377,5,1
+2026-11-01,2026-11,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,15138,2,0
+2026-11-02,2026-11,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,1,0,117030,3,1
+2026-11-09,2026-11,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,1,0,133433,6,1
+2026-11-16,2026-11,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,2,121085,7,1
+2026-11-23,2026-11,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-15,Minimarket,0,1,107536,9,2
+2026-11-30,2026-11,UMKM-060,Seeta Vastrani,Fesyen,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,0,15193,1,0
+2026-07-01,2026-07,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,2,825794,28,1
+2026-07-06,2026-07,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,2,989964,24,1
+2026-07-13,2026-07,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,4,4,993228,17,6
+2026-07-20,2026-07,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,4,1,965067,23,6
+2026-07-27,2026-07,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,2,1,866811,18,3
+2026-08-01,2026-08,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,143583,6,1
+2026-08-03,2026-08,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,2,601533,31,1
+2026-08-10,2026-08,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,3,5,524736,18,4
+2026-08-17,2026-08,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,3,0,606896,16,3
+2026-08-24,2026-08,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,4,2,491059,20,5
+2026-08-31,2026-08,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,64575,3,0
+2026-09-01,2026-09,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,5,2,363849,12,7
+2026-09-07,2026-09,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,1,334450,19,1
+2026-09-14,2026-09,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,3,377414,22,3
+2026-09-21,2026-09,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,2,0,432549,20,2
+2026-09-28,2026-09,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,2,140466,10,1
+2026-10-01,2026-10,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,2,0,158242,7,3
+2026-10-05,2026-10,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,2,308922,12,3
+2026-10-12,2026-10,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,2,309551,12,1
+2026-10-19,2026-10,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,3,303297,19,1
+2026-10-26,2026-10,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,0,293928,24,3
+2026-11-01,2026-11,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,34896,4,2
+2026-11-02,2026-11,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,3,2,291605,14,4
+2026-11-09,2026-11,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,279938,15,1
+2026-11-16,2026-11,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,4,1,280668,20,6
+2026-11-23,2026-11,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,2,277739,13,0
+2026-11-30,2026-11,UMKM-061,All-co all about coconut,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,1,36079,0,1
+2026-07-01,2026-07,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,0,602496,14,1
+2026-07-06,2026-07,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,2,2,922465,28,3
+2026-07-13,2026-07,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,3,3,1015340,20,4
+2026-07-20,2026-07,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,3,1,866728,20,4
+2026-07-27,2026-07,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,3,610430,13,3
+2026-08-01,2026-08,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,0,0,143075,3,2
+2026-08-03,2026-08,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,4,1,411555,10,5
+2026-08-10,2026-08,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,1,3,484999,25,1
+2026-08-17,2026-08,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,1,3,504655,19,1
+2026-08-24,2026-08,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,3,1,498086,23,4
+2026-08-31,2026-08,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,0,0,63272,2,1
+2026-09-01,2026-09,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,2,0,277397,16,3
+2026-09-07,2026-09,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,2,0,338419,16,2
+2026-09-14,2026-09,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,3,6,329648,20,4
+2026-09-21,2026-09,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,1,0,336112,18,1
+2026-09-28,2026-09,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,0,1,145679,2,1
+2026-10-01,2026-10,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,2,146136,15,1
+2026-10-05,2026-10,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,1,245068,10,1
+2026-10-12,2026-10,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,1,0,283905,19,1
+2026-10-19,2026-10,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,1,3,273210,8,1
+2026-10-26,2026-10,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-09,TikTok Shop,3,0,241061,12,4
+2026-11-01,2026-11,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,1,0,33292,4,1
+2026-11-02,2026-11,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,0,1,236735,13,1
+2026-11-09,2026-11,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,1,255839,16,2
+2026-11-16,2026-11,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-05,Shopee,2,3,245248,10,3
+2026-11-23,2026-11,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,2,0,230853,14,3
+2026-11-30,2026-11,UMKM-062,Teh Artisan,Food & Beverage,,MTR-002,Shopee,KNL-13,Katalog Digital,0,0,37639,0,2
+2026-07-01,2026-07,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,1,562633,13,1
+2026-07-06,2026-07,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,2,3,834283,17,3
+2026-07-13,2026-07,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,4,0,760309,20,6
+2026-07-20,2026-07,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,3,846989,20,3
+2026-07-27,2026-07,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,1,572823,15,1
+2026-08-01,2026-08,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,2,140304,6,3
+2026-08-03,2026-08,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,3,417346,11,1
+2026-08-10,2026-08,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,2,1,386138,13,2
+2026-08-17,2026-08,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,0,464860,19,2
+2026-08-24,2026-08,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,1,400317,22,1
+2026-08-31,2026-08,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,65842,1,1
+2026-09-01,2026-09,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,2,282090,14,1
+2026-09-07,2026-09,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,1,311603,17,3
+2026-09-14,2026-09,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,2,291391,13,3
+2026-09-21,2026-09,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,1,267678,12,1
+2026-09-28,2026-09,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,0,118028,8,1
+2026-10-01,2026-10,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,0,140427,8,1
+2026-10-05,2026-10,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,1,225123,8,3
+2026-10-12,2026-10,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,2,255794,20,0
+2026-10-19,2026-10,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,2,0,215659,9,3
+2026-10-26,2026-10,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,2,2,221988,12,3
+2026-11-01,2026-11,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,1,26399,1,2
+2026-11-02,2026-11,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,0,230686,13,1
+2026-11-09,2026-11,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,2,247800,15,1
+2026-11-16,2026-11,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,3,1,200409,6,4
+2026-11-23,2026-11,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,1,189180,13,1
+2026-11-30,2026-11,UMKM-063,Majesta Yeira,Beauty,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,31163,3,2
+2026-07-01,2026-07,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,2,778962,13,2
+2026-07-06,2026-07,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,4,2,979625,23,5
+2026-07-13,2026-07,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,2,1,985567,29,3
+2026-07-20,2026-07,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,2,2,1106375,29,3
+2026-07-27,2026-07,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,3,616993,12,2
+2026-08-01,2026-08,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,0,0,155457,4,2
+2026-08-03,2026-08,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,3,2,571293,28,4
+2026-08-10,2026-08,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,2,493500,19,3
+2026-08-17,2026-08,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,0,2,492653,18,2
+2026-08-24,2026-08,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,3,2,552548,18,4
+2026-08-31,2026-08,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,0,76079,4,3
+2026-09-01,2026-09,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,4,3,336100,31,6
+2026-09-07,2026-09,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,1,2,340425,13,1
+2026-09-14,2026-09,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,1,0,382921,17,1
+2026-09-21,2026-09,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,2,2,380472,11,3
+2026-09-28,2026-09,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,1,1,147228,8,1
+2026-10-01,2026-10,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,2,147972,8,0
+2026-10-05,2026-10,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,3,1,328320,19,4
+2026-10-12,2026-10,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,1,1,289432,16,1
+2026-10-19,2026-10,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,4,0,305706,19,6
+2026-10-26,2026-10,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,3,251191,9,2
+2026-11-01,2026-11,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,0,1,45063,3,1
+2026-11-02,2026-11,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,4,1,263264,16,5
+2026-11-09,2026-11,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,1,0,276662,16,1
+2026-11-16,2026-11,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,2,247047,13,1
+2026-11-23,2026-11,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,2,288740,13,1
+2026-11-30,2026-11,UMKM-064,KANASIN,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,0,35293,2,1
+2026-07-01,2026-07,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,0,605153,13,1
+2026-07-06,2026-07,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,2,856218,12,1
+2026-07-13,2026-07,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,3,781876,22,1
+2026-07-20,2026-07,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,1,761766,23,0
+2026-07-27,2026-07,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,7,2,551940,14,9
+2026-08-01,2026-08,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,0,0,113884,7,2
+2026-08-03,2026-08,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,3,429505,13,1
+2026-08-10,2026-08,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,3,422388,17,4
+2026-08-17,2026-08,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,3,1,393790,19,4
+2026-08-24,2026-08,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,0,451289,15,1
+2026-08-31,2026-08,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,0,53424,1,2
+2026-09-01,2026-09,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,4,0,242002,15,5
+2026-09-07,2026-09,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,0,2,335165,19,1
+2026-09-14,2026-09,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,0,3,259002,11,2
+2026-09-21,2026-09,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,1,301695,14,1
+2026-09-28,2026-09,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,2,0,125790,5,3
+2026-10-01,2026-10,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,1,134063,8,1
+2026-10-05,2026-10,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,0,0,254099,15,2
+2026-10-12,2026-10,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,3,2,258667,12,4
+2026-10-19,2026-10,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,1,1,194846,11,1
+2026-10-26,2026-10,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,1,1,211370,11,1
+2026-11-01,2026-11,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,0,0,28309,1,1
+2026-11-02,2026-11,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-18,Jaringan Korporasi,2,2,226517,10,3
+2026-11-09,2026-11,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,1,185169,12,1
+2026-11-16,2026-11,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,2,1,207412,9,3
+2026-11-23,2026-11,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-22,Pengadaan Perusahaan,1,1,243093,16,1
+2026-11-30,2026-11,UMKM-065,Nourish Organics & Healthy,Food & Beverage,,MTR-005,Koperasi Kumindag,KNL-13,Katalog Digital,0,0,29940,2,1
+2026-07-01,2026-07,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,1,363745,7,1
+2026-07-06,2026-07,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,413676,8,2
+2026-07-13,2026-07,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,1,3,522753,19,1
+2026-07-20,2026-07,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,2,1,497855,9,3
+2026-07-27,2026-07,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,2,0,348539,8,2
+2026-08-01,2026-08,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,79259,2,0
+2026-08-03,2026-08,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,3,1,253537,10,4
+2026-08-10,2026-08,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,0,0,238008,10,0
+2026-08-17,2026-08,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,2,1,261801,9,2
+2026-08-24,2026-08,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,2,257925,10,0
+2026-08-31,2026-08,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,0,34535,3,2
+2026-09-01,2026-09,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,2,4,138443,7,3
+2026-09-07,2026-09,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,196165,10,0
+2026-09-14,2026-09,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,1,0,157076,6,1
+2026-09-21,2026-09,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,0,192977,11,1
+2026-09-28,2026-09,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,77935,5,2
+2026-10-01,2026-10,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,2,0,69633,5,3
+2026-10-05,2026-10,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,0,142956,12,1
+2026-10-12,2026-10,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,0,1,154321,7,1
+2026-10-19,2026-10,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,1,2,135239,7,1
+2026-10-26,2026-10,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,0,0,133348,3,2
+2026-11-01,2026-11,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,1,0,22164,0,1
+2026-11-02,2026-11,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-15,Minimarket,0,1,119223,4,0
+2026-11-09,2026-11,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,0,1,148332,6,0
+2026-11-16,2026-11,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-17,Pusat Perbelanjaan,1,1,120312,10,1
+2026-11-23,2026-11,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,2,0,125294,9,3
+2026-11-30,2026-11,UMKM-066,Gress Tropika Frutindo,Food & Beverage,,MTR-006,Hippindo,KNL-16,Supermarket,0,0,20147,1,0
+2026-07-01,2026-07,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,1,309670,4,3
+2026-07-06,2026-07,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,1,439594,9,2
+2026-07-13,2026-07,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,0,419960,10,1
+2026-07-20,2026-07,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,1,389576,9,1
+2026-07-27,2026-07,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,1,240962,11,1
+2026-08-01,2026-08,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,54776,3,1
+2026-08-03,2026-08,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,0,233569,10,1
+2026-08-10,2026-08,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,0,180555,4,1
+2026-08-17,2026-08,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,1,220487,9,1
+2026-08-24,2026-08,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,2,227148,9,3
+2026-08-31,2026-08,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,26761,1,0
+2026-09-01,2026-09,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,0,146218,11,1
+2026-09-07,2026-09,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,2,3,134619,6,2
+2026-09-14,2026-09,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,0,143167,4,1
+2026-09-21,2026-09,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,0,141309,6,1
+2026-09-28,2026-09,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,0,74076,5,0
+2026-10-01,2026-10,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,1,0,72838,4,1
+2026-10-05,2026-10,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,0,126327,7,1
+2026-10-12,2026-10,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,1,2,118893,4,1
+2026-10-19,2026-10,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,1,108895,8,1
+2026-10-26,2026-10,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,105871,6,0
+2026-11-01,2026-11,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,13248,1,2
+2026-11-02,2026-11,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,2,2,115810,6,3
+2026-11-09,2026-11,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,1,0,118576,11,1
+2026-11-16,2026-11,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-06,Tokopedia,0,0,97124,3,1
+2026-11-23,2026-11,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-12,Website Mitra,0,1,104991,5,2
+2026-11-30,2026-11,UMKM-067,Pelita Lumpang Mas,Food & Beverage,,MTR-001,Tokopedia,KNL-13,Katalog Digital,0,0,15979,0,1
+2026-07-01,2026-07,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,0,1,294761,9,0
+2026-07-06,2026-07,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,0,1,476136,9,2
+2026-07-13,2026-07,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,2,1,462320,11,3
+2026-07-20,2026-07,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,2,1,511739,13,3
+2026-07-27,2026-07,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,2,1,326121,7,3
+2026-08-01,2026-08,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,0,0,71718,4,2
+2026-08-03,2026-08,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,3,0,235760,6,3
+2026-08-10,2026-08,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-05,Shopee,1,1,232913,9,1
+2026-08-17,2026-08,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,1,0,236728,9,1
+2026-08-24,2026-08,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,0,3,274441,13,2
+2026-08-31,2026-08,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,0,0,33939,1,1
+2026-09-01,2026-09,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,0,1,149026,4,1
+2026-09-07,2026-09,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-05,Shopee,1,1,168326,3,1
+2026-09-14,2026-09,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,1,1,173411,12,1
+2026-09-21,2026-09,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,1,0,170777,14,1
+2026-09-28,2026-09,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,1,1,74237,4,1
+2026-10-01,2026-10,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,1,0,82426,6,1
+2026-10-05,2026-10,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,1,2,149973,10,1
+2026-10-12,2026-10,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-05,Shopee,2,1,137705,7,3
+2026-10-19,2026-10,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,0,0,127780,8,0
+2026-10-26,2026-10,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,0,0,115264,2,0
+2026-11-01,2026-11,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,0,0,14713,1,0
+2026-11-02,2026-11,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,1,1,118578,8,1
+2026-11-09,2026-11,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-05,Shopee,0,1,123489,7,1
+2026-11-16,2026-11,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-13,Katalog Digital,1,0,137047,2,1
+2026-11-23,2026-11,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,1,1,124754,10,1
+2026-11-30,2026-11,UMKM-068,Verdaia Tamanu Oil,Beauty,,MTR-002,Shopee,KNL-09,TikTok Shop,0,0,17355,2,2
+2026-07-01,2026-07,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,0,356976,10,0
+2026-07-06,2026-07,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,5,3,663885,11,7
+2026-07-13,2026-07,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,1,0,496095,11,1
+2026-07-20,2026-07,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,3,664951,22,1
+2026-07-27,2026-07,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,375412,7,0
+2026-08-01,2026-08,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,87964,4,0
+2026-08-03,2026-08,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,2,284932,8,2
+2026-08-10,2026-08,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,3,0,288370,13,4
+2026-08-17,2026-08,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,3,1,351070,12,4
+2026-08-24,2026-08,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,1,280599,12,2
+2026-08-31,2026-08,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,1,47414,3,0
+2026-09-01,2026-09,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,0,164488,8,0
+2026-09-07,2026-09,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,1,189059,8,1
+2026-09-14,2026-09,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,1,249838,14,1
+2026-09-21,2026-09,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,1,207820,8,0
+2026-09-28,2026-09,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,3,1,97316,8,4
+2026-10-01,2026-10,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,91044,4,0
+2026-10-05,2026-10,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,3,1,157474,10,4
+2026-10-12,2026-10,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,1,1,166127,7,1
+2026-10-19,2026-10,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,2,194472,9,1
+2026-10-26,2026-10,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-17,Pusat Perbelanjaan,0,0,147984,11,0
+2026-11-01,2026-11,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,1,21860,0,1
+2026-11-02,2026-11,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,2,1,155335,7,3
+2026-11-09,2026-11,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,1,150762,8,1
+2026-11-16,2026-11,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,1,0,162647,14,1
+2026-11-23,2026-11,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-14,Toko,0,1,151032,7,2
+2026-11-30,2026-11,UMKM-069,Laya Jivana,Food & Beverage,,MTR-003,Mall Grand Indonesia,KNL-23,Pameran,0,0,20127,0,1
+2026-07-01,2026-07,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,2,615433,13,3
+2026-07-06,2026-07,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,1,681531,16,1
+2026-07-13,2026-07,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,1,1,663810,15,1
+2026-07-20,2026-07,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,3,2,861295,21,4
+2026-07-27,2026-07,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,1,489867,14,3
+2026-08-01,2026-08,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,0,121630,5,1
+2026-08-03,2026-08,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,1,0,413439,16,1
+2026-08-10,2026-08,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,3,2,388031,18,4
+2026-08-17,2026-08,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,3,390070,11,3
+2026-08-24,2026-08,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,0,0,362342,16,1
+2026-08-31,2026-08,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,0,1,60349,1,2
+2026-09-01,2026-09,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,2,251985,11,1
+2026-09-07,2026-09,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,2,253894,13,2
+2026-09-14,2026-09,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,0,1,252264,13,0
+2026-09-21,2026-09,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-10,WhatsApp Business,3,1,296356,16,4
+2026-09-28,2026-09,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,0,122110,6,1
+2026-10-01,2026-10,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,0,0,145375,8,2
+2026-10-05,2026-10,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,3,219166,12,2
+2026-10-12,2026-10,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,0,220276,10,1
+2026-10-19,2026-10,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,1,2,220384,16,1
+2026-10-26,2026-10,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,0,175307,7,3
+2026-11-01,2026-11,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,0,1,26477,2,0
+2026-11-02,2026-11,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,0,197878,13,1
+2026-11-09,2026-11,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,1,2,186298,9,1
+2026-11-16,2026-11,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-14,Toko,0,0,210425,11,0
+2026-11-23,2026-11,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,1,2,205365,8,1
+2026-11-30,2026-11,UMKM-070,LAVICI,Food & Beverage,,MTR-004,Centong Daily,KNL-01,Instagram,2,0,30593,4,3
